@@ -1,0 +1,9 @@
+c:\users\andrey\documents\visual studio 2013\Projects\TicTacToe\TicTacToe.Client\bin\Debug\TicTacToe.Client.exe
+c:\users\andrey\documents\visual studio 2013\Projects\TicTacToe\TicTacToe.Client\bin\Debug\TicTacToe.Client.pdb
+C:\Users\Andrey\Documents\Visual Studio 2013\Projects\TicTacToe\TicTacToe.Client\bin\Debug\TicTacToe.Client.exe.config
+C:\Users\Andrey\Documents\Visual Studio 2013\Projects\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.Form1.resources
+C:\Users\Andrey\Documents\Visual Studio 2013\Projects\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.Properties.Resources.resources
+C:\Users\Andrey\Documents\Visual Studio 2013\Projects\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csproj.GenerateResource.Cache
+C:\Users\Andrey\Documents\Visual Studio 2013\Projects\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.exe
+C:\Users\Andrey\Documents\Visual Studio 2013\Projects\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.pdb
+C:\Users\Andrey\Documents\Visual Studio 2013\Projects\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csprojResolveAssemblyReference.cache

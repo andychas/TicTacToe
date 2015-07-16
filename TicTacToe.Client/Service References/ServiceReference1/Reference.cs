@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TicTacToe.Client.ServiceReference {
+namespace TicTacToe.Client.ServiceReference1 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IService", CallbackContract=typeof(TicTacToe.Client.ServiceReference.IServiceCallback), SessionMode=System.ServiceModel.SessionMode.Required)]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService", CallbackContract=typeof(TicTacToe.Client.ServiceReference1.IServiceCallback), SessionMode=System.ServiceModel.SessionMode.Required)]
     public interface IService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetData")]
@@ -30,12 +30,12 @@ namespace TicTacToe.Client.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceChannel : TicTacToe.Client.ServiceReference.IService, System.ServiceModel.IClientChannel {
+    public interface IServiceChannel : TicTacToe.Client.ServiceReference1.IService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceClient : System.ServiceModel.DuplexClientBase<TicTacToe.Client.ServiceReference.IService>, TicTacToe.Client.ServiceReference.IService {
+    public partial class ServiceClient : System.ServiceModel.DuplexClientBase<TicTacToe.Client.ServiceReference1.IService>, TicTacToe.Client.ServiceReference1.IService {
         
         public ServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {

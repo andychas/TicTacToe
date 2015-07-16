@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TicTacToe.Client.ServiceReference;
+using TicTacToe.Client.ServiceReference1;
 using System.ServiceModel;
 
 
