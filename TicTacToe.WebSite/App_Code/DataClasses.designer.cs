@@ -29,6 +29,15 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 	
   #region Extensibility Method Definitions
   partial void OnCreated();
+  partial void InsertAdvisor(Advisor instance);
+  partial void UpdateAdvisor(Advisor instance);
+  partial void DeleteAdvisor(Advisor instance);
+  partial void InsertChampionship(Championship instance);
+  partial void UpdateChampionship(Championship instance);
+  partial void DeleteChampionship(Championship instance);
+  partial void InsertGame(Game instance);
+  partial void UpdateGame(Game instance);
+  partial void DeleteGame(Game instance);
   partial void InsertPlayer(Player instance);
   partial void UpdatePlayer(Player instance);
   partial void DeletePlayer(Player instance);
@@ -64,11 +73,551 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		OnCreated();
 	}
 	
+	public System.Data.Linq.Table<Advisor> Advisors
+	{
+		get
+		{
+			return this.GetTable<Advisor>();
+		}
+	}
+	
+	public System.Data.Linq.Table<Championship> Championships
+	{
+		get
+		{
+			return this.GetTable<Championship>();
+		}
+	}
+	
+	public System.Data.Linq.Table<Game> Games
+	{
+		get
+		{
+			return this.GetTable<Game>();
+		}
+	}
+	
+	public System.Data.Linq.Table<GameToPlayer> GameToPlayers
+	{
+		get
+		{
+			return this.GetTable<GameToPlayer>();
+		}
+	}
+	
 	public System.Data.Linq.Table<Player> Players
 	{
 		get
 		{
 			return this.GetTable<Player>();
+		}
+	}
+	
+	public System.Data.Linq.Table<PlayerToAdvisor> PlayerToAdvisors
+	{
+		get
+		{
+			return this.GetTable<PlayerToAdvisor>();
+		}
+	}
+	
+	public System.Data.Linq.Table<PlayerToChampionship> PlayerToChampionships
+	{
+		get
+		{
+			return this.GetTable<PlayerToChampionship>();
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Advisors")]
+public partial class Advisor : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _Id;
+	
+	private string _First_Name;
+	
+	private string _Last_Name;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnFirst_NameChanging(string value);
+    partial void OnFirst_NameChanged();
+    partial void OnLast_NameChanging(string value);
+    partial void OnLast_NameChanged();
+    #endregion
+	
+	public Advisor()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int Id
+	{
+		get
+		{
+			return this._Id;
+		}
+		set
+		{
+			if ((this._Id != value))
+			{
+				this.OnIdChanging(value);
+				this.SendPropertyChanging();
+				this._Id = value;
+				this.SendPropertyChanged("Id");
+				this.OnIdChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_First_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string First_Name
+	{
+		get
+		{
+			return this._First_Name;
+		}
+		set
+		{
+			if ((this._First_Name != value))
+			{
+				this.OnFirst_NameChanging(value);
+				this.SendPropertyChanging();
+				this._First_Name = value;
+				this.SendPropertyChanged("First_Name");
+				this.OnFirst_NameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Last_Name", DbType="VarChar(50)")]
+	public string Last_Name
+	{
+		get
+		{
+			return this._Last_Name;
+		}
+		set
+		{
+			if ((this._Last_Name != value))
+			{
+				this.OnLast_NameChanging(value);
+				this.SendPropertyChanging();
+				this._Last_Name = value;
+				this.SendPropertyChanged("Last_Name");
+				this.OnLast_NameChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Championship")]
+public partial class Championship : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _Id;
+	
+	private System.Nullable<System.DateTime> _Start_date;
+	
+	private System.Nullable<System.DateTime> _End_date;
+	
+	private string _City;
+	
+	private System.Data.Linq.Binary _Picture;
+	
+	private EntitySet<Game> _Games;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnStart_dateChanging(System.Nullable<System.DateTime> value);
+    partial void OnStart_dateChanged();
+    partial void OnEnd_dateChanging(System.Nullable<System.DateTime> value);
+    partial void OnEnd_dateChanged();
+    partial void OnCityChanging(string value);
+    partial void OnCityChanged();
+    partial void OnPictureChanging(System.Data.Linq.Binary value);
+    partial void OnPictureChanged();
+    #endregion
+	
+	public Championship()
+	{
+		this._Games = new EntitySet<Game>(new Action<Game>(this.attach_Games), new Action<Game>(this.detach_Games));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int Id
+	{
+		get
+		{
+			return this._Id;
+		}
+		set
+		{
+			if ((this._Id != value))
+			{
+				this.OnIdChanging(value);
+				this.SendPropertyChanging();
+				this._Id = value;
+				this.SendPropertyChanged("Id");
+				this.OnIdChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Start_date", DbType="Date")]
+	public System.Nullable<System.DateTime> Start_date
+	{
+		get
+		{
+			return this._Start_date;
+		}
+		set
+		{
+			if ((this._Start_date != value))
+			{
+				this.OnStart_dateChanging(value);
+				this.SendPropertyChanging();
+				this._Start_date = value;
+				this.SendPropertyChanged("Start_date");
+				this.OnStart_dateChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_End_date", DbType="Date")]
+	public System.Nullable<System.DateTime> End_date
+	{
+		get
+		{
+			return this._End_date;
+		}
+		set
+		{
+			if ((this._End_date != value))
+			{
+				this.OnEnd_dateChanging(value);
+				this.SendPropertyChanging();
+				this._End_date = value;
+				this.SendPropertyChanged("End_date");
+				this.OnEnd_dateChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="NVarChar(50)")]
+	public string City
+	{
+		get
+		{
+			return this._City;
+		}
+		set
+		{
+			if ((this._City != value))
+			{
+				this.OnCityChanging(value);
+				this.SendPropertyChanging();
+				this._City = value;
+				this.SendPropertyChanged("City");
+				this.OnCityChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Picture", DbType="Image NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public System.Data.Linq.Binary Picture
+	{
+		get
+		{
+			return this._Picture;
+		}
+		set
+		{
+			if ((this._Picture != value))
+			{
+				this.OnPictureChanging(value);
+				this.SendPropertyChanging();
+				this._Picture = value;
+				this.SendPropertyChanged("Picture");
+				this.OnPictureChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Championship_Game", Storage="_Games", ThisKey="Id", OtherKey="Chapmpionship")]
+	public EntitySet<Game> Games
+	{
+		get
+		{
+			return this._Games;
+		}
+		set
+		{
+			this._Games.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_Games(Game entity)
+	{
+		this.SendPropertyChanging();
+		entity.Championship = this;
+	}
+	
+	private void detach_Games(Game entity)
+	{
+		this.SendPropertyChanging();
+		entity.Championship = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Games")]
+public partial class Game : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _Id;
+	
+	private System.Nullable<System.DateTime> _Date;
+	
+	private System.Nullable<int> _Chapmpionship;
+	
+	private EntityRef<Championship> _Championship;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateChanged();
+    partial void OnChapmpionshipChanging(System.Nullable<int> value);
+    partial void OnChapmpionshipChanged();
+    #endregion
+	
+	public Game()
+	{
+		this._Championship = default(EntityRef<Championship>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int Id
+	{
+		get
+		{
+			return this._Id;
+		}
+		set
+		{
+			if ((this._Id != value))
+			{
+				this.OnIdChanging(value);
+				this.SendPropertyChanging();
+				this._Id = value;
+				this.SendPropertyChanged("Id");
+				this.OnIdChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
+	public System.Nullable<System.DateTime> Date
+	{
+		get
+		{
+			return this._Date;
+		}
+		set
+		{
+			if ((this._Date != value))
+			{
+				this.OnDateChanging(value);
+				this.SendPropertyChanging();
+				this._Date = value;
+				this.SendPropertyChanged("Date");
+				this.OnDateChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chapmpionship", DbType="Int")]
+	public System.Nullable<int> Chapmpionship
+	{
+		get
+		{
+			return this._Chapmpionship;
+		}
+		set
+		{
+			if ((this._Chapmpionship != value))
+			{
+				if (this._Championship.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.OnChapmpionshipChanging(value);
+				this.SendPropertyChanging();
+				this._Chapmpionship = value;
+				this.SendPropertyChanged("Chapmpionship");
+				this.OnChapmpionshipChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Championship_Game", Storage="_Championship", ThisKey="Chapmpionship", OtherKey="Id", IsForeignKey=true)]
+	public Championship Championship
+	{
+		get
+		{
+			return this._Championship.Entity;
+		}
+		set
+		{
+			Championship previousValue = this._Championship.Entity;
+			if (((previousValue != value) 
+						|| (this._Championship.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Championship.Entity = null;
+					previousValue.Games.Remove(this);
+				}
+				this._Championship.Entity = value;
+				if ((value != null))
+				{
+					value.Games.Add(this);
+					this._Chapmpionship = value.Id;
+				}
+				else
+				{
+					this._Chapmpionship = default(Nullable<int>);
+				}
+				this.SendPropertyChanged("Championship");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GameToPlayers")]
+public partial class GameToPlayer
+{
+	
+	private int _GameId;
+	
+	private int _PlayerId;
+	
+	public GameToPlayer()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GameId", DbType="Int NOT NULL")]
+	public int GameId
+	{
+		get
+		{
+			return this._GameId;
+		}
+		set
+		{
+			if ((this._GameId != value))
+			{
+				this._GameId = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerId", DbType="Int NOT NULL")]
+	public int PlayerId
+	{
+		get
+		{
+			return this._PlayerId;
+		}
+		set
+		{
+			if ((this._PlayerId != value))
+			{
+				this._PlayerId = value;
+			}
 		}
 	}
 }
@@ -122,7 +671,7 @@ public partial class Player : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[First Name]", Storage="_First_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_First_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string First_Name
 	{
 		get
@@ -142,7 +691,7 @@ public partial class Player : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Last Name]", Storage="_Last_Name", DbType="VarChar(50)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Last_Name", DbType="VarChar(50)")]
 	public string Last_Name
 	{
 		get
@@ -179,6 +728,114 @@ public partial class Player : INotifyPropertyChanging, INotifyPropertyChanged
 		if ((this.PropertyChanged != null))
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PlayerToAdvisor")]
+public partial class PlayerToAdvisor
+{
+	
+	private int _Player;
+	
+	private int _Advisor;
+	
+	private int _Game;
+	
+	public PlayerToAdvisor()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Player", DbType="Int NOT NULL")]
+	public int Player
+	{
+		get
+		{
+			return this._Player;
+		}
+		set
+		{
+			if ((this._Player != value))
+			{
+				this._Player = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Advisor", DbType="Int NOT NULL")]
+	public int Advisor
+	{
+		get
+		{
+			return this._Advisor;
+		}
+		set
+		{
+			if ((this._Advisor != value))
+			{
+				this._Advisor = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Game", DbType="Int NOT NULL")]
+	public int Game
+	{
+		get
+		{
+			return this._Game;
+		}
+		set
+		{
+			if ((this._Game != value))
+			{
+				this._Game = value;
+			}
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PlayerToChampionship")]
+public partial class PlayerToChampionship
+{
+	
+	private int _Player;
+	
+	private int _Championship;
+	
+	public PlayerToChampionship()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Player", DbType="Int NOT NULL")]
+	public int Player
+	{
+		get
+		{
+			return this._Player;
+		}
+		set
+		{
+			if ((this._Player != value))
+			{
+				this._Player = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Championship", DbType="Int NOT NULL")]
+	public int Championship
+	{
+		get
+		{
+			return this._Championship;
+		}
+		set
+		{
+			if ((this._Championship != value))
+			{
+				this._Championship = value;
+			}
 		}
 	}
 }
