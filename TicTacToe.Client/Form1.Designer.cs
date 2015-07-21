@@ -28,56 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.NewPlayerBtn = new System.Windows.Forms.Button();
+            this.ExistingPlayerBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // NewPlayerBtn
             // 
-            this.button1.Location = new System.Drawing.Point(93, 163);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 49);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.NewPlayerBtn.Location = new System.Drawing.Point(12, 96);
+            this.NewPlayerBtn.Name = "NewPlayerBtn";
+            this.NewPlayerBtn.Size = new System.Drawing.Size(110, 52);
+            this.NewPlayerBtn.TabIndex = 0;
+            this.NewPlayerBtn.Text = "New Player";
+            this.NewPlayerBtn.UseVisualStyleBackColor = true;
+            this.NewPlayerBtn.Click += new System.EventHandler(this.NewPlayerBtn_Click);
             // 
-            // label1
+            // ExistingPlayerBtn
             // 
-            this.label1.Location = new System.Drawing.Point(42, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(200, 36);
-            this.label1.TabIndex = 1;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(45, 120);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(202, 20);
-            this.textBox1.TabIndex = 2;
+            this.ExistingPlayerBtn.Location = new System.Drawing.Point(163, 96);
+            this.ExistingPlayerBtn.Name = "ExistingPlayerBtn";
+            this.ExistingPlayerBtn.Size = new System.Drawing.Size(109, 52);
+            this.ExistingPlayerBtn.TabIndex = 1;
+            this.ExistingPlayerBtn.Text = "Existing Player";
+            this.ExistingPlayerBtn.UseVisualStyleBackColor = true;
+            this.ExistingPlayerBtn.Click += new System.EventHandler(this.ExistingPlayerBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ExistingPlayerBtn);
+            this.Controls.Add(this.NewPlayerBtn);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button NewPlayerBtn;
+        private System.Windows.Forms.Button ExistingPlayerBtn;
+
     }
 }
 

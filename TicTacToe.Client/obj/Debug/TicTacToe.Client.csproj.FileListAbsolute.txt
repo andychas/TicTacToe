@@ -7,3 +7,14 @@ C:\Users\Andrey\Documents\Visual Studio 2013\Projects\TicTacToe\TicTacToe.Client
 C:\Users\Andrey\Documents\Visual Studio 2013\Projects\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.exe
 C:\Users\Andrey\Documents\Visual Studio 2013\Projects\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.pdb
 C:\Users\Andrey\Documents\Visual Studio 2013\Projects\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\bin\Debug\TicTacToe.Client.exe.config
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\bin\Debug\TicTacToe.Client.exe
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\bin\Debug\TicTacToe.Client.pdb
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.Form1.resources
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.Properties.Resources.resources
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csproj.GenerateResource.Cache
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.exe
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.pdb
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.RegisterForm.resources
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.GameInfoForm.resources

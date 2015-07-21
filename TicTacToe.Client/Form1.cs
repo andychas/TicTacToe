@@ -28,19 +28,25 @@ namespace TicTacToe.Client
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            InstanceContext context = new InstanceContext(new MyCallBack());
-            ServiceClient c = new ServiceClient(context);
-            c.GetData(1, 2);
-            
+        {         
    
         }
-        private class MyCallBack : IServiceCallback
+
+        /*private class MyCallBack : IServiceCallback
         {
-            public void Result(int res)
-            {
-                MainUI.label1.Text = res.ToString();
-            }
+
+        }*/
+
+        private void NewPlayerBtn_Click(object sender, EventArgs e)
+        {
+            RegisterForm f = new RegisterForm();
+            f.Show();
+        }
+
+        private void ExistingPlayerBtn_Click(object sender, EventArgs e)
+        {
+            GameInfoForm gameInfo = new GameInfoForm();
+            gameInfo.Show();
         }
     }
 }
