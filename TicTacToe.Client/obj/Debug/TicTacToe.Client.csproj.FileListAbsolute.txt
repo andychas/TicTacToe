@@ -18,3 +18,14 @@ C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Clien
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.pdb
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.RegisterForm.resources
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.GameInfoForm.resources
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\bin\Debug\TicTacToe.Client.exe.config
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.exe
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.pdb
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csprojResolveAssemblyReference.cache
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\bin\Debug\TicTacToe.Client.exe
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\bin\Debug\TicTacToe.Client.pdb
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.Form1.resources
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.GameInfoForm.resources
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.Properties.Resources.resources
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.RegisterForm.resources
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csproj.GenerateResource.Cache
