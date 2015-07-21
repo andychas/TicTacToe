@@ -19,6 +19,7 @@ namespace TicTacToe.Client
         public Form1()
         {
             InitializeComponent();
+
             MainUI = this;
         }
 
