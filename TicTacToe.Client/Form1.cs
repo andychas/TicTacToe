@@ -47,7 +47,6 @@ namespace TicTacToe.Client
         {
             GameInfoForm gameInfo = new GameInfoForm();
             gameInfo.Show();
-
         }
     }
 }
