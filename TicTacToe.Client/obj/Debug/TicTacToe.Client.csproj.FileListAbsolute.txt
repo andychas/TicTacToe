@@ -29,3 +29,4 @@ C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Clie
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.Properties.Resources.resources
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.RegisterForm.resources
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csproj.GenerateResource.Cache
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.AboutBox.resources

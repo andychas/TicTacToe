@@ -19,13 +19,7 @@ namespace TicTacToe.Client
         public Form1()
         {
             InitializeComponent();
-
             MainUI = this;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,6 +42,17 @@ namespace TicTacToe.Client
         {
             GameInfoForm gameInfo = new GameInfoForm();
             gameInfo.Show();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void abuotToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox aboutBox = new AboutBox();
+            aboutBox.Show();
         }
     }
 }
