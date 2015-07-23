@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TicTacToe.Client.ServiceReference1;
+using System.ServiceModel;
 
 namespace TicTacToe.Client
 {
     public partial class RegisterForm : Form
     {
-
         bool flag = false;
         List<Panel> AdvisorPanels = new List<Panel>();
+
+        public static RegisterForm registerForm { get; set; }
         public RegisterForm()
         {
             InitializeComponent();
@@ -36,7 +39,10 @@ namespace TicTacToe.Client
                 GameInfoForm gameInfo = new GameInfoForm();
                 gameInfo.Show();
             }
-            
+
+            InstanceContext context = new InstanceContext(new MyCallBack());
+            ServiceClient c = new ServiceClient(context);
+            c.AddPlayer(firstNameText.Text, lastNameText.Text);
         }
 
         private void RegisterForm_Load(object sender, EventArgs e)
@@ -52,7 +58,7 @@ namespace TicTacToe.Client
 
         private void textBox1_Validating(object sender, CancelEventArgs e)
         {
-            if (ValidName(textBox1.Text))
+            if (ValidName(firstNameText.Text))
             {
                 flag = true;
                 errorProvider1.Dispose();
@@ -61,7 +67,7 @@ namespace TicTacToe.Client
             else
             {
                 flag = false;
-                errorProvider1.SetError(textBox1, "Error");
+                errorProvider1.SetError(firstNameText, "Error");
             }
         }
 
@@ -76,6 +82,14 @@ namespace TicTacToe.Client
                 return false;
             }
             return true;
+        }
+
+        private class MyCallBack : IServiceCallback
+        {
+            public void Result(string msg)
+            {
+                registerForm.msgLabel.Text = msg.ToString();
+            }
         }
 
     }

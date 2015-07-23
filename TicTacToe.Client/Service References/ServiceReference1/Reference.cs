@@ -20,13 +20,19 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetData")]
         System.Threading.Tasks.Task GetDataAsync(int x, int y);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddPlayer", ReplyAction="http://tempuri.org/IService/AddPlayerResponse")]
+        void AddPlayer(string firstName, string lastName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddPlayer", ReplyAction="http://tempuri.org/IService/AddPlayerResponse")]
+        System.Threading.Tasks.Task AddPlayerAsync(string firstName, string lastName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Result")]
-        void Result(int res);
+        void Result(string res);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -63,6 +69,14 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task GetDataAsync(int x, int y) {
             return base.Channel.GetDataAsync(x, y);
+        }
+        
+        public void AddPlayer(string firstName, string lastName) {
+            base.Channel.AddPlayer(firstName, lastName);
+        }
+        
+        public System.Threading.Tasks.Task AddPlayerAsync(string firstName, string lastName) {
+            return base.Channel.AddPlayerAsync(firstName, lastName);
         }
     }
 }

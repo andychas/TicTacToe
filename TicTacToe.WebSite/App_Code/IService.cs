@@ -13,12 +13,16 @@ public interface IService
 {
 
     [OperationContract(IsOneWay = true)]
-    void GetData(int x, int y);
+    void GetData(string x, string y);
+
+    [OperationContract]
+    void AddPlayer(string firstName, string lastName);
+
 }
 
 // Return Values from Server to Client
 public interface ICallBack
 {
     [OperationContract(IsOneWay = true)] // void is not enough
-    void Result(int res);
+    void Result(string res);
 }

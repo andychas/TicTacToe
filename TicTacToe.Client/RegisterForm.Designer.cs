@@ -35,8 +35,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.AdvisorComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.firstNameText = new System.Windows.Forms.TextBox();
+            this.lastNameText = new System.Windows.Forms.TextBox();
             this.SubmitBtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -57,6 +57,7 @@
             this.AdvisorPanel3 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.msgLabel = new System.Windows.Forms.Label();
             this.AdvisorPanel1.SuspendLayout();
             this.AdvisorPanel2.SuspendLayout();
             this.AdvisorPanel3.SuspendLayout();
@@ -123,20 +124,20 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "Last Name";
             // 
-            // textBox1
+            // firstNameText
             // 
-            this.textBox1.Location = new System.Drawing.Point(118, 64);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
+            this.firstNameText.Location = new System.Drawing.Point(118, 64);
+            this.firstNameText.Name = "firstNameText";
+            this.firstNameText.Size = new System.Drawing.Size(100, 20);
+            this.firstNameText.TabIndex = 6;
+            this.firstNameText.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
             // 
-            // textBox2
+            // lastNameText
             // 
-            this.textBox2.Location = new System.Drawing.Point(118, 95);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 7;
+            this.lastNameText.Location = new System.Drawing.Point(118, 95);
+            this.lastNameText.Name = "lastNameText";
+            this.lastNameText.Size = new System.Drawing.Size(100, 20);
+            this.lastNameText.TabIndex = 7;
             // 
             // SubmitBtn
             // 
@@ -311,17 +312,26 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // msgLabel
+            // 
+            this.msgLabel.Location = new System.Drawing.Point(13, 179);
+            this.msgLabel.Name = "msgLabel";
+            this.msgLabel.Size = new System.Drawing.Size(205, 23);
+            this.msgLabel.TabIndex = 24;
+            this.msgLabel.Text = "msgLabel";
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 312);
+            this.Controls.Add(this.msgLabel);
             this.Controls.Add(this.AdvisorPanel3);
             this.Controls.Add(this.AdvisorPanel2);
             this.Controls.Add(this.AdvisorPanel1);
             this.Controls.Add(this.SubmitBtn);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lastNameText);
+            this.Controls.Add(this.firstNameText);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.AdvisorComboBox);
             this.Controls.Add(this.label4);
@@ -351,8 +361,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox AdvisorComboBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox firstNameText;
+        private System.Windows.Forms.TextBox lastNameText;
         private System.Windows.Forms.Button SubmitBtn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -373,5 +383,6 @@
         private System.Windows.Forms.Panel AdvisorPanel3;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label msgLabel;
     }
 }
