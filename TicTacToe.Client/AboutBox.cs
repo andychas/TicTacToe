@@ -13,6 +13,7 @@ namespace TicTacToe.Client
     {
         public AboutBox()
         {
+
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);
             this.labelProductName.Text = AssemblyProduct;
