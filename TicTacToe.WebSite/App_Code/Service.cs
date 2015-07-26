@@ -11,9 +11,9 @@ public class Service : IService
     private DataClassesDataContext db = new DataClassesDataContext();
     public void GetData(string firstName, string lastName)
     {
-        string res = firstName + " " + lastName + " add to database";
-        ICallBack channel = OperationContext.Current.GetCallbackChannel<ICallBack>();
-        channel.Result(res);
+ //       string res = firstName + " " + lastName + " add to database";
+ //       ICallBack channel = OperationContext.Current.GetCallbackChannel<ICallBack>();
+ //       channel.Result(res);
     }
 
     public void AddPlayer(string firstName, string lastName)

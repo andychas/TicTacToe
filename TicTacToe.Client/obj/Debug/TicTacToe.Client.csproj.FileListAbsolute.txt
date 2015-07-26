@@ -21,7 +21,6 @@ C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Clien
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\bin\Debug\TicTacToe.Client.exe.config
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.exe
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.pdb
-C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csprojResolveAssemblyReference.cache
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\bin\Debug\TicTacToe.Client.exe
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\bin\Debug\TicTacToe.Client.pdb
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.Form1.resources
@@ -30,3 +29,10 @@ C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Clie
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.RegisterForm.resources
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csproj.GenerateResource.Cache
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.AboutBox.resources
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.AboutBox.resources
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client_MarkupCompile.cache
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.g.resources
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.GameBoard.resources
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\GameBoardWPF.baml
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\GameBoardWPF.g.cs
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csprojResolveAssemblyReference.cache

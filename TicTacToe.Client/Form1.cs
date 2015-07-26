@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TicTacToe.Client.ServiceReference1;
 using System.ServiceModel;
+using System.Windows.Forms.Integration;
 
 
 namespace TicTacToe.Client
@@ -34,8 +35,11 @@ namespace TicTacToe.Client
 
         private void NewPlayerBtn_Click(object sender, EventArgs e)
         {
-            RegisterForm f = new RegisterForm();
-            f.Show();
+//            GameInfoForm gameInfo = new GameInfoForm();
+//            gameInfo.Show();
+
+           RegisterForm f = new RegisterForm();
+           f.Show();
         }
 
         private void ExistingPlayerBtn_Click(object sender, EventArgs e)

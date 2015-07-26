@@ -319,6 +319,7 @@
             this.msgLabel.Size = new System.Drawing.Size(205, 23);
             this.msgLabel.TabIndex = 24;
             this.msgLabel.Text = "msgLabel";
+            this.msgLabel.Click += new System.EventHandler(this.msgLabel_Click);
             // 
             // RegisterForm
             // 

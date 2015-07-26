@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-[ServiceContract(CallbackContract = typeof(ICallBack), SessionMode = SessionMode.Required)]
+[ServiceContract(/*CallbackContract = typeof(ICallBack),*/ SessionMode = SessionMode.Required)]
 
 // Calls from client to Server
 public interface IService
@@ -21,8 +21,11 @@ public interface IService
 }
 
 // Return Values from Server to Client
+/*
 public interface ICallBack
 {
     [OperationContract(IsOneWay = true)] // void is not enough
     void Result(string res);
 }
+
+*/
