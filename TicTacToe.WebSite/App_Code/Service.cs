@@ -65,6 +65,16 @@ public class Service : IService
             changeTurn();
             return true;
         }
+        if(checkFirstDiagonal(sign, row, col))
+        {
+            changeTurn();
+            return true;
+        }
+        if (checkSecondDiagonal(sign, row, col))
+        {
+            changeTurn();
+            return true;
+        }
         changeTurn();
         return false;
     }
@@ -91,6 +101,36 @@ public class Service : IService
         {
             if (!boardGame[i, col].Equals(sign))
                 return false;
+        }
+        return true;
+    }
+
+    /**
+     * check Diagonal -> \
+     */
+    private bool checkFirstDiagonal(string sign, int row, int col)
+    {
+        for (int i = 0; i < boardSize; i++) 
+        {
+            if(!boardGame[i,i].Equals(sign))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * check Diagonal -> /
+     */
+    private bool checkSecondDiagonal(string sign, int row, int col)
+    {
+        for (int i = 0 ; i < boardSize; i++)
+        {
+            if (!boardGame[i, boardSize - 1 - i].Equals(sign))
+            {
+                return false;
+            }
         }
         return true;
     }
