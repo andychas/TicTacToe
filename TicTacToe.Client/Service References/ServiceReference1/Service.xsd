@@ -21,4 +21,47 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="NewTurn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="col" type="xs:int" />
+        <xs:element minOccurs="0" name="row" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewTurnResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="NewTurnResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SizeGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="size" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SizeGameResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IfWinner">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sign" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="row" type="xs:int" />
+        <xs:element minOccurs="0" name="col" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IfWinnerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IfWinnerResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

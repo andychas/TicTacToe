@@ -12,7 +12,7 @@ namespace TicTacToe.Client.ServiceReference1 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService", SessionMode=System.ServiceModel.SessionMode.Required)]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService")]
     public interface IService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetData")]
@@ -26,6 +26,24 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddPlayer", ReplyAction="http://tempuri.org/IService/AddPlayerResponse")]
         System.Threading.Tasks.Task AddPlayerAsync(string firstName, string lastName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/NewTurn", ReplyAction="http://tempuri.org/IService/NewTurnResponse")]
+        string NewTurn(int col, int row);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/NewTurn", ReplyAction="http://tempuri.org/IService/NewTurnResponse")]
+        System.Threading.Tasks.Task<string> NewTurnAsync(int col, int row);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SizeGame", ReplyAction="http://tempuri.org/IService/SizeGameResponse")]
+        void SizeGame(int size);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SizeGame", ReplyAction="http://tempuri.org/IService/SizeGameResponse")]
+        System.Threading.Tasks.Task SizeGameAsync(int size);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/IfWinner", ReplyAction="http://tempuri.org/IService/IfWinnerResponse")]
+        bool IfWinner(string sign, int row, int col);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/IfWinner", ReplyAction="http://tempuri.org/IService/IfWinnerResponse")]
+        System.Threading.Tasks.Task<bool> IfWinnerAsync(string sign, int row, int col);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +87,30 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task AddPlayerAsync(string firstName, string lastName) {
             return base.Channel.AddPlayerAsync(firstName, lastName);
+        }
+        
+        public string NewTurn(int col, int row) {
+            return base.Channel.NewTurn(col, row);
+        }
+        
+        public System.Threading.Tasks.Task<string> NewTurnAsync(int col, int row) {
+            return base.Channel.NewTurnAsync(col, row);
+        }
+        
+        public void SizeGame(int size) {
+            base.Channel.SizeGame(size);
+        }
+        
+        public System.Threading.Tasks.Task SizeGameAsync(int size) {
+            return base.Channel.SizeGameAsync(size);
+        }
+        
+        public bool IfWinner(string sign, int row, int col) {
+            return base.Channel.IfWinner(sign, row, col);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IfWinnerAsync(string sign, int row, int col) {
+            return base.Channel.IfWinnerAsync(sign, row, col);
         }
     }
 }

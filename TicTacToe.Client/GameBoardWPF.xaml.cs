@@ -23,39 +23,30 @@ namespace TicTacToe.Client
     public partial class GameBoardWPF : UserControl
     {
         private int boardSize = 0;
-        enum  sign {X,O,};
+        private bool isWinner = false;
+        private static Button[,] buttons;
         public GameBoardWPF(int size)
         {
             boardSize = size;
-
             InitializeComponent();
-
-            GameButton[,] buttons = CreateButtons();
+            buttons = CreateButtons();
 
             for (int i = 0; i < size; i++)
             {
                 grid.ColumnDefinitions.Add(new ColumnDefinition());
-
             }
             for (int i = 0; i < size; i++)
             {
                 grid.RowDefinitions.Add(new RowDefinition());
-
             }
 
             for (int row = 0; row < size; row++)
             {
                 for (int col = 0; col < size; col++)
                 {
-
                     grid.Children.Add(buttons[row, col]);
                 }
-            }
-/*
-
- */
-            
-
+            }     
         }
 
         private GameButton[,] CreateButtons()
@@ -64,8 +55,7 @@ namespace TicTacToe.Client
             for (int row = 0; row < boardSize; row++)
             {
                 for (int col = 0; col < boardSize; col++)
-                {
-                    
+                {    
                     buttons[row, col] = new GameButton(boardSize, row, col);
                     buttons[row, col].VerticalAlignment = VerticalAlignment.Center;
                     buttons[row, col].Click += Button_Click;
@@ -74,17 +64,31 @@ namespace TicTacToe.Client
             return buttons;
         }
 
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
             GameButton b = (GameButton)sender;
-            b.Content = "Clicked";
+            //InstanceContext context = new InstanceContext(new MyCallBack());
+            //ServiceClient c = new ServiceClient(context);
             ServiceClient c = new ServiceClient();
-           // c.AddTurn(b.col, b.row, b.boardSize);
-
-           
-            
+            string sign = c.NewTurn(b.col, b.row);
+            Console.WriteLine(sign);
+            b.Content = sign;
+            b.FontSize = 20;
+            b.IsEnabled = false;
+            isWinner = c.IfWinner(sign, b.row, b.col);
+            Console.WriteLine(isWinner);
+            if (isWinner)
+            {
+                MessageBox.Show(sign + " is winner");
+            }
         }
+
+        /*private class MyCallBack : IServiceCallback
+        {
+            public void Result(int col, int row, string msg)
+            { 
+                GameBoardWPF.buttons[col, row].Content = "" + msg;
+            }
+        }*/
     }
 }

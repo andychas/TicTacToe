@@ -40,9 +40,10 @@ namespace TicTacToe.Client
                 gameInfo.Show();
             }
 
- //           InstanceContext context = new InstanceContext(new MyCallBack());
+            //InstanceContext context = new InstanceContext(new MyCallBack());
+            //ServiceClient c = new ServiceClient(context);
             ServiceClient c = new ServiceClient();
-            c.AddPlayerAsync(firstNameText.Text, lastNameText.Text);
+            c.AddPlayer(firstNameText.Text, lastNameText.Text);
         }
 
         private void RegisterForm_Load(object sender, EventArgs e)
@@ -83,15 +84,14 @@ namespace TicTacToe.Client
             }
             return true;
         }
- /*     
-        private class MyCallBack : IServiceCallback
+     
+        /*private class MyCallBack : IServiceCallback
         {
-            public void Result(string msg)
+            public void Result(int i, int j, string msg)
             {
                 registerForm.msgLabel.Text = msg.ToString();
             }
-        }
-  */
+        }*/
 
         private void msgLabel_Click(object sender, EventArgs e)
         {

@@ -6,7 +6,9 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-[ServiceContract(/*CallbackContract = typeof(ICallBack),*/ SessionMode = SessionMode.Required)]
+//[ServiceContract(/*CallbackContract = typeof(ICallBack),*/ SessionMode = SessionMode.Required)]
+//[ServiceContract(CallbackContract = typeof(ICallBack), SessionMode = SessionMode.Required)]
+[ServiceContract]
 
 // Calls from client to Server
 public interface IService
@@ -18,14 +20,22 @@ public interface IService
     [OperationContract]
     void AddPlayer(string firstName, string lastName);
 
+    [OperationContract]
+    string NewTurn(int col, int row);
+
+    [OperationContract]
+    void SizeGame(int size);
+
+    [OperationContract]
+    bool IfWinner(string sign, int row, int col);
+
 }
 
 // Return Values from Server to Client
-/*
-public interface ICallBack
+
+/*public interface ICallBack
 {
     [OperationContract(IsOneWay = true)] // void is not enough
-    void Result(string res);
-}
+    void Result(int col, int row, string res);
 
-*/
+}*/

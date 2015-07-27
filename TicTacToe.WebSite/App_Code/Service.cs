@@ -9,6 +9,10 @@ using System.Text;
 public class Service : IService
 {
     private DataClassesDataContext db = new DataClassesDataContext();
+    private static bool turn = true;
+    private static string[,] boardGame;
+    private static int boardSize;
+
     public void GetData(string firstName, string lastName)
     {
  //       string res = firstName + " " + lastName + " add to database";
@@ -23,6 +27,83 @@ public class Service : IService
         player.Last_Name = lastName;
         db.Players.InsertOnSubmit(player);
         db.SubmitChanges();
+    }
+
+    public string NewTurn(int col, int row)
+    {
+        string res;
+        if (turn)
+            res = "X";
+        else
+            res = "O";
+        boardGame[row, col] = res;
+        return res;
+    }
+
+    public void SizeGame(int size)
+    {
+        boardGame = new string[size, size];
+        boardSize = size;
+        for (int i = 0; i < boardSize; i++)
+        {
+            for (int j = 0; j < boardSize; j++)
+            {
+                boardGame[i, j] = "";
+            }
+        }
+    }
+
+    public bool IfWinner(string sign, int row, int col)
+    {
+        if (checkRow(sign, row, col))
+        {
+            changeTurn();
+            return true;
+        }     
+        if (checkCol(sign, row, col))
+        {
+            changeTurn();
+            return true;
+        }
+        changeTurn();
+        return false;
+    }
+
+    /**
+     * check current row
+     */
+    private bool checkRow(string sign, int row, int col)
+    {
+        for (int j = 0; j < boardSize; j++)
+        {
+            if (!boardGame[row, j].Equals(sign))
+                return false;
+        }
+        return true;
+    }
+
+    /**
+     * check current column
+     */
+    private bool checkCol(string sign, int row, int col)
+    {
+        for (int i = 0; i < boardSize; i++) 
+        {
+            if (!boardGame[i, col].Equals(sign))
+                return false;
+        }
+        return true;
+    }
+
+    /**
+     * change turn 
+     */
+    private void changeTurn()
+    {
+        if (turn)
+            turn = false;
+        else
+            turn = true;
     }
 
 }

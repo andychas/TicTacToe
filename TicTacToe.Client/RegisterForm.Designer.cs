@@ -57,7 +57,6 @@
             this.AdvisorPanel3 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.msgLabel = new System.Windows.Forms.Label();
             this.AdvisorPanel1.SuspendLayout();
             this.AdvisorPanel2.SuspendLayout();
             this.AdvisorPanel3.SuspendLayout();
@@ -71,7 +70,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(536, 23);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Rgister";
+            this.label1.Text = "Register";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label2
@@ -312,21 +311,11 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // msgLabel
-            // 
-            this.msgLabel.Location = new System.Drawing.Point(13, 179);
-            this.msgLabel.Name = "msgLabel";
-            this.msgLabel.Size = new System.Drawing.Size(205, 23);
-            this.msgLabel.TabIndex = 24;
-            this.msgLabel.Text = "msgLabel";
-            this.msgLabel.Click += new System.EventHandler(this.msgLabel_Click);
-            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 312);
-            this.Controls.Add(this.msgLabel);
             this.Controls.Add(this.AdvisorPanel3);
             this.Controls.Add(this.AdvisorPanel2);
             this.Controls.Add(this.AdvisorPanel1);
@@ -384,6 +373,5 @@
         private System.Windows.Forms.Panel AdvisorPanel3;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Label msgLabel;
     }
 }
