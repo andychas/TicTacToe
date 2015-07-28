@@ -15,7 +15,7 @@ namespace TicTacToe.Client
     public partial class RegisterForm : Form
     {
         bool flag = false;
-        List<Panel> AdvisorPanels = new List<Panel>();
+        List<GroupBox> AdvisorPanels = new List<GroupBox>();
 
         public static RegisterForm registerForm { get; set; }
         public RegisterForm()
@@ -26,9 +26,16 @@ namespace TicTacToe.Client
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int numOfAdvisor = Int32.Parse(AdvisorComboBox.Text);
-            for (int i = 0; i < numOfAdvisor; i++)
+            for (int i = 0; i < AdvisorPanels.Count(); i++)
             {
-                AdvisorPanels.ElementAt(i).Visible = true;
+                if(i < numOfAdvisor)
+                {
+                    AdvisorPanels.ElementAt(i).Visible = true;
+                }
+                else
+                {
+                    AdvisorPanels.ElementAt(i).Visible = false;
+                }   
             }
         }
 
@@ -48,9 +55,9 @@ namespace TicTacToe.Client
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
-            AdvisorPanels.Add(AdvisorPanel1);
-            AdvisorPanels.Add(AdvisorPanel2);
-            AdvisorPanels.Add(AdvisorPanel3);
+            AdvisorPanels.Add(AdvisorGroup1);
+            AdvisorPanels.Add(AdvisorGroup2);
+            AdvisorPanels.Add(AdvisorGroup3);
             for (int i = 0; i < AdvisorPanels.Count; i++)
             {
                 AdvisorPanels.ElementAt(i).Visible = false;
@@ -63,7 +70,6 @@ namespace TicTacToe.Client
             {
                 flag = true;
                 errorProvider1.Dispose();
-                //insert player
             }
             else
             {
@@ -92,11 +98,5 @@ namespace TicTacToe.Client
                 registerForm.msgLabel.Text = msg.ToString();
             }
         }*/
-
-        private void msgLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

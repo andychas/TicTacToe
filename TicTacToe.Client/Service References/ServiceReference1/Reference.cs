@@ -33,17 +33,23 @@ namespace TicTacToe.Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/NewTurn", ReplyAction="http://tempuri.org/IService/NewTurnResponse")]
         System.Threading.Tasks.Task<string> NewTurnAsync(int col, int row);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SizeGame", ReplyAction="http://tempuri.org/IService/SizeGameResponse")]
-        void SizeGame(int size);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GameInfo", ReplyAction="http://tempuri.org/IService/GameInfoResponse")]
+        void GameInfo(int size, string option);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SizeGame", ReplyAction="http://tempuri.org/IService/SizeGameResponse")]
-        System.Threading.Tasks.Task SizeGameAsync(int size);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GameInfo", ReplyAction="http://tempuri.org/IService/GameInfoResponse")]
+        System.Threading.Tasks.Task GameInfoAsync(int size, string option);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/IfWinner", ReplyAction="http://tempuri.org/IService/IfWinnerResponse")]
         bool IfWinner(string sign, int row, int col);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/IfWinner", ReplyAction="http://tempuri.org/IService/IfWinnerResponse")]
         System.Threading.Tasks.Task<bool> IfWinnerAsync(string sign, int row, int col);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ResetGame", ReplyAction="http://tempuri.org/IService/ResetGameResponse")]
+        void ResetGame();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ResetGame", ReplyAction="http://tempuri.org/IService/ResetGameResponse")]
+        System.Threading.Tasks.Task ResetGameAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,12 +103,12 @@ namespace TicTacToe.Client.ServiceReference1 {
             return base.Channel.NewTurnAsync(col, row);
         }
         
-        public void SizeGame(int size) {
-            base.Channel.SizeGame(size);
+        public void GameInfo(int size, string option) {
+            base.Channel.GameInfo(size, option);
         }
         
-        public System.Threading.Tasks.Task SizeGameAsync(int size) {
-            return base.Channel.SizeGameAsync(size);
+        public System.Threading.Tasks.Task GameInfoAsync(int size, string option) {
+            return base.Channel.GameInfoAsync(size, option);
         }
         
         public bool IfWinner(string sign, int row, int col) {
@@ -111,6 +117,14 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> IfWinnerAsync(string sign, int row, int col) {
             return base.Channel.IfWinnerAsync(sign, row, col);
+        }
+        
+        public void ResetGame() {
+            base.Channel.ResetGame();
+        }
+        
+        public System.Threading.Tasks.Task ResetGameAsync() {
+            return base.Channel.ResetGameAsync();
         }
     }
 }

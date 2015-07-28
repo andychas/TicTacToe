@@ -22,13 +22,24 @@ namespace TicTacToe.Client
     /// </summary>
     public partial class GameBoardWPF : UserControl
     {
+        private ServiceClient c = new ServiceClient();
+
+        private enum Turn { Player, Computer};
+
         private int boardSize = 0;
+        private int currentTurn;
         private bool isWinner = false;
+        private string computerOrPlayer;
         private static Button[,] buttons;
-        public GameBoardWPF(int size)
+
+        public GameBoardWPF(int size, string gameOption)
         {
-            boardSize = size;
             InitializeComponent();
+            
+            boardSize = size;
+            computerOrPlayer = gameOption;
+            currentTurn = (int)Turn.Player;
+
             buttons = CreateButtons();
 
             for (int i = 0; i < size; i++)
@@ -49,13 +60,65 @@ namespace TicTacToe.Client
             }     
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GameButton button = (GameButton)sender;
+            string sign;
+            if(computerOrPlayer.Equals("computer"))
+            {
+                // player move
+                sign = c.NewTurn(button.col, button.row);
+                moveGame(button, sign);
+                currentTurn = (int)Turn.Computer;
+                
+                // computer move 
+                int rndCol = 0;
+                int rndRow = 0;
+                getRandomButton(ref rndCol, ref rndRow);
+                button = (GameButton)buttons[rndCol, rndRow];
+                sign = c.NewTurn(button.col, button.row);
+                moveGame(button, sign);
+                currentTurn = (int)Turn.Player;
+            }            
+        }
+
+        private void moveGame(GameButton button, string sign)
+        {
+            sign = c.NewTurn(button.col, button.row);
+            button.Content = sign;
+            button.FontSize = 20;
+            button.IsEnabled = false;
+            isWinner = c.IfWinner(sign, button.row, button.col);
+            if (isWinner)
+            {
+                MessageBox.Show(sign + " is winner");
+                resetGame();
+            }
+        }
+
+        private void getRandomButton(ref int col, ref int row)
+        {
+            Random rnd = new Random();
+            while (true)
+            {
+                int i = rnd.Next(0, boardSize);
+                int j = rnd.Next(0, boardSize);
+                if (buttons[i, j].IsEnabled == true)
+                {
+                    col = i;
+                    row = j;
+                    break;
+                }
+            }
+        }
+
         private GameButton[,] CreateButtons()
         {
-            GameButton[,] buttons = new GameButton[boardSize,boardSize];
+            GameButton[,] buttons = new GameButton[boardSize, boardSize];
             for (int row = 0; row < boardSize; row++)
             {
                 for (int col = 0; col < boardSize; col++)
-                {    
+                {
                     buttons[row, col] = new GameButton(boardSize, row, col);
                     buttons[row, col].VerticalAlignment = VerticalAlignment.Center;
                     buttons[row, col].Click += Button_Click;
@@ -64,23 +127,17 @@ namespace TicTacToe.Client
             return buttons;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void resetGame()
         {
-            GameButton b = (GameButton)sender;
-            //InstanceContext context = new InstanceContext(new MyCallBack());
-            //ServiceClient c = new ServiceClient(context);
-            ServiceClient c = new ServiceClient();
-            string sign = c.NewTurn(b.col, b.row);
-            Console.WriteLine(sign);
-            b.Content = sign;
-            b.FontSize = 20;
-            b.IsEnabled = false;
-            isWinner = c.IfWinner(sign, b.row, b.col);
-            Console.WriteLine(isWinner);
-            if (isWinner)
+            for (int i = 0; i < boardSize; i++)
             {
-                MessageBox.Show(sign + " is winner");
+                for (int j = 0; j < boardSize; j++)
+                {
+                    buttons[i, j].Content = "";
+                    buttons[i, j].IsEnabled = true;
+                }
             }
+            c.ResetGame();
         }
 
         /*private class MyCallBack : IServiceCallback

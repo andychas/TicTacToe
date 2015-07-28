@@ -12,24 +12,22 @@ namespace TicTacToe.Client
 {
     public partial class GameBoard : Form
     {
-        public GameBoard(int size)
-        {
+        private int size;
+        private string gameOption;
 
+        public GameBoard(int size, string gameOption)
+        {
             InitializeComponent();
+            this.size = size;
+            this.gameOption = gameOption;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.StartPosition = FormStartPosition.CenterScreen;
-            elementHost1.Child = new GameBoardWPF(size);
+            elementHost1.Child = new GameBoardWPF(size, gameOption);
         }
 
-
-        private void GameBoard_Load(object sender, EventArgs e)
+        private void newGameBtn_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void elementHost1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
-        {
-
+            elementHost1.Child = new GameBoardWPF(size, gameOption);
         }
     }
 }

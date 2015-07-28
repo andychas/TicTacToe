@@ -21,26 +21,26 @@ namespace TicTacToe.Client
 
         private void StartGameBtn_Click(object sender, EventArgs e)
         {
-            int size = 0;
             ServiceClient c = new ServiceClient();
-            if (radioButton1.Checked)
-            {
-                size = 4;
-                c.SizeGame(size);
-            }
-            else if (radioButton2.Checked) 
-            {
-                size = 5;
-                c.SizeGame(size);
-            }
-               
-            else { }
-                // SELECT RADIO BUTTON MSG !
-                // SEND TO SERVVER WICH GAME BOARD + AGAINST PC/ AGAINST PLAYER
+            int size = 0;
+            string gameOption = "";
             
-            GameBoard b = new GameBoard(size);
-            b.Show();
-        }
+            
+            if (smallBoardButton.Checked)
+                size = 4;
+            else if (bigBoardButton.Checked) 
+                size = 5;
+            
+            if (computerButton.Checked)
+                gameOption = "computer";
+            else if (playerButton.Checked)
+                gameOption = "player";
+           
+            c.GameInfo(size, gameOption);
 
+            GameBoard b = new GameBoard(size, gameOption);
+            b.Show();
+            this.Close();
+        }
     }
 }

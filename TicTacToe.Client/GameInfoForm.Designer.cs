@@ -28,71 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.smallBoardButton = new System.Windows.Forms.RadioButton();
+            this.bigBoardButton = new System.Windows.Forms.RadioButton();
+            this.playerButton = new System.Windows.Forms.RadioButton();
+            this.computerButton = new System.Windows.Forms.RadioButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.StartGameBtn = new System.Windows.Forms.Button();
             this.lvlGroupBox = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.lvlGroupBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // radioButton1
+            // smallBoardButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(20, 34);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(48, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "4 x 4";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.smallBoardButton.AutoSize = true;
+            this.smallBoardButton.Checked = true;
+            this.smallBoardButton.Location = new System.Drawing.Point(20, 34);
+            this.smallBoardButton.Name = "smallBoardButton";
+            this.smallBoardButton.Size = new System.Drawing.Size(48, 17);
+            this.smallBoardButton.TabIndex = 1;
+            this.smallBoardButton.TabStop = true;
+            this.smallBoardButton.Text = "4 x 4";
+            this.smallBoardButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // bigBoardButton
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(96, 34);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(48, 17);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "5 x 5";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.bigBoardButton.AutoSize = true;
+            this.bigBoardButton.Location = new System.Drawing.Point(96, 34);
+            this.bigBoardButton.Name = "bigBoardButton";
+            this.bigBoardButton.Size = new System.Drawing.Size(48, 17);
+            this.bigBoardButton.TabIndex = 2;
+            this.bigBoardButton.TabStop = true;
+            this.bigBoardButton.Text = "5 x 5";
+            this.bigBoardButton.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // playerButton
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 129);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Game Type";
+            this.playerButton.AutoSize = true;
+            this.playerButton.Location = new System.Drawing.Point(115, 42);
+            this.playerButton.Name = "playerButton";
+            this.playerButton.Size = new System.Drawing.Size(87, 17);
+            this.playerButton.TabIndex = 4;
+            this.playerButton.TabStop = true;
+            this.playerButton.Text = "versus player";
+            this.playerButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // computerButton
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(27, 162);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(87, 17);
-            this.radioButton3.TabIndex = 4;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "versus player";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(143, 162);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(103, 17);
-            this.radioButton4.TabIndex = 5;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "versus computer";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.computerButton.AutoSize = true;
+            this.computerButton.Checked = true;
+            this.computerButton.Location = new System.Drawing.Point(6, 42);
+            this.computerButton.Name = "computerButton";
+            this.computerButton.Size = new System.Drawing.Size(103, 17);
+            this.computerButton.TabIndex = 5;
+            this.computerButton.TabStop = true;
+            this.computerButton.Text = "versus computer";
+            this.computerButton.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -104,7 +97,7 @@
             // 
             // StartGameBtn
             // 
-            this.StartGameBtn.Location = new System.Drawing.Point(206, 265);
+            this.StartGameBtn.Location = new System.Drawing.Point(240, 287);
             this.StartGameBtn.Name = "StartGameBtn";
             this.StartGameBtn.Size = new System.Drawing.Size(75, 23);
             this.StartGameBtn.TabIndex = 7;
@@ -114,8 +107,8 @@
             // 
             // lvlGroupBox
             // 
-            this.lvlGroupBox.Controls.Add(this.radioButton1);
-            this.lvlGroupBox.Controls.Add(this.radioButton2);
+            this.lvlGroupBox.Controls.Add(this.smallBoardButton);
+            this.lvlGroupBox.Controls.Add(this.bigBoardButton);
             this.lvlGroupBox.Location = new System.Drawing.Point(27, 51);
             this.lvlGroupBox.Name = "lvlGroupBox";
             this.lvlGroupBox.Size = new System.Drawing.Size(200, 62);
@@ -123,47 +116,46 @@
             this.lvlGroupBox.TabStop = false;
             this.lvlGroupBox.Text = "Game level";
             // 
-            // button1
+            // groupBox1
             // 
-            this.button1.Location = new System.Drawing.Point(345, 237);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(218, 38);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.groupBox1.Controls.Add(this.computerButton);
+            this.groupBox1.Controls.Add(this.playerButton);
+            this.groupBox1.Location = new System.Drawing.Point(27, 119);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Game Type";
             // 
             // GameInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 322);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lvlGroupBox);
             this.Controls.Add(this.StartGameBtn);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.label2);
             this.Name = "GameInfoForm";
             this.Text = "GameInfoForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.lvlGroupBox.ResumeLayout(false);
             this.lvlGroupBox.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton smallBoardButton;
+        private System.Windows.Forms.RadioButton bigBoardButton;
+        private System.Windows.Forms.RadioButton playerButton;
+        private System.Windows.Forms.RadioButton computerButton;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button StartGameBtn;
         private System.Windows.Forms.GroupBox lvlGroupBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

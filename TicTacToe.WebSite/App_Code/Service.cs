@@ -12,6 +12,7 @@ public class Service : IService
     private static bool turn = true;
     private static string[,] boardGame;
     private static int boardSize;
+    private static string computerOrplayer;
 
     public void GetData(string firstName, string lastName)
     {
@@ -40,18 +41,27 @@ public class Service : IService
         return res;
     }
 
-    public void SizeGame(int size)
+    public void GameInfo(int size, string option)
     {
         boardGame = new string[size, size];
         boardSize = size;
-        for (int i = 0; i < boardSize; i++)
+        initializeGame(boardSize);
+        if (option.Equals("computer"))
         {
-            for (int j = 0; j < boardSize; j++)
-            {
-                boardGame[i, j] = "";
-            }
+            computerOrplayer = "computer";
+        }
+        else
+        {
+            computerOrplayer = "player";
         }
     }
+
+    /*public void SizeGame(int size)
+    {
+        boardGame = new string[size, size];
+        boardSize = size;
+        initializeGame(boardSize);
+    }*/
 
     public bool IfWinner(string sign, int row, int col)
     {
@@ -79,8 +89,13 @@ public class Service : IService
         return false;
     }
 
+    public void ResetGame()
+    {
+        initializeGame(boardSize);
+    }
+
     /**
-     * check current row
+     * Check current row
      */
     private bool checkRow(string sign, int row, int col)
     {
@@ -93,7 +108,7 @@ public class Service : IService
     }
 
     /**
-     * check current column
+     * Check current column
      */
     private bool checkCol(string sign, int row, int col)
     {
@@ -106,7 +121,7 @@ public class Service : IService
     }
 
     /**
-     * check Diagonal -> \
+     * Check Diagonal -> \
      */
     private bool checkFirstDiagonal(string sign, int row, int col)
     {
@@ -121,7 +136,7 @@ public class Service : IService
     }
 
     /**
-     * check Diagonal -> /
+     * Check Diagonal -> /
      */
     private bool checkSecondDiagonal(string sign, int row, int col)
     {
@@ -136,7 +151,7 @@ public class Service : IService
     }
 
     /**
-     * change turn 
+     * Change turn 
      */
     private void changeTurn()
     {
@@ -146,4 +161,18 @@ public class Service : IService
             turn = true;
     }
 
+    /**
+     * initialize game
+     */
+    void initializeGame(int size)
+    {
+        for (int i = 0; i < boardSize; i++)
+        {
+            for (int j = 0; j < boardSize; j++)
+            {
+                boardGame[i, j] = "";
+            }
+        }
+        turn = false;
+    }
 }

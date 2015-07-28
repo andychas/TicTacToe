@@ -27,8 +27,7 @@ namespace TicTacToe.Client
             this.Height = boardSize == MINBOARDSIZE ? MIN_BOARD_BUTTON_SIZE : MAX_BOARD_BUTTON_SIZE;
             this.Width = boardSize == MINBOARDSIZE ? MIN_BOARD_BUTTON_SIZE : MAX_BOARD_BUTTON_SIZE;
             this.SetValue(Grid.RowProperty, row);
-            this.SetValue(Grid.ColumnProperty, col);          
-            this.Content = "row " + row + " col " + col;
+            this.SetValue(Grid.ColumnProperty, col);
         }
 
     }

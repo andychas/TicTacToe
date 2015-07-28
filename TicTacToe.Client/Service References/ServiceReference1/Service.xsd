@@ -36,14 +36,15 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SizeGame">
+  <xs:element name="GameInfo">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="size" type="xs:int" />
+        <xs:element minOccurs="0" name="option" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SizeGameResponse">
+  <xs:element name="GameInfoResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -62,6 +63,16 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="IfWinnerResult" type="xs:boolean" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetGame">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetGameResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

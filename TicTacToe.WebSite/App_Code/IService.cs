@@ -24,10 +24,13 @@ public interface IService
     string NewTurn(int col, int row);
 
     [OperationContract]
-    void SizeGame(int size);
+    void GameInfo(int size, string option);
 
     [OperationContract]
     bool IfWinner(string sign, int row, int col);
+
+    [OperationContract]
+    void ResetGame();
 
 }
 

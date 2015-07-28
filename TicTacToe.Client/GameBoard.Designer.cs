@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.button1 = new System.Windows.Forms.Button();
+            this.newGameBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // elementHost1
@@ -39,24 +39,24 @@
             this.elementHost1.Size = new System.Drawing.Size(500, 500);
             this.elementHost1.TabIndex = 0;
             this.elementHost1.Text = "elementHost1";
-            this.elementHost1.ChildChanged += new System.EventHandler<System.Windows.Forms.Integration.ChildChangedEventArgs>(this.elementHost1_ChildChanged);
             this.elementHost1.Child = null;
             // 
-            // button1
+            // newGameBtn
             // 
-            this.button1.Location = new System.Drawing.Point(542, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 87);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.newGameBtn.Location = new System.Drawing.Point(542, 12);
+            this.newGameBtn.Name = "newGameBtn";
+            this.newGameBtn.Size = new System.Drawing.Size(154, 87);
+            this.newGameBtn.TabIndex = 1;
+            this.newGameBtn.Text = "New Game";
+            this.newGameBtn.UseVisualStyleBackColor = true;
+            this.newGameBtn.Click += new System.EventHandler(this.newGameBtn_Click);
             // 
             // GameBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(728, 522);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.newGameBtn);
             this.Controls.Add(this.elementHost1);
             this.Name = "GameBoard";
             this.Text = "GameBoard";
@@ -67,6 +67,6 @@
         #endregion
 
         private System.Windows.Forms.Integration.ElementHost elementHost1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button newGameBtn;
     }
 }
