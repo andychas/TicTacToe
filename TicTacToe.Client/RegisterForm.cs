@@ -14,8 +14,9 @@ namespace TicTacToe.Client
 {
     public partial class RegisterForm : Form
     {
-        bool flag = false;
-        List<GroupBox> AdvisorPanels = new List<GroupBox>();
+        private ServiceClient c = new ServiceClient();
+        private bool flag = false;
+        private List<GroupBox> AdvisorPanels = new List<GroupBox>();
 
         public static RegisterForm registerForm { get; set; }
         public RegisterForm()
@@ -43,7 +44,7 @@ namespace TicTacToe.Client
         {
             if (flag)
             {
-                GameInfoForm gameInfo = new GameInfoForm();
+                GameInfoForm gameInfo = new GameInfoForm(firstNameText.Text, lastNameText.Text);
                 gameInfo.Show();
             }
 
@@ -66,7 +67,9 @@ namespace TicTacToe.Client
 
         private void textBox1_Validating(object sender, CancelEventArgs e)
         {
-            if (ValidName(firstNameText.Text))
+            Player p = null;
+            //p = c.GetPlayer(firstNameText.Text, lastNameText.Text);
+            if ((ValidName(firstNameText.Text)) && (p == null))
             {
                 flag = true;
                 errorProvider1.Dispose();

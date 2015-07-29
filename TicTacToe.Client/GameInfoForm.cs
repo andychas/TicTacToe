@@ -14,9 +14,14 @@ namespace TicTacToe.Client
 {
     public partial class GameInfoForm : Form
     {
-        public GameInfoForm()
+        private string firstName;
+        private string lastName;
+
+        public GameInfoForm(string firstName, string lastName)
         {
             InitializeComponent();
+            this.firstName = firstName;
+            this.lastName = lastName;
         }
 
         private void StartGameBtn_Click(object sender, EventArgs e)
@@ -41,6 +46,11 @@ namespace TicTacToe.Client
             GameBoard b = new GameBoard(size, gameOption);
             b.Show();
             this.Close();
+        }
+
+        private void GameInfoForm_Load(object sender, EventArgs e)
+        {
+            playerName.Text = "Hello " + firstName + " " + lastName;
         }
     }
 }

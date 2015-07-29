@@ -36,6 +36,7 @@
             this.StartGameBtn = new System.Windows.Forms.Button();
             this.lvlGroupBox = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.playerName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.lvlGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -127,23 +128,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Game Type";
             // 
+            // playerName
+            // 
+            this.playerName.AutoSize = true;
+            this.playerName.Location = new System.Drawing.Point(33, 13);
+            this.playerName.Name = "playerName";
+            this.playerName.Size = new System.Drawing.Size(0, 13);
+            this.playerName.TabIndex = 10;
+            // 
             // GameInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 322);
+            this.Controls.Add(this.playerName);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lvlGroupBox);
             this.Controls.Add(this.StartGameBtn);
             this.Controls.Add(this.dataGridView1);
             this.Name = "GameInfoForm";
             this.Text = "GameInfoForm";
+            this.Load += new System.EventHandler(this.GameInfoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.lvlGroupBox.ResumeLayout(false);
             this.lvlGroupBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -157,5 +169,6 @@
         private System.Windows.Forms.Button StartGameBtn;
         private System.Windows.Forms.GroupBox lvlGroupBox;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label playerName;
     }
 }

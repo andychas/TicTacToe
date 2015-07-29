@@ -16,16 +16,13 @@ namespace TicTacToe.Client
 {
     public partial class Form1 : Form
     {
+        private ServiceClient c = new ServiceClient();
         public static Form1 MainUI { get; set; }
+
         public Form1()
         {
             InitializeComponent();
             MainUI = this;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {         
-   
         }
 
         /*private class MyCallBack : IServiceCallback
@@ -42,10 +39,17 @@ namespace TicTacToe.Client
            f.Show();
         }
 
-        private void ExistingPlayerBtn_Click(object sender, EventArgs e)
+        private void PlayBtn_Click(object sender, EventArgs e)
         {
-            GameInfoForm gameInfo = new GameInfoForm();
-            gameInfo.Show();
+            if (!firstNameText.Equals(""))
+            {
+                Player player = c.GetPlayer(firstNameText.Text, lastNameText.Text);
+                if (player != null)
+                {
+                    GameInfoForm gameInfo = new GameInfoForm(player.First_Name, player.Last_Name);
+                    gameInfo.Show();
+                }
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,5 +62,6 @@ namespace TicTacToe.Client
             AboutBox aboutBox = new AboutBox();
             aboutBox.Show();
         }
+
     }
 }

@@ -175,4 +175,16 @@ public class Service : IService
         }
         turn = false;
     }
+
+
+    public Player GetPlayer(string firstName, string lastName)
+    {
+        var x =
+            from p in db.Players
+            where p.First_Name.Equals(firstName) && p.Last_Name.Equals(lastName)
+            select p;
+        
+        return (Player)x.First();        
+    }
+
 }

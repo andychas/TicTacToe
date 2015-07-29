@@ -32,6 +32,9 @@ public interface IService
     [OperationContract]
     void ResetGame();
 
+    [OperationContract]
+    Player GetPlayer(string FirstName, string LastName);
+
 }
 
 // Return Values from Server to Client
