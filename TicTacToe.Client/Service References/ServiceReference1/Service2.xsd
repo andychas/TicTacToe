@@ -14,4 +14,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPlayer" nillable="true" type="tns:ArrayOfPlayer" />
+  <xs:complexType name="ArrayOfAdvisor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Advisor" nillable="true" type="tns:Advisor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAdvisor" nillable="true" type="tns:ArrayOfAdvisor" />
+  <xs:complexType name="Advisor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="First_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Last_Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Advisor" nillable="true" type="tns:Advisor" />
 </xs:schema>

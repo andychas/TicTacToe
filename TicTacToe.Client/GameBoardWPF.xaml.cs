@@ -84,7 +84,6 @@ namespace TicTacToe.Client
 
         private void moveGame(GameButton button, string sign)
         {
-            sign = c.NewTurn(button.col, button.row);
             button.Content = sign;
             button.FontSize = 20;
             button.IsEnabled = false;

@@ -15,25 +15,44 @@ namespace TicTacToe.Client
     public partial class RegisterForm : Form
     {
         private ServiceClient c = new ServiceClient();
-        private bool ifValidName = false;
+        private bool ifValidPlayerName = false;
+        private bool[] ifValidAdvisorsName;
         private List<GroupBox> AdvisorPanels = new List<GroupBox>();
-
+        private List<TextBox> advisorsTextBoxes = new List<TextBox>();
+        private int numOfAdvisors;
+        private Player player;
+        private List<Advisor> advisors = new List<Advisor>();
         public static RegisterForm registerForm { get; set; }
         public RegisterForm()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            advisorsTextBoxes = addAllTextBoxes();
+            
 
+        }
+
+        private List<TextBox> addAllTextBoxes()
+        {
+            List<TextBox> t = new List<TextBox>();
+            t.Add(advisor1FirstName);
+            t.Add(advisor1LastName);
+            t.Add(advisor2FirstName);
+            t.Add(advisor2LastName);
+            t.Add(advisor3FirstName);
+            t.Add(advisor3LastName);
+            return t;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int numOfAdvisor = Int32.Parse(AdvisorComboBox.Text);
+            numOfAdvisors = Int32.Parse(AdvisorComboBox.Text);
             for (int i = 0; i < AdvisorPanels.Count(); i++)
             {
-                if(i < numOfAdvisor)
+                if (i < numOfAdvisors)
                 {
                     AdvisorPanels.ElementAt(i).Visible = true;
+                    
                 }
                 else
                 {
@@ -44,12 +63,35 @@ namespace TicTacToe.Client
 
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
-            if (ifValidName)
+            if (ifValidPlayerName)
             {
-                c.AddPlayer(firstNameText.Text, lastNameText.Text);
-                GameInfoForm gameInfo = new GameInfoForm(firstNameText.Text, lastNameText.Text);
+                for (int i = 0; i < numOfAdvisors; i++)
+                {
+                    if (!ifValidAdvisorsName[i]){
+                        advisors = null;
+                        return;
+                    }
+                        
+                        
+                    else
+                    {
+                        Advisor a = new Advisor();
+                        a.First_Name = advisorsTextBoxes.ElementAt(i).Text;
+                        a.Last_Name =  advisorsTextBoxes.ElementAt(i+1).Text;
+                        advisors.Add(a);
+                        
+                    }
+                }
+                
+                    c.AddPlayer(playerFirstName.Text, playerLastName.Text);
+                GameInfoForm gameInfo = new GameInfoForm(playerFirstName.Text, playerLastName.Text);
                 gameInfo.Show();
+
+                c.AddAdvisor(player, advisors.ToArray());
+                               
             }
+
+            
             
         }
 
@@ -66,16 +108,16 @@ namespace TicTacToe.Client
 
         private void textBox1_Validating(object sender, CancelEventArgs e)
         {
-            Player p = c.GetPlayer(firstNameText.Text, lastNameText.Text);
-            if ((ValidName(firstNameText.Text)) && (p == null))
+             player = c.GetPlayer(playerFirstName.Text, playerLastName.Text);
+            if ((ValidName(playerFirstName.Text)) && (player == null))
             {
-                ifValidName = true;
+                ifValidPlayerName = true;
                 errorProvider1.Dispose();
             }
             else
             {
-                ifValidName = false;
-                errorProvider1.SetError(firstNameText, "Error");
+                ifValidPlayerName = false;
+                errorProvider1.SetError(playerFirstName, "Error");
             }
         }
 
@@ -90,6 +132,29 @@ namespace TicTacToe.Client
                 return false;
             }
             return true;
+        }
+
+        private void Advisor_Validating(object sender, CancelEventArgs e)
+        {
+            ifValidAdvisorsName = new bool[numOfAdvisors];
+
+            for (int i = 0; i < numOfAdvisors; i++)
+            {
+
+                if (ValidName(advisorsTextBoxes.ElementAt(i).Text))
+                {
+                    errorProvider2.Dispose();
+                    ifValidAdvisorsName[i] = true;
+                }
+
+                else
+                {
+                    ifValidAdvisorsName[i] = false;
+                    errorProvider2.SetError(advisorsTextBoxes.ElementAt(i), "Error");
+
+                }
+
+            } 
         }
 
     }

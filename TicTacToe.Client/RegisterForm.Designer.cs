@@ -34,31 +34,33 @@
             this.label4 = new System.Windows.Forms.Label();
             this.AdvisorComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.firstNameText = new System.Windows.Forms.TextBox();
-            this.lastNameText = new System.Windows.Forms.TextBox();
+            this.playerFirstName = new System.Windows.Forms.TextBox();
+            this.playerLastName = new System.Windows.Forms.TextBox();
             this.SubmitBtn = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.AdvisorGroup1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.advisor1LastName = new System.Windows.Forms.TextBox();
+            this.advisor1FirstName = new System.Windows.Forms.TextBox();
             this.AdvisorGroup2 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.advisor2FirstName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.advisor2LastName = new System.Windows.Forms.TextBox();
             this.AdvisorGroup3 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.advisor3FirstName = new System.Windows.Forms.TextBox();
+            this.advisor3LastName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.AdvisorGroup1.SuspendLayout();
             this.AdvisorGroup2.SuspendLayout();
             this.AdvisorGroup3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -112,20 +114,20 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "Last Name";
             // 
-            // firstNameText
+            // playerFirstName
             // 
-            this.firstNameText.Location = new System.Drawing.Point(99, 29);
-            this.firstNameText.Name = "firstNameText";
-            this.firstNameText.Size = new System.Drawing.Size(100, 20);
-            this.firstNameText.TabIndex = 6;
-            this.firstNameText.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
+            this.playerFirstName.Location = new System.Drawing.Point(99, 29);
+            this.playerFirstName.Name = "playerFirstName";
+            this.playerFirstName.Size = new System.Drawing.Size(100, 20);
+            this.playerFirstName.TabIndex = 6;
+            this.playerFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
             // 
-            // lastNameText
+            // playerLastName
             // 
-            this.lastNameText.Location = new System.Drawing.Point(99, 60);
-            this.lastNameText.Name = "lastNameText";
-            this.lastNameText.Size = new System.Drawing.Size(100, 20);
-            this.lastNameText.TabIndex = 7;
+            this.playerLastName.Location = new System.Drawing.Point(99, 60);
+            this.playerLastName.Name = "playerLastName";
+            this.playerLastName.Size = new System.Drawing.Size(100, 20);
+            this.playerLastName.TabIndex = 7;
             // 
             // SubmitBtn
             // 
@@ -145,8 +147,8 @@
             // 
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.firstNameText);
-            this.groupBox1.Controls.Add(this.lastNameText);
+            this.groupBox1.Controls.Add(this.playerFirstName);
+            this.groupBox1.Controls.Add(this.playerLastName);
             this.groupBox1.Location = new System.Drawing.Point(16, 40);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(224, 100);
@@ -158,11 +160,11 @@
             // 
             this.AdvisorGroup1.Controls.Add(this.label3);
             this.AdvisorGroup1.Controls.Add(this.label15);
-            this.AdvisorGroup1.Controls.Add(this.textBox1);
-            this.AdvisorGroup1.Controls.Add(this.textBox2);
+            this.AdvisorGroup1.Controls.Add(this.advisor1LastName);
+            this.AdvisorGroup1.Controls.Add(this.advisor1FirstName);
             this.AdvisorGroup1.Location = new System.Drawing.Point(322, 64);
             this.AdvisorGroup1.Name = "AdvisorGroup1";
-            this.AdvisorGroup1.Size = new System.Drawing.Size(200, 68);
+            this.AdvisorGroup1.Size = new System.Drawing.Size(226, 68);
             this.AdvisorGroup1.TabIndex = 25;
             this.AdvisorGroup1.TabStop = false;
             this.AdvisorGroup1.Text = "Advisor 1";
@@ -185,29 +187,30 @@
             this.label15.TabIndex = 18;
             this.label15.Text = "Last Name";
             // 
-            // textBox1
+            // advisor1LastName
             // 
-            this.textBox1.Location = new System.Drawing.Point(97, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 20;
+            this.advisor1LastName.Location = new System.Drawing.Point(97, 39);
+            this.advisor1LastName.Name = "advisor1LastName";
+            this.advisor1LastName.Size = new System.Drawing.Size(100, 20);
+            this.advisor1LastName.TabIndex = 20;
             // 
-            // textBox2
+            // advisor1FirstName
             // 
-            this.textBox2.Location = new System.Drawing.Point(97, 13);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 19;
+            this.advisor1FirstName.Location = new System.Drawing.Point(97, 13);
+            this.advisor1FirstName.Name = "advisor1FirstName";
+            this.advisor1FirstName.Size = new System.Drawing.Size(100, 20);
+            this.advisor1FirstName.TabIndex = 19;
+            this.advisor1FirstName.Validating += new System.ComponentModel.CancelEventHandler(this.Advisor_Validating);
             // 
             // AdvisorGroup2
             // 
             this.AdvisorGroup2.Controls.Add(this.label6);
-            this.AdvisorGroup2.Controls.Add(this.textBox3);
+            this.AdvisorGroup2.Controls.Add(this.advisor2FirstName);
             this.AdvisorGroup2.Controls.Add(this.label7);
-            this.AdvisorGroup2.Controls.Add(this.textBox4);
+            this.AdvisorGroup2.Controls.Add(this.advisor2LastName);
             this.AdvisorGroup2.Location = new System.Drawing.Point(322, 131);
             this.AdvisorGroup2.Name = "AdvisorGroup2";
-            this.AdvisorGroup2.Size = new System.Drawing.Size(200, 68);
+            this.AdvisorGroup2.Size = new System.Drawing.Size(226, 68);
             this.AdvisorGroup2.TabIndex = 26;
             this.AdvisorGroup2.TabStop = false;
             this.AdvisorGroup2.Text = "Advisor 2";
@@ -221,12 +224,13 @@
             this.label6.TabIndex = 19;
             this.label6.Text = "First Name";
             // 
-            // textBox3
+            // advisor2FirstName
             // 
-            this.textBox3.Location = new System.Drawing.Point(97, 16);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 21;
+            this.advisor2FirstName.Location = new System.Drawing.Point(97, 16);
+            this.advisor2FirstName.Name = "advisor2FirstName";
+            this.advisor2FirstName.Size = new System.Drawing.Size(100, 20);
+            this.advisor2FirstName.TabIndex = 21;
+            this.advisor2FirstName.Validating += new System.ComponentModel.CancelEventHandler(this.Advisor_Validating);
             // 
             // label7
             // 
@@ -237,22 +241,22 @@
             this.label7.TabIndex = 20;
             this.label7.Text = "Last Name";
             // 
-            // textBox4
+            // advisor2LastName
             // 
-            this.textBox4.Location = new System.Drawing.Point(97, 42);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 22;
+            this.advisor2LastName.Location = new System.Drawing.Point(97, 42);
+            this.advisor2LastName.Name = "advisor2LastName";
+            this.advisor2LastName.Size = new System.Drawing.Size(100, 20);
+            this.advisor2LastName.TabIndex = 22;
             // 
             // AdvisorGroup3
             // 
             this.AdvisorGroup3.Controls.Add(this.label8);
-            this.AdvisorGroup3.Controls.Add(this.textBox5);
-            this.AdvisorGroup3.Controls.Add(this.textBox6);
+            this.AdvisorGroup3.Controls.Add(this.advisor3FirstName);
+            this.AdvisorGroup3.Controls.Add(this.advisor3LastName);
             this.AdvisorGroup3.Controls.Add(this.label9);
             this.AdvisorGroup3.Location = new System.Drawing.Point(322, 205);
             this.AdvisorGroup3.Name = "AdvisorGroup3";
-            this.AdvisorGroup3.Size = new System.Drawing.Size(200, 68);
+            this.AdvisorGroup3.Size = new System.Drawing.Size(226, 68);
             this.AdvisorGroup3.TabIndex = 27;
             this.AdvisorGroup3.TabStop = false;
             this.AdvisorGroup3.Text = "Advisor 3";
@@ -266,19 +270,20 @@
             this.label8.TabIndex = 21;
             this.label8.Text = "First Name";
             // 
-            // textBox5
+            // advisor3FirstName
             // 
-            this.textBox5.Location = new System.Drawing.Point(94, 13);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 23;
+            this.advisor3FirstName.Location = new System.Drawing.Point(94, 13);
+            this.advisor3FirstName.Name = "advisor3FirstName";
+            this.advisor3FirstName.Size = new System.Drawing.Size(100, 20);
+            this.advisor3FirstName.TabIndex = 23;
+            this.advisor3FirstName.Validating += new System.ComponentModel.CancelEventHandler(this.Advisor_Validating);
             // 
-            // textBox6
+            // advisor3LastName
             // 
-            this.textBox6.Location = new System.Drawing.Point(94, 39);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 24;
+            this.advisor3LastName.Location = new System.Drawing.Point(94, 39);
+            this.advisor3LastName.Name = "advisor3LastName";
+            this.advisor3LastName.Size = new System.Drawing.Size(100, 20);
+            this.advisor3LastName.TabIndex = 24;
             // 
             // label9
             // 
@@ -288,6 +293,10 @@
             this.label9.Size = new System.Drawing.Size(58, 13);
             this.label9.TabIndex = 22;
             this.label9.Text = "Last Name";
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
             // 
             // RegisterForm
             // 
@@ -314,6 +323,7 @@
             this.AdvisorGroup2.PerformLayout();
             this.AdvisorGroup3.ResumeLayout(false);
             this.AdvisorGroup3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,25 +336,26 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox AdvisorComboBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox firstNameText;
-        private System.Windows.Forms.TextBox lastNameText;
+        private System.Windows.Forms.TextBox playerFirstName;
+        private System.Windows.Forms.TextBox playerLastName;
         private System.Windows.Forms.Button SubmitBtn;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.GroupBox AdvisorGroup2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox advisor2FirstName;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox advisor2LastName;
         private System.Windows.Forms.GroupBox AdvisorGroup1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox advisor1LastName;
+        private System.Windows.Forms.TextBox advisor1FirstName;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox AdvisorGroup3;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox advisor3FirstName;
+        private System.Windows.Forms.TextBox advisor3LastName;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }

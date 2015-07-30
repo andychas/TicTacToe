@@ -202,4 +202,17 @@ public class Service : IService
     select p;
         return x.ToArray();
     }
+
+
+    public void AddAdvisor(Player player, Advisor[] advisors)
+    {
+        foreach (Advisor a in advisors)
+        {
+            Advisor advisor = new Advisor();
+            advisor.First_Name = a.First_Name;
+            advisor.Last_Name = a.Last_Name;
+            db.Advisors.InsertOnSubmit(advisor);
+            db.SubmitChanges();
+        }
+    }
 }

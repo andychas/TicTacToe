@@ -37,6 +37,9 @@ public interface IService
 
     [OperationContract]
     Player[] GetPlayers();
+
+    [OperationContract]
+    void AddAdvisor(Player player, Advisor[] advisors);
 }
 
 // Return Values from Server to Client
