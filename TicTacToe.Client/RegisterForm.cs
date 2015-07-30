@@ -15,13 +15,15 @@ namespace TicTacToe.Client
     public partial class RegisterForm : Form
     {
         private ServiceClient c = new ServiceClient();
-        private bool flag = false;
+        private bool ifValidName = false;
         private List<GroupBox> AdvisorPanels = new List<GroupBox>();
 
         public static RegisterForm registerForm { get; set; }
         public RegisterForm()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -42,7 +44,7 @@ namespace TicTacToe.Client
 
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
-            if (flag)
+            if (ifValidName)
             {
                 c.AddPlayer(firstNameText.Text, lastNameText.Text);
                 GameInfoForm gameInfo = new GameInfoForm(firstNameText.Text, lastNameText.Text);
@@ -64,15 +66,15 @@ namespace TicTacToe.Client
 
         private void textBox1_Validating(object sender, CancelEventArgs e)
         {
-            IEnumerable<Tuple<int, string, string>> player = c.GetPlayer(firstNameText.Text, lastNameText.Text);
-            if ((ValidName(firstNameText.Text)) && (player.Count() == 0))
+            Player p = c.GetPlayer(firstNameText.Text, lastNameText.Text);
+            if ((ValidName(firstNameText.Text)) && (p == null))
             {
-                flag = true;
+                ifValidName = true;
                 errorProvider1.Dispose();
             }
             else
             {
-                flag = false;
+                ifValidName = false;
                 errorProvider1.SetError(firstNameText, "Error");
             }
         }

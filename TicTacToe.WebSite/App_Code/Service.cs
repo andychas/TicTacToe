@@ -176,17 +176,30 @@ public class Service : IService
         turn = false;
     }
 
-    public IEnumerable<Tuple<int, string, string>> GetPlayer(string firstName, string lastName)
+
+
+
+    public Player GetPlayer(string firstName, string lastName)
     {
         var x =
             from p in db.Players
             where p.First_Name.Equals(firstName) && p.Last_Name.Equals(lastName)
-            select new Tuple<int, string, string>(
-                p.Id,
-                p.First_Name,
-                p.Last_Name
-                );
-        return x;
+            select p;
+        try
+        {
+            return (Player)x.First();
+        }
+        catch
+        {
+            return null;
+        }
     }
 
+    public Player[] GetPlayers()
+    {
+        var x =
+    from p in db.Players
+    select p;
+        return x.ToArray();
+    }
 }

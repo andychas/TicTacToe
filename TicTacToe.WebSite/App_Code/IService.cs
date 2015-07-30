@@ -33,8 +33,10 @@ public interface IService
     void ResetGame();
 
     [OperationContract]
-    IEnumerable<Tuple<int, string, string>> GetPlayer(string firstName, string lastName);
+    Player GetPlayer(string firstName, string lastName);
 
+    [OperationContract]
+    Player[] GetPlayers();
 }
 
 // Return Values from Server to Client

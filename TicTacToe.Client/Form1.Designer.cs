@@ -36,17 +36,14 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lastNameText = new System.Windows.Forms.TextBox();
-            this.firstNameText = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // registerBtn
             // 
-            this.registerBtn.Location = new System.Drawing.Point(12, 112);
+            this.registerBtn.Location = new System.Drawing.Point(12, 183);
             this.registerBtn.Name = "registerBtn";
             this.registerBtn.Size = new System.Drawing.Size(110, 52);
             this.registerBtn.TabIndex = 0;
@@ -56,7 +53,7 @@
             // 
             // PlayBtn
             // 
-            this.PlayBtn.Location = new System.Drawing.Point(163, 112);
+            this.PlayBtn.Location = new System.Drawing.Point(157, 183);
             this.PlayBtn.Name = "PlayBtn";
             this.PlayBtn.Size = new System.Drawing.Size(109, 52);
             this.PlayBtn.TabIndex = 1;
@@ -105,10 +102,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lastNameText);
-            this.groupBox1.Controls.Add(this.firstNameText);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Location = new System.Drawing.Point(12, 28);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(260, 78);
@@ -116,37 +110,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Exisiting Player";
             // 
-            // lastNameText
+            // comboBox1
             // 
-            this.lastNameText.Location = new System.Drawing.Point(107, 44);
-            this.lastNameText.Name = "lastNameText";
-            this.lastNameText.Size = new System.Drawing.Size(147, 20);
-            this.lastNameText.TabIndex = 3;
-            // 
-            // firstNameText
-            // 
-            this.firstNameText.Location = new System.Drawing.Point(107, 17);
-            this.firstNameText.Name = "firstNameText";
-            this.firstNameText.Size = new System.Drawing.Size(147, 20);
-            this.firstNameText.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Last Name";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "First Name";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(63, 35);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 4;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -163,7 +134,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,10 +149,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox firstNameText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox lastNameText;
+        private System.Windows.Forms.ComboBox comboBox1;
 
     }
 }

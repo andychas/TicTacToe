@@ -9,7 +9,86 @@
 //------------------------------------------------------------------------------
 
 namespace TicTacToe.Client.ServiceReference1 {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Player", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.SerializableAttribute()]
+    public partial class Player : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string First_NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Last_NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string First_Name {
+            get {
+                return this.First_NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.First_NameField, value) != true)) {
+                    this.First_NameField = value;
+                    this.RaisePropertyChanged("First_Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Last_Name {
+            get {
+                return this.Last_NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Last_NameField, value) != true)) {
+                    this.Last_NameField = value;
+                    this.RaisePropertyChanged("Last_Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService")]
@@ -52,10 +131,16 @@ namespace TicTacToe.Client.ServiceReference1 {
         System.Threading.Tasks.Task ResetGameAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayer", ReplyAction="http://tempuri.org/IService/GetPlayerResponse")]
-        System.Tuple<int, string, string>[] GetPlayer(string firstName, string lastName);
+        TicTacToe.Client.ServiceReference1.Player GetPlayer(string firstName, string lastName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayer", ReplyAction="http://tempuri.org/IService/GetPlayerResponse")]
-        System.Threading.Tasks.Task<System.Tuple<int, string, string>[]> GetPlayerAsync(string firstName, string lastName);
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player> GetPlayerAsync(string firstName, string lastName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayers", ReplyAction="http://tempuri.org/IService/GetPlayersResponse")]
+        TicTacToe.Client.ServiceReference1.Player[] GetPlayers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayers", ReplyAction="http://tempuri.org/IService/GetPlayersResponse")]
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player[]> GetPlayersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -133,12 +218,20 @@ namespace TicTacToe.Client.ServiceReference1 {
             return base.Channel.ResetGameAsync();
         }
         
-        public System.Tuple<int, string, string>[] GetPlayer(string firstName, string lastName) {
+        public TicTacToe.Client.ServiceReference1.Player GetPlayer(string firstName, string lastName) {
             return base.Channel.GetPlayer(firstName, lastName);
         }
         
-        public System.Threading.Tasks.Task<System.Tuple<int, string, string>[]> GetPlayerAsync(string firstName, string lastName) {
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player> GetPlayerAsync(string firstName, string lastName) {
             return base.Channel.GetPlayerAsync(firstName, lastName);
+        }
+        
+        public TicTacToe.Client.ServiceReference1.Player[] GetPlayers() {
+            return base.Channel.GetPlayers();
+        }
+        
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player[]> GetPlayersAsync() {
+            return base.Channel.GetPlayersAsync();
         }
     }
 }

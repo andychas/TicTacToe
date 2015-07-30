@@ -20,6 +20,8 @@ namespace TicTacToe.Client
         public GameInfoForm(string firstName, string lastName)
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             this.firstName = firstName;
             this.lastName = lastName;
         }

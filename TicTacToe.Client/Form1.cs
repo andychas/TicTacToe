@@ -23,25 +23,28 @@ namespace TicTacToe.Client
         {
             InitializeComponent();
             MainUI = this;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            Player[] players = c.GetPlayers();
+            foreach (Player player in players)
+            {
+                comboBox1.Items.Add(player.First_Name + " " + player.Last_Name);
+
+            }
         }
 
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-            if (!firstNameText.Equals(""))
+
+            string[] playerInfo = comboBox1.Text.Split(' ');
+            Player player = c.GetPlayer(playerInfo[0], playerInfo[1]);
+            if (player != null)
             {
-                IEnumerable<Tuple<int, string, string>> player = c.GetPlayer(firstNameText.Text, lastNameText.Text);
-                if (player.Count() > 0)
-                {
-                    string PlayerFirstName = player.ElementAt(0).Item2;
-                    string PlayerLastName = player.ElementAt(0).Item3;
-                    GameInfoForm gameInfo = new GameInfoForm(PlayerFirstName, PlayerLastName);
-                    gameInfo.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Error with name");
-                }
+                GameInfoForm gameInfo = new GameInfoForm(player.First_Name, player.Last_Name);
+                gameInfo.Show();
             }
+                    
+                
+            
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -59,6 +62,11 @@ namespace TicTacToe.Client
         {
             RegisterForm f = new RegisterForm();
             f.Show();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
 
     }
