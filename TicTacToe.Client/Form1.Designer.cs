@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.NewPlayerBtn = new System.Windows.Forms.Button();
+            this.registerBtn = new System.Windows.Forms.Button();
             this.PlayBtn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,27 +36,27 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lastNameText = new System.Windows.Forms.TextBox();
             this.firstNameText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lastNameText = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // NewPlayerBtn
+            // registerBtn
             // 
-            this.NewPlayerBtn.Location = new System.Drawing.Point(12, 197);
-            this.NewPlayerBtn.Name = "NewPlayerBtn";
-            this.NewPlayerBtn.Size = new System.Drawing.Size(110, 52);
-            this.NewPlayerBtn.TabIndex = 0;
-            this.NewPlayerBtn.Text = "New Player";
-            this.NewPlayerBtn.UseVisualStyleBackColor = true;
-            this.NewPlayerBtn.Click += new System.EventHandler(this.NewPlayerBtn_Click);
+            this.registerBtn.Location = new System.Drawing.Point(12, 112);
+            this.registerBtn.Name = "registerBtn";
+            this.registerBtn.Size = new System.Drawing.Size(110, 52);
+            this.registerBtn.TabIndex = 0;
+            this.registerBtn.Text = "Register";
+            this.registerBtn.UseVisualStyleBackColor = true;
+            this.registerBtn.Click += new System.EventHandler(this.registerBtn_Click);
             // 
             // PlayBtn
             // 
-            this.PlayBtn.Location = new System.Drawing.Point(163, 197);
+            this.PlayBtn.Location = new System.Drawing.Point(163, 112);
             this.PlayBtn.Name = "PlayBtn";
             this.PlayBtn.Size = new System.Drawing.Size(109, 52);
             this.PlayBtn.TabIndex = 1;
@@ -116,6 +116,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Exisiting Player";
             // 
+            // lastNameText
+            // 
+            this.lastNameText.Location = new System.Drawing.Point(107, 44);
+            this.lastNameText.Name = "lastNameText";
+            this.lastNameText.Size = new System.Drawing.Size(147, 20);
+            this.lastNameText.TabIndex = 3;
+            // 
             // firstNameText
             // 
             this.firstNameText.Location = new System.Drawing.Point(107, 17);
@@ -141,13 +148,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "First Name";
             // 
-            // lastNameText
-            // 
-            this.lastNameText.Location = new System.Drawing.Point(107, 44);
-            this.lastNameText.Name = "lastNameText";
-            this.lastNameText.Size = new System.Drawing.Size(147, 20);
-            this.lastNameText.TabIndex = 3;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,7 +155,7 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.PlayBtn);
-            this.Controls.Add(this.NewPlayerBtn);
+            this.Controls.Add(this.registerBtn);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -171,7 +171,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button NewPlayerBtn;
+        private System.Windows.Forms.Button registerBtn;
         private System.Windows.Forms.Button PlayBtn;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;

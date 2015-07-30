@@ -149,7 +149,7 @@
             this.groupBox1.Controls.Add(this.lastNameText);
             this.groupBox1.Location = new System.Drawing.Point(16, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.Size = new System.Drawing.Size(224, 100);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Player Info";

@@ -25,29 +25,21 @@ namespace TicTacToe.Client
             MainUI = this;
         }
 
-        /*private class MyCallBack : IServiceCallback
-        {
-
-        }*/
-
-        private void NewPlayerBtn_Click(object sender, EventArgs e)
-        {
-//            GameInfoForm gameInfo = new GameInfoForm();
-//            gameInfo.Show();
-
-           RegisterForm f = new RegisterForm();
-           f.Show();
-        }
-
         private void PlayBtn_Click(object sender, EventArgs e)
         {
             if (!firstNameText.Equals(""))
             {
-                Player player = c.GetPlayer(firstNameText.Text, lastNameText.Text);
-                if (player != null)
+                IEnumerable<Tuple<int, string, string>> player = c.GetPlayer(firstNameText.Text, lastNameText.Text);
+                if (player.Count() > 0)
                 {
-                    GameInfoForm gameInfo = new GameInfoForm(player.First_Name, player.Last_Name);
+                    string PlayerFirstName = player.ElementAt(0).Item2;
+                    string PlayerLastName = player.ElementAt(0).Item3;
+                    GameInfoForm gameInfo = new GameInfoForm(PlayerFirstName, PlayerLastName);
                     gameInfo.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Error with name");
                 }
             }
         }
@@ -61,6 +53,12 @@ namespace TicTacToe.Client
         {
             AboutBox aboutBox = new AboutBox();
             aboutBox.Show();
+        }
+
+        private void registerBtn_Click(object sender, EventArgs e)
+        {
+            RegisterForm f = new RegisterForm();
+            f.Show();
         }
 
     }

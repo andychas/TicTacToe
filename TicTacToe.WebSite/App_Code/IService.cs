@@ -33,7 +33,7 @@ public interface IService
     void ResetGame();
 
     [OperationContract]
-    Player GetPlayer(string FirstName, string LastName);
+    IEnumerable<Tuple<int, string, string>> GetPlayer(string firstName, string lastName);
 
 }
 

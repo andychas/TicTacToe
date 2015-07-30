@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:6728/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/" />
+  <xs:import schemaLocation="http://localhost:6728/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System" />
   <xs:element name="GetData">
     <xs:complexType>
       <xs:sequence>
@@ -79,15 +79,15 @@
   <xs:element name="GetPlayer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetPlayerResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="GetPlayerResult" nillable="true" type="q1:Player" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetPlayerResult" nillable="true" type="q1:ArrayOfTupleOfintstringstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

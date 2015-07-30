@@ -44,14 +44,11 @@ namespace TicTacToe.Client
         {
             if (flag)
             {
+                c.AddPlayer(firstNameText.Text, lastNameText.Text);
                 GameInfoForm gameInfo = new GameInfoForm(firstNameText.Text, lastNameText.Text);
                 gameInfo.Show();
             }
-
-            //InstanceContext context = new InstanceContext(new MyCallBack());
-            //ServiceClient c = new ServiceClient(context);
-            ServiceClient c = new ServiceClient();
-            c.AddPlayer(firstNameText.Text, lastNameText.Text);
+            
         }
 
         private void RegisterForm_Load(object sender, EventArgs e)
@@ -67,9 +64,8 @@ namespace TicTacToe.Client
 
         private void textBox1_Validating(object sender, CancelEventArgs e)
         {
-            Player p = null;
-            //p = c.GetPlayer(firstNameText.Text, lastNameText.Text);
-            if ((ValidName(firstNameText.Text)) && (p == null))
+            IEnumerable<Tuple<int, string, string>> player = c.GetPlayer(firstNameText.Text, lastNameText.Text);
+            if ((ValidName(firstNameText.Text)) && (player.Count() == 0))
             {
                 flag = true;
                 errorProvider1.Dispose();
@@ -93,13 +89,6 @@ namespace TicTacToe.Client
             }
             return true;
         }
-     
-        /*private class MyCallBack : IServiceCallback
-        {
-            public void Result(int i, int j, string msg)
-            {
-                registerForm.msgLabel.Text = msg.ToString();
-            }
-        }*/
+
     }
 }

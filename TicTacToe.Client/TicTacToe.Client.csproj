@@ -135,9 +135,6 @@
     <None Include="Service References\ServiceReference1\Service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\TicTacToe.Client.ServiceReference1.Player.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
