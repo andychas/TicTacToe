@@ -40,3 +40,4 @@ C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Clien
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csproj.GenerateResource.Cache
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.exe
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.pdb
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csprojResolveAssemblyReference.cache
