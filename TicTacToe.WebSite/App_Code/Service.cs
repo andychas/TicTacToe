@@ -56,13 +56,6 @@ public class Service : IService
         }
     }
 
-    /*public void SizeGame(int size)
-    {
-        boardGame = new string[size, size];
-        boardSize = size;
-        initializeGame(boardSize);
-    }*/
-
     public bool IfWinner(string sign, int row, int col)
     {
         if (checkRow(sign, row, col))
@@ -87,6 +80,50 @@ public class Service : IService
         }
         changeTurn();
         return false;
+    }
+
+    public Player GetPlayer(string firstName, string lastName)
+    {
+        var x =
+            from p in db.Players
+            where p.First_Name.Equals(firstName) && p.Last_Name.Equals(lastName)
+            select p;
+        try
+        {
+            return (Player)x.First();
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    public Player[] GetPlayers()
+    {
+        var x =
+    from p in db.Players
+    select p;
+        return x.ToArray();
+    }
+
+
+    public void AddAdvisor(Player player, Advisor[] advisors)
+    {
+        foreach (Advisor a in advisors)
+        {
+            Advisor advisor = new Advisor();
+            advisor.First_Name = a.First_Name;
+            advisor.Last_Name = a.Last_Name;
+            db.Advisors.InsertOnSubmit(advisor);
+            db.SubmitChanges();
+            
+            /*PlayerToAdvisor p = new PlayerToAdvisor();
+            p.Player = player.Id;
+            p.Advisor = advisor.Id;
+            p.Game = 1; // add game id 
+            db.PlayerToAdvisors.InsertOnSubmit(p);
+            db.SubmitChanges();*/
+        }
     }
 
     public void ResetGame()
@@ -176,43 +213,4 @@ public class Service : IService
         turn = false;
     }
 
-
-
-
-    public Player GetPlayer(string firstName, string lastName)
-    {
-        var x =
-            from p in db.Players
-            where p.First_Name.Equals(firstName) && p.Last_Name.Equals(lastName)
-            select p;
-        try
-        {
-            return (Player)x.First();
-        }
-        catch
-        {
-            return null;
-        }
-    }
-
-    public Player[] GetPlayers()
-    {
-        var x =
-    from p in db.Players
-    select p;
-        return x.ToArray();
-    }
-
-
-    public void AddAdvisor(Player player, Advisor[] advisors)
-    {
-        foreach (Advisor a in advisors)
-        {
-            Advisor advisor = new Advisor();
-            advisor.First_Name = a.First_Name;
-            advisor.Last_Name = a.Last_Name;
-            db.Advisors.InsertOnSubmit(advisor);
-            db.SubmitChanges();
-        }
-    }
 }

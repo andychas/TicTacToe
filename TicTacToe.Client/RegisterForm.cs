@@ -68,6 +68,7 @@ namespace TicTacToe.Client
                 c.AddPlayer(playerFirstName.Text, playerLastName.Text);
                 GameInfoForm gameInfo = new GameInfoForm(playerFirstName.Text, playerLastName.Text);
                 gameInfo.Show();
+                player = c.GetPlayer(playerFirstName.Text, playerLastName.Text);
                 c.AddAdvisor(player, advisors.ToArray());
                                
             }       
