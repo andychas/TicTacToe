@@ -15,12 +15,15 @@ namespace TicTacToe.Client
     public partial class GameInfoForm : Form
     {
         private ServiceClient c = new ServiceClient();
+        
         private string firstNamePlayer1;
         private string lastNamePlayer1;
         private string firstNamePlayer2;
         private string lastNamePlayer2;
-        private int size = 4;
+        private string championship = "";
+        private int champId;  
         private string gameOption = "computer";
+        private int size = 4;
 
         public GameInfoForm(string firstName, string lastName)
         {
@@ -30,23 +33,29 @@ namespace TicTacToe.Client
             this.firstNamePlayer1 = firstName;
             this.lastNamePlayer1 = lastName;
             playersComboBox.Enabled = false;
-            Player[] players = c.GetPlayers();
-            foreach (Player player in players)
-            {
-                if ((!player.First_Name.Equals(firstName)) || (!player.Last_Name.Equals(lastName)))
-                {
-                    playersComboBox.Items.Add(player.First_Name + " " + player.Last_Name);
-                }    
-            }
+
+            initAllData(firstName, lastName);
+
         }
 
         private void StartGameBtn_Click(object sender, EventArgs e)
         {
             c.GameInfo(size, gameOption);
-
+            if (!championship.Equals("")) // if selected championship
+            {
+                champId = Int32.Parse(championship.Substring(0, championship.IndexOf(' ')));
+                c.AddPlayerToChamp(firstNamePlayer1, lastNamePlayer1, champId);
+                if (firstNamePlayer2 != null) // if selected player2
+                {
+                    c.AddPlayerToChamp(firstNamePlayer2, lastNamePlayer2, champId);
+                }
+            }
+            
+            
             GameBoard boardGame = new GameBoard(size, gameOption);
             boardGame.Show();
             boardGame.Text = firstNamePlayer1 + " " + lastNamePlayer1;
+
 
             if (gameOption.Equals("player"))
             {
@@ -98,6 +107,29 @@ namespace TicTacToe.Client
         private void bigBoardButton_CheckedChanged(object sender, EventArgs e)
         {
             size = 5;
+        }
+
+        private void ChampComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            championship = ChampComboBox.Text;
+        }
+
+        private void initAllData(string firstName, string lastName)
+        {
+            Player[] players = c.GetPlayers();
+            foreach (Player player in players)
+            {
+                if ((!player.First_Name.Equals(firstName)) || (!player.Last_Name.Equals(lastName)))
+                {
+                    playersComboBox.Items.Add(player.First_Name + " " + player.Last_Name);
+                }
+            }
+
+            Championship[] championships = c.GetChampionships();
+            foreach (Championship champ in championships)
+            {
+                ChampComboBox.Items.Add(champ.Id + " " + champ.City);
+            }
         }
 
     }

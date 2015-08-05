@@ -40,6 +40,13 @@ public interface IService
 
     [OperationContract]
     void AddAdvisor(Player player, Advisor[] advisors);
+
+    [OperationContract]
+    Championship[] GetChampionships();
+
+    [OperationContract]
+    void AddPlayerToChamp(string firstName, string lastName, int champId);
+
 }
 
 // Return Values from Server to Client

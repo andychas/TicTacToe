@@ -101,8 +101,8 @@ public class Service : IService
     public Player[] GetPlayers()
     {
         var x =
-    from p in db.Players
-    select p;
+            from p in db.Players
+            select p;
         return x.ToArray();
     }
 
@@ -117,13 +117,37 @@ public class Service : IService
             db.Advisors.InsertOnSubmit(advisor);
             db.SubmitChanges();
             
-            /*PlayerToAdvisor p = new PlayerToAdvisor();
+            PlayerToAdvisor p = new PlayerToAdvisor();
             p.Player = player.Id;
             p.Advisor = advisor.Id;
             p.Game = 1; // add game id 
             db.PlayerToAdvisors.InsertOnSubmit(p);
-            db.SubmitChanges();*/
+            db.SubmitChanges();
         }
+    }
+
+    public Championship[] GetChampionships()
+    {
+        var x =
+            from p in db.Championships
+            where p.Start_date <= DateTime.Now && p.End_date >= DateTime.Now
+            select p;
+        return x.ToArray();
+    }
+
+    public void AddPlayerToChamp(string firstName, string lastName, int champId)
+    {
+        var x =
+            (from p in db.Players
+             where p.First_Name.Equals(firstName) && p.Last_Name.Equals(lastName)
+             select p.Id).SingleOrDefault();
+
+        PlayerToChampionship playerToChamp = new PlayerToChampionship();
+        int id = Convert.ToInt32(x);
+        playerToChamp.Player_Id = id;
+        playerToChamp.Championship_Id = champId;
+        db.PlayerToChampionships.InsertOnSubmit(playerToChamp);
+        db.SubmitChanges();
     }
 
     public void ResetGame()
@@ -212,5 +236,4 @@ public class Service : IService
         }
         turn = false;
     }
-
 }

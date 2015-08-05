@@ -24,6 +24,7 @@ namespace TicTacToe.Client
             InitializeComponent();
             MainUI = this;
             this.StartPosition = FormStartPosition.CenterScreen;
+            PlayBtn.Enabled = false;
             Player[] players = c.GetPlayers();
             foreach (Player player in players)
             {
@@ -40,10 +41,7 @@ namespace TicTacToe.Client
             {
                 GameInfoForm gameInfo = new GameInfoForm(player.First_Name, player.Last_Name);
                 gameInfo.Show();
-            }
-                    
-                
-            
+            }     
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -65,7 +63,7 @@ namespace TicTacToe.Client
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            PlayBtn.Enabled = true;
         }
 
     }

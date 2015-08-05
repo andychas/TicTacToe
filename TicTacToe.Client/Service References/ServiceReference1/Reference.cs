@@ -167,6 +167,160 @@ namespace TicTacToe.Client.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Championship", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.SerializableAttribute()]
+    public partial class Championship : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> End_dateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TicTacToe.Client.ServiceReference1.Binary PictureField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Start_dateField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string City {
+            get {
+                return this.CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> End_date {
+            get {
+                return this.End_dateField;
+            }
+            set {
+                if ((this.End_dateField.Equals(value) != true)) {
+                    this.End_dateField = value;
+                    this.RaisePropertyChanged("End_date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TicTacToe.Client.ServiceReference1.Binary Picture {
+            get {
+                return this.PictureField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PictureField, value) != true)) {
+                    this.PictureField = value;
+                    this.RaisePropertyChanged("Picture");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Start_date {
+            get {
+                return this.Start_dateField;
+            }
+            set {
+                if ((this.Start_dateField.Equals(value) != true)) {
+                    this.Start_dateField = value;
+                    this.RaisePropertyChanged("Start_date");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Binary", Namespace="http://schemas.datacontract.org/2004/07/System.Data.Linq")]
+    [System.SerializableAttribute()]
+    public partial class Binary : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] BytesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] Bytes {
+            get {
+                return this.BytesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BytesField, value) != true)) {
+                    this.BytesField = value;
+                    this.RaisePropertyChanged("Bytes");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService")]
     public interface IService {
@@ -224,6 +378,18 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddAdvisor", ReplyAction="http://tempuri.org/IService/AddAdvisorResponse")]
         System.Threading.Tasks.Task AddAdvisorAsync(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetChampionships", ReplyAction="http://tempuri.org/IService/GetChampionshipsResponse")]
+        TicTacToe.Client.ServiceReference1.Championship[] GetChampionships();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetChampionships", ReplyAction="http://tempuri.org/IService/GetChampionshipsResponse")]
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetChampionshipsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddPlayerToChamp", ReplyAction="http://tempuri.org/IService/AddPlayerToChampResponse")]
+        void AddPlayerToChamp(string firstName, string lastName, int champId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddPlayerToChamp", ReplyAction="http://tempuri.org/IService/AddPlayerToChampResponse")]
+        System.Threading.Tasks.Task AddPlayerToChampAsync(string firstName, string lastName, int champId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -323,6 +489,22 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task AddAdvisorAsync(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors) {
             return base.Channel.AddAdvisorAsync(player, advisors);
+        }
+        
+        public TicTacToe.Client.ServiceReference1.Championship[] GetChampionships() {
+            return base.Channel.GetChampionships();
+        }
+        
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetChampionshipsAsync() {
+            return base.Channel.GetChampionshipsAsync();
+        }
+        
+        public void AddPlayerToChamp(string firstName, string lastName, int champId) {
+            base.Channel.AddPlayerToChamp(firstName, lastName, champId);
+        }
+        
+        public System.Threading.Tasks.Task AddPlayerToChampAsync(string firstName, string lastName, int champId) {
+            return base.Channel.AddPlayerToChampAsync(firstName, lastName, champId);
         }
     }
 }

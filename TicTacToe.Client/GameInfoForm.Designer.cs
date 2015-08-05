@@ -36,18 +36,21 @@
             this.StartGameBtn = new System.Windows.Forms.Button();
             this.lvlGroupBox = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.playerName = new System.Windows.Forms.Label();
             this.playersComboBox = new System.Windows.Forms.ComboBox();
+            this.playerName = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ChampComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.lvlGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // smallBoardButton
             // 
             this.smallBoardButton.AutoSize = true;
             this.smallBoardButton.Checked = true;
-            this.smallBoardButton.Location = new System.Drawing.Point(20, 34);
+            this.smallBoardButton.Location = new System.Drawing.Point(9, 19);
             this.smallBoardButton.Name = "smallBoardButton";
             this.smallBoardButton.Size = new System.Drawing.Size(48, 17);
             this.smallBoardButton.TabIndex = 1;
@@ -59,7 +62,7 @@
             // bigBoardButton
             // 
             this.bigBoardButton.AutoSize = true;
-            this.bigBoardButton.Location = new System.Drawing.Point(96, 34);
+            this.bigBoardButton.Location = new System.Drawing.Point(80, 19);
             this.bigBoardButton.Name = "bigBoardButton";
             this.bigBoardButton.Size = new System.Drawing.Size(48, 17);
             this.bigBoardButton.TabIndex = 2;
@@ -115,9 +118,9 @@
             // 
             this.lvlGroupBox.Controls.Add(this.smallBoardButton);
             this.lvlGroupBox.Controls.Add(this.bigBoardButton);
-            this.lvlGroupBox.Location = new System.Drawing.Point(27, 51);
+            this.lvlGroupBox.Location = new System.Drawing.Point(12, 29);
             this.lvlGroupBox.Name = "lvlGroupBox";
-            this.lvlGroupBox.Size = new System.Drawing.Size(200, 62);
+            this.lvlGroupBox.Size = new System.Drawing.Size(200, 48);
             this.lvlGroupBox.TabIndex = 8;
             this.lvlGroupBox.TabStop = false;
             this.lvlGroupBox.Text = "Game level";
@@ -127,20 +130,12 @@
             this.groupBox1.Controls.Add(this.playersComboBox);
             this.groupBox1.Controls.Add(this.computerButton);
             this.groupBox1.Controls.Add(this.playerButton);
-            this.groupBox1.Location = new System.Drawing.Point(27, 119);
+            this.groupBox1.Location = new System.Drawing.Point(12, 83);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 100);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Game Type";
-            // 
-            // playerName
-            // 
-            this.playerName.AutoSize = true;
-            this.playerName.Location = new System.Drawing.Point(33, 13);
-            this.playerName.Name = "playerName";
-            this.playerName.Size = new System.Drawing.Size(0, 13);
-            this.playerName.TabIndex = 10;
             // 
             // playersComboBox
             // 
@@ -151,11 +146,39 @@
             this.playersComboBox.TabIndex = 6;
             this.playersComboBox.SelectedIndexChanged += new System.EventHandler(this.playersComboBox_SelectedIndexChanged);
             // 
+            // playerName
+            // 
+            this.playerName.AutoSize = true;
+            this.playerName.Location = new System.Drawing.Point(33, 13);
+            this.playerName.Name = "playerName";
+            this.playerName.Size = new System.Drawing.Size(0, 13);
+            this.playerName.TabIndex = 10;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.ChampComboBox);
+            this.groupBox2.Location = new System.Drawing.Point(12, 189);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 49);
+            this.groupBox2.TabIndex = 11;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Championships";
+            // 
+            // ChampComboBox
+            // 
+            this.ChampComboBox.FormattingEnabled = true;
+            this.ChampComboBox.Location = new System.Drawing.Point(9, 19);
+            this.ChampComboBox.Name = "ChampComboBox";
+            this.ChampComboBox.Size = new System.Drawing.Size(121, 21);
+            this.ChampComboBox.TabIndex = 0;
+            this.ChampComboBox.SelectedIndexChanged += new System.EventHandler(this.ChampComboBox_SelectedIndexChanged);
+            // 
             // GameInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 322);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.playerName);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lvlGroupBox);
@@ -169,6 +192,7 @@
             this.lvlGroupBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,5 +210,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label playerName;
         private System.Windows.Forms.ComboBox playersComboBox;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox ChampComboBox;
     }
 }
