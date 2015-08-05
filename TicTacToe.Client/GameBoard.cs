@@ -22,6 +22,7 @@ namespace TicTacToe.Client
             this.gameOption = gameOption;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.StartPosition = FormStartPosition.CenterScreen;
+            //elementHost1.Child = new GameBoardWPF(size, gameOption);
             elementHost1.Child = new GameBoardWPF(size, gameOption);
         }
 

@@ -37,6 +37,7 @@
             this.lvlGroupBox = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.playerName = new System.Windows.Forms.Label();
+            this.playersComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.lvlGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -53,6 +54,7 @@
             this.smallBoardButton.TabStop = true;
             this.smallBoardButton.Text = "4 x 4";
             this.smallBoardButton.UseVisualStyleBackColor = true;
+            this.smallBoardButton.CheckedChanged += new System.EventHandler(this.smallBoardButton_CheckedChanged);
             // 
             // bigBoardButton
             // 
@@ -64,29 +66,32 @@
             this.bigBoardButton.TabStop = true;
             this.bigBoardButton.Text = "5 x 5";
             this.bigBoardButton.UseVisualStyleBackColor = true;
+            this.bigBoardButton.CheckedChanged += new System.EventHandler(this.bigBoardButton_CheckedChanged);
             // 
             // playerButton
             // 
             this.playerButton.AutoSize = true;
-            this.playerButton.Location = new System.Drawing.Point(115, 42);
+            this.playerButton.Location = new System.Drawing.Point(6, 42);
             this.playerButton.Name = "playerButton";
             this.playerButton.Size = new System.Drawing.Size(87, 17);
             this.playerButton.TabIndex = 4;
             this.playerButton.TabStop = true;
             this.playerButton.Text = "versus player";
             this.playerButton.UseVisualStyleBackColor = true;
+            this.playerButton.CheckedChanged += new System.EventHandler(this.playerButton_CheckedChanged);
             // 
             // computerButton
             // 
             this.computerButton.AutoSize = true;
             this.computerButton.Checked = true;
-            this.computerButton.Location = new System.Drawing.Point(6, 42);
+            this.computerButton.Location = new System.Drawing.Point(6, 19);
             this.computerButton.Name = "computerButton";
             this.computerButton.Size = new System.Drawing.Size(103, 17);
             this.computerButton.TabIndex = 5;
             this.computerButton.TabStop = true;
             this.computerButton.Text = "versus computer";
             this.computerButton.UseVisualStyleBackColor = true;
+            this.computerButton.CheckedChanged += new System.EventHandler(this.computerButton_CheckedChanged);
             // 
             // dataGridView1
             // 
@@ -119,6 +124,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.playersComboBox);
             this.groupBox1.Controls.Add(this.computerButton);
             this.groupBox1.Controls.Add(this.playerButton);
             this.groupBox1.Location = new System.Drawing.Point(27, 119);
@@ -135,6 +141,15 @@
             this.playerName.Name = "playerName";
             this.playerName.Size = new System.Drawing.Size(0, 13);
             this.playerName.TabIndex = 10;
+            // 
+            // playersComboBox
+            // 
+            this.playersComboBox.FormattingEnabled = true;
+            this.playersComboBox.Location = new System.Drawing.Point(7, 66);
+            this.playersComboBox.Name = "playersComboBox";
+            this.playersComboBox.Size = new System.Drawing.Size(121, 21);
+            this.playersComboBox.TabIndex = 6;
+            this.playersComboBox.SelectedIndexChanged += new System.EventHandler(this.playersComboBox_SelectedIndexChanged);
             // 
             // GameInfoForm
             // 
@@ -170,5 +185,6 @@
         private System.Windows.Forms.GroupBox lvlGroupBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label playerName;
+        private System.Windows.Forms.ComboBox playersComboBox;
     }
 }

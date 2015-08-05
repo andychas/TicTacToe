@@ -24,13 +24,21 @@ namespace TicTacToe.Client
     {
         private ServiceClient c = new ServiceClient();
 
-        private enum Turn { Player, Computer};
+        //private static enum Turn { Player1, Player2, Computer};
 
-        private int boardSize = 0;
-        private int currentTurn;
-        private bool isWinner = false;
+        private static string currenTurn;
+
+        private static Button[,] buttons1;
+        private static Button[,] buttons2;
         private string computerOrPlayer;
-        private static Button[,] buttons;
+       
+        private int boardSize = 0;
+        //private int currentTurn;
+        
+        private static bool isWinner = false;
+        private int size;
+        private string gameOption;
+        private GameBoard gameBoard;
 
         public GameBoardWPF(int size, string gameOption)
         {
@@ -38,9 +46,11 @@ namespace TicTacToe.Client
             
             boardSize = size;
             computerOrPlayer = gameOption;
-            currentTurn = (int)Turn.Player;
+            //currentTurn = (int)Turn.Player1;
+            currenTurn = "player1";
 
-            buttons = CreateButtons();
+            buttons1 = CreateButtons();
+            buttons2 = CreateButtons();
 
             for (int i = 0; i < size; i++)
             {
@@ -55,7 +65,7 @@ namespace TicTacToe.Client
             {
                 for (int col = 0; col < size; col++)
                 {
-                    grid.Children.Add(buttons[row, col]);
+                    grid.Children.Add(buttons1[row, col]);
                 }
             }     
         }
@@ -64,22 +74,50 @@ namespace TicTacToe.Client
         {
             GameButton button = (GameButton)sender;
             string sign;
-            if(computerOrPlayer.Equals("computer"))
+            if(computerOrPlayer.Equals("computer")) // player1 vs computer
             {
                 // player move
                 sign = c.NewTurn(button.col, button.row);
                 moveGame(button, sign);
-                currentTurn = (int)Turn.Computer;
+                //currentTurn = (int)Turn.Computer;
+                currenTurn = "computer";
                 
                 // computer move 
                 int rndCol = 0;
                 int rndRow = 0;
                 getRandomButton(ref rndCol, ref rndRow);
-                button = (GameButton)buttons[rndCol, rndRow];
+                button = (GameButton)buttons1[rndCol, rndRow];
                 sign = c.NewTurn(button.col, button.row);
                 moveGame(button, sign);
-                currentTurn = (int)Turn.Player;
-            }            
+                //currentTurn = (int)Turn.Player1;
+                currenTurn = "player1";
+            }
+            else // player1 vs player2
+            {
+                int row = button.row;
+                int col = button.col;
+                //if(currentTurn == (int)Turn.Player1)
+                if(currenTurn.Equals("player1"))
+                {
+                    // player 1
+                    sign = c.NewTurn(button.col, button.row);
+                    moveGame(button, sign);
+                    buttons2[button.row, button.col].IsEnabled = false;
+                    buttons2[button.row, button.col].Content = sign;
+                    //currentTurn = (int)Turn.Player2;
+                    currenTurn = "player2";
+                }
+                else
+                {
+                    // player 2
+                    sign = c.NewTurn(button.col, button.row);
+                    moveGame(button, sign);
+                    buttons1[button.row, button.col].IsEnabled = false;
+                    buttons1[button.row, button.col].Content = sign;
+                    //currentTurn = (int)Turn.Player1;
+                    currenTurn = "player1";
+                }         
+            }
         }
 
         private void moveGame(GameButton button, string sign)
@@ -102,7 +140,7 @@ namespace TicTacToe.Client
             {
                 int i = rnd.Next(0, boardSize);
                 int j = rnd.Next(0, boardSize);
-                if (buttons[i, j].IsEnabled == true)
+                if (buttons1[i, j].IsEnabled == true)
                 {
                     col = i;
                     row = j;
@@ -132,10 +170,13 @@ namespace TicTacToe.Client
             {
                 for (int j = 0; j < boardSize; j++)
                 {
-                    buttons[i, j].Content = "";
-                    buttons[i, j].IsEnabled = true;
+                    buttons1[i, j].Content = "";
+                    buttons2[i, j].Content = "";
+                    buttons1[i, j].IsEnabled = true; 
+                    buttons2[i, j].IsEnabled = true;
                 }
             }
+            isWinner = false;
             c.ResetGame();
         }
 

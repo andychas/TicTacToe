@@ -28,7 +28,6 @@ namespace TicTacToe.Client
             foreach (Player player in players)
             {
                 comboBox1.Items.Add(player.First_Name + " " + player.Last_Name);
-
             }
         }
 
