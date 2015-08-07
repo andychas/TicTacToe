@@ -22,7 +22,24 @@ namespace TicTacToe.Client
     /// </summary>
     public partial class GameBoardWPF : UserControl
     {
-        private ServiceClient c = new ServiceClient();
+        #region "callback services"
+        private class CallBack : IServiceCallback
+        {
+
+            public void UpdateClientBoard(int col, int row)
+            {
+                throw new NotImplementedException();
+            }
+
+
+            public void ConfirmPlayer(Player player)
+            {
+                throw new NotImplementedException();
+            }
+        }
+        #endregion
+
+        ServiceClient c = new ServiceClient(new InstanceContext(new CallBack()));
 
         //private static enum Turn { Player1, Player2, Computer};
 
@@ -39,11 +56,18 @@ namespace TicTacToe.Client
         private int size;
         private string gameOption;
         private GameBoard gameBoard;
+        private Player player1;
+        private Player player2;
 
-        public GameBoardWPF(int size, string gameOption)
+        public GameBoardWPF(int size, string gameOption, Player player1, Player player2)
         {
+            // TODO: Complete member initialization
+            this.size = size;
+            this.gameOption = gameOption;
+            this.player1 = player1;
+            this.player2 = player2;
+
             InitializeComponent();
-            
             boardSize = size;
             computerOrPlayer = gameOption;
             //currentTurn = (int)Turn.Player1;
@@ -67,7 +91,14 @@ namespace TicTacToe.Client
                 {
                     grid.Children.Add(buttons1[row, col]);
                 }
-            }     
+            }
+
+            if (!computerOrPlayer.Equals("computer")) // if vs player - we need the other player to confirm the duel
+            {
+                busyIndicator.IsBusy = true;
+
+
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -178,6 +209,12 @@ namespace TicTacToe.Client
             }
             isWinner = false;
             c.ResetGame();
+        }
+
+        private void grid_ContextMenuClosing(object sender, ContextMenuEventArgs e)
+        {
+            
+            
         }
 
         /*private class MyCallBack : IServiceCallback

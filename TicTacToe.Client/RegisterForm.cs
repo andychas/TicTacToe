@@ -14,7 +14,24 @@ namespace TicTacToe.Client
 {
     public partial class RegisterForm : Form
     {
-        private ServiceClient c = new ServiceClient();
+        #region "callback services"
+        private class CallBack : IServiceCallback
+        {
+
+            public void UpdateClientBoard(int col, int row)
+            {
+
+            }
+
+
+            public void ConfirmPlayer(Player player)
+            {
+                throw new NotImplementedException();
+            }
+        }
+        #endregion
+
+        ServiceClient c = new ServiceClient(new InstanceContext(new CallBack()));
         private bool ifValidPlayerName = false;
         private bool[] ifValidAdvisorsName;
         private List<GroupBox> AdvisorPanels = new List<GroupBox>();
@@ -64,11 +81,11 @@ namespace TicTacToe.Client
                         advisors.Add(a);                     
                     }
                 }
-                
-                c.AddPlayer(playerFirstName.Text, playerLastName.Text);
-                GameInfoForm gameInfo = new GameInfoForm(playerFirstName.Text, playerLastName.Text);
-                gameInfo.Show();
                 player = c.GetPlayer(playerFirstName.Text, playerLastName.Text);
+                c.AddPlayer(playerFirstName.Text, playerLastName.Text);
+                GameInfoForm gameInfo = new GameInfoForm(player);
+                gameInfo.Show();
+                
                 c.AddAdvisor(player, advisors.ToArray());
                                
             }       

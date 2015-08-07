@@ -16,7 +16,24 @@ namespace TicTacToe.Client
 {
     public partial class Form1 : Form
     {
-        private ServiceClient c = new ServiceClient();
+        #region "callback services"
+        private class CallBack : IServiceCallback
+        {
+
+            public void UpdateClientBoard(int col, int row)
+            {
+
+            }
+
+
+            public void ConfirmPlayer(Player player)
+            {
+                throw new NotImplementedException();
+            }
+        }
+        #endregion
+
+        ServiceClient c = new ServiceClient(new InstanceContext(new CallBack()));
         public static Form1 MainUI { get; set; }
 
         public Form1()
@@ -29,19 +46,37 @@ namespace TicTacToe.Client
             foreach (Player player in players)
             {
                 comboBox1.Items.Add(player.First_Name + " " + player.Last_Name);
+                
             }
+            
         }
 
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-
+            bool isRegistered;
             string[] playerInfo = comboBox1.Text.Split(' ');
             Player player = c.GetPlayer(playerInfo[0], playerInfo[1]);
             if (player != null)
             {
-                GameInfoForm gameInfo = new GameInfoForm(player.First_Name, player.Last_Name);
-                gameInfo.Show();
-            }     
+                isRegistered = c.RegisterClient(player);
+                if (isRegistered)
+                {
+                  //  this.Visible = false;
+                    PlayBtn.Enabled = false;
+                    registerBtn.Enabled = false;
+                    GameInfoForm gameInfo = new GameInfoForm(player);
+                    gameInfo.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Error registering player, This player might be already online");
+                }
+                
+            }
+            else
+            {
+
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,7 +91,7 @@ namespace TicTacToe.Client
         }
 
         private void registerBtn_Click(object sender, EventArgs e)
-        {
+       { 
             RegisterForm f = new RegisterForm();
             f.Show();
         }

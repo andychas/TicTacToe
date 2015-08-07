@@ -6,13 +6,12 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-//[ServiceContract(/*CallbackContract = typeof(ICallBack),*/ SessionMode = SessionMode.Required)]
-//[ServiceContract(CallbackContract = typeof(ICallBack), SessionMode = SessionMode.Required)]
-[ServiceContract]
-
+[ServiceContract(CallbackContract = typeof(ICallBack))]
 // Calls from client to Server
 public interface IService
 {
+    [OperationContract]
+    bool RegisterClient(Player  player);
 
     [OperationContract(IsOneWay = true)]
     void GetData(string x, string y);
@@ -45,15 +44,22 @@ public interface IService
     Championship[] GetChampionships();
 
     [OperationContract]
-    void AddPlayerToChamp(string firstName, string lastName, int champId);
+    void AddPlayerToChamp(Player player, int champId);
+
+    [OperationContract]
+    void AskPlayerConfirmation(Player player);
+
 
 }
 
 // Return Values from Server to Client
 
-/*public interface ICallBack
+public interface ICallBack
 {
     [OperationContract(IsOneWay = true)] // void is not enough
-    void Result(int col, int row, string res);
+    void UpdateClientBoard(int col, int row);
 
-}*/
+    [OperationContract(IsOneWay = true)]
+    void ConfirmPlayer(Player player);
+
+}

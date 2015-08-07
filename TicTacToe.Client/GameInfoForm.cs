@@ -9,12 +9,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TicTacToe.Client.ServiceReference1;
 using System.ServiceModel;
+using System.Threading;
 
 namespace TicTacToe.Client
 {
+    
     public partial class GameInfoForm : Form
     {
-        private ServiceClient c = new ServiceClient();
+        #region "callback services"
+         private class CallBack : IServiceCallback
+        {
+
+            public void UpdateClientBoard(int col, int row)
+            {
+
+            }
+
+
+            public void ConfirmPlayer(Player player)
+            {
+                
+            }
+        }
+        #endregion
+
+        ServiceClient c = new ServiceClient(new InstanceContext(new CallBack()));
         
         private string firstNamePlayer1;
         private string lastNamePlayer1;
@@ -24,42 +43,46 @@ namespace TicTacToe.Client
         private int champId;  
         private string gameOption = "computer";
         private int size = 4;
+        private Player player1;
+        private Player player2;
 
-        public GameInfoForm(string firstName, string lastName)
+        public GameInfoForm(Player player)
         {
+            // TODO: Complete member initialization
+            this.player1 = player;
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-
-            this.firstNamePlayer1 = firstName;
-            this.lastNamePlayer1 = lastName;
             playersComboBox.Enabled = false;
-
-            initAllData(firstName, lastName);
+            initAllData();
 
         }
 
         private void StartGameBtn_Click(object sender, EventArgs e)
         {
+
+
             c.GameInfo(size, gameOption);
             if (!championship.Equals("")) // if selected championship
             {
                 champId = Int32.Parse(championship.Substring(0, championship.IndexOf(' ')));
-                c.AddPlayerToChamp(firstNamePlayer1, lastNamePlayer1, champId);
+                c.AddPlayerToChamp(player1, champId);
                 if (firstNamePlayer2 != null) // if selected player2
                 {
-                    c.AddPlayerToChamp(firstNamePlayer2, lastNamePlayer2, champId);
+                    player2.First_Name = firstNamePlayer2;
+                    player2.Last_Name = lastNamePlayer2;
+                    c.AddPlayerToChamp(player2, champId);
                 }
             }
             
             
-            GameBoard boardGame = new GameBoard(size, gameOption);
+            GameBoard boardGame = new GameBoard(size, gameOption,player1,player2);
             boardGame.Show();
             boardGame.Text = firstNamePlayer1 + " " + lastNamePlayer1;
 
 
             if (gameOption.Equals("player"))
             {
-                GameBoard boardGame2 = new GameBoard(size, gameOption);
+                GameBoard boardGame2 = new GameBoard(size, gameOption,player1,player2);
                 boardGame2.Text = firstNamePlayer2 + " " + lastNamePlayer2;
                 boardGame2.Show();
             }
@@ -76,12 +99,15 @@ namespace TicTacToe.Client
         {
             gameOption = "computer";
             playersComboBox.Enabled = false;
+            StartGameBtn.Text = "Start Game";
         }
 
         private void playerButton_CheckedChanged(object sender, EventArgs e)
         {
             gameOption = "player";
             playersComboBox.Enabled = true;
+            StartGameBtn.Text = "Duel Player";
+                 
         }
 
         private void playersComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -114,12 +140,12 @@ namespace TicTacToe.Client
             championship = ChampComboBox.Text;
         }
 
-        private void initAllData(string firstName, string lastName)
+        private void initAllData()
         {
             Player[] players = c.GetPlayers();
             foreach (Player player in players)
             {
-                if ((!player.First_Name.Equals(firstName)) || (!player.Last_Name.Equals(lastName)))
+                if ((!player.First_Name.Equals(player1.First_Name)) || (!player.Last_Name.Equals(player1.Last_Name)))
                 {
                     playersComboBox.Items.Add(player.First_Name + " " + player.Last_Name);
                 }

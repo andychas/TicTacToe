@@ -6,8 +6,13 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
+[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
 public class Service : IService
 {
+    private static Dictionary<string, ICallBack> clients =
+                new Dictionary<string, ICallBack>();
+    private static object locker = new object();
+
     private DataClassesDataContext db = new DataClassesDataContext();
     private static bool turn = true;
     private static string[,] boardGame;
@@ -135,11 +140,11 @@ public class Service : IService
         return x.ToArray();
     }
 
-    public void AddPlayerToChamp(string firstName, string lastName, int champId)
+    public void AddPlayerToChamp(Player player, int champId)
     {
         var x =
             (from p in db.Players
-             where p.First_Name.Equals(firstName) && p.Last_Name.Equals(lastName)
+             where p.First_Name.Equals(player.First_Name) && p.Last_Name.Equals(player.Last_Name)
              select p.Id).SingleOrDefault();
 
         PlayerToChampionship playerToChamp = new PlayerToChampionship();
@@ -235,5 +240,51 @@ public class Service : IService
             }
         }
         turn = false;
+    }
+
+
+
+
+    public bool RegisterClient(Player player)
+    {
+        if (player != null)
+        {
+            try
+            {
+                ICallBack callback = OperationContext.Current.GetCallbackChannel<ICallBack>();
+                lock (locker)
+                {
+                    //remove the old client
+                    if (clients.Keys.Contains(player.First_Name + player.Last_Name))
+                    {
+                        return false;
+                    }
+                        clients.Remove(player.First_Name + player.Last_Name);
+                    clients.Add(player.First_Name + player.Last_Name, callback);
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+    public void AskPlayerConfirmation(Player player)
+    {
+        foreach( KeyValuePair<string, ICallBack> kvp in clients){
+            if (kvp.Key == player.First_Name + player.Last_Name)
+            {
+                ICallBack channel = kvp.Value;
+                channel.ConfirmPlayer(player);
+            }
+
+        }
     }
 }
