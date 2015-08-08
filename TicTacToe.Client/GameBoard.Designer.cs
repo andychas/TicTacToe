@@ -39,6 +39,7 @@
             this.elementHost1.Size = new System.Drawing.Size(500, 500);
             this.elementHost1.TabIndex = 0;
             this.elementHost1.Text = "elementHost1";
+            this.elementHost1.ChildChanged += new System.EventHandler<System.Windows.Forms.Integration.ChildChangedEventArgs>(this.elementHost1_ChildChanged);
             this.elementHost1.Child = null;
             // 
             // newGameBtn

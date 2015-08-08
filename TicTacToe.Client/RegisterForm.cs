@@ -14,24 +14,7 @@ namespace TicTacToe.Client
 {
     public partial class RegisterForm : Form
     {
-        #region "callback services"
-        private class CallBack : IServiceCallback
-        {
-
-            public void UpdateClientBoard(int col, int row)
-            {
-
-            }
-
-
-            public void ConfirmPlayer(Player player)
-            {
-                throw new NotImplementedException();
-            }
-        }
-        #endregion
-
-        ServiceClient c = new ServiceClient(new InstanceContext(new CallBack()));
+        ServiceClient c;
         private bool ifValidPlayerName = false;
         private bool[] ifValidAdvisorsName;
         private List<GroupBox> AdvisorPanels = new List<GroupBox>();
@@ -43,6 +26,7 @@ namespace TicTacToe.Client
         public RegisterForm()
         {
             InitializeComponent();
+            c = new ServiceClient(new InstanceContext(this));
             this.StartPosition = FormStartPosition.CenterScreen;
             advisorsTextBoxes = addAllTextBoxes();
         }

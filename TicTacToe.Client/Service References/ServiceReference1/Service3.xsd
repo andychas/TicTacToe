@@ -158,11 +158,18 @@
   <xs:element name="AskPlayerConfirmation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="player" nillable="true" type="q8:Player" />
+        <xs:element minOccurs="0" name="gameSize" type="xs:int" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="player1" nillable="true" type="q8:Player" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="player2" nillable="true" type="q9:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AskPlayerConfirmationResponse">
+  <xs:element name="playerConfirmed">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="removeClient">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -178,8 +185,15 @@
   <xs:element name="ConfirmPlayer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="player" nillable="true" type="q9:Player" />
+        <xs:element minOccurs="0" name="gameSize" type="xs:int" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="player1" nillable="true" type="q10:Player" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="player2" nillable="true" type="q11:Player" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartGame">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

@@ -655,7 +655,30 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IService_AskPlayerConfirmation_output_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IService_playerConfirmed_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IService_removeClient_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -702,6 +725,29 @@
     </wsp:ExactlyOne>
   </wsp:Policy>
   <wsp:Policy wsu:Id="WSDualHttpBinding_IService_ConfirmPlayer_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IService_StartGame_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -804,14 +850,20 @@
   <wsdl:message name="IService_AskPlayerConfirmation_InputMessage">
     <wsdl:part name="parameters" element="tns:AskPlayerConfirmation" />
   </wsdl:message>
-  <wsdl:message name="IService_AskPlayerConfirmation_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AskPlayerConfirmationResponse" />
+  <wsdl:message name="IService_playerConfirmed_InputMessage">
+    <wsdl:part name="parameters" element="tns:playerConfirmed" />
+  </wsdl:message>
+  <wsdl:message name="IService_removeClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:removeClient" />
   </wsdl:message>
   <wsdl:message name="IService_UpdateClientBoard_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateClientBoard" />
   </wsdl:message>
   <wsdl:message name="IService_ConfirmPlayer_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ConfirmPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IService_StartGame_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:StartGame" />
   </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="RegisterClient">
@@ -863,13 +915,21 @@
     </wsdl:operation>
     <wsdl:operation name="AskPlayerConfirmation">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/AskPlayerConfirmation" message="tns:IService_AskPlayerConfirmation_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/AskPlayerConfirmationResponse" message="tns:IService_AskPlayerConfirmation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="playerConfirmed">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/playerConfirmed" message="tns:IService_playerConfirmed_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="removeClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/removeClient" message="tns:IService_removeClient_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateClientBoard">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateClientBoard" message="tns:IService_UpdateClientBoard_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ConfirmPlayer">
       <wsdl:output wsaw:Action="http://tempuri.org/IService/ConfirmPlayer" message="tns:IService_ConfirmPlayer_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/StartGame" message="tns:IService_StartGame_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSDualHttpBinding_IService" type="tns:IService">
@@ -1009,10 +1069,20 @@
         <wsp:PolicyReference URI="#WSDualHttpBinding_IService_AskPlayerConfirmation_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IService_AskPlayerConfirmation_output_policy" />
+    </wsdl:operation>
+    <wsdl:operation name="playerConfirmed">
+      <soap12:operation soapAction="http://tempuri.org/IService/playerConfirmed" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IService_playerConfirmed_Input_policy" />
         <soap12:body use="literal" />
-      </wsdl:output>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="removeClient">
+      <soap12:operation soapAction="http://tempuri.org/IService/removeClient" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IService_removeClient_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="UpdateClientBoard">
       <soap12:operation soapAction="http://tempuri.org/IService/UpdateClientBoard" style="document" />
@@ -1028,6 +1098,13 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <soap12:operation soapAction="http://tempuri.org/IService/StartGame" style="document" />
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IService_StartGame_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="WSDualHttpBinding_IService" binding="tns:WSDualHttpBinding_IService">
@@ -1035,7 +1112,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:6728/Service.svc</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ANDREY-PC\Andrey</Upn>
+          <Upn>Andrey-PC\Andrey</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

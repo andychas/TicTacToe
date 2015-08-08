@@ -11,8 +11,10 @@ using TicTacToe.Client.ServiceReference1;
 
 namespace TicTacToe.Client
 {
-    public partial class GameBoard : Form
+
+    public partial class GameBoard : Form,IServiceCallback
     {
+
         private int size;
         private string gameOption;
         private Player player1;
@@ -45,6 +47,27 @@ namespace TicTacToe.Client
         private void newGameBtn_Click(object sender, EventArgs e)
         {
             elementHost1.Child = new GameBoardWPF(size, gameOption,player1,player2);
+        }
+
+        private void elementHost1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
+        }
+
+
+        public void UpdateClientBoard(int col, int row)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ConfirmPlayer(int gameSize, Player player1, Player player2)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StartGame()
+        {
+            throw new NotImplementedException();
         }
     }
 }

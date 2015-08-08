@@ -9,8 +9,8 @@ using System.Text;
 [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
 public class Service : IService
 {
-    private static Dictionary<string, ICallBack> clients =
-                new Dictionary<string, ICallBack>();
+    private static Dictionary<string, IserviceCallback> clients =
+                new Dictionary<string, IserviceCallback>();
     private static object locker = new object();
 
     private DataClassesDataContext db = new DataClassesDataContext();
@@ -155,6 +155,7 @@ public class Service : IService
         db.SubmitChanges();
     }
 
+    #region "Game Logic"
     public void ResetGame()
     {
         initializeGame(boardSize);
@@ -243,7 +244,7 @@ public class Service : IService
     }
 
 
-
+    #endregion 
 
     public bool RegisterClient(Player player)
     {
@@ -251,7 +252,7 @@ public class Service : IService
         {
             try
             {
-                ICallBack callback = OperationContext.Current.GetCallbackChannel<ICallBack>();
+                IserviceCallback callback = OperationContext.Current.GetCallbackChannel<IserviceCallback>();
                 lock (locker)
                 {
                     //remove the old client
@@ -259,7 +260,7 @@ public class Service : IService
                     {
                         return false;
                     }
-                        clients.Remove(player.First_Name + player.Last_Name);
+                      //  clients.Remove(player.First_Name + player.Last_Name);
                     clients.Add(player.First_Name + player.Last_Name, callback);
                     return true;
                 }
@@ -272,19 +273,32 @@ public class Service : IService
         return false;
     }
 
-
-
-
-
-    public void AskPlayerConfirmation(Player player)
+    public void AskPlayerConfirmation(int gameSize,Player player1, Player player2)
     {
-        foreach( KeyValuePair<string, ICallBack> kvp in clients){
-            if (kvp.Key == player.First_Name + player.Last_Name)
+        foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
+        {
+            if (kvp.Key == player2.First_Name + player2.Last_Name)
             {
-                ICallBack channel = kvp.Value;
-                channel.ConfirmPlayer(player);
-            }
+                IserviceCallback channel = kvp.Value;
+                channel.ConfirmPlayer(gameSize,player1, player2);
 
+            }
         }
     }
+    public void playerConfirmed()
+    {
+        throw new NotImplementedException();
+    }
+
+
+    public void removeClient()
+    {
+        IserviceCallback callback = OperationContext.Current.GetCallbackChannel<IserviceCallback>();
+        foreach (var item in clients.Where(kvp => kvp.Value == callback))
+        {
+            clients.Remove(item.Key);
+        }
+    }
+
+
 }

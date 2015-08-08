@@ -14,54 +14,54 @@ using System.Threading;
 namespace TicTacToe.Client
 {
     
-    public partial class GameInfoForm : Form
+    public partial class GameInfoForm : Form,IServiceCallback
     {
-        #region "callback services"
-         private class CallBack : IServiceCallback
-        {
-
-            public void UpdateClientBoard(int col, int row)
-            {
-
-            }
-
-
-            public void ConfirmPlayer(Player player)
-            {
-                
-            }
-        }
-        #endregion
-
-        ServiceClient c = new ServiceClient(new InstanceContext(new CallBack()));
-        
-        private string firstNamePlayer1;
-        private string lastNamePlayer1;
-        private string firstNamePlayer2;
-        private string lastNamePlayer2;
+        ServiceClient c;
         private string championship = "";
-        private int champId;  
+        private int champId;
         private string gameOption = "computer";
         private int size = 4;
         private Player player1;
-        private Player player2;
+        private Player player2;          
 
         public GameInfoForm(Player player)
         {
+
             // TODO: Complete member initialization
-            this.player1 = player;
+            c =  new ServiceClient(new InstanceContext(this));
             InitializeComponent();
+            player1 = new Player();
+            this.player1 = player;
             this.StartPosition = FormStartPosition.CenterScreen;
             playersComboBox.Enabled = false;
             initAllData();
 
+
         }
+
 
         private void StartGameBtn_Click(object sender, EventArgs e)
         {
+            if (gameOption == "computer") // vs computer
+            {
+
+            }
+            else                          // vs player
+            {
+                c.AskPlayerConfirmation(size,player1, player2);
+                GameBoard boardGame = new GameBoard(size, gameOption, player1, player2);
+                boardGame.Show();
+                boardGame.Text = player1.First_Name + " " + player1.Last_Name;
+                
+            }
+
+
+
+
 
 
             c.GameInfo(size, gameOption);
+            /*
             if (!championship.Equals("")) // if selected championship
             {
                 champId = Int32.Parse(championship.Substring(0, championship.IndexOf(' ')));
@@ -73,26 +73,17 @@ namespace TicTacToe.Client
                     c.AddPlayerToChamp(player2, champId);
                 }
             }
+ */           
             
             
-            GameBoard boardGame = new GameBoard(size, gameOption,player1,player2);
-            boardGame.Show();
-            boardGame.Text = firstNamePlayer1 + " " + lastNamePlayer1;
-
-
-            if (gameOption.Equals("player"))
-            {
-                GameBoard boardGame2 = new GameBoard(size, gameOption,player1,player2);
-                boardGame2.Text = firstNamePlayer2 + " " + lastNamePlayer2;
-                boardGame2.Show();
-            }
-
+            
+           
             this.Close();
         }
 
         private void GameInfoForm_Load(object sender, EventArgs e)
         {
-            playerName.Text = "Hello " + firstNamePlayer1 + " " + lastNamePlayer1;
+            playerName.Text = "Hello " + player1.First_Name + " " + player1.Last_Name;
         }
 
         private void computerButton_CheckedChanged(object sender, EventArgs e)
@@ -112,6 +103,9 @@ namespace TicTacToe.Client
 
         private void playersComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string[] playerInfo = playersComboBox.Text.Split(' ');
+            player2 = c.GetPlayer(playerInfo[0], playerInfo[1]);
+/*
             string fullName = playersComboBox.Text;
             firstNamePlayer2 = fullName.Substring(0, fullName.IndexOf(' '));
             try
@@ -122,7 +116,7 @@ namespace TicTacToe.Client
             {
                 lastNamePlayer2 = "";
             }
-            
+  */          
         }
 
         private void smallBoardButton_CheckedChanged(object sender, EventArgs e)
@@ -158,5 +152,39 @@ namespace TicTacToe.Client
             }
         }
 
+        public void UpdateClientBoard(int col, int row)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ConfirmPlayer(int gameSize, Player player1, Player player2)
+        {
+            DialogResult dialogResult = MessageBox.Show(player2.First_Name + ": " + player1.First_Name + " wants to play against you ", "Confirmation", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+
+                // GameBoard boardGame = new GameBoard(size, gameOption, player1, player2);
+                //  boardGame.Show();
+                // boardGame.Text = player1.First_Name + " " + player1.Last_Name;
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+
+        }
+
+        public void StartGame()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+
+/*
+public void ConfirmPlayer(Player player1, Player player2)
+        {
+            
+        }
+*/

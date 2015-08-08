@@ -14,41 +14,33 @@ using System.Windows.Forms.Integration;
 
 namespace TicTacToe.Client
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form,IServiceCallback
     {
-        #region "callback services"
-        private class CallBack : IServiceCallback
-        {
-
-            public void UpdateClientBoard(int col, int row)
-            {
-
-            }
 
 
-            public void ConfirmPlayer(Player player)
-            {
-                throw new NotImplementedException();
-            }
-        }
-        #endregion
-
-        ServiceClient c = new ServiceClient(new InstanceContext(new CallBack()));
-        public static Form1 MainUI { get; set; }
-
+        ServiceClient c;
         public Form1()
         {
             InitializeComponent();
-            MainUI = this;
+            c = new ServiceClient(new InstanceContext(this));
+
             this.StartPosition = FormStartPosition.CenterScreen;
             PlayBtn.Enabled = false;
+
+            GetPlayers();
+            
+            
+        }
+
+        private void GetPlayers()
+        {
             Player[] players = c.GetPlayers();
             foreach (Player player in players)
             {
                 comboBox1.Items.Add(player.First_Name + " " + player.Last_Name);
-                
+
+
             }
-            
         }
 
         private void PlayBtn_Click(object sender, EventArgs e)
@@ -101,5 +93,37 @@ namespace TicTacToe.Client
             PlayBtn.Enabled = true;
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            c.removeClient();
+        }
+
+
+        public void UpdateClientBoard(int col, int row)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ConfirmPlayer(int gameSize, Player player1, Player player2)
+        {
+            DialogResult dialogResult = MessageBox.Show(player2.First_Name + ": " + player1.First_Name + " wants to play against you ", "Confirmation", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                
+                // GameBoard boardGame = new GameBoard(size, gameOption, player1, player2);
+                //  boardGame.Show();
+                // boardGame.Text = player1.First_Name + " " + player1.Last_Name;
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+        }
+
+        public void StartGame()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

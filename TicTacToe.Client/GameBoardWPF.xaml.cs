@@ -20,27 +20,11 @@ namespace TicTacToe.Client
     /// <summary>
     /// Interaction logic for GameBoard4x4.xaml
     /// </summary>
-    public partial class GameBoardWPF : UserControl
+    public partial class GameBoardWPF : UserControl,IServiceCallback
     {
-        #region "callback services"
-        private class CallBack : IServiceCallback
-        {
+        
 
-            public void UpdateClientBoard(int col, int row)
-            {
-                throw new NotImplementedException();
-            }
-
-
-            public void ConfirmPlayer(Player player)
-            {
-                throw new NotImplementedException();
-            }
-        }
-        #endregion
-
-        ServiceClient c = new ServiceClient(new InstanceContext(new CallBack()));
-
+        ServiceClient c; 
         //private static enum Turn { Player1, Player2, Computer};
 
         private static string currenTurn;
@@ -61,6 +45,7 @@ namespace TicTacToe.Client
 
         public GameBoardWPF(int size, string gameOption, Player player1, Player player2)
         {
+            c= new ServiceClient(new InstanceContext(this));
             // TODO: Complete member initialization
             this.size = size;
             this.gameOption = gameOption;
@@ -96,6 +81,7 @@ namespace TicTacToe.Client
             if (!computerOrPlayer.Equals("computer")) // if vs player - we need the other player to confirm the duel
             {
                 busyIndicator.IsBusy = true;
+                c.AskPlayerConfirmation(size,player1, player2);
 
 
             }
@@ -217,12 +203,19 @@ namespace TicTacToe.Client
             
         }
 
-        /*private class MyCallBack : IServiceCallback
+        public void UpdateClientBoard(int col, int row)
         {
-            public void Result(int col, int row, string msg)
-            { 
-                GameBoardWPF.buttons[col, row].Content = "" + msg;
-            }
-        }*/
+            throw new NotImplementedException();
+        }
+
+        public void ConfirmPlayer(int gameSize, Player player1, Player player2)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StartGame()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

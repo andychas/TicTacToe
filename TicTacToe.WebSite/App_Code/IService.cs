@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-[ServiceContract(CallbackContract = typeof(ICallBack))]
+[ServiceContract(CallbackContract = typeof(IserviceCallback))]
 // Calls from client to Server
 public interface IService
 {
@@ -46,20 +46,15 @@ public interface IService
     [OperationContract]
     void AddPlayerToChamp(Player player, int champId);
 
-    [OperationContract]
-    void AskPlayerConfirmation(Player player);
+    [OperationContract(IsOneWay=true)]
+    void AskPlayerConfirmation(int gameSize,Player player1, Player player2);
 
-
-}
-
-// Return Values from Server to Client
-
-public interface ICallBack
-{
-    [OperationContract(IsOneWay = true)] // void is not enough
-    void UpdateClientBoard(int col, int row);
+    [OperationContract(IsOneWay= true)]
+    void playerConfirmed();
 
     [OperationContract(IsOneWay = true)]
-    void ConfirmPlayer(Player player);
+    void removeClient();
+    
+
 
 }
