@@ -32,6 +32,8 @@ namespace TicTacToe.Client
         private static Button[,] buttons1;
         private static Button[,] buttons2;
         private string computerOrPlayer;
+        private bool confirmationRequired;
+        public char sign;
        
         private int boardSize = 0;
         //private int currentTurn;
@@ -39,11 +41,10 @@ namespace TicTacToe.Client
         private static bool isWinner = false;
         private int size;
         private string gameOption;
-        private GameBoard gameBoard;
         private Player player1;
-        private Player player2;
+        public Player player2;
 
-        public GameBoardWPF(int size, string gameOption, Player player1, Player player2)
+        public GameBoardWPF(int size, string gameOption, Player player1, Player player2, bool confirmationRequired)
         {
             c= new ServiceClient(new InstanceContext(this));
             // TODO: Complete member initialization
@@ -51,7 +52,7 @@ namespace TicTacToe.Client
             this.gameOption = gameOption;
             this.player1 = player1;
             this.player2 = player2;
-
+            this.confirmationRequired = confirmationRequired;
             InitializeComponent();
             boardSize = size;
             computerOrPlayer = gameOption;
@@ -74,14 +75,15 @@ namespace TicTacToe.Client
             {
                 for (int col = 0; col < size; col++)
                 {
+                    
                     grid.Children.Add(buttons1[row, col]);
                 }
             }
 
-            if (!computerOrPlayer.Equals("computer")) // if vs player - we need the other player to confirm the duel
+            if (!computerOrPlayer.Equals("computer") && !confirmationRequired) // if vs player - we need the other player to confirm the duel
             {
                 busyIndicator.IsBusy = true;
-                c.AskPlayerConfirmation(size,player1, player2);
+                c.AskPlayerConfirmation(size,player1, player2,true);
 
 
             }
@@ -208,12 +210,24 @@ namespace TicTacToe.Client
             throw new NotImplementedException();
         }
 
-        public void ConfirmPlayer(int gameSize, Player player1, Player player2)
+        public void ConfirmPlayer(int gameSize, Player player1, Player player2, bool confirm)
         {
             throw new NotImplementedException();
         }
 
         public void StartGame()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void StartGame(bool isYourTurn)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void StartGame(bool isYourTurn, char sign)
         {
             throw new NotImplementedException();
         }

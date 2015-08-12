@@ -15,9 +15,9 @@ public interface IserviceCallback
     void UpdateClientBoard(int col, int row);
 
     [OperationContract(IsOneWay = true)]
-    void ConfirmPlayer(int gameSize, Player player1, Player player2);
+    void ConfirmPlayer(int gameSize, Player player1, Player player2, bool confirmationRequired);
 
     [OperationContract(IsOneWay = true)]
-    void StartGame();
+    void StartGame(bool isYourTurn, char sign);
 
 }

@@ -273,18 +273,7 @@ public class Service : IService
         return false;
     }
 
-    public void AskPlayerConfirmation(int gameSize,Player player1, Player player2)
-    {
-        foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
-        {
-            if (kvp.Key == player2.First_Name + player2.Last_Name)
-            {
-                IserviceCallback channel = kvp.Value;
-                channel.ConfirmPlayer(gameSize,player1, player2);
 
-            }
-        }
-    }
     public void playerConfirmed()
     {
         throw new NotImplementedException();
@@ -301,4 +290,44 @@ public class Service : IService
     }
 
 
+
+
+    public void AskPlayerConfirmation(int gameSize, Player player1, Player player2, bool confirmationRequired)
+    {
+        foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
+        {
+            if (kvp.Key == player2.First_Name + player2.Last_Name)
+            {
+                IserviceCallback channel = kvp.Value;
+                channel.ConfirmPlayer(gameSize, player1, player2, confirmationRequired);
+
+            }
+        }
+    }
+
+
+    public void playerConfirmed(Player player1, Player player2)
+    {
+        bool isYourTurn = true;
+        char sign = 'X';
+        foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
+        {
+            if (kvp.Key == player1.First_Name + player1.Last_Name)
+            {
+                IserviceCallback channelp1 = kvp.Value;
+                channelp1.StartGame(isYourTurn,sign);
+                isYourTurn = false;
+                sign = 'O';
+            }
+            else if (kvp.Key == player2.First_Name + player2.Last_Name)
+            {
+                IserviceCallback channelp2 = kvp.Value;
+                channelp2.StartGame(isYourTurn,sign);
+
+            }
+            
+
+         
+        }
+    }
 }

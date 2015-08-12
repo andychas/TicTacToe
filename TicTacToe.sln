@@ -1,14 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Client", "TicTacToe.Client\TicTacToe.Client.csproj", "{71CEDF67-66AD-49A7-9FF6-773C23628026}"
 	ProjectSection(ProjectDependencies) = postProject
 		{3A730CC6-3327-4F19-A3D0-438C1301FDD7} = {3A730CC6-3327-4F19-A3D0-438C1301FDD7}
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TicTacToe.WebSite(2)", "http://localhost:6728", "{3A730CC6-3327-4F19-A3D0-438C1301FDD7}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TicTacToe.WebSite", "http://localhost:6728", "{3A730CC6-3327-4F19-A3D0-438C1301FDD7}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"

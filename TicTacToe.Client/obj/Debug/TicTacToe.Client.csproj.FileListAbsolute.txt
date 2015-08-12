@@ -46,11 +46,7 @@ C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\GameBoardWPF.g.
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client_MarkupCompile.cache
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.g.resources
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.AboutBox.resources
-C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.Form1.resources
-C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.GameBoard.resources
-C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.GameInfoForm.resources
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.Properties.Resources.resources
-C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.RegisterForm.resources
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csproj.GenerateResource.Cache
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\bin\Debug\TicTacToe.Client.exe.config
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\bin\Debug\TicTacToe.Client.exe
@@ -59,3 +55,8 @@ C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Clien
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.pdb
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\bin\Debug\Xceed.Wpf.Toolkit.dll
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client_Content.g.cs
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client_Content.g.cs
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.classes.Class1.resources
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.TicTacToeForm.resources

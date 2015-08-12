@@ -47,10 +47,10 @@ public interface IService
     void AddPlayerToChamp(Player player, int champId);
 
     [OperationContract(IsOneWay=true)]
-    void AskPlayerConfirmation(int gameSize,Player player1, Player player2);
+    void AskPlayerConfirmation(int gameSize,Player player1, Player player2, bool confirmationRequired);
 
     [OperationContract(IsOneWay= true)]
-    void playerConfirmed();
+    void playerConfirmed(Player player1, Player player2);
 
     [OperationContract(IsOneWay = true)]
     void removeClient();

@@ -398,16 +398,16 @@ namespace TicTacToe.Client.ServiceReference1 {
         System.Threading.Tasks.Task AddPlayerToChampAsync(TicTacToe.Client.ServiceReference1.Player player, int champId);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/AskPlayerConfirmation")]
-        void AskPlayerConfirmation(int gameSize, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2);
+        void AskPlayerConfirmation(int gameSize, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2, bool confirmationRequired);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/AskPlayerConfirmation")]
-        System.Threading.Tasks.Task AskPlayerConfirmationAsync(int gameSize, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2);
+        System.Threading.Tasks.Task AskPlayerConfirmationAsync(int gameSize, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2, bool confirmationRequired);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/playerConfirmed")]
-        void playerConfirmed();
+        void playerConfirmed(TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/playerConfirmed")]
-        System.Threading.Tasks.Task playerConfirmedAsync();
+        System.Threading.Tasks.Task playerConfirmedAsync(TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/removeClient")]
         void removeClient();
@@ -423,10 +423,10 @@ namespace TicTacToe.Client.ServiceReference1 {
         void UpdateClientBoard(int col, int row);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ConfirmPlayer")]
-        void ConfirmPlayer(int gameSize, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2);
+        void ConfirmPlayer(int gameSize, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2, bool confirmationRequired);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/StartGame")]
-        void StartGame();
+        void StartGame(bool isYourTurn, char sign);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -553,20 +553,20 @@ namespace TicTacToe.Client.ServiceReference1 {
             return base.Channel.AddPlayerToChampAsync(player, champId);
         }
         
-        public void AskPlayerConfirmation(int gameSize, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2) {
-            base.Channel.AskPlayerConfirmation(gameSize, player1, player2);
+        public void AskPlayerConfirmation(int gameSize, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2, bool confirmationRequired) {
+            base.Channel.AskPlayerConfirmation(gameSize, player1, player2, confirmationRequired);
         }
         
-        public System.Threading.Tasks.Task AskPlayerConfirmationAsync(int gameSize, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2) {
-            return base.Channel.AskPlayerConfirmationAsync(gameSize, player1, player2);
+        public System.Threading.Tasks.Task AskPlayerConfirmationAsync(int gameSize, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2, bool confirmationRequired) {
+            return base.Channel.AskPlayerConfirmationAsync(gameSize, player1, player2, confirmationRequired);
         }
         
-        public void playerConfirmed() {
-            base.Channel.playerConfirmed();
+        public void playerConfirmed(TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2) {
+            base.Channel.playerConfirmed(player1, player2);
         }
         
-        public System.Threading.Tasks.Task playerConfirmedAsync() {
-            return base.Channel.playerConfirmedAsync();
+        public System.Threading.Tasks.Task playerConfirmedAsync(TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2) {
+            return base.Channel.playerConfirmedAsync(player1, player2);
         }
         
         public void removeClient() {
