@@ -39,13 +39,19 @@ public interface IService
     Player[] GetPlayers();
 
     [OperationContract]
-    void AddAdvisor(Player player, Advisor[] advisors);
+    void AddAdvisor(Player player, Advisor[] advisors, int gameId);
 
     [OperationContract]
     Championship[] GetChampionships();
 
     [OperationContract]
     void AddPlayerToChamp(Player player, int champId);
+
+    [OperationContract]
+    int AddGame(int champId, Player player1, Player player2, int boardSize);
+
+    [OperationContract(IsOneWay = true)]
+    void AddGameToPlayer(int gameId, Player player);
 
     [OperationContract(IsOneWay=true)]
     void AskPlayerConfirmation(int gameSize,Player player1, Player player2, bool confirmationRequired);
@@ -55,7 +61,6 @@ public interface IService
 
     [OperationContract(IsOneWay = true)]
     void removeClient();
-    
 
 
 }

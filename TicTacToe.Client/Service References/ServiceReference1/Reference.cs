@@ -380,10 +380,10 @@ namespace TicTacToe.Client.ServiceReference1 {
         System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player[]> GetPlayersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddAdvisor", ReplyAction="http://tempuri.org/IService/AddAdvisorResponse")]
-        void AddAdvisor(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors);
+        void AddAdvisor(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors, int gameId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddAdvisor", ReplyAction="http://tempuri.org/IService/AddAdvisorResponse")]
-        System.Threading.Tasks.Task AddAdvisorAsync(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors);
+        System.Threading.Tasks.Task AddAdvisorAsync(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors, int gameId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetChampionships", ReplyAction="http://tempuri.org/IService/GetChampionshipsResponse")]
         TicTacToe.Client.ServiceReference1.Championship[] GetChampionships();
@@ -396,6 +396,18 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddPlayerToChamp", ReplyAction="http://tempuri.org/IService/AddPlayerToChampResponse")]
         System.Threading.Tasks.Task AddPlayerToChampAsync(TicTacToe.Client.ServiceReference1.Player player, int champId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddGame", ReplyAction="http://tempuri.org/IService/AddGameResponse")]
+        int AddGame(int champId, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2, int boardSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddGame", ReplyAction="http://tempuri.org/IService/AddGameResponse")]
+        System.Threading.Tasks.Task<int> AddGameAsync(int champId, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2, int boardSize);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/AddGameToPlayer")]
+        void AddGameToPlayer(int gameId, TicTacToe.Client.ServiceReference1.Player player);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/AddGameToPlayer")]
+        System.Threading.Tasks.Task AddGameToPlayerAsync(int gameId, TicTacToe.Client.ServiceReference1.Player player);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/AskPlayerConfirmation")]
         void AskPlayerConfirmation(int gameSize, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2, bool confirmationRequired);
@@ -529,12 +541,12 @@ namespace TicTacToe.Client.ServiceReference1 {
             return base.Channel.GetPlayersAsync();
         }
         
-        public void AddAdvisor(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors) {
-            base.Channel.AddAdvisor(player, advisors);
+        public void AddAdvisor(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors, int gameId) {
+            base.Channel.AddAdvisor(player, advisors, gameId);
         }
         
-        public System.Threading.Tasks.Task AddAdvisorAsync(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors) {
-            return base.Channel.AddAdvisorAsync(player, advisors);
+        public System.Threading.Tasks.Task AddAdvisorAsync(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors, int gameId) {
+            return base.Channel.AddAdvisorAsync(player, advisors, gameId);
         }
         
         public TicTacToe.Client.ServiceReference1.Championship[] GetChampionships() {
@@ -551,6 +563,22 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task AddPlayerToChampAsync(TicTacToe.Client.ServiceReference1.Player player, int champId) {
             return base.Channel.AddPlayerToChampAsync(player, champId);
+        }
+        
+        public int AddGame(int champId, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2, int boardSize) {
+            return base.Channel.AddGame(champId, player1, player2, boardSize);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddGameAsync(int champId, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2, int boardSize) {
+            return base.Channel.AddGameAsync(champId, player1, player2, boardSize);
+        }
+        
+        public void AddGameToPlayer(int gameId, TicTacToe.Client.ServiceReference1.Player player) {
+            base.Channel.AddGameToPlayer(gameId, player);
+        }
+        
+        public System.Threading.Tasks.Task AddGameToPlayerAsync(int gameId, TicTacToe.Client.ServiceReference1.Player player) {
+            return base.Channel.AddGameToPlayerAsync(gameId, player);
         }
         
         public void AskPlayerConfirmation(int gameSize, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2, bool confirmationRequired) {

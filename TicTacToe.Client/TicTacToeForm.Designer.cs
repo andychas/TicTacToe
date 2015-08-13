@@ -100,7 +100,6 @@
             // 
             // RegisterPanel
             // 
-            this.RegisterPanel.Controls.Add(this.GameBoardPanel);
             this.RegisterPanel.Controls.Add(this.GameInfoPanel);
             this.RegisterPanel.Controls.Add(this.AdvisorGroup3);
             this.RegisterPanel.Controls.Add(this.AdvisorGroup2);
@@ -144,13 +143,14 @@
             // 
             // GameInfoPanel
             // 
+            this.GameInfoPanel.Controls.Add(this.GameBoardPanel);
             this.GameInfoPanel.Controls.Add(this.groupBox2);
             this.GameInfoPanel.Controls.Add(this.lvlGroupBox);
             this.GameInfoPanel.Controls.Add(this.StartGameBtn);
             this.GameInfoPanel.Controls.Add(this.dataGridView1);
             this.GameInfoPanel.Controls.Add(this.groupBox3);
             this.GameInfoPanel.Controls.Add(this.playerName);
-            this.GameInfoPanel.Location = new System.Drawing.Point(0, 3);
+            this.GameInfoPanel.Location = new System.Drawing.Point(0, 0);
             this.GameInfoPanel.Name = "GameInfoPanel";
             this.GameInfoPanel.Size = new System.Drawing.Size(677, 496);
             this.GameInfoPanel.TabIndex = 4;
@@ -440,6 +440,7 @@
             this.AdvisorComboBox.Name = "AdvisorComboBox";
             this.AdvisorComboBox.Size = new System.Drawing.Size(39, 21);
             this.AdvisorComboBox.TabIndex = 30;
+            this.AdvisorComboBox.SelectedIndexChanged += new System.EventHandler(this.AdvisorComboBox_SelectedIndexChanged);
             // 
             // label4
             // 

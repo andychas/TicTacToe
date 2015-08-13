@@ -32,6 +32,7 @@ namespace TicTacToe.Client
         private bool ifValidPlayerName = false;
 
         private int champId;
+        private int gameId;
         private int size = 4;
         private int numOfAdvisors;
  
@@ -54,6 +55,14 @@ namespace TicTacToe.Client
             GameBoardPanel.Visible = false;
             GameInfoPanel.Visible = false;
             GetPlayers();
+            AdvisorPanels.Add(AdvisorGroup1);
+            AdvisorPanels.Add(AdvisorGroup2);
+            AdvisorPanels.Add(AdvisorGroup3);
+            for (int i = 0; i < AdvisorPanels.Count; i++)
+            {
+                AdvisorPanels.ElementAt(i).Visible = false;
+            }
+            advisorsTextBoxes = addAllTextBoxes();
 
         }
 
@@ -153,6 +162,7 @@ namespace TicTacToe.Client
         private void ChampComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             championship = ChampComboBox.Text;
+            champId = Convert.ToInt32(championship.Substring(0, championship.IndexOf(' ')));
         }
 
         private void StartGameBtn_Click(object sender, EventArgs e)
@@ -160,9 +170,8 @@ namespace TicTacToe.Client
             if (gameOption == "computer") // vs computer
             {
                 gameboard = new GameBoardWPF(size, gameOption, player1, player2, confirmation);
-                elementHost1.Child = gameboard;
+                elementHost1.Child = gameboard; 
 
-                
             }
             else                          // vs player
             {
@@ -171,6 +180,8 @@ namespace TicTacToe.Client
                 elementHost1.Child = gameboard;
 
             }
+            gameId = c.AddGame(champId, player1, player2, size);
+            c.AddAdvisor(player1, advisors.ToArray(), gameId);
             GameBoardPanel.Visible = true;
             GameInfoPanel.Visible = true;
             c.GameInfo(size, gameOption);
@@ -198,6 +209,7 @@ namespace TicTacToe.Client
         {
             if (ifValidPlayerName)
             {
+                int b = 0;
                 for (int i = 0; i < numOfAdvisors; i++)
                 {
                     if (!ifValidAdvisorsName[i])
@@ -208,14 +220,13 @@ namespace TicTacToe.Client
                     else
                     {
                         Advisor a = new Advisor();
-                        a.First_Name = advisorsTextBoxes.ElementAt(i).Text;
-                        a.Last_Name = advisorsTextBoxes.ElementAt(i + 1).Text;
+                        a.First_Name = advisorsTextBoxes.ElementAt(b++).Text;
+                        a.Last_Name = advisorsTextBoxes.ElementAt(b++).Text;
                         advisors.Add(a);
                     }
                 }
                 player = c.GetPlayer(playerFirstName.Text, playerLastName.Text);
                 player1 = c.AddPlayer(playerFirstName.Text, playerLastName.Text);
-                c.AddAdvisor(player1, advisors.ToArray());
                 initGameInfoPanel();
                 RegisterPanel.Visible = true;
                 GameInfoPanel.Visible = true;
@@ -362,10 +373,6 @@ namespace TicTacToe.Client
             }
         }
         #endregion
-
-
-
-
 
 
     }

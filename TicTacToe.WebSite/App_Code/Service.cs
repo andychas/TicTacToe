@@ -113,7 +113,7 @@ public class Service : IService
     }
 
 
-    public void AddAdvisor(Player player, Advisor[] advisors)
+    public void AddAdvisor(Player player, Advisor[] advisors, int gameId)
     {
         foreach (Advisor a in advisors)
         {
@@ -126,7 +126,7 @@ public class Service : IService
             PlayerToAdvisor p = new PlayerToAdvisor();
             p.Player = player.Id;
             p.Advisor = advisor.Id;
-            p.Game = 1; // add game id 
+            p.Game = gameId;
             db.PlayerToAdvisors.InsertOnSubmit(p);
             db.SubmitChanges();
         }
@@ -153,6 +153,38 @@ public class Service : IService
         playerToChamp.Player_Id = id;
         playerToChamp.Championship_Id = champId;
         db.PlayerToChampionships.InsertOnSubmit(playerToChamp);
+        db.SubmitChanges();
+    }
+
+    // Add game to database and return gameId
+    public int AddGame(int champId, Player player1, Player player2, int boardSize)
+    {
+        Game game = new Game();
+        game.Date = DateTime.Now;
+        game.Chapmpionship = champId;
+        game.Player1 = player1.First_Name + " " + player1.Last_Name;
+        if (player2 == null)
+        {
+            game.Player2 = "computer";
+        }
+        else
+        {
+            game.Player2 = player2.First_Name + " " + player2.Last_Name;
+        }
+        game.Board_Size = boardSize;
+        db.Games.InsertOnSubmit(game);
+        db.SubmitChanges();
+        return game.Id;
+
+    }
+
+
+    public void AddGameToPlayer(int gameId, Player player)
+    {
+        GameToPlayer gameToPlayer = new GameToPlayer();
+        gameToPlayer.PlayerId = player.Id;
+        gameToPlayer.GameId = gameId;
+        db.GameToPlayers.InsertOnSubmit(gameToPlayer);
         db.SubmitChanges();
     }
 
@@ -274,12 +306,10 @@ public class Service : IService
         return false;
     }
 
-
     public void playerConfirmed()
     {
         throw new NotImplementedException();
     }
-
 
     public void removeClient()
     {
@@ -289,9 +319,6 @@ public class Service : IService
             clients.Remove(item.Key);
         }
     }
-
-
-
 
     public void AskPlayerConfirmation(int gameSize, Player player1, Player player2, bool confirmationRequired)
     {
@@ -305,7 +332,6 @@ public class Service : IService
             }
         }
     }
-
 
     public void playerConfirmed(Player player1, Player player2)
     {
@@ -326,9 +352,8 @@ public class Service : IService
                 channelp2.StartGame(isYourTurn,sign);
 
             }
-            
 
-         
         }
     }
+
 }
