@@ -338,10 +338,10 @@ namespace TicTacToe.Client.ServiceReference1 {
         System.Threading.Tasks.Task GetDataAsync(string x, string y);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddPlayer", ReplyAction="http://tempuri.org/IService/AddPlayerResponse")]
-        void AddPlayer(string firstName, string lastName);
+        TicTacToe.Client.ServiceReference1.Player AddPlayer(string firstName, string lastName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddPlayer", ReplyAction="http://tempuri.org/IService/AddPlayerResponse")]
-        System.Threading.Tasks.Task AddPlayerAsync(string firstName, string lastName);
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player> AddPlayerAsync(string firstName, string lastName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/NewTurn", ReplyAction="http://tempuri.org/IService/NewTurnResponse")]
         string NewTurn(int col, int row);
@@ -473,11 +473,11 @@ namespace TicTacToe.Client.ServiceReference1 {
             return base.Channel.GetDataAsync(x, y);
         }
         
-        public void AddPlayer(string firstName, string lastName) {
-            base.Channel.AddPlayer(firstName, lastName);
+        public TicTacToe.Client.ServiceReference1.Player AddPlayer(string firstName, string lastName) {
+            return base.Channel.AddPlayer(firstName, lastName);
         }
         
-        public System.Threading.Tasks.Task AddPlayerAsync(string firstName, string lastName) {
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player> AddPlayerAsync(string firstName, string lastName) {
             return base.Channel.AddPlayerAsync(firstName, lastName);
         }
         

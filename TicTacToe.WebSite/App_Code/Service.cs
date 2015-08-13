@@ -26,13 +26,14 @@ public class Service : IService
  //       channel.Result(res);
     }
 
-    public void AddPlayer(string firstName, string lastName)
+    public Player AddPlayer(string firstName, string lastName)
     {
         Player player = new Player();
         player.First_Name = firstName;
         player.Last_Name = lastName;
         db.Players.InsertOnSubmit(player);
         db.SubmitChanges();
+        return player;
     }
 
     public string NewTurn(int col, int row)

@@ -46,8 +46,7 @@ namespace TicTacToe.Client
 
         public GameBoardWPF(int size, string gameOption, Player player1, Player player2, bool confirmationRequired)
         {
-            c= new ServiceClient(new InstanceContext(this));
-            // TODO: Complete member initialization
+            c = new ServiceClient(new InstanceContext(this));
             this.size = size;
             this.gameOption = gameOption;
             this.player1 = player1;
@@ -56,7 +55,6 @@ namespace TicTacToe.Client
             InitializeComponent();
             boardSize = size;
             computerOrPlayer = gameOption;
-            //currentTurn = (int)Turn.Player1;
             currenTurn = "player1";
 
             buttons1 = CreateButtons();
@@ -85,7 +83,6 @@ namespace TicTacToe.Client
                 busyIndicator.IsBusy = true;
                 c.AskPlayerConfirmation(size,player1, player2,true);
 
-
             }
         }
 
@@ -98,7 +95,6 @@ namespace TicTacToe.Client
                 // player move
                 sign = c.NewTurn(button.col, button.row);
                 moveGame(button, sign);
-                //currentTurn = (int)Turn.Computer;
                 currenTurn = "computer";
                 
                 // computer move 
@@ -108,14 +104,12 @@ namespace TicTacToe.Client
                 button = (GameButton)buttons1[rndCol, rndRow];
                 sign = c.NewTurn(button.col, button.row);
                 moveGame(button, sign);
-                //currentTurn = (int)Turn.Player1;
                 currenTurn = "player1";
             }
             else // player1 vs player2
             {
                 int row = button.row;
                 int col = button.col;
-                //if(currentTurn == (int)Turn.Player1)
                 if(currenTurn.Equals("player1"))
                 {
                     // player 1
@@ -123,7 +117,6 @@ namespace TicTacToe.Client
                     moveGame(button, sign);
                     buttons2[button.row, button.col].IsEnabled = false;
                     buttons2[button.row, button.col].Content = sign;
-                    //currentTurn = (int)Turn.Player2;
                     currenTurn = "player2";
                 }
                 else
@@ -133,7 +126,6 @@ namespace TicTacToe.Client
                     moveGame(button, sign);
                     buttons1[button.row, button.col].IsEnabled = false;
                     buttons1[button.row, button.col].Content = sign;
-                    //currentTurn = (int)Turn.Player1;
                     currenTurn = "player1";
                 }         
             }

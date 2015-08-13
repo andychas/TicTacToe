@@ -17,7 +17,8 @@ public interface IService
     void GetData(string x, string y);
 
     [OperationContract]
-    void AddPlayer(string firstName, string lastName);
+    
+    Player AddPlayer(string firstName, string lastName);
 
     [OperationContract]
     string NewTurn(int col, int row);

@@ -16,24 +16,26 @@ namespace TicTacToe.Client
     public partial class TicTacToeForm : Form, IServiceCallback
     {
         #region Private Fields
-        private ServiceClient c ;
-        private Player player1;
-        private Player player2;        
-        private int size = 4;
-        private string gameOption = "computer";
-        private bool confirmation;
-        private string championship = "";
-        private int champId;
-        private GameBoardWPF gameboard;
-
-        private bool ifValidPlayerName = false;
-        private bool[] ifValidAdvisorsName;
+        private ServiceClient c;
         private List<GroupBox> AdvisorPanels = new List<GroupBox>();
         private List<TextBox> advisorsTextBoxes = new List<TextBox>();
-        private int numOfAdvisors;
-        private Player player;
         private List<Advisor> advisors = new List<Advisor>();
-#endregion
+        private GameBoardWPF gameboard;
+        private Player player;
+        private Player player1;
+        private Player player2;   
+
+        private string gameOption = "computer";
+        private string championship = "";
+        private bool[] ifValidAdvisorsName;
+        private bool confirmation;
+        private bool ifValidPlayerName = false;
+
+        private int champId;
+        private int size = 4;
+        private int numOfAdvisors;
+ 
+        #endregion
 
         #region Constructor
         public TicTacToeForm()
@@ -75,9 +77,10 @@ namespace TicTacToe.Client
                 isRegistered = c.RegisterClient(player1);
                 if (isRegistered)
                 {
-                    initGameInfoPanel();
+                    initGameInfoPanel(); 
                     RegisterPanel.Visible = true;
                     GameInfoPanel.Visible = true;
+                    playersComboBox.Enabled = false;
                 }
                 else
                 {
@@ -88,6 +91,17 @@ namespace TicTacToe.Client
             {
 
             }
+        }
+
+        private void abuotToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox aboutBox = new AboutBox();
+            aboutBox.Show();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void registerBtn_Click(object sender, EventArgs e)
@@ -200,13 +214,12 @@ namespace TicTacToe.Client
                     }
                 }
                 player = c.GetPlayer(playerFirstName.Text, playerLastName.Text);
-                c.AddPlayer(playerFirstName.Text, playerLastName.Text);
-
-                c.AddAdvisor(player, advisors.ToArray());
+                player1 = c.AddPlayer(playerFirstName.Text, playerLastName.Text);
+                c.AddAdvisor(player1, advisors.ToArray());
                 initGameInfoPanel();
-                RegisterPanel.Visible = false;
+                RegisterPanel.Visible = true;
                 GameInfoPanel.Visible = true;
-
+                playersComboBox.Enabled = false;
             }
         }
 
@@ -228,7 +241,6 @@ namespace TicTacToe.Client
         private void Advisor_Validating(object sender, CancelEventArgs e)
         {
             ifValidAdvisorsName = new bool[numOfAdvisors];
-
             int i = 0;
             while (i < numOfAdvisors * 2)
             {
@@ -237,7 +249,6 @@ namespace TicTacToe.Client
                     errorProvider2.Dispose();
                     ifValidAdvisorsName[i / 2] = true;
                 }
-
                 else
                 {
                     ifValidAdvisorsName[i / 2] = false;
@@ -351,8 +362,6 @@ namespace TicTacToe.Client
             }
         }
         #endregion
-
-
 
 
 

@@ -119,7 +119,7 @@
             // 
             this.GameBoardPanel.Controls.Add(this.newGameBtn);
             this.GameBoardPanel.Controls.Add(this.elementHost1);
-            this.GameBoardPanel.Location = new System.Drawing.Point(3, 3);
+            this.GameBoardPanel.Location = new System.Drawing.Point(0, 0);
             this.GameBoardPanel.Name = "GameBoardPanel";
             this.GameBoardPanel.Size = new System.Drawing.Size(677, 496);
             this.GameBoardPanel.TabIndex = 37;
@@ -540,6 +540,7 @@
             this.abuotToolStripMenuItem.Name = "abuotToolStripMenuItem";
             this.abuotToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.abuotToolStripMenuItem.Text = "Abuot Box";
+            this.abuotToolStripMenuItem.Click += new System.EventHandler(this.abuotToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -551,6 +552,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
