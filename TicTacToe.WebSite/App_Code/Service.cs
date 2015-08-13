@@ -136,7 +136,7 @@ public class Service : IService
     {
         var x =
             from p in db.Championships
-            where p.Start_date <= DateTime.Now && p.End_date >= DateTime.Now
+  //          where p.Start_date <= DateTime.Now && p.End_date >= DateTime.Now
             select p;
         return x.ToArray();
     }
@@ -356,4 +356,32 @@ public class Service : IService
         }
     }
 
+
+
+    public void UpdatePlayerChampionships(Player player)
+    {
+        bool flag = false;
+        foreach (Championship c in db.Championships)
+        {
+            foreach (PlayerToChampionship ctp in db.PlayerToChampionships)
+            {
+                if (c.Id == ctp.Championship_Id)
+                {
+                    flag = true;
+                    break;                    
+                }                     
+            }
+            if (!flag)
+            {
+                PlayerToChampionship ptc = new PlayerToChampionship();
+                ptc.Championship_Id = c.Id;
+                ptc.Player_Id = player.Id;
+                db.PlayerToChampionships.InsertOnSubmit(ptc);
+                db.SubmitChanges();
+            }
+
+        }
+            
+     
+    }
 }

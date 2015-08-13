@@ -43,6 +43,8 @@ public interface IService
 
     [OperationContract]
     Championship[] GetChampionships();
+    [OperationContract(IsOneWay=true)]
+    void UpdatePlayerChampionships(Player player);
 
     [OperationContract]
     void AddPlayerToChamp(Player player, int champId);
@@ -61,6 +63,7 @@ public interface IService
 
     [OperationContract(IsOneWay = true)]
     void removeClient();
+
 
 
 }

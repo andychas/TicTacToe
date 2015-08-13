@@ -50,6 +50,8 @@ namespace TicTacToe.Client
         #region MainForm
         private void TicTacToeForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseDataSet.Championship' table. You can move, or remove it, as needed.
+            this.championshipTableAdapter.Fill(this.databaseDataSet.Championship);
             this.StartPosition = FormStartPosition.CenterScreen;
             RegisterPanel.Visible = false;
             GameBoardPanel.Visible = false;
@@ -64,6 +66,12 @@ namespace TicTacToe.Client
             }
             advisorsTextBoxes = addAllTextBoxes();
 
+            // add championships to datagridview in gameinfo lable
+            bindingSource1.DataSource = databaseDataSet.Championship;
+            bindingNavigator1.BindingSource = bindingSource1;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -185,6 +193,12 @@ namespace TicTacToe.Client
             GameBoardPanel.Visible = true;
             GameInfoPanel.Visible = true;
             c.GameInfo(size, gameOption);
+        }
+
+        private void editTableBtn_Click(object sender, EventArgs e)
+        {
+            championshipTableAdapter.Update(databaseDataSet);
+            c.UpdatePlayerChampionships(player1);
         }
         #endregion
 

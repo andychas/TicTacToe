@@ -391,6 +391,12 @@ namespace TicTacToe.Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetChampionships", ReplyAction="http://tempuri.org/IService/GetChampionshipsResponse")]
         System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetChampionshipsAsync();
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/UpdatePlayerChampionships")]
+        void UpdatePlayerChampionships(TicTacToe.Client.ServiceReference1.Player player);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/UpdatePlayerChampionships")]
+        System.Threading.Tasks.Task UpdatePlayerChampionshipsAsync(TicTacToe.Client.ServiceReference1.Player player);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddPlayerToChamp", ReplyAction="http://tempuri.org/IService/AddPlayerToChampResponse")]
         void AddPlayerToChamp(TicTacToe.Client.ServiceReference1.Player player, int champId);
         
@@ -555,6 +561,14 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetChampionshipsAsync() {
             return base.Channel.GetChampionshipsAsync();
+        }
+        
+        public void UpdatePlayerChampionships(TicTacToe.Client.ServiceReference1.Player player) {
+            base.Channel.UpdatePlayerChampionships(player);
+        }
+        
+        public System.Threading.Tasks.Task UpdatePlayerChampionshipsAsync(TicTacToe.Client.ServiceReference1.Player player) {
+            return base.Channel.UpdatePlayerChampionshipsAsync(player);
         }
         
         public void AddPlayerToChamp(TicTacToe.Client.ServiceReference1.Player player, int champId) {
