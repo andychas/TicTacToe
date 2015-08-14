@@ -391,6 +391,12 @@ namespace TicTacToe.Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetChampionships", ReplyAction="http://tempuri.org/IService/GetChampionshipsResponse")]
         System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetChampionshipsAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetChampionshipsByPlayerId", ReplyAction="http://tempuri.org/IService/GetChampionshipsByPlayerIdResponse")]
+        TicTacToe.Client.ServiceReference1.Championship[] GetChampionshipsByPlayerId(TicTacToe.Client.ServiceReference1.Player player);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetChampionshipsByPlayerId", ReplyAction="http://tempuri.org/IService/GetChampionshipsByPlayerIdResponse")]
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetChampionshipsByPlayerIdAsync(TicTacToe.Client.ServiceReference1.Player player);
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/UpdatePlayerChampionships")]
         void UpdatePlayerChampionships(TicTacToe.Client.ServiceReference1.Player player);
         
@@ -561,6 +567,14 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetChampionshipsAsync() {
             return base.Channel.GetChampionshipsAsync();
+        }
+        
+        public TicTacToe.Client.ServiceReference1.Championship[] GetChampionshipsByPlayerId(TicTacToe.Client.ServiceReference1.Player player) {
+            return base.Channel.GetChampionshipsByPlayerId(player);
+        }
+        
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetChampionshipsByPlayerIdAsync(TicTacToe.Client.ServiceReference1.Player player) {
+            return base.Channel.GetChampionshipsByPlayerIdAsync(player);
         }
         
         public void UpdatePlayerChampionships(TicTacToe.Client.ServiceReference1.Player player) {

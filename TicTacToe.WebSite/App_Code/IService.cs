@@ -43,6 +43,10 @@ public interface IService
 
     [OperationContract]
     Championship[] GetChampionships();
+
+    [OperationContract]
+    Championship[] GetChampionshipsByPlayerId(Player player);
+    
     [OperationContract(IsOneWay=true)]
     void UpdatePlayerChampionships(Player player);
 

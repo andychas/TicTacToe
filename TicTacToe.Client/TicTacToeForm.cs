@@ -65,11 +65,12 @@ namespace TicTacToe.Client
                 AdvisorPanels.ElementAt(i).Visible = false;
             }
             advisorsTextBoxes = addAllTextBoxes();
-
+           
             // add championships to datagridview in gameinfo lable
-            bindingSource1.DataSource = databaseDataSet.Championship;
-            bindingNavigator1.BindingSource = bindingSource1;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            
+            //bindingNavigator1.BindingSource = bindingSource1;
+            //dataGridView1.DataSource = bindingSource1;
+            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             
         }
@@ -92,6 +93,8 @@ namespace TicTacToe.Client
             if (player1 != null)
             {
                 isRegistered = c.RegisterClient(player1);
+                loadGameInfoPanel();
+                //bindingSource1.DataSource = c.GetChampionshipsByPlayerId(player1);
                 if (isRegistered)
                 {
                     initGameInfoPanel(); 
@@ -179,7 +182,6 @@ namespace TicTacToe.Client
             {
                 gameboard = new GameBoardWPF(size, gameOption, player1, player2, confirmation);
                 elementHost1.Child = gameboard; 
-
             }
             else                          // vs player
             {
@@ -198,7 +200,8 @@ namespace TicTacToe.Client
         private void editTableBtn_Click(object sender, EventArgs e)
         {
             championshipTableAdapter.Update(databaseDataSet);
-            c.UpdatePlayerChampionships(player1);
+            //c.UpdatePlayerChampionships(player1);
+  
         }
         #endregion
 
@@ -242,6 +245,7 @@ namespace TicTacToe.Client
                 player = c.GetPlayer(playerFirstName.Text, playerLastName.Text);
                 player1 = c.AddPlayer(playerFirstName.Text, playerLastName.Text);
                 initGameInfoPanel();
+                loadGameInfoPanel();
                 RegisterPanel.Visible = true;
                 GameInfoPanel.Visible = true;
                 playersComboBox.Enabled = false;
@@ -337,6 +341,15 @@ namespace TicTacToe.Client
                 return false;
             }
             return true;
+        }
+
+        private void loadGameInfoPanel()
+        {
+            bindingSource1.DataSource = c.GetChampionshipsByPlayerId(player1);
+            bindingNavigator1.BindingSource = bindingSource1;
+            bindingNavigator1.BindingSource = bindingSource1;
+            dataGridView1.DataSource = bindingSource1;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         #endregion

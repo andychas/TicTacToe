@@ -26,6 +26,9 @@ public class Service : IService
  //       channel.Result(res);
     }
 
+    #region database
+
+
     public Player AddPlayer(string firstName, string lastName)
     {
         Player player = new Player();
@@ -36,57 +39,6 @@ public class Service : IService
         return player;
     }
 
-    public string NewTurn(int col, int row)
-    {
-        string res;
-        if (turn)
-            res = "X";
-        else
-            res = "O";
-        boardGame[row, col] = res;
-        return res;
-    }
-
-    public void GameInfo(int size, string option)
-    {
-        boardGame = new string[size, size];
-        boardSize = size;
-        initializeGame(boardSize);
-        if (option.Equals("computer"))
-        {
-            computerOrplayer = "computer";
-        }
-        else
-        {
-            computerOrplayer = "player";
-        }
-    }
-
-    public bool IfWinner(string sign, int row, int col)
-    {
-        if (checkRow(sign, row, col))
-        {
-            changeTurn();
-            return true;
-        }     
-        if (checkCol(sign, row, col))
-        {
-            changeTurn();
-            return true;
-        }
-        if(checkFirstDiagonal(sign, row, col))
-        {
-            changeTurn();
-            return true;
-        }
-        if (checkSecondDiagonal(sign, row, col))
-        {
-            changeTurn();
-            return true;
-        }
-        changeTurn();
-        return false;
-    }
 
     public Player GetPlayer(string firstName, string lastName)
     {
@@ -112,7 +64,6 @@ public class Service : IService
         return x.ToArray();
     }
 
-
     public void AddAdvisor(Player player, Advisor[] advisors, int gameId)
     {
         foreach (Advisor a in advisors)
@@ -136,8 +87,18 @@ public class Service : IService
     {
         var x =
             from p in db.Championships
-  //          where p.Start_date <= DateTime.Now && p.End_date >= DateTime.Now
+            where p.Start_date <= DateTime.Now && p.End_date >= DateTime.Now
             select p;
+        return x.ToArray();
+    }
+
+    public Championship[] GetChampionshipsByPlayerId(Player player)
+    {
+        var x =
+            from ptc in db.PlayerToChampionships
+            from c in db.Championships
+            where ptc.Championship_Id == c.Id && ptc.Player_Id == player.Id
+            select c;
         return x.ToArray();
     }
 
@@ -188,10 +149,64 @@ public class Service : IService
         db.SubmitChanges();
     }
 
+    #endregion
+
     #region "Game Logic"
     public void ResetGame()
     {
         initializeGame(boardSize);
+    }
+
+    public string NewTurn(int col, int row)
+    {
+        string res;
+        if (turn)
+            res = "X";
+        else
+            res = "O";
+        boardGame[row, col] = res;
+        return res;
+    }
+
+    public void GameInfo(int size, string option)
+    {
+        boardGame = new string[size, size];
+        boardSize = size;
+        initializeGame(boardSize);
+        if (option.Equals("computer"))
+        {
+            computerOrplayer = "computer";
+        }
+        else
+        {
+            computerOrplayer = "player";
+        }
+    }
+
+    public bool IfWinner(string sign, int row, int col)
+    {
+        if (checkRow(sign, row, col))
+        {
+            changeTurn();
+            return true;
+        }
+        if (checkCol(sign, row, col))
+        {
+            changeTurn();
+            return true;
+        }
+        if (checkFirstDiagonal(sign, row, col))
+        {
+            changeTurn();
+            return true;
+        }
+        if (checkSecondDiagonal(sign, row, col))
+        {
+            changeTurn();
+            return true;
+        }
+        changeTurn();
+        return false;
     }
 
     /**
@@ -384,4 +399,5 @@ public class Service : IService
             
      
     }
+
 }

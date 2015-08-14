@@ -586,6 +586,52 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IService_GetChampionshipsByPlayerId_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IService_GetChampionshipsByPlayerId_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSDualHttpBinding_IService_UpdatePlayerChampionships_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -933,6 +979,12 @@
   <wsdl:message name="IService_GetChampionships_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetChampionshipsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetChampionshipsByPlayerId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChampionshipsByPlayerId" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetChampionshipsByPlayerId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChampionshipsByPlayerIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_UpdatePlayerChampionships_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePlayerChampionships" />
   </wsdl:message>
@@ -1012,6 +1064,10 @@
     <wsdl:operation name="GetChampionships">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetChampionships" message="tns:IService_GetChampionships_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetChampionshipsResponse" message="tns:IService_GetChampionships_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChampionshipsByPlayerId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetChampionshipsByPlayerId" message="tns:IService_GetChampionshipsByPlayerId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetChampionshipsByPlayerIdResponse" message="tns:IService_GetChampionshipsByPlayerId_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdatePlayerChampionships">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdatePlayerChampionships" message="tns:IService_UpdatePlayerChampionships_InputMessage" />
@@ -1163,6 +1219,17 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSDualHttpBinding_IService_GetChampionships_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChampionshipsByPlayerId">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetChampionshipsByPlayerId" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IService_GetChampionshipsByPlayerId_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IService_GetChampionshipsByPlayerId_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
