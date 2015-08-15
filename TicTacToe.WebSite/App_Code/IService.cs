@@ -46,12 +46,21 @@ public interface IService
 
     [OperationContract]
     Championship[] GetChampionshipsByPlayerId(Player player);
+
+    [OperationContract]
+    int AddChampionship(DateTime start, DateTime end, string city);
+
+    [OperationContract]
+    void UpdateChampionship(int id, DateTime start, DateTime end, string city);
     
     [OperationContract(IsOneWay=true)]
     void UpdatePlayerChampionships(Player player);
 
     [OperationContract]
     void AddPlayerToChamp(Player player, int champId);
+
+    [OperationContract]
+    void RemovePlayerToChampionship(Player player, int champId);
 
     [OperationContract]
     int AddGame(int champId, Player player1, Player player2, int boardSize);

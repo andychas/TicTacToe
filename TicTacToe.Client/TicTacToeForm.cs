@@ -17,6 +17,7 @@ namespace TicTacToe.Client
     {
         #region Private Fields
         private ServiceClient c;
+        private DataGridViewRow row;
         private List<GroupBox> AdvisorPanels = new List<GroupBox>();
         private List<TextBox> advisorsTextBoxes = new List<TextBox>();
         private List<Advisor> advisors = new List<Advisor>();
@@ -197,12 +198,45 @@ namespace TicTacToe.Client
             c.GameInfo(size, gameOption);
         }
 
-        private void editTableBtn_Click(object sender, EventArgs e)
+        private void addBtn_Click(object sender, EventArgs e)
         {
-            championshipTableAdapter.Update(databaseDataSet);
-            //c.UpdatePlayerChampionships(player1);
-  
+            if ((!startDateText.Text.Equals("")) && (!endDateText.Text.Equals("")) && (!cityText.Text.Equals("")))
+            {
+                string city = cityText.Text.ToString();
+                DateTime startDate = DateTime.Parse(startDateText.Text.ToString());
+                DateTime endDate = DateTime.Parse(endDateText.Text.ToString());
+                int championshipId = c.AddChampionship(startDate, endDate, city);
+                c.AddPlayerToChamp(player1, championshipId);
+            }
+            loadGameInfoPanel();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            row = this.dataGridView1.Rows[e.RowIndex];
+            startDateText.Text = row.Cells["Start_Date"].Value.ToString();
+            endDateText.Text = row.Cells["End_Date"].Value.ToString();
+            cityText.Text = row.Cells["City"].Value.ToString();
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            int id = Int32.Parse(row.Cells["id"].Value.ToString());
+            c.RemovePlayerToChampionship(player1, id);
+            loadGameInfoPanel();
+        }
+
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            int id = Int32.Parse(row.Cells["id"].Value.ToString());
+            string city = cityText.Text.ToString();
+            DateTime startDate = DateTime.Parse(startDateText.Text.ToString());
+            DateTime endDate = DateTime.Parse(endDateText.Text.ToString());
+            int championshipId = c.AddChampionship(startDate, endDate, city);
+            c.UpdateChampionship(id, startDate, endDate, city);
+            loadGameInfoPanel();
+        }
+
         #endregion
 
         #region RegisterPanel
@@ -346,8 +380,8 @@ namespace TicTacToe.Client
         private void loadGameInfoPanel()
         {
             bindingSource1.DataSource = c.GetChampionshipsByPlayerId(player1);
-            bindingNavigator1.BindingSource = bindingSource1;
-            bindingNavigator1.BindingSource = bindingSource1;
+            //bindingNavigator1.BindingSource = bindingSource1;
+            //bindingNavigator1.BindingSource = bindingSource1;
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
@@ -400,6 +434,10 @@ namespace TicTacToe.Client
             }
         }
         #endregion
+
+        
+
+        
 
 
     }

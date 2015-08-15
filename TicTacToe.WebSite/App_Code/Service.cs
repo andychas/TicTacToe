@@ -102,6 +102,29 @@ public class Service : IService
         return x.ToArray();
     }
 
+    public int AddChampionship(DateTime start, DateTime end, string city)
+    {
+        Championship champ = new Championship();
+        champ.Start_date = start;
+        champ.End_date = end;
+        champ.City = city;
+        db.Championships.InsertOnSubmit(champ);
+        db.SubmitChanges();
+        return champ.Id;
+    }
+
+    public void UpdateChampionship(int id, DateTime start, DateTime end, string city)
+    {
+        var x =
+            (from c in db.Championships
+             where c.Id == id
+             select c).SingleOrDefault();
+        x.Start_date = start;
+        x.End_date = end;
+        x.City = city;
+        db.SubmitChanges();
+    }
+
     public void AddPlayerToChamp(Player player, int champId)
     {
         var x =
@@ -114,6 +137,16 @@ public class Service : IService
         playerToChamp.Player_Id = id;
         playerToChamp.Championship_Id = champId;
         db.PlayerToChampionships.InsertOnSubmit(playerToChamp);
+        db.SubmitChanges();
+    }
+
+    public void RemovePlayerToChampionship(Player player, int champId)
+    {
+        var x =
+            (from p in db.PlayerToChampionships
+             where p.Player_Id == player.Id && p.Championship_Id == champId
+             select p).ToList();
+        db.PlayerToChampionships.DeleteAllOnSubmit(x);
         db.SubmitChanges();
     }
 

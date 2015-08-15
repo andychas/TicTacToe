@@ -397,6 +397,18 @@ namespace TicTacToe.Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetChampionshipsByPlayerId", ReplyAction="http://tempuri.org/IService/GetChampionshipsByPlayerIdResponse")]
         System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetChampionshipsByPlayerIdAsync(TicTacToe.Client.ServiceReference1.Player player);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddChampionship", ReplyAction="http://tempuri.org/IService/AddChampionshipResponse")]
+        int AddChampionship(System.DateTime start, System.DateTime end, string city);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddChampionship", ReplyAction="http://tempuri.org/IService/AddChampionshipResponse")]
+        System.Threading.Tasks.Task<int> AddChampionshipAsync(System.DateTime start, System.DateTime end, string city);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateChampionship", ReplyAction="http://tempuri.org/IService/UpdateChampionshipResponse")]
+        void UpdateChampionship(int id, System.DateTime start, System.DateTime end, string city);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateChampionship", ReplyAction="http://tempuri.org/IService/UpdateChampionshipResponse")]
+        System.Threading.Tasks.Task UpdateChampionshipAsync(int id, System.DateTime start, System.DateTime end, string city);
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/UpdatePlayerChampionships")]
         void UpdatePlayerChampionships(TicTacToe.Client.ServiceReference1.Player player);
         
@@ -408,6 +420,12 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddPlayerToChamp", ReplyAction="http://tempuri.org/IService/AddPlayerToChampResponse")]
         System.Threading.Tasks.Task AddPlayerToChampAsync(TicTacToe.Client.ServiceReference1.Player player, int champId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/RemovePlayerToChampionship", ReplyAction="http://tempuri.org/IService/RemovePlayerToChampionshipResponse")]
+        void RemovePlayerToChampionship(TicTacToe.Client.ServiceReference1.Player player, int champId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/RemovePlayerToChampionship", ReplyAction="http://tempuri.org/IService/RemovePlayerToChampionshipResponse")]
+        System.Threading.Tasks.Task RemovePlayerToChampionshipAsync(TicTacToe.Client.ServiceReference1.Player player, int champId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddGame", ReplyAction="http://tempuri.org/IService/AddGameResponse")]
         int AddGame(int champId, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2, int boardSize);
@@ -577,6 +595,22 @@ namespace TicTacToe.Client.ServiceReference1 {
             return base.Channel.GetChampionshipsByPlayerIdAsync(player);
         }
         
+        public int AddChampionship(System.DateTime start, System.DateTime end, string city) {
+            return base.Channel.AddChampionship(start, end, city);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddChampionshipAsync(System.DateTime start, System.DateTime end, string city) {
+            return base.Channel.AddChampionshipAsync(start, end, city);
+        }
+        
+        public void UpdateChampionship(int id, System.DateTime start, System.DateTime end, string city) {
+            base.Channel.UpdateChampionship(id, start, end, city);
+        }
+        
+        public System.Threading.Tasks.Task UpdateChampionshipAsync(int id, System.DateTime start, System.DateTime end, string city) {
+            return base.Channel.UpdateChampionshipAsync(id, start, end, city);
+        }
+        
         public void UpdatePlayerChampionships(TicTacToe.Client.ServiceReference1.Player player) {
             base.Channel.UpdatePlayerChampionships(player);
         }
@@ -591,6 +625,14 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task AddPlayerToChampAsync(TicTacToe.Client.ServiceReference1.Player player, int champId) {
             return base.Channel.AddPlayerToChampAsync(player, champId);
+        }
+        
+        public void RemovePlayerToChampionship(TicTacToe.Client.ServiceReference1.Player player, int champId) {
+            base.Channel.RemovePlayerToChampionship(player, champId);
+        }
+        
+        public System.Threading.Tasks.Task RemovePlayerToChampionshipAsync(TicTacToe.Client.ServiceReference1.Player player, int champId) {
+            return base.Channel.RemovePlayerToChampionshipAsync(player, champId);
         }
         
         public int AddGame(int champId, TicTacToe.Client.ServiceReference1.Player player1, TicTacToe.Client.ServiceReference1.Player player2, int boardSize) {

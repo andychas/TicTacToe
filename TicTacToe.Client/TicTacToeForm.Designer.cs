@@ -29,23 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TicTacToeForm));
             this.RegisterPanel = new System.Windows.Forms.Panel();
             this.GameInfoPanel = new System.Windows.Forms.Panel();
-            this.editTableBtn = new System.Windows.Forms.Button();
+            this.GameBoardPanel = new System.Windows.Forms.Panel();
+            this.newGameBtn = new System.Windows.Forms.Button();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.cityText = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.endDateText = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.startDateText = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.updateBtn = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.addBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.playersComboBox = new System.Windows.Forms.ComboBox();
@@ -97,14 +95,10 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.championshipTableAdapter = new TicTacToe.Client.DatabaseDataSetTableAdapters.ChampionshipTableAdapter();
-            this.GameBoardPanel = new System.Windows.Forms.Panel();
-            this.newGameBtn = new System.Windows.Forms.Button();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.RegisterPanel.SuspendLayout();
             this.GameInfoPanel.SuspendLayout();
+            this.GameBoardPanel.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
-            this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.lvlGroupBox.SuspendLayout();
@@ -120,11 +114,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            this.GameBoardPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // RegisterPanel
             // 
+            this.RegisterPanel.Controls.Add(this.GameBoardPanel);
             this.RegisterPanel.Controls.Add(this.GameInfoPanel);
             this.RegisterPanel.Controls.Add(this.AdvisorGroup3);
             this.RegisterPanel.Controls.Add(this.AdvisorGroup2);
@@ -141,7 +135,6 @@
             // 
             // GameInfoPanel
             // 
-            this.GameInfoPanel.Controls.Add(this.editTableBtn);
             this.GameInfoPanel.Controls.Add(this.groupBox5);
             this.GameInfoPanel.Controls.Add(this.groupBox2);
             this.GameInfoPanel.Controls.Add(this.lvlGroupBox);
@@ -153,19 +146,44 @@
             this.GameInfoPanel.Size = new System.Drawing.Size(677, 496);
             this.GameInfoPanel.TabIndex = 4;
             // 
-            // editTableBtn
+            // GameBoardPanel
             // 
-            this.editTableBtn.Location = new System.Drawing.Point(581, 301);
-            this.editTableBtn.Name = "editTableBtn";
-            this.editTableBtn.Size = new System.Drawing.Size(75, 23);
-            this.editTableBtn.TabIndex = 39;
-            this.editTableBtn.Text = "Edit Table";
-            this.editTableBtn.UseVisualStyleBackColor = true;
-            this.editTableBtn.Click += new System.EventHandler(this.editTableBtn_Click);
+            this.GameBoardPanel.Controls.Add(this.newGameBtn);
+            this.GameBoardPanel.Controls.Add(this.elementHost1);
+            this.GameBoardPanel.Location = new System.Drawing.Point(0, 3);
+            this.GameBoardPanel.Name = "GameBoardPanel";
+            this.GameBoardPanel.Size = new System.Drawing.Size(668, 490);
+            this.GameBoardPanel.TabIndex = 40;
+            // 
+            // newGameBtn
+            // 
+            this.newGameBtn.Location = new System.Drawing.Point(518, 0);
+            this.newGameBtn.Name = "newGameBtn";
+            this.newGameBtn.Size = new System.Drawing.Size(154, 87);
+            this.newGameBtn.TabIndex = 3;
+            this.newGameBtn.Text = "New Game";
+            this.newGameBtn.UseVisualStyleBackColor = true;
+            // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(0, 6);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(500, 478);
+            this.elementHost1.TabIndex = 2;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = null;
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.bindingNavigator1);
+            this.groupBox5.Controls.Add(this.cityText);
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Controls.Add(this.endDateText);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Controls.Add(this.startDateText);
+            this.groupBox5.Controls.Add(this.label10);
+            this.groupBox5.Controls.Add(this.updateBtn);
+            this.groupBox5.Controls.Add(this.deleteBtn);
+            this.groupBox5.Controls.Add(this.addBtn);
             this.groupBox5.Controls.Add(this.dataGridView1);
             this.groupBox5.Location = new System.Drawing.Point(219, 19);
             this.groupBox5.Name = "groupBox5";
@@ -174,126 +192,92 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
             // 
-            // bindingNavigator1
+            // cityText
             // 
-            this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
-            this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(3, 16);
-            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.bindingNavigator1.Name = "bindingNavigator1";
-            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(440, 25);
-            this.bindingNavigator1.TabIndex = 13;
-            this.bindingNavigator1.Text = "bindingNavigator1";
+            this.cityText.Location = new System.Drawing.Point(340, 222);
+            this.cityText.Name = "cityText";
+            this.cityText.Size = new System.Drawing.Size(97, 20);
+            this.cityText.TabIndex = 21;
             // 
-            // bindingNavigatorAddNewItem
+            // label12
             // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(311, 225);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(24, 13);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "City";
             // 
-            // bindingNavigatorCountItem
+            // endDateText
             // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            this.endDateText.Location = new System.Drawing.Point(215, 221);
+            this.endDateText.Name = "endDateText";
+            this.endDateText.Size = new System.Drawing.Size(90, 20);
+            this.endDateText.TabIndex = 19;
             // 
-            // bindingNavigatorDeleteItem
+            // label11
             // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(157, 224);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(52, 13);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "End Date";
             // 
-            // bindingNavigatorMoveFirstItem
+            // startDateText
             // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            this.startDateText.Location = new System.Drawing.Point(61, 221);
+            this.startDateText.Name = "startDateText";
+            this.startDateText.Size = new System.Drawing.Size(87, 20);
+            this.startDateText.TabIndex = 17;
             // 
-            // bindingNavigatorMovePreviousItem
+            // label10
             // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(0, 225);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(55, 13);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Start Date";
             // 
-            // bindingNavigatorSeparator
+            // updateBtn
             // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            this.updateBtn.Location = new System.Drawing.Point(270, 19);
+            this.updateBtn.Name = "updateBtn";
+            this.updateBtn.Size = new System.Drawing.Size(75, 23);
+            this.updateBtn.TabIndex = 15;
+            this.updateBtn.Text = "Update";
+            this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
-            // bindingNavigatorPositionItem
+            // deleteBtn
             // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            this.deleteBtn.Location = new System.Drawing.Point(142, 19);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(75, 23);
+            this.deleteBtn.TabIndex = 14;
+            this.deleteBtn.Text = "Delete";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
-            // bindingNavigatorSeparator1
+            // addBtn
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.addBtn.Location = new System.Drawing.Point(15, 19);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(75, 23);
+            this.addBtn.TabIndex = 13;
+            this.addBtn.Text = "Add";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(0, 45);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(437, 231);
+            this.dataGridView1.Size = new System.Drawing.Size(437, 173);
             this.dataGridView1.TabIndex = 12;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // groupBox2
             // 
@@ -739,39 +723,11 @@
             // 
             this.championshipTableAdapter.ClearBeforeFill = true;
             // 
-            // GameBoardPanel
-            // 
-            this.GameBoardPanel.Controls.Add(this.newGameBtn);
-            this.GameBoardPanel.Controls.Add(this.elementHost1);
-            this.GameBoardPanel.Location = new System.Drawing.Point(3, 27);
-            this.GameBoardPanel.Name = "GameBoardPanel";
-            this.GameBoardPanel.Size = new System.Drawing.Size(668, 490);
-            this.GameBoardPanel.TabIndex = 40;
-            // 
-            // newGameBtn
-            // 
-            this.newGameBtn.Location = new System.Drawing.Point(518, 0);
-            this.newGameBtn.Name = "newGameBtn";
-            this.newGameBtn.Size = new System.Drawing.Size(154, 87);
-            this.newGameBtn.TabIndex = 3;
-            this.newGameBtn.Text = "New Game";
-            this.newGameBtn.UseVisualStyleBackColor = true;
-            // 
-            // elementHost1
-            // 
-            this.elementHost1.Location = new System.Drawing.Point(0, 6);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(500, 478);
-            this.elementHost1.TabIndex = 2;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = null;
-            // 
             // TicTacToeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 523);
-            this.Controls.Add(this.GameBoardPanel);
             this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.PlayBtn);
             this.Controls.Add(this.registerBtn);
@@ -785,11 +741,9 @@
             this.RegisterPanel.PerformLayout();
             this.GameInfoPanel.ResumeLayout(false);
             this.GameInfoPanel.PerformLayout();
+            this.GameBoardPanel.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
-            this.bindingNavigator1.ResumeLayout(false);
-            this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -812,7 +766,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            this.GameBoardPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -870,26 +823,22 @@
         private System.Windows.Forms.ComboBox ChampComboBox;
         private System.Windows.Forms.Label playerName;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.BindingNavigator bindingNavigator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.BindingSource bindingSource1;
         private DatabaseDataSet databaseDataSet;
         private System.Windows.Forms.BindingSource championshipBindingSource;
         private DatabaseDataSetTableAdapters.ChampionshipTableAdapter championshipTableAdapter;
-        private System.Windows.Forms.Button editTableBtn;
         private System.Windows.Forms.Panel GameBoardPanel;
         private System.Windows.Forms.Button newGameBtn;
         private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private System.Windows.Forms.Button updateBtn;
+        private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Button addBtn;
+        private System.Windows.Forms.TextBox cityText;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox endDateText;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox startDateText;
+        private System.Windows.Forms.Label label10;
 
 
 
