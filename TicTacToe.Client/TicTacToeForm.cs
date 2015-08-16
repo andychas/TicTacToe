@@ -114,6 +114,33 @@ namespace TicTacToe.Client
             }
         }
 
+        private void registerBtn_Click(object sender, EventArgs e)
+        {
+            RegisterPanel.Visible = true;
+        }
+
+        #endregion
+
+        #region Menu
+
+        private void allPlayersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AllPlayers allPlayersForm = new AllPlayers();
+            allPlayersForm.Show();
+        }
+
+        private void allGamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AllGamesForm games = new AllGamesForm();
+            games.Show();
+        }
+
+        private void allChampionshipsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AllChampionshipsForm championshipsForm = new AllChampionshipsForm();
+            championshipsForm.Show();
+        }
+
         private void abuotToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutBox aboutBox = new AboutBox();
@@ -125,12 +152,8 @@ namespace TicTacToe.Client
             Application.Exit();
         }
 
-        private void registerBtn_Click(object sender, EventArgs e)
-        {
-            RegisterPanel.Visible = true;
-        }
-
         #endregion
+
 
         #region GameBoardPanel
         private void newGameBtn_Click(object sender, EventArgs e)
@@ -329,8 +352,6 @@ namespace TicTacToe.Client
             foreach (Player player in players)
             {
                 comboBox1.Items.Add(player.First_Name + " " + player.Last_Name);
-
-
             }
         }
 
@@ -380,8 +401,6 @@ namespace TicTacToe.Client
         private void loadGameInfoPanel()
         {
             bindingSource1.DataSource = c.GetChampionshipsByPlayerId(player1);
-            //bindingNavigator1.BindingSource = bindingSource1;
-            //bindingNavigator1.BindingSource = bindingSource1;
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
@@ -434,6 +453,12 @@ namespace TicTacToe.Client
             }
         }
         #endregion
+
+        
+
+        
+
+        
 
         
 

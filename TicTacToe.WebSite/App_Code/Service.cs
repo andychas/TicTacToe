@@ -61,6 +61,7 @@ public class Service : IService
         var x =
             from p in db.Players
             select p;
+        //select new Player { Id = p.Id, First_Name = p.First_Name, Last_Name = p.Last_Name };
         return x.ToArray();
     }
 
@@ -113,6 +114,14 @@ public class Service : IService
         return champ.Id;
     }
 
+    public Championship[] GetAllChampionships()
+    {
+        var x =
+            from c in db.Championships
+            select c;
+        return x.ToArray();
+    }
+
     public void UpdateChampionship(int id, DateTime start, DateTime end, string city)
     {
         var x =
@@ -148,6 +157,14 @@ public class Service : IService
              select p).ToList();
         db.PlayerToChampionships.DeleteAllOnSubmit(x);
         db.SubmitChanges();
+    }
+
+    public Game[] GetGames()
+    {
+        var x =
+            from g in db.Games
+            select g;
+        return x.ToArray();
     }
 
     // Add game to database and return gameId

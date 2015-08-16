@@ -15,6 +15,23 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPlayer" nillable="true" type="tns:ArrayOfPlayer" />
+  <xs:complexType name="ArrayOfGame">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Game" nillable="true" type="tns:Game" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGame" nillable="true" type="tns:ArrayOfGame" />
+  <xs:complexType name="Game">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Board_Size" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Chapmpionship" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Player1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Player2" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Game" nillable="true" type="tns:Game" />
   <xs:complexType name="ArrayOfAdvisor">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Advisor" nillable="true" type="tns:Advisor" />

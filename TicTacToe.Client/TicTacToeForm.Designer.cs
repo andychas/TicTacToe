@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.RegisterPanel = new System.Windows.Forms.Panel();
-            this.GameInfoPanel = new System.Windows.Forms.Panel();
             this.GameBoardPanel = new System.Windows.Forms.Panel();
             this.newGameBtn = new System.Windows.Forms.Button();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.GameInfoPanel = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cityText = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -89,15 +89,19 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.dBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allPlayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerBtn = new System.Windows.Forms.Button();
             this.PlayBtn = new System.Windows.Forms.Button();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.championshipTableAdapter = new TicTacToe.Client.DatabaseDataSetTableAdapters.ChampionshipTableAdapter();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.allGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allChampionshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RegisterPanel.SuspendLayout();
-            this.GameInfoPanel.SuspendLayout();
             this.GameBoardPanel.SuspendLayout();
+            this.GameInfoPanel.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -133,19 +137,6 @@
             this.RegisterPanel.Size = new System.Drawing.Size(677, 496);
             this.RegisterPanel.TabIndex = 18;
             // 
-            // GameInfoPanel
-            // 
-            this.GameInfoPanel.Controls.Add(this.groupBox5);
-            this.GameInfoPanel.Controls.Add(this.groupBox2);
-            this.GameInfoPanel.Controls.Add(this.lvlGroupBox);
-            this.GameInfoPanel.Controls.Add(this.StartGameBtn);
-            this.GameInfoPanel.Controls.Add(this.groupBox3);
-            this.GameInfoPanel.Controls.Add(this.playerName);
-            this.GameInfoPanel.Location = new System.Drawing.Point(3, 3);
-            this.GameInfoPanel.Name = "GameInfoPanel";
-            this.GameInfoPanel.Size = new System.Drawing.Size(677, 496);
-            this.GameInfoPanel.TabIndex = 4;
-            // 
             // GameBoardPanel
             // 
             this.GameBoardPanel.Controls.Add(this.newGameBtn);
@@ -172,6 +163,19 @@
             this.elementHost1.TabIndex = 2;
             this.elementHost1.Text = "elementHost1";
             this.elementHost1.Child = null;
+            // 
+            // GameInfoPanel
+            // 
+            this.GameInfoPanel.Controls.Add(this.groupBox5);
+            this.GameInfoPanel.Controls.Add(this.groupBox2);
+            this.GameInfoPanel.Controls.Add(this.lvlGroupBox);
+            this.GameInfoPanel.Controls.Add(this.StartGameBtn);
+            this.GameInfoPanel.Controls.Add(this.groupBox3);
+            this.GameInfoPanel.Controls.Add(this.playerName);
+            this.GameInfoPanel.Location = new System.Drawing.Point(3, 3);
+            this.GameInfoPanel.Name = "GameInfoPanel";
+            this.GameInfoPanel.Size = new System.Drawing.Size(677, 496);
+            this.GameInfoPanel.TabIndex = 4;
             // 
             // groupBox5
             // 
@@ -684,12 +688,30 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.dBToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(677, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // dBToolStripMenuItem
+            // 
+            this.dBToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.allPlayersToolStripMenuItem,
+            this.allGamesToolStripMenuItem,
+            this.allChampionshipsToolStripMenuItem});
+            this.dBToolStripMenuItem.Name = "dBToolStripMenuItem";
+            this.dBToolStripMenuItem.Size = new System.Drawing.Size(34, 20);
+            this.dBToolStripMenuItem.Text = "DB";
+            // 
+            // allPlayersToolStripMenuItem
+            // 
+            this.allPlayersToolStripMenuItem.Name = "allPlayersToolStripMenuItem";
+            this.allPlayersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.allPlayersToolStripMenuItem.Text = "All players";
+            this.allPlayersToolStripMenuItem.Click += new System.EventHandler(this.allPlayersToolStripMenuItem_Click);
             // 
             // registerBtn
             // 
@@ -723,6 +745,20 @@
             // 
             this.championshipTableAdapter.ClearBeforeFill = true;
             // 
+            // allGamesToolStripMenuItem
+            // 
+            this.allGamesToolStripMenuItem.Name = "allGamesToolStripMenuItem";
+            this.allGamesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.allGamesToolStripMenuItem.Text = "All games";
+            this.allGamesToolStripMenuItem.Click += new System.EventHandler(this.allGamesToolStripMenuItem_Click);
+            // 
+            // allChampionshipsToolStripMenuItem
+            // 
+            this.allChampionshipsToolStripMenuItem.Name = "allChampionshipsToolStripMenuItem";
+            this.allChampionshipsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.allChampionshipsToolStripMenuItem.Text = "All championships";
+            this.allChampionshipsToolStripMenuItem.Click += new System.EventHandler(this.allChampionshipsToolStripMenuItem_Click);
+            // 
             // TicTacToeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -739,9 +775,9 @@
             this.Load += new System.EventHandler(this.TicTacToeForm_Load);
             this.RegisterPanel.ResumeLayout(false);
             this.RegisterPanel.PerformLayout();
+            this.GameBoardPanel.ResumeLayout(false);
             this.GameInfoPanel.ResumeLayout(false);
             this.GameInfoPanel.PerformLayout();
-            this.GameBoardPanel.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -839,6 +875,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox startDateText;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ToolStripMenuItem dBToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allPlayersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allGamesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allChampionshipsToolStripMenuItem;
 
 
 

@@ -61,6 +61,24 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="AllChampionshipsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllChampionshipsForm.Designer.cs">
+      <DependentUpon>AllChampionshipsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AllGamesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllGamesForm.Designer.cs">
+      <DependentUpon>AllGamesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AllPlayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllPlayers.Designer.cs">
+      <DependentUpon>AllPlayers.cs</DependentUpon>
+    </Compile>
     <Compile Include="classes\Class1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -88,6 +106,15 @@
     </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllChampionshipsForm.resx">
+      <DependentUpon>AllChampionshipsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllGamesForm.resx">
+      <DependentUpon>AllGamesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllPlayers.resx">
+      <DependentUpon>AllPlayers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="classes\Class1.resx">
       <DependentUpon>Class1.cs</DependentUpon>
@@ -138,6 +165,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference1\TicTacToe.Client.ServiceReference1.Championship.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\TicTacToe.Client.ServiceReference1.Game.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference1\TicTacToe.Client.ServiceReference1.Player.datasource">

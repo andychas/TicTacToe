@@ -92,6 +92,131 @@ namespace TicTacToe.Client.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Game", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.SerializableAttribute()]
+    public partial class Game : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Board_SizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ChapmpionshipField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Player1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Player2Field;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Board_Size {
+            get {
+                return this.Board_SizeField;
+            }
+            set {
+                if ((this.Board_SizeField.Equals(value) != true)) {
+                    this.Board_SizeField = value;
+                    this.RaisePropertyChanged("Board_Size");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Chapmpionship {
+            get {
+                return this.ChapmpionshipField;
+            }
+            set {
+                if ((this.ChapmpionshipField.Equals(value) != true)) {
+                    this.ChapmpionshipField = value;
+                    this.RaisePropertyChanged("Chapmpionship");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((this.DateField.Equals(value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Player1 {
+            get {
+                return this.Player1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Player1Field, value) != true)) {
+                    this.Player1Field = value;
+                    this.RaisePropertyChanged("Player1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Player2 {
+            get {
+                return this.Player2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Player2Field, value) != true)) {
+                    this.Player2Field = value;
+                    this.RaisePropertyChanged("Player2");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Advisor", Namespace="http://schemas.datacontract.org/2004/07/")]
     [System.SerializableAttribute()]
     public partial class Advisor : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -379,6 +504,12 @@ namespace TicTacToe.Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayers", ReplyAction="http://tempuri.org/IService/GetPlayersResponse")]
         System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player[]> GetPlayersAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGames", ReplyAction="http://tempuri.org/IService/GetGamesResponse")]
+        TicTacToe.Client.ServiceReference1.Game[] GetGames();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGames", ReplyAction="http://tempuri.org/IService/GetGamesResponse")]
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Game[]> GetGamesAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddAdvisor", ReplyAction="http://tempuri.org/IService/AddAdvisorResponse")]
         void AddAdvisor(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors, int gameId);
         
@@ -390,6 +521,12 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetChampionships", ReplyAction="http://tempuri.org/IService/GetChampionshipsResponse")]
         System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetChampionshipsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllChampionships", ReplyAction="http://tempuri.org/IService/GetAllChampionshipsResponse")]
+        TicTacToe.Client.ServiceReference1.Championship[] GetAllChampionships();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllChampionships", ReplyAction="http://tempuri.org/IService/GetAllChampionshipsResponse")]
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetAllChampionshipsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetChampionshipsByPlayerId", ReplyAction="http://tempuri.org/IService/GetChampionshipsByPlayerIdResponse")]
         TicTacToe.Client.ServiceReference1.Championship[] GetChampionshipsByPlayerId(TicTacToe.Client.ServiceReference1.Player player);
@@ -571,6 +708,14 @@ namespace TicTacToe.Client.ServiceReference1 {
             return base.Channel.GetPlayersAsync();
         }
         
+        public TicTacToe.Client.ServiceReference1.Game[] GetGames() {
+            return base.Channel.GetGames();
+        }
+        
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Game[]> GetGamesAsync() {
+            return base.Channel.GetGamesAsync();
+        }
+        
         public void AddAdvisor(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors, int gameId) {
             base.Channel.AddAdvisor(player, advisors, gameId);
         }
@@ -585,6 +730,14 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetChampionshipsAsync() {
             return base.Channel.GetChampionshipsAsync();
+        }
+        
+        public TicTacToe.Client.ServiceReference1.Championship[] GetAllChampionships() {
+            return base.Channel.GetAllChampionships();
+        }
+        
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetAllChampionshipsAsync() {
+            return base.Channel.GetAllChampionshipsAsync();
         }
         
         public TicTacToe.Client.ServiceReference1.Championship[] GetChampionshipsByPlayerId(TicTacToe.Client.ServiceReference1.Player player) {

@@ -39,10 +39,16 @@ public interface IService
     Player[] GetPlayers();
 
     [OperationContract]
+    Game[] GetGames();
+
+    [OperationContract]
     void AddAdvisor(Player player, Advisor[] advisors, int gameId);
 
     [OperationContract]
     Championship[] GetChampionships();
+
+    [OperationContract]
+    Championship[] GetAllChampionships();
 
     [OperationContract]
     Championship[] GetChampionshipsByPlayerId(Player player);

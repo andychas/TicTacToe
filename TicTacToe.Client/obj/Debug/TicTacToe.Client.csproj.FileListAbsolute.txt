@@ -60,3 +60,6 @@ C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Clien
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client_Content.g.cs
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.classes.Class1.resources
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.TicTacToeForm.resources
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.AllPlayers.resources
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.AllGamesForm.resources
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.AllChampionshipsForm.resources
