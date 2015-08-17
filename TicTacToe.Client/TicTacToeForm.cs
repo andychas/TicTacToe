@@ -85,7 +85,7 @@ namespace TicTacToe.Client
         {
             bool isRegistered;
             string[] playerInfo = comboBox1.Text.Split(' ');
-            player1 = c.GetPlayer(playerInfo[0], playerInfo[1]);
+            player1 = c.GetPlayer(playerInfo[1], playerInfo[2]);
             if (player1 != null)
             {
                 isRegistered = c.RegisterClient(player1);
