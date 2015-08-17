@@ -67,11 +67,6 @@ namespace TicTacToe.Client
             }
             advisorsTextBoxes = addAllTextBoxes();
            
-            // add championships to datagridview in gameinfo lable
-            
-            //bindingNavigator1.BindingSource = bindingSource1;
-            //dataGridView1.DataSource = bindingSource1;
-            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             
         }
@@ -95,7 +90,6 @@ namespace TicTacToe.Client
             {
                 isRegistered = c.RegisterClient(player1);
                 loadGameInfoPanel();
-                //bindingSource1.DataSource = c.GetChampionshipsByPlayerId(player1);
                 if (isRegistered)
                 {
                     initGameInfoPanel(); 
@@ -139,6 +133,18 @@ namespace TicTacToe.Client
         {
             AllChampionshipsForm championshipsForm = new AllChampionshipsForm();
             championshipsForm.Show();
+        }
+
+        private void allPlayerGamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GameForPlayerForm form = new GameForPlayerForm();
+            form.Show();
+        }
+
+        private void allPlayerChampionshipsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChampForPlayerForm form = new ChampForPlayerForm();
+            form.Show();
         }
 
         private void abuotToolStripMenuItem_Click(object sender, EventArgs e)
@@ -351,7 +357,7 @@ namespace TicTacToe.Client
             Player[] players = c.GetPlayers();
             foreach (Player player in players)
             {
-                comboBox1.Items.Add(player.First_Name + " " + player.Last_Name);
+                comboBox1.Items.Add(player.Id + " " + player.First_Name + " " + player.Last_Name);
             }
         }
 
@@ -453,14 +459,6 @@ namespace TicTacToe.Client
             }
         }
         #endregion
-
-        
-
-        
-
-        
-
-        
 
         
 

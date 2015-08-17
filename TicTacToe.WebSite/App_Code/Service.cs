@@ -28,7 +28,9 @@ public class Service : IService
 
     #region database
 
-
+    /**
+     * Add Player to Players teble 
+     */
     public Player AddPlayer(string firstName, string lastName)
     {
         Player player = new Player();
@@ -39,7 +41,9 @@ public class Service : IService
         return player;
     }
 
-
+    /**
+     * return Player by first name and last name
+     */
     public Player GetPlayer(string firstName, string lastName)
     {
         var x =
@@ -56,12 +60,14 @@ public class Service : IService
         }
     }
 
+    /**
+     * return all players
+     */
     public Player[] GetPlayers()
     {
         var x =
             from p in db.Players
             select p;
-        //select new Player { Id = p.Id, First_Name = p.First_Name, Last_Name = p.Last_Name };
         return x.ToArray();
     }
 
@@ -167,6 +173,16 @@ public class Service : IService
         return x.ToArray();
     }
 
+    public Game[] GetPlayerGames(Player player)
+    {
+        var x =
+            from g in db.Games
+            where g.Player1.Equals(player.First_Name + " " + player.Last_Name) ||
+            g.Player2.Equals(player.First_Name + " " + player.Last_Name)
+            select g;
+        return x.ToArray();
+    }
+
     // Add game to database and return gameId
     public int AddGame(int champId, Player player1, Player player2, int boardSize)
     {
@@ -186,7 +202,6 @@ public class Service : IService
         db.Games.InsertOnSubmit(game);
         db.SubmitChanges();
         return game.Id;
-
     }
 
 
@@ -450,4 +465,13 @@ public class Service : IService
      
     }
 
+
+
+
+
+
+
+
+
+    
 }

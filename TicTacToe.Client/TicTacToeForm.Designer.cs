@@ -91,14 +91,16 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allPlayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allChampionshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allPlayerGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerBtn = new System.Windows.Forms.Button();
             this.PlayBtn = new System.Windows.Forms.Button();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.championshipTableAdapter = new TicTacToe.Client.DatabaseDataSetTableAdapters.ChampionshipTableAdapter();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.allGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.allChampionshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allPlayerChampionshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RegisterPanel.SuspendLayout();
             this.GameBoardPanel.SuspendLayout();
             this.GameInfoPanel.SuspendLayout();
@@ -701,7 +703,9 @@
             this.dBToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.allPlayersToolStripMenuItem,
             this.allGamesToolStripMenuItem,
-            this.allChampionshipsToolStripMenuItem});
+            this.allChampionshipsToolStripMenuItem,
+            this.allPlayerGamesToolStripMenuItem,
+            this.allPlayerChampionshipsToolStripMenuItem});
             this.dBToolStripMenuItem.Name = "dBToolStripMenuItem";
             this.dBToolStripMenuItem.Size = new System.Drawing.Size(34, 20);
             this.dBToolStripMenuItem.Text = "DB";
@@ -709,9 +713,30 @@
             // allPlayersToolStripMenuItem
             // 
             this.allPlayersToolStripMenuItem.Name = "allPlayersToolStripMenuItem";
-            this.allPlayersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.allPlayersToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.allPlayersToolStripMenuItem.Text = "All players";
             this.allPlayersToolStripMenuItem.Click += new System.EventHandler(this.allPlayersToolStripMenuItem_Click);
+            // 
+            // allGamesToolStripMenuItem
+            // 
+            this.allGamesToolStripMenuItem.Name = "allGamesToolStripMenuItem";
+            this.allGamesToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.allGamesToolStripMenuItem.Text = "All games";
+            this.allGamesToolStripMenuItem.Click += new System.EventHandler(this.allGamesToolStripMenuItem_Click);
+            // 
+            // allChampionshipsToolStripMenuItem
+            // 
+            this.allChampionshipsToolStripMenuItem.Name = "allChampionshipsToolStripMenuItem";
+            this.allChampionshipsToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.allChampionshipsToolStripMenuItem.Text = "All championships";
+            this.allChampionshipsToolStripMenuItem.Click += new System.EventHandler(this.allChampionshipsToolStripMenuItem_Click);
+            // 
+            // allPlayerGamesToolStripMenuItem
+            // 
+            this.allPlayerGamesToolStripMenuItem.Name = "allPlayerGamesToolStripMenuItem";
+            this.allPlayerGamesToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.allPlayerGamesToolStripMenuItem.Text = "All player games";
+            this.allPlayerGamesToolStripMenuItem.Click += new System.EventHandler(this.allPlayerGamesToolStripMenuItem_Click);
             // 
             // registerBtn
             // 
@@ -745,19 +770,12 @@
             // 
             this.championshipTableAdapter.ClearBeforeFill = true;
             // 
-            // allGamesToolStripMenuItem
+            // allPlayerChampionshipsToolStripMenuItem
             // 
-            this.allGamesToolStripMenuItem.Name = "allGamesToolStripMenuItem";
-            this.allGamesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.allGamesToolStripMenuItem.Text = "All games";
-            this.allGamesToolStripMenuItem.Click += new System.EventHandler(this.allGamesToolStripMenuItem_Click);
-            // 
-            // allChampionshipsToolStripMenuItem
-            // 
-            this.allChampionshipsToolStripMenuItem.Name = "allChampionshipsToolStripMenuItem";
-            this.allChampionshipsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.allChampionshipsToolStripMenuItem.Text = "All championships";
-            this.allChampionshipsToolStripMenuItem.Click += new System.EventHandler(this.allChampionshipsToolStripMenuItem_Click);
+            this.allPlayerChampionshipsToolStripMenuItem.Name = "allPlayerChampionshipsToolStripMenuItem";
+            this.allPlayerChampionshipsToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.allPlayerChampionshipsToolStripMenuItem.Text = "All player championships";
+            this.allPlayerChampionshipsToolStripMenuItem.Click += new System.EventHandler(this.allPlayerChampionshipsToolStripMenuItem_Click);
             // 
             // TicTacToeForm
             // 
@@ -879,6 +897,8 @@
         private System.Windows.Forms.ToolStripMenuItem allPlayersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem allGamesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem allChampionshipsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allPlayerGamesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allPlayerChampionshipsToolStripMenuItem;
 
 
 

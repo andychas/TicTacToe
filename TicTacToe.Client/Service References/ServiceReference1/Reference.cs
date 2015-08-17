@@ -510,6 +510,12 @@ namespace TicTacToe.Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGames", ReplyAction="http://tempuri.org/IService/GetGamesResponse")]
         System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Game[]> GetGamesAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayerGames", ReplyAction="http://tempuri.org/IService/GetPlayerGamesResponse")]
+        TicTacToe.Client.ServiceReference1.Game[] GetPlayerGames(TicTacToe.Client.ServiceReference1.Player player);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayerGames", ReplyAction="http://tempuri.org/IService/GetPlayerGamesResponse")]
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Game[]> GetPlayerGamesAsync(TicTacToe.Client.ServiceReference1.Player player);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddAdvisor", ReplyAction="http://tempuri.org/IService/AddAdvisorResponse")]
         void AddAdvisor(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors, int gameId);
         
@@ -714,6 +720,14 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Game[]> GetGamesAsync() {
             return base.Channel.GetGamesAsync();
+        }
+        
+        public TicTacToe.Client.ServiceReference1.Game[] GetPlayerGames(TicTacToe.Client.ServiceReference1.Player player) {
+            return base.Channel.GetPlayerGames(player);
+        }
+        
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Game[]> GetPlayerGamesAsync(TicTacToe.Client.ServiceReference1.Player player) {
+            return base.Channel.GetPlayerGamesAsync(player);
         }
         
         public void AddAdvisor(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors, int gameId) {

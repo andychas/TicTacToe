@@ -16,8 +16,7 @@ public interface IService
     [OperationContract(IsOneWay = true)]
     void GetData(string x, string y);
 
-    [OperationContract]
-    
+    [OperationContract]  
     Player AddPlayer(string firstName, string lastName);
 
     [OperationContract]
@@ -40,6 +39,9 @@ public interface IService
 
     [OperationContract]
     Game[] GetGames();
+
+    [OperationContract]
+    Game[] GetPlayerGames(Player player);
 
     [OperationContract]
     void AddAdvisor(Player player, Advisor[] advisors, int gameId);
@@ -82,7 +84,5 @@ public interface IService
 
     [OperationContract(IsOneWay = true)]
     void removeClient();
-
-
 
 }
