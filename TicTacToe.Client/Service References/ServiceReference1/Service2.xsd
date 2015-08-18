@@ -62,4 +62,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Championship" nillable="true" type="tns:Championship" />
+  <xs:complexType name="CustomChampionship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="numOfChamp" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomChampionship" nillable="true" type="tns:CustomChampionship" />
+  <xs:complexType name="CustomPlayer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="numOfGames" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomPlayer" nillable="true" type="tns:CustomPlayer" />
 </xs:schema>

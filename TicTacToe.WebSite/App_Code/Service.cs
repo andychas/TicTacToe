@@ -63,10 +63,62 @@ public class Service : IService
     /**
      * return all players
      */
+
     public Player[] GetPlayers()
     {
         var x =
             from p in db.Players
+            select p;
+        return x.ToArray();
+    }
+
+    /**
+     * return all players played in the this game
+     */
+    public Player[] GetAllGamePlayer(string gameId)
+    {
+        var x =
+            (from g in db.Games
+             where g.Id == Convert.ToInt32(gameId)
+             select g).ToArray().SingleOrDefault();
+        string firstNameP1 = x.Player1.Substring(0, x.Player1.IndexOf(" "));
+        string lastNameP1;
+        try
+        {
+            lastNameP1 = x.Player1.Substring(x.Player1.IndexOf(" "), x.Player1.Length);
+        }
+        catch
+        {
+            lastNameP1 = "";
+        }
+
+        string firstNameP2 = x.Player2.Substring(0, x.Player2.IndexOf(" "));
+        string lastNameP2;
+        try
+        {
+            lastNameP2 = x.Player2.Substring(x.Player2.IndexOf(" "), x.Player2.Length);
+        }
+        catch
+        {
+            lastNameP2 = "";
+        }
+        Player p1 = GetPlayer(firstNameP1, lastNameP1);
+        Player p2 = GetPlayer(firstNameP2, lastNameP2);
+        List<Player> players = new List<Player>();
+        players.Add(p1);
+        players.Add(p2);
+        return players.ToArray();
+    }
+
+    /**
+     * return all players played in this championship
+     */
+    public Player[] GetPlayersByChampionshipId(int champId)
+    {
+        var x =
+            from ptc in db.PlayerToChampionships
+            from p in db.Players
+            where ptc.Championship_Id == champId && ptc.Player_Id == p.Id
             select p;
         return x.ToArray();
     }
@@ -128,6 +180,32 @@ public class Service : IService
         return x.ToArray();
     }
 
+    public string[] GetAllCities()
+    {
+        var x =
+            (from c in db.Championships.Distinct()
+            select c.City).Distinct();
+        return x.ToArray();
+    }
+
+    public CustomChampionship GetNumOfChampionships(string city)
+    {
+        var x =
+            (from c in db.Championships
+            where c.City.Equals(city) && DateTime.Now > c.Start_date
+            select c).Count();
+        return new CustomChampionship { city = city, numOfChamp = x };
+    }
+
+    public CustomPlayer GetNumOfGames(string name)
+    {
+        var x =
+            (from g in db.Games
+            where g.Player1.Equals(name) || g.Player2.Equals(name)
+            select g).Count();
+        return new CustomPlayer { name = name, numOfGames = x };
+    }
+
     public void UpdateChampionship(int id, DateTime start, DateTime end, string city)
     {
         var x =
@@ -165,6 +243,9 @@ public class Service : IService
         db.SubmitChanges();
     }
 
+    /**
+     * return all games
+     */
     public Game[] GetGames()
     {
         var x =
@@ -173,6 +254,9 @@ public class Service : IService
         return x.ToArray();
     }
 
+    /**
+     * return all games for this player
+     */
     public Game[] GetPlayerGames(Player player)
     {
         var x =
@@ -183,7 +267,9 @@ public class Service : IService
         return x.ToArray();
     }
 
-    // Add game to database and return gameId
+    /**
+     * Add game to database and return gameId
+     */
     public int AddGame(int champId, Player player1, Player player2, int boardSize)
     {
         Game game = new Game();
@@ -192,7 +278,7 @@ public class Service : IService
         game.Player1 = player1.First_Name + " " + player1.Last_Name;
         if (player2 == null)
         {
-            game.Player2 = "computer";
+            game.Player2 = "computer ";
         }
         else
         {
@@ -203,7 +289,6 @@ public class Service : IService
         db.SubmitChanges();
         return game.Id;
     }
-
 
     public void AddGameToPlayer(int gameId, Player player)
     {
@@ -465,13 +550,4 @@ public class Service : IService
      
     }
 
-
-
-
-
-
-
-
-
-    
 }

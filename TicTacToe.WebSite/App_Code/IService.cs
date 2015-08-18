@@ -38,6 +38,9 @@ public interface IService
     Player[] GetPlayers();
 
     [OperationContract]
+    Player[] GetAllGamePlayer(string gameId);
+
+    [OperationContract]
     Game[] GetGames();
 
     [OperationContract]
@@ -54,6 +57,18 @@ public interface IService
 
     [OperationContract]
     Championship[] GetChampionshipsByPlayerId(Player player);
+
+    [OperationContract]
+    Player[] GetPlayersByChampionshipId(int champId);
+
+    [OperationContract]
+    string[] GetAllCities();
+
+    [OperationContract]
+    CustomChampionship GetNumOfChampionships(string city);
+
+    [OperationContract]
+    CustomPlayer GetNumOfGames(string name);
 
     [OperationContract]
     int AddChampionship(DateTime start, DateTime end, string city);

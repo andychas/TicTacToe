@@ -147,6 +147,30 @@ namespace TicTacToe.Client
             form.Show();
         }
 
+        private void allPlayersInGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PlayerForGameForm form = new PlayerForGameForm();
+            form.Show();
+        }
+
+        private void allPlayersInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PlayersForChampForm form = new PlayersForChampForm();
+            form.Show();
+        }
+
+        private void numberOfChampionshipsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NumOfChampForm form = new NumOfChampForm();
+            form.Show();
+        }
+
+        private void numberOfGamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NumOfGamesForm form = new NumOfGamesForm();
+            form.Show();
+        }
+
         private void abuotToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutBox aboutBox = new AboutBox();
@@ -461,7 +485,6 @@ namespace TicTacToe.Client
         #endregion
 
         
-
 
     }
 }

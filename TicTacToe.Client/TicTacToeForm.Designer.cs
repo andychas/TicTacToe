@@ -94,13 +94,17 @@
             this.allGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allChampionshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allPlayerGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allPlayerChampionshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allPlayersInGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allPlayersInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.numberOfChampionshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerBtn = new System.Windows.Forms.Button();
             this.PlayBtn = new System.Windows.Forms.Button();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.championshipTableAdapter = new TicTacToe.Client.DatabaseDataSetTableAdapters.ChampionshipTableAdapter();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.allPlayerChampionshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.numberOfGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RegisterPanel.SuspendLayout();
             this.GameBoardPanel.SuspendLayout();
             this.GameInfoPanel.SuspendLayout();
@@ -705,7 +709,11 @@
             this.allGamesToolStripMenuItem,
             this.allChampionshipsToolStripMenuItem,
             this.allPlayerGamesToolStripMenuItem,
-            this.allPlayerChampionshipsToolStripMenuItem});
+            this.allPlayerChampionshipsToolStripMenuItem,
+            this.allPlayersInGameToolStripMenuItem,
+            this.allPlayersInToolStripMenuItem,
+            this.numberOfChampionshipsToolStripMenuItem,
+            this.numberOfGamesToolStripMenuItem});
             this.dBToolStripMenuItem.Name = "dBToolStripMenuItem";
             this.dBToolStripMenuItem.Size = new System.Drawing.Size(34, 20);
             this.dBToolStripMenuItem.Text = "DB";
@@ -713,30 +721,58 @@
             // allPlayersToolStripMenuItem
             // 
             this.allPlayersToolStripMenuItem.Name = "allPlayersToolStripMenuItem";
-            this.allPlayersToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.allPlayersToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.allPlayersToolStripMenuItem.Text = "All players";
             this.allPlayersToolStripMenuItem.Click += new System.EventHandler(this.allPlayersToolStripMenuItem_Click);
             // 
             // allGamesToolStripMenuItem
             // 
             this.allGamesToolStripMenuItem.Name = "allGamesToolStripMenuItem";
-            this.allGamesToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.allGamesToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.allGamesToolStripMenuItem.Text = "All games";
             this.allGamesToolStripMenuItem.Click += new System.EventHandler(this.allGamesToolStripMenuItem_Click);
             // 
             // allChampionshipsToolStripMenuItem
             // 
             this.allChampionshipsToolStripMenuItem.Name = "allChampionshipsToolStripMenuItem";
-            this.allChampionshipsToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.allChampionshipsToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.allChampionshipsToolStripMenuItem.Text = "All championships";
             this.allChampionshipsToolStripMenuItem.Click += new System.EventHandler(this.allChampionshipsToolStripMenuItem_Click);
             // 
             // allPlayerGamesToolStripMenuItem
             // 
             this.allPlayerGamesToolStripMenuItem.Name = "allPlayerGamesToolStripMenuItem";
-            this.allPlayerGamesToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.allPlayerGamesToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.allPlayerGamesToolStripMenuItem.Text = "All player games";
             this.allPlayerGamesToolStripMenuItem.Click += new System.EventHandler(this.allPlayerGamesToolStripMenuItem_Click);
+            // 
+            // allPlayerChampionshipsToolStripMenuItem
+            // 
+            this.allPlayerChampionshipsToolStripMenuItem.Name = "allPlayerChampionshipsToolStripMenuItem";
+            this.allPlayerChampionshipsToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.allPlayerChampionshipsToolStripMenuItem.Text = "All player championships";
+            this.allPlayerChampionshipsToolStripMenuItem.Click += new System.EventHandler(this.allPlayerChampionshipsToolStripMenuItem_Click);
+            // 
+            // allPlayersInGameToolStripMenuItem
+            // 
+            this.allPlayersInGameToolStripMenuItem.Name = "allPlayersInGameToolStripMenuItem";
+            this.allPlayersInGameToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.allPlayersInGameToolStripMenuItem.Text = "All players in game";
+            this.allPlayersInGameToolStripMenuItem.Click += new System.EventHandler(this.allPlayersInGameToolStripMenuItem_Click);
+            // 
+            // allPlayersInToolStripMenuItem
+            // 
+            this.allPlayersInToolStripMenuItem.Name = "allPlayersInToolStripMenuItem";
+            this.allPlayersInToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.allPlayersInToolStripMenuItem.Text = "All players in championship";
+            this.allPlayersInToolStripMenuItem.Click += new System.EventHandler(this.allPlayersInToolStripMenuItem_Click);
+            // 
+            // numberOfChampionshipsToolStripMenuItem
+            // 
+            this.numberOfChampionshipsToolStripMenuItem.Name = "numberOfChampionshipsToolStripMenuItem";
+            this.numberOfChampionshipsToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.numberOfChampionshipsToolStripMenuItem.Text = "Number of championships";
+            this.numberOfChampionshipsToolStripMenuItem.Click += new System.EventHandler(this.numberOfChampionshipsToolStripMenuItem_Click);
             // 
             // registerBtn
             // 
@@ -770,12 +806,12 @@
             // 
             this.championshipTableAdapter.ClearBeforeFill = true;
             // 
-            // allPlayerChampionshipsToolStripMenuItem
+            // numberOfGamesToolStripMenuItem
             // 
-            this.allPlayerChampionshipsToolStripMenuItem.Name = "allPlayerChampionshipsToolStripMenuItem";
-            this.allPlayerChampionshipsToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.allPlayerChampionshipsToolStripMenuItem.Text = "All player championships";
-            this.allPlayerChampionshipsToolStripMenuItem.Click += new System.EventHandler(this.allPlayerChampionshipsToolStripMenuItem_Click);
+            this.numberOfGamesToolStripMenuItem.Name = "numberOfGamesToolStripMenuItem";
+            this.numberOfGamesToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.numberOfGamesToolStripMenuItem.Text = "Number of games";
+            this.numberOfGamesToolStripMenuItem.Click += new System.EventHandler(this.numberOfGamesToolStripMenuItem_Click);
             // 
             // TicTacToeForm
             // 
@@ -899,6 +935,10 @@
         private System.Windows.Forms.ToolStripMenuItem allChampionshipsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem allPlayerGamesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem allPlayerChampionshipsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allPlayersInGameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allPlayersInToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem numberOfChampionshipsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem numberOfGamesToolStripMenuItem;
 
 
 
