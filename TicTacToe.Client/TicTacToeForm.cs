@@ -171,6 +171,12 @@ namespace TicTacToe.Client
             form.Show();
         }
 
+        private void allAdvisorsInGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdvisorForGameForm form = new AdvisorForGameForm();
+            form.Show();
+        }
+
         private void abuotToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutBox aboutBox = new AboutBox();
@@ -184,11 +190,20 @@ namespace TicTacToe.Client
 
         #endregion
 
-
         #region GameBoardPanel
+
+        private void backBtn_Click(object sender, EventArgs e)
+        {
+            GameBoardPanel.Visible = false;
+        }
+
         private void newGameBtn_Click(object sender, EventArgs e)
         {
-            //elementHost1.Child = new GameBoardWPF(size, gameOption, player1, player2, confirmation);
+            gameboard = new GameBoardWPF(size, gameOption, player1, player2, confirmation);
+            elementHost1.Child = gameboard;
+            gameId = c.AddGame(champId, player1, player2, size);
+            c.AddAdvisor(player1, advisors.ToArray(), gameId);
+            c.GameInfo(size, gameOption);
             
         }
         #endregion
@@ -483,8 +498,6 @@ namespace TicTacToe.Client
             }
         }
         #endregion
-
-        
 
     }
 }

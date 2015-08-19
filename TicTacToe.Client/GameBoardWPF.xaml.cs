@@ -95,7 +95,16 @@ namespace TicTacToe.Client
                 // player move
                 sign = c.NewTurn(button.col, button.row);
                 moveGame(button, sign);
-                currenTurn = "computer";
+                if (fullBoard())
+                {
+                    MessageBox.Show(" no winner");
+                    resetGame();
+                }
+                else
+                {
+                    currenTurn = "computer";
+                }
+                
                 
                 // computer move 
                 int rndCol = 0;
@@ -104,7 +113,16 @@ namespace TicTacToe.Client
                 button = (GameButton)buttons1[rndCol, rndRow];
                 sign = c.NewTurn(button.col, button.row);
                 moveGame(button, sign);
-                currenTurn = "player1";
+                if (fullBoard())
+                {
+                    MessageBox.Show(" no winner");
+                    resetGame();
+                }
+                else
+                {
+                    currenTurn = "player1";
+                }
+                
             }
             else // player1 vs player2
             {
@@ -158,6 +176,21 @@ namespace TicTacToe.Client
                     break;
                 }
             }
+        }
+
+        private bool fullBoard()
+        {
+            for (int i = 0; i < boardSize; i++)
+            {
+                for (int j = 0; j < boardSize; j++)
+                {
+                    if(buttons1[i,j].IsEnabled)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         private GameButton[,] CreateButtons()

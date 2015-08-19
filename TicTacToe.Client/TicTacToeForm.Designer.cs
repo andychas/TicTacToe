@@ -98,13 +98,15 @@
             this.allPlayersInGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allPlayersInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.numberOfChampionshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.numberOfGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allAdvisorsInGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerBtn = new System.Windows.Forms.Button();
             this.PlayBtn = new System.Windows.Forms.Button();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.championshipTableAdapter = new TicTacToe.Client.DatabaseDataSetTableAdapters.ChampionshipTableAdapter();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.numberOfGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backBtn = new System.Windows.Forms.Button();
             this.RegisterPanel.SuspendLayout();
             this.GameBoardPanel.SuspendLayout();
             this.GameInfoPanel.SuspendLayout();
@@ -145,27 +147,29 @@
             // 
             // GameBoardPanel
             // 
+            this.GameBoardPanel.Controls.Add(this.backBtn);
             this.GameBoardPanel.Controls.Add(this.newGameBtn);
             this.GameBoardPanel.Controls.Add(this.elementHost1);
             this.GameBoardPanel.Location = new System.Drawing.Point(0, 3);
             this.GameBoardPanel.Name = "GameBoardPanel";
-            this.GameBoardPanel.Size = new System.Drawing.Size(668, 490);
+            this.GameBoardPanel.Size = new System.Drawing.Size(674, 496);
             this.GameBoardPanel.TabIndex = 40;
             // 
             // newGameBtn
             // 
-            this.newGameBtn.Location = new System.Drawing.Point(518, 0);
+            this.newGameBtn.Location = new System.Drawing.Point(527, 6);
             this.newGameBtn.Name = "newGameBtn";
-            this.newGameBtn.Size = new System.Drawing.Size(154, 87);
+            this.newGameBtn.Size = new System.Drawing.Size(119, 42);
             this.newGameBtn.TabIndex = 3;
             this.newGameBtn.Text = "New Game";
             this.newGameBtn.UseVisualStyleBackColor = true;
+            this.newGameBtn.Click += new System.EventHandler(this.newGameBtn_Click);
             // 
             // elementHost1
             // 
-            this.elementHost1.Location = new System.Drawing.Point(0, 6);
+            this.elementHost1.Location = new System.Drawing.Point(0, 3);
             this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(500, 478);
+            this.elementHost1.Size = new System.Drawing.Size(500, 487);
             this.elementHost1.TabIndex = 2;
             this.elementHost1.Text = "elementHost1";
             this.elementHost1.Child = null;
@@ -713,7 +717,8 @@
             this.allPlayersInGameToolStripMenuItem,
             this.allPlayersInToolStripMenuItem,
             this.numberOfChampionshipsToolStripMenuItem,
-            this.numberOfGamesToolStripMenuItem});
+            this.numberOfGamesToolStripMenuItem,
+            this.allAdvisorsInGameToolStripMenuItem});
             this.dBToolStripMenuItem.Name = "dBToolStripMenuItem";
             this.dBToolStripMenuItem.Size = new System.Drawing.Size(34, 20);
             this.dBToolStripMenuItem.Text = "DB";
@@ -774,6 +779,20 @@
             this.numberOfChampionshipsToolStripMenuItem.Text = "Number of championships";
             this.numberOfChampionshipsToolStripMenuItem.Click += new System.EventHandler(this.numberOfChampionshipsToolStripMenuItem_Click);
             // 
+            // numberOfGamesToolStripMenuItem
+            // 
+            this.numberOfGamesToolStripMenuItem.Name = "numberOfGamesToolStripMenuItem";
+            this.numberOfGamesToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.numberOfGamesToolStripMenuItem.Text = "Number of games";
+            this.numberOfGamesToolStripMenuItem.Click += new System.EventHandler(this.numberOfGamesToolStripMenuItem_Click);
+            // 
+            // allAdvisorsInGameToolStripMenuItem
+            // 
+            this.allAdvisorsInGameToolStripMenuItem.Name = "allAdvisorsInGameToolStripMenuItem";
+            this.allAdvisorsInGameToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.allAdvisorsInGameToolStripMenuItem.Text = "All advisors in game";
+            this.allAdvisorsInGameToolStripMenuItem.Click += new System.EventHandler(this.allAdvisorsInGameToolStripMenuItem_Click);
+            // 
             // registerBtn
             // 
             this.registerBtn.Location = new System.Drawing.Point(213, 182);
@@ -806,18 +825,21 @@
             // 
             this.championshipTableAdapter.ClearBeforeFill = true;
             // 
-            // numberOfGamesToolStripMenuItem
+            // backBtn
             // 
-            this.numberOfGamesToolStripMenuItem.Name = "numberOfGamesToolStripMenuItem";
-            this.numberOfGamesToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
-            this.numberOfGamesToolStripMenuItem.Text = "Number of games";
-            this.numberOfGamesToolStripMenuItem.Click += new System.EventHandler(this.numberOfGamesToolStripMenuItem_Click);
+            this.backBtn.Location = new System.Drawing.Point(527, 64);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(119, 40);
+            this.backBtn.TabIndex = 4;
+            this.backBtn.Text = "Back Game Info";
+            this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
             // TicTacToeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 523);
+            this.ClientSize = new System.Drawing.Size(677, 528);
             this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.PlayBtn);
             this.Controls.Add(this.registerBtn);
@@ -939,6 +961,8 @@
         private System.Windows.Forms.ToolStripMenuItem allPlayersInToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem numberOfChampionshipsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem numberOfGamesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allAdvisorsInGameToolStripMenuItem;
+        private System.Windows.Forms.Button backBtn;
 
 
 

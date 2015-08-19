@@ -416,6 +416,24 @@ public class Service : IService
     }
 
     /**
+     * check if board is full
+     */
+    private bool fullBoard()
+    {
+        for (int i = 0; i < boardSize; i++)
+        {
+            for (int j = 0; j < boardSize; j++)
+            {
+                if (!boardGame[i, j].Equals(""))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
      * Change turn 
      */
     private void changeTurn()

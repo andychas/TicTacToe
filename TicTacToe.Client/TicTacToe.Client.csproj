@@ -61,6 +61,12 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdvisorForGameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvisorForGameForm.Designer.cs">
+      <DependentUpon>AdvisorForGameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AllChampionshipsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvisorForGameForm.resx">
+      <DependentUpon>AdvisorForGameForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AllChampionshipsForm.resx">
       <DependentUpon>AllChampionshipsForm.cs</DependentUpon>
