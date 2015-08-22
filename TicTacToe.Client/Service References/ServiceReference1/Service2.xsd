@@ -75,4 +75,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CustomPlayer" nillable="true" type="tns:CustomPlayer" />
+  <xs:complexType name="ArrayOfCustomAdvisorToPlayer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomAdvisorToPlayer" nillable="true" type="tns:CustomAdvisorToPlayer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomAdvisorToPlayer" nillable="true" type="tns:ArrayOfCustomAdvisorToPlayer" />
+  <xs:complexType name="CustomAdvisorToPlayer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="advisorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="playerName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomAdvisorToPlayer" nillable="true" type="tns:CustomAdvisorToPlayer" />
 </xs:schema>

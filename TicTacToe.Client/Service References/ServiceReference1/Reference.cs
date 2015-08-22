@@ -523,6 +523,67 @@ namespace TicTacToe.Client.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomAdvisorToPlayer", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.SerializableAttribute()]
+    public partial class CustomAdvisorToPlayer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string advisorNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string playerNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string advisorName {
+            get {
+                return this.advisorNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.advisorNameField, value) != true)) {
+                    this.advisorNameField = value;
+                    this.RaisePropertyChanged("advisorName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string playerName {
+            get {
+                return this.playerNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.playerNameField, value) != true)) {
+                    this.playerNameField = value;
+                    this.RaisePropertyChanged("playerName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService", CallbackContract=typeof(TicTacToe.Client.ServiceReference1.IServiceCallback))]
     public interface IService {
@@ -646,6 +707,12 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetNumOfGames", ReplyAction="http://tempuri.org/IService/GetNumOfGamesResponse")]
         System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.CustomPlayer> GetNumOfGamesAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAdvisorToPlayer", ReplyAction="http://tempuri.org/IService/GetAdvisorToPlayerResponse")]
+        TicTacToe.Client.ServiceReference1.CustomAdvisorToPlayer[] GetAdvisorToPlayer(int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAdvisorToPlayer", ReplyAction="http://tempuri.org/IService/GetAdvisorToPlayerResponse")]
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.CustomAdvisorToPlayer[]> GetAdvisorToPlayerAsync(int gameId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddChampionship", ReplyAction="http://tempuri.org/IService/AddChampionshipResponse")]
         int AddChampionship(System.DateTime start, System.DateTime end, string city);
@@ -907,6 +974,14 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.CustomPlayer> GetNumOfGamesAsync(string name) {
             return base.Channel.GetNumOfGamesAsync(name);
+        }
+        
+        public TicTacToe.Client.ServiceReference1.CustomAdvisorToPlayer[] GetAdvisorToPlayer(int gameId) {
+            return base.Channel.GetAdvisorToPlayer(gameId);
+        }
+        
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.CustomAdvisorToPlayer[]> GetAdvisorToPlayerAsync(int gameId) {
+            return base.Channel.GetAdvisorToPlayerAsync(gameId);
         }
         
         public int AddChampionship(System.DateTime start, System.DateTime end, string city) {

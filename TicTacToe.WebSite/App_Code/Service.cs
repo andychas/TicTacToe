@@ -206,6 +206,22 @@ public class Service : IService
         return new CustomPlayer { name = name, numOfGames = x };
     }
 
+    public CustomAdvisorToPlayer[] GetAdvisorToPlayer(int gameId)
+    {
+        var x =
+            (from g in db.PlayerToAdvisors
+            join a in db.Advisors on g.Advisor equals a.Id
+            join p in db.Players on g.Player equals p.Id
+            where g.Game == gameId
+            select new CustomAdvisorToPlayer
+            {
+                advisorName = a.First_Name + " " + a.Last_Name,
+                playerName = p.First_Name + " " + p.Last_Name
+            }).ToArray();
+        return x;
+
+    }
+
     public void UpdateChampionship(int id, DateTime start, DateTime end, string city, string imageUrl)
     {
         var x =

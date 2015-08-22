@@ -71,6 +71,9 @@ public interface IService
     CustomPlayer GetNumOfGames(string name);
 
     [OperationContract]
+    CustomAdvisorToPlayer[] GetAdvisorToPlayer(int gameId);
+
+    [OperationContract]
     int AddChampionship(DateTime start, DateTime end, string city);
 
     [OperationContract]

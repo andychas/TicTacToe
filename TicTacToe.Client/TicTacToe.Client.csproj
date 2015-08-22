@@ -230,6 +230,9 @@
     <None Include="Service References\ServiceReference1\TicTacToe.Client.ServiceReference1.Championship.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference1\TicTacToe.Client.ServiceReference1.CustomAdvisorToPlayer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference1\TicTacToe.Client.ServiceReference1.CustomChampionship.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

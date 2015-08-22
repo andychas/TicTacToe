@@ -30,7 +30,11 @@ namespace TicTacToe.Client
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string gameId = comboBox1.Text;
+            int gameId = Convert.ToInt32(comboBox1.Text);
+            CustomAdvisorToPlayer[] customPlayer = c.GetAdvisorToPlayer(gameId);
+            bindingSource1.DataSource = customPlayer;
+            dataGridView1.DataSource = bindingSource1;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         public void UpdateClientBoard(int col, int row)
