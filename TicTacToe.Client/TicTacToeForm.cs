@@ -301,14 +301,14 @@ namespace TicTacToe.Client
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            int id = Int32.Parse(row.Cells["id"].Value.ToString());
+            int id = Int32.Parse(row.Cells["Id"].Value.ToString());
             c.RemovePlayerToChampionship(player1, id);
             loadGameInfoPanel();
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            int id = Int32.Parse(row.Cells["id"].Value.ToString());
+            int id = Int32.Parse(row.Cells["Id"].Value.ToString());
             string city = cityText.Text.ToString();
             string imageUrl = imageText.Text.ToString();
             DateTime startDate = DateTime.Parse(startDateText.Text.ToString());

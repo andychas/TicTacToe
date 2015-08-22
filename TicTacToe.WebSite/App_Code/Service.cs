@@ -215,7 +215,7 @@ public class Service : IService
         x.Start_date = start;
         x.End_date = end;
         x.City = city;
-        //x.Picture = imageUrl;
+        x.Picture = imageUrl;
         db.SubmitChanges();
     }
 
