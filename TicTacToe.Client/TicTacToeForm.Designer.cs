@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.RegisterPanel = new System.Windows.Forms.Panel();
             this.GameBoardPanel = new System.Windows.Forms.Panel();
+            this.backBtn = new System.Windows.Forms.Button();
             this.newGameBtn = new System.Windows.Forms.Button();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.GameInfoPanel = new System.Windows.Forms.Panel();
@@ -106,7 +107,9 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.championshipTableAdapter = new TicTacToe.Client.DatabaseDataSetTableAdapters.ChampionshipTableAdapter();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.backBtn = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.imageText = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.RegisterPanel.SuspendLayout();
             this.GameBoardPanel.SuspendLayout();
             this.GameInfoPanel.SuspendLayout();
@@ -126,6 +129,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // RegisterPanel
@@ -150,10 +154,20 @@
             this.GameBoardPanel.Controls.Add(this.backBtn);
             this.GameBoardPanel.Controls.Add(this.newGameBtn);
             this.GameBoardPanel.Controls.Add(this.elementHost1);
-            this.GameBoardPanel.Location = new System.Drawing.Point(0, 3);
+            this.GameBoardPanel.Location = new System.Drawing.Point(3, 0);
             this.GameBoardPanel.Name = "GameBoardPanel";
             this.GameBoardPanel.Size = new System.Drawing.Size(674, 496);
             this.GameBoardPanel.TabIndex = 40;
+            // 
+            // backBtn
+            // 
+            this.backBtn.Location = new System.Drawing.Point(527, 64);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(119, 40);
+            this.backBtn.TabIndex = 4;
+            this.backBtn.Text = "Back Game Info";
+            this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
             // newGameBtn
             // 
@@ -189,6 +203,9 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.pictureBox1);
+            this.groupBox5.Controls.Add(this.imageText);
+            this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.cityText);
             this.groupBox5.Controls.Add(this.label12);
             this.groupBox5.Controls.Add(this.endDateText);
@@ -825,15 +842,29 @@
             // 
             this.championshipTableAdapter.ClearBeforeFill = true;
             // 
-            // backBtn
+            // label13
             // 
-            this.backBtn.Location = new System.Drawing.Point(527, 64);
-            this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(119, 40);
-            this.backBtn.TabIndex = 4;
-            this.backBtn.Text = "Back Game Info";
-            this.backBtn.UseVisualStyleBackColor = true;
-            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(0, 251);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(20, 13);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Url";
+            // 
+            // imageText
+            // 
+            this.imageText.Location = new System.Drawing.Point(27, 248);
+            this.imageText.Name = "imageText";
+            this.imageText.Size = new System.Drawing.Size(100, 20);
+            this.imageText.TabIndex = 23;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(160, 237);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 36);
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
             // 
             // TicTacToeForm
             // 
@@ -878,6 +909,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -963,6 +995,9 @@
         private System.Windows.Forms.ToolStripMenuItem numberOfGamesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem allAdvisorsInGameToolStripMenuItem;
         private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox imageText;
+        private System.Windows.Forms.Label label13;
 
 
 

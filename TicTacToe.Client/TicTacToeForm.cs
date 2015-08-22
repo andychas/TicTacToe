@@ -285,6 +285,7 @@ namespace TicTacToe.Client
             startDateText.Text = row.Cells["Start_Date"].Value.ToString();
             endDateText.Text = row.Cells["End_Date"].Value.ToString();
             cityText.Text = row.Cells["City"].Value.ToString();
+            
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
