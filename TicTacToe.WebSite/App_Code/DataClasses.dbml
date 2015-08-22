@@ -55,4 +55,13 @@
       <Column Name="Picture" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.GameMoves" Member="GameMoves">
+    <Type Name="GameMove">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Game_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sign" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="row" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="col" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

@@ -30,12 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.RegisterPanel = new System.Windows.Forms.Panel();
-            this.GameBoardPanel = new System.Windows.Forms.Panel();
-            this.backBtn = new System.Windows.Forms.Button();
-            this.newGameBtn = new System.Windows.Forms.Button();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.GameInfoPanel = new System.Windows.Forms.Panel();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.recordGame = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imageText = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.cityText = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.endDateText = new System.Windows.Forms.TextBox();
@@ -107,13 +108,15 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.championshipTableAdapter = new TicTacToe.Client.DatabaseDataSetTableAdapters.ChampionshipTableAdapter();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.label13 = new System.Windows.Forms.Label();
-            this.imageText = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.GameBoardPanel = new System.Windows.Forms.Panel();
+            this.backBtn = new System.Windows.Forms.Button();
+            this.newGameBtn = new System.Windows.Forms.Button();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.RegisterPanel.SuspendLayout();
-            this.GameBoardPanel.SuspendLayout();
             this.GameInfoPanel.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.lvlGroupBox.SuspendLayout();
@@ -129,7 +132,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.GameBoardPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // RegisterPanel
@@ -149,47 +152,9 @@
             this.RegisterPanel.Size = new System.Drawing.Size(677, 496);
             this.RegisterPanel.TabIndex = 18;
             // 
-            // GameBoardPanel
-            // 
-            this.GameBoardPanel.Controls.Add(this.backBtn);
-            this.GameBoardPanel.Controls.Add(this.newGameBtn);
-            this.GameBoardPanel.Controls.Add(this.elementHost1);
-            this.GameBoardPanel.Location = new System.Drawing.Point(3, 0);
-            this.GameBoardPanel.Name = "GameBoardPanel";
-            this.GameBoardPanel.Size = new System.Drawing.Size(674, 496);
-            this.GameBoardPanel.TabIndex = 40;
-            // 
-            // backBtn
-            // 
-            this.backBtn.Location = new System.Drawing.Point(527, 64);
-            this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(119, 40);
-            this.backBtn.TabIndex = 4;
-            this.backBtn.Text = "Back Game Info";
-            this.backBtn.UseVisualStyleBackColor = true;
-            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
-            // 
-            // newGameBtn
-            // 
-            this.newGameBtn.Location = new System.Drawing.Point(527, 6);
-            this.newGameBtn.Name = "newGameBtn";
-            this.newGameBtn.Size = new System.Drawing.Size(119, 42);
-            this.newGameBtn.TabIndex = 3;
-            this.newGameBtn.Text = "New Game";
-            this.newGameBtn.UseVisualStyleBackColor = true;
-            this.newGameBtn.Click += new System.EventHandler(this.newGameBtn_Click);
-            // 
-            // elementHost1
-            // 
-            this.elementHost1.Location = new System.Drawing.Point(0, 3);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(500, 487);
-            this.elementHost1.TabIndex = 2;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = null;
-            // 
             // GameInfoPanel
             // 
+            this.GameInfoPanel.Controls.Add(this.groupBox6);
             this.GameInfoPanel.Controls.Add(this.groupBox5);
             this.GameInfoPanel.Controls.Add(this.groupBox2);
             this.GameInfoPanel.Controls.Add(this.lvlGroupBox);
@@ -200,6 +165,24 @@
             this.GameInfoPanel.Name = "GameInfoPanel";
             this.GameInfoPanel.Size = new System.Drawing.Size(677, 496);
             this.GameInfoPanel.TabIndex = 4;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.recordGame);
+            this.groupBox6.Location = new System.Drawing.Point(9, 241);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(200, 54);
+            this.groupBox6.TabIndex = 41;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Select record game";
+            // 
+            // recordGame
+            // 
+            this.recordGame.FormattingEnabled = true;
+            this.recordGame.Location = new System.Drawing.Point(9, 27);
+            this.recordGame.Name = "recordGame";
+            this.recordGame.Size = new System.Drawing.Size(121, 21);
+            this.recordGame.TabIndex = 0;
             // 
             // groupBox5
             // 
@@ -222,6 +205,30 @@
             this.groupBox5.TabIndex = 38;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(160, 237);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 36);
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
+            // 
+            // imageText
+            // 
+            this.imageText.Location = new System.Drawing.Point(27, 248);
+            this.imageText.Name = "imageText";
+            this.imageText.Size = new System.Drawing.Size(100, 20);
+            this.imageText.TabIndex = 23;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(0, 251);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(20, 13);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Url";
             // 
             // cityText
             // 
@@ -378,6 +385,7 @@
             this.smallBoardButton.TabStop = true;
             this.smallBoardButton.Text = "4 x 4";
             this.smallBoardButton.UseVisualStyleBackColor = true;
+            this.smallBoardButton.CheckedChanged += new System.EventHandler(this.smallBoardButton_CheckedChanged);
             // 
             // bigBoardButton
             // 
@@ -389,6 +397,7 @@
             this.bigBoardButton.TabStop = true;
             this.bigBoardButton.Text = "5 x 5";
             this.bigBoardButton.UseVisualStyleBackColor = true;
+            this.bigBoardButton.CheckedChanged += new System.EventHandler(this.bigBoardButton_CheckedChanged);
             // 
             // StartGameBtn
             // 
@@ -842,29 +851,42 @@
             // 
             this.championshipTableAdapter.ClearBeforeFill = true;
             // 
-            // label13
+            // GameBoardPanel
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(0, 251);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(20, 13);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "Url";
+            this.GameBoardPanel.Controls.Add(this.backBtn);
+            this.GameBoardPanel.Controls.Add(this.newGameBtn);
+            this.GameBoardPanel.Controls.Add(this.elementHost1);
+            this.GameBoardPanel.Location = new System.Drawing.Point(3, 3);
+            this.GameBoardPanel.Name = "GameBoardPanel";
+            this.GameBoardPanel.Size = new System.Drawing.Size(674, 496);
+            this.GameBoardPanel.TabIndex = 41;
             // 
-            // imageText
+            // backBtn
             // 
-            this.imageText.Location = new System.Drawing.Point(27, 248);
-            this.imageText.Name = "imageText";
-            this.imageText.Size = new System.Drawing.Size(100, 20);
-            this.imageText.TabIndex = 23;
+            this.backBtn.Location = new System.Drawing.Point(527, 64);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(119, 40);
+            this.backBtn.TabIndex = 4;
+            this.backBtn.Text = "Back Game Info";
+            this.backBtn.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // newGameBtn
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(160, 237);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 36);
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
+            this.newGameBtn.Location = new System.Drawing.Point(527, 6);
+            this.newGameBtn.Name = "newGameBtn";
+            this.newGameBtn.Size = new System.Drawing.Size(119, 42);
+            this.newGameBtn.TabIndex = 3;
+            this.newGameBtn.Text = "New Game";
+            this.newGameBtn.UseVisualStyleBackColor = true;
+            // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(0, 3);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(500, 487);
+            this.elementHost1.TabIndex = 2;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = null;
             // 
             // TicTacToeForm
             // 
@@ -882,11 +904,12 @@
             this.Load += new System.EventHandler(this.TicTacToeForm_Load);
             this.RegisterPanel.ResumeLayout(false);
             this.RegisterPanel.PerformLayout();
-            this.GameBoardPanel.ResumeLayout(false);
             this.GameInfoPanel.ResumeLayout(false);
             this.GameInfoPanel.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -909,7 +932,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.GameBoardPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -971,9 +994,6 @@
         private DatabaseDataSet databaseDataSet;
         private System.Windows.Forms.BindingSource championshipBindingSource;
         private DatabaseDataSetTableAdapters.ChampionshipTableAdapter championshipTableAdapter;
-        private System.Windows.Forms.Panel GameBoardPanel;
-        private System.Windows.Forms.Button newGameBtn;
-        private System.Windows.Forms.Integration.ElementHost elementHost1;
         private System.Windows.Forms.Button updateBtn;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button addBtn;
@@ -994,10 +1014,15 @@
         private System.Windows.Forms.ToolStripMenuItem numberOfChampionshipsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem numberOfGamesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem allAdvisorsInGameToolStripMenuItem;
-        private System.Windows.Forms.Button backBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox imageText;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ComboBox recordGame;
+        private System.Windows.Forms.Panel GameBoardPanel;
+        private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.Button newGameBtn;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
 
 
 

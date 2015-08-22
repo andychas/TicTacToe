@@ -8,6 +8,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Player" nillable="true" type="tns:Player" />
+  <xs:complexType name="ArrayOfGameMove">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GameMove" nillable="true" type="tns:GameMove" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGameMove" nillable="true" type="tns:ArrayOfGameMove" />
+  <xs:complexType name="GameMove">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Game_Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Sign" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="col" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="row" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GameMove" nillable="true" type="tns:GameMove" />
   <xs:complexType name="ArrayOfPlayer">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Player" nillable="true" type="tns:Player" />

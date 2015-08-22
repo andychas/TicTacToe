@@ -24,8 +24,7 @@ namespace TicTacToe.Client
         private GameBoardWPF gameboard;
         private Player player;
         private Player player1;
-        private Player player2;   
-
+        private Player player2;
         private string gameOption = "computer";
         private string championship = "";
         private bool[] ifValidAdvisorsName;
@@ -199,9 +198,9 @@ namespace TicTacToe.Client
 
         private void newGameBtn_Click(object sender, EventArgs e)
         {
-            gameboard = new GameBoardWPF(size, gameOption, player1, player2, confirmation);
-            elementHost1.Child = gameboard;
             gameId = c.AddGame(champId, player1, player2, size);
+            gameboard = new GameBoardWPF(gameId, size, gameOption, player1, player2, confirmation);
+            elementHost1.Child = gameboard;
             c.AddAdvisor(player1, advisors.ToArray(), gameId);
             c.GameInfo(size, gameOption);
             
@@ -247,23 +246,39 @@ namespace TicTacToe.Client
 
         private void StartGameBtn_Click(object sender, EventArgs e)
         {
-            if (gameOption == "computer") // vs computer
+            if(!recordGame.Text.Equals("")) // select recordGame id
             {
-                gameboard = new GameBoardWPF(size, gameOption, player1, player2, confirmation);
-                elementHost1.Child = gameboard; 
-            }
-            else                          // vs player
-            {
-                c.AskPlayerConfirmation(size, player1, player2, true);
-                gameboard = new GameBoardWPF(size, gameOption, player1, player2, confirmation);
+                gameId = Convert.ToInt32(recordGame.Text);
+                GameMove[] moves = c.GetGameMoves(gameId);
+
+                gameboard = new GameBoardWPF(gameId, size, gameOption, player1, player2, moves, confirmation);
                 elementHost1.Child = gameboard;
 
             }
-            gameId = c.AddGame(champId, player1, player2, size);
-            c.AddAdvisor(player1, advisors.ToArray(), gameId);
+            else
+            {
+                gameId = c.AddGame(champId, player1, player2, size);
+                if (gameOption == "computer") // vs computer
+                {
+                    gameboard = new GameBoardWPF(gameId, size, gameOption, player1, player2, confirmation);
+                    elementHost1.Child = gameboard;
+                }
+                else                          // vs player
+                {
+                    c.AskPlayerConfirmation(size, player1, player2, true);
+                    gameboard = new GameBoardWPF(gameId, size, gameOption, player1, player2, confirmation);
+                    elementHost1.Child = gameboard;
+
+                }
+
+                c.AddAdvisor(player1, advisors.ToArray(), gameId);
+                //GameBoardPanel.Visible = true;
+                //GameInfoPanel.Visible = true;
+                c.GameInfo(size, gameOption);
+            }
             GameBoardPanel.Visible = true;
             GameInfoPanel.Visible = true;
-            c.GameInfo(size, gameOption);
+            
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -428,6 +443,13 @@ namespace TicTacToe.Client
             {
                 ChampComboBox.Items.Add(champ.Id + " " + champ.City);
             }
+
+            int[] games = c.GetRecordGameId();
+            foreach (int id in games)
+            {
+                recordGame.Items.Add(id);
+            }
+            
         }
 
         private List<TextBox> addAllTextBoxes()
@@ -478,7 +500,7 @@ namespace TicTacToe.Client
             if (dialogResult == DialogResult.Yes)
             {
 
-                gameboard = new GameBoardWPF(size, gameOption, p2, p1, confirmation);
+                gameboard = new GameBoardWPF(gameId, size, gameOption, p2, p1, confirmation);
                 elementHost1.Child = gameboard;
 
                 c.playerConfirmed(p1,p2);

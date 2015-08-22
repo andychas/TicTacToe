@@ -92,6 +92,115 @@ namespace TicTacToe.Client.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GameMove", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.SerializableAttribute()]
+    public partial class GameMove : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Game_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SignField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> colField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> rowField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Game_Id {
+            get {
+                return this.Game_IdField;
+            }
+            set {
+                if ((this.Game_IdField.Equals(value) != true)) {
+                    this.Game_IdField = value;
+                    this.RaisePropertyChanged("Game_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Sign {
+            get {
+                return this.SignField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SignField, value) != true)) {
+                    this.SignField = value;
+                    this.RaisePropertyChanged("Sign");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> col {
+            get {
+                return this.colField;
+            }
+            set {
+                if ((this.colField.Equals(value) != true)) {
+                    this.colField = value;
+                    this.RaisePropertyChanged("col");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> row {
+            get {
+                return this.rowField;
+            }
+            set {
+                if ((this.rowField.Equals(value) != true)) {
+                    this.rowField = value;
+                    this.RaisePropertyChanged("row");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Game", Namespace="http://schemas.datacontract.org/2004/07/")]
     [System.SerializableAttribute()]
     public partial class Game : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -618,6 +727,24 @@ namespace TicTacToe.Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GameInfo", ReplyAction="http://tempuri.org/IService/GameInfoResponse")]
         System.Threading.Tasks.Task GameInfoAsync(int size, string option);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddMove", ReplyAction="http://tempuri.org/IService/AddMoveResponse")]
+        void AddMove(int gameId, string sign, int row, int col);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddMove", ReplyAction="http://tempuri.org/IService/AddMoveResponse")]
+        System.Threading.Tasks.Task AddMoveAsync(int gameId, string sign, int row, int col);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetRecordGameId", ReplyAction="http://tempuri.org/IService/GetRecordGameIdResponse")]
+        int[] GetRecordGameId();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetRecordGameId", ReplyAction="http://tempuri.org/IService/GetRecordGameIdResponse")]
+        System.Threading.Tasks.Task<int[]> GetRecordGameIdAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGameMoves", ReplyAction="http://tempuri.org/IService/GetGameMovesResponse")]
+        TicTacToe.Client.ServiceReference1.GameMove[] GetGameMoves(int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGameMoves", ReplyAction="http://tempuri.org/IService/GetGameMovesResponse")]
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.GameMove[]> GetGameMovesAsync(int gameId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/IfWinner", ReplyAction="http://tempuri.org/IService/IfWinnerResponse")]
         bool IfWinner(string sign, int row, int col);
         
@@ -854,6 +981,30 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task GameInfoAsync(int size, string option) {
             return base.Channel.GameInfoAsync(size, option);
+        }
+        
+        public void AddMove(int gameId, string sign, int row, int col) {
+            base.Channel.AddMove(gameId, sign, row, col);
+        }
+        
+        public System.Threading.Tasks.Task AddMoveAsync(int gameId, string sign, int row, int col) {
+            return base.Channel.AddMoveAsync(gameId, sign, row, col);
+        }
+        
+        public int[] GetRecordGameId() {
+            return base.Channel.GetRecordGameId();
+        }
+        
+        public System.Threading.Tasks.Task<int[]> GetRecordGameIdAsync() {
+            return base.Channel.GetRecordGameIdAsync();
+        }
+        
+        public TicTacToe.Client.ServiceReference1.GameMove[] GetGameMoves(int gameId) {
+            return base.Channel.GetGameMoves(gameId);
+        }
+        
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.GameMove[]> GetGameMovesAsync(int gameId) {
+            return base.Channel.GetGameMovesAsync(gameId);
         }
         
         public bool IfWinner(string sign, int row, int col) {

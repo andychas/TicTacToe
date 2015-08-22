@@ -242,6 +242,9 @@
     <None Include="Service References\ServiceReference1\TicTacToe.Client.ServiceReference1.Game.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference1\TicTacToe.Client.ServiceReference1.GameMove.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference1\TicTacToe.Client.ServiceReference1.Player.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

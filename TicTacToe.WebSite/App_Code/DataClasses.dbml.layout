@@ -44,5 +44,11 @@
         <elementListCompartment Id="4fc5acc0-90a0-41c4-908f-99146d57d8e0" absoluteBounds="3.64, 1.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="1280e014-3d88-475b-b848-55c56520982a" absoluteBounds="6.625, 5.25, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataClassesDataContext/GameMove" />
+      <nestedChildShapes>
+        <elementListCompartment Id="82e6284d-1079-4e1a-8d7c-12db4169a0d9" absoluteBounds="6.64, 5.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

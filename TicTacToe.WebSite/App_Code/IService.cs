@@ -26,6 +26,15 @@ public interface IService
     void GameInfo(int size, string option);
 
     [OperationContract]
+    void AddMove(int gameId, string sign, int row, int col);
+
+    [OperationContract]
+    int[] GetRecordGameId();
+
+    [OperationContract]
+    GameMove[] GetGameMoves(int gameId);
+
+    [OperationContract]
     bool IfWinner(string sign, int row, int col);
 
     [OperationContract]

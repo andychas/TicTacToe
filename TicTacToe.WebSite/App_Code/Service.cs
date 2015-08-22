@@ -316,6 +316,34 @@ public class Service : IService
         db.SubmitChanges();
     }
 
+    public void AddMove(int gameId, string sign, int row, int col)
+    {
+        GameMove move = new GameMove();
+        move.Game_Id = gameId;
+        move.Sign = sign;
+        move.row = row;
+        move.col = col;
+        db.GameMoves.InsertOnSubmit(move);
+        db.SubmitChanges();
+    }
+
+    public int[] GetRecordGameId()
+    {
+        var x =
+            (from g in db.GameMoves
+             select Convert.ToInt32(g.Game_Id)).Distinct().ToArray();
+        return x;
+    }
+
+    public GameMove[] GetGameMoves(int gameId)
+    {
+        var x =
+            from g in db.GameMoves
+            where g.Game_Id == gameId
+            select g;
+        return x.ToArray();
+    }
+
     #endregion
 
     #region "Game Logic"
@@ -585,4 +613,7 @@ public class Service : IService
      
     }
 
+
+
+    
 }
