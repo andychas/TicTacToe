@@ -206,7 +206,7 @@ public class Service : IService
         return new CustomPlayer { name = name, numOfGames = x };
     }
 
-    public void UpdateChampionship(int id, DateTime start, DateTime end, string city)
+    public void UpdateChampionship(int id, DateTime start, DateTime end, string city, string imageUrl)
     {
         var x =
             (from c in db.Championships
@@ -215,6 +215,7 @@ public class Service : IService
         x.Start_date = start;
         x.End_date = end;
         x.City = city;
+        //x.Picture = imageUrl;
         db.SubmitChanges();
     }
 

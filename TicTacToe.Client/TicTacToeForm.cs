@@ -52,7 +52,7 @@ namespace TicTacToe.Client
         private void TicTacToeForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'databaseDataSet.Championship' table. You can move, or remove it, as needed.
-            this.championshipTableAdapter.Fill(this.databaseDataSet.Championship);
+            //this.championshipTableAdapter.Fill(this.databaseDataSet.Championship);
             this.StartPosition = FormStartPosition.CenterScreen;
             RegisterPanel.Visible = false;
             GameBoardPanel.Visible = false;
@@ -285,6 +285,17 @@ namespace TicTacToe.Client
             startDateText.Text = row.Cells["Start_Date"].Value.ToString();
             endDateText.Text = row.Cells["End_Date"].Value.ToString();
             cityText.Text = row.Cells["City"].Value.ToString();
+            try
+            {
+                imageText.Text = row.Cells["Picture"].Value.ToString();
+                pictureBox1.ImageLocation = imageText.Text;
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            }
+            catch
+            {
+                imageText.Text = "";
+            }
             
         }
 
@@ -299,10 +310,10 @@ namespace TicTacToe.Client
         {
             int id = Int32.Parse(row.Cells["id"].Value.ToString());
             string city = cityText.Text.ToString();
+            string imageUrl = imageText.Text.ToString();
             DateTime startDate = DateTime.Parse(startDateText.Text.ToString());
             DateTime endDate = DateTime.Parse(endDateText.Text.ToString());
-            int championshipId = c.AddChampionship(startDate, endDate, city);
-            c.UpdateChampionship(id, startDate, endDate, city);
+            c.UpdateChampionship(id, startDate, endDate, city, imageUrl);
             loadGameInfoPanel();
         }
 

@@ -8,12 +8,6 @@
         <elementListCompartment Id="a21ebafc-b9a9-4df7-aea4-40a69615ab80" absoluteBounds="0.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="1ab146e5-b688-47de-b432-09489f862a97" absoluteBounds="3.75, 0.75, 2, 1.7708968098958331">
-      <DataClassMoniker Name="/DataClassesDataContext/Championship" />
-      <nestedChildShapes>
-        <elementListCompartment Id="493214be-f0bf-4744-9313-a8672d5ba925" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="dd51cadd-6197-4735-b3cf-6f1100bb7348" absoluteBounds="3.75, 3.125, 2, 1.3862939453125005">
       <DataClassMoniker Name="/DataClassesDataContext/GameToPlayer" />
       <nestedChildShapes>
@@ -42,6 +36,12 @@
       <DataClassMoniker Name="/DataClassesDataContext/Game" />
       <nestedChildShapes>
         <elementListCompartment Id="643aa9bb-0d10-4b0a-b9a3-4afd74040f9a" absoluteBounds="0.76500000000000012, 2.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9f22f08b-0708-4314-868c-46d13fb64abd" absoluteBounds="3.625, 1.125, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataClassesDataContext/Championship" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4fc5acc0-90a0-41c4-908f-99146d57d8e0" absoluteBounds="3.64, 1.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

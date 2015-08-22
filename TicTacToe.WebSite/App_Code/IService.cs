@@ -74,7 +74,7 @@ public interface IService
     int AddChampionship(DateTime start, DateTime end, string city);
 
     [OperationContract]
-    void UpdateChampionship(int id, DateTime start, DateTime end, string city);
+    void UpdateChampionship(int id, DateTime start, DateTime end, string city, string imageUrl);
     
     [OperationContract(IsOneWay=true)]
     void UpdatePlayerChampionships(Player player);

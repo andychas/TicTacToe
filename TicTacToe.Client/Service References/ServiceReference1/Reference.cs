@@ -311,7 +311,7 @@ namespace TicTacToe.Client.ServiceReference1 {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TicTacToe.Client.ServiceReference1.Binary PictureField;
+        private string PictureField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> Start_dateField;
@@ -366,7 +366,7 @@ namespace TicTacToe.Client.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TicTacToe.Client.ServiceReference1.Binary Picture {
+        public string Picture {
             get {
                 return this.PictureField;
             }
@@ -387,51 +387,6 @@ namespace TicTacToe.Client.ServiceReference1 {
                 if ((this.Start_dateField.Equals(value) != true)) {
                     this.Start_dateField = value;
                     this.RaisePropertyChanged("Start_date");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Binary", Namespace="http://schemas.datacontract.org/2004/07/System.Data.Linq")]
-    [System.SerializableAttribute()]
-    public partial class Binary : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte[] BytesField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte[] Bytes {
-            get {
-                return this.BytesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BytesField, value) != true)) {
-                    this.BytesField = value;
-                    this.RaisePropertyChanged("Bytes");
                 }
             }
         }
@@ -699,10 +654,10 @@ namespace TicTacToe.Client.ServiceReference1 {
         System.Threading.Tasks.Task<int> AddChampionshipAsync(System.DateTime start, System.DateTime end, string city);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateChampionship", ReplyAction="http://tempuri.org/IService/UpdateChampionshipResponse")]
-        void UpdateChampionship(int id, System.DateTime start, System.DateTime end, string city);
+        void UpdateChampionship(int id, System.DateTime start, System.DateTime end, string city, string imageUrl);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateChampionship", ReplyAction="http://tempuri.org/IService/UpdateChampionshipResponse")]
-        System.Threading.Tasks.Task UpdateChampionshipAsync(int id, System.DateTime start, System.DateTime end, string city);
+        System.Threading.Tasks.Task UpdateChampionshipAsync(int id, System.DateTime start, System.DateTime end, string city, string imageUrl);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/UpdatePlayerChampionships")]
         void UpdatePlayerChampionships(TicTacToe.Client.ServiceReference1.Player player);
@@ -962,12 +917,12 @@ namespace TicTacToe.Client.ServiceReference1 {
             return base.Channel.AddChampionshipAsync(start, end, city);
         }
         
-        public void UpdateChampionship(int id, System.DateTime start, System.DateTime end, string city) {
-            base.Channel.UpdateChampionship(id, start, end, city);
+        public void UpdateChampionship(int id, System.DateTime start, System.DateTime end, string city, string imageUrl) {
+            base.Channel.UpdateChampionship(id, start, end, city, imageUrl);
         }
         
-        public System.Threading.Tasks.Task UpdateChampionshipAsync(int id, System.DateTime start, System.DateTime end, string city) {
-            return base.Channel.UpdateChampionshipAsync(id, start, end, city);
+        public System.Threading.Tasks.Task UpdateChampionshipAsync(int id, System.DateTime start, System.DateTime end, string city, string imageUrl) {
+            return base.Channel.UpdateChampionshipAsync(id, start, end, city, imageUrl);
         }
         
         public void UpdatePlayerChampionships(TicTacToe.Client.ServiceReference1.Player player) {
