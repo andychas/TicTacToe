@@ -176,6 +176,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetSizeGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gameId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSizeGameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSizeGameResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetGames">
     <xs:complexType>
       <xs:sequence />
@@ -328,6 +342,7 @@
         <xs:element minOccurs="0" name="start" type="xs:dateTime" />
         <xs:element minOccurs="0" name="end" type="xs:dateTime" />
         <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="imageUrl" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

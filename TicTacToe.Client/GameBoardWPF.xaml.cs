@@ -35,10 +35,10 @@ namespace TicTacToe.Client
         private bool confirmationRequired;
         public char sign;
        
-        private int boardSize = 0;
+        private int boardSize;
         
         private static bool isWinner = false;
-        private int size;
+        //private int size;
         private int gameId;
         private string gameOption;
         private Player player1;
@@ -49,37 +49,20 @@ namespace TicTacToe.Client
         public GameBoardWPF(int gameId, int size, string gameOption, Player player1, Player player2, bool confirmationRequired)
         {
             c = new ServiceClient(new InstanceContext(this));
-            this.size = size;
+            this.boardSize = size;
             this.gameId = gameId;
             this.gameOption = gameOption;
             this.player1 = player1;
             this.player2 = player2;
             this.confirmationRequired = confirmationRequired;
             InitializeComponent();
-            boardSize = size;
             computerOrPlayer = gameOption;
             currenTurn = "player1";
 
             buttons1 = CreateButtons();
             buttons2 = CreateButtons();
 
-            for (int i = 0; i < size; i++)
-            {
-                grid.ColumnDefinitions.Add(new ColumnDefinition());
-            }
-            for (int i = 0; i < size; i++)
-            {
-                grid.RowDefinitions.Add(new RowDefinition());
-            }
-
-            for (int row = 0; row < size; row++)
-            {
-                for (int col = 0; col < size; col++)
-                {
-                    
-                    grid.Children.Add(buttons1[row, col]);
-                }
-            }
+            initGrid();
 
             if (!computerOrPlayer.Equals("computer") && !confirmationRequired) // if vs player - we need the other player to confirm the duel
             {
@@ -89,37 +72,18 @@ namespace TicTacToe.Client
             }
         }
 
-        public GameBoardWPF(int gameId, int size, string gameOption, Player player1, Player player2, GameMove[] moves, bool confirmation)
+        public GameBoardWPF(int gameId, GameMove[] moves, bool confirmation)
         {
             InitializeComponent();
+            c = new ServiceClient(new InstanceContext(this));
             this.gameId = gameId;
-            this.size = size;
-            this.gameOption = gameOption;
-            this.player1 = player1;
-            this.player2 = player2;
             this.moves = moves;
             this.confirmation = confirmation;
-            boardSize = size;
+            boardSize = c.GetSizeGame(gameId);
 
             buttons1 = CreateButtons();
 
-            for (int i = 0; i < size; i++)
-            {
-                grid.ColumnDefinitions.Add(new ColumnDefinition());
-            }
-            for (int i = 0; i < size; i++)
-            {
-                grid.RowDefinitions.Add(new RowDefinition());
-            }
-
-            for (int row = 0; row < size; row++)
-            {
-                for (int col = 0; col < size; col++)
-                {
-
-                    grid.Children.Add(buttons1[row, col]);
-                }
-            }
+            initGrid();
 
             for (int i = 0; i < boardSize; i++)
             {
@@ -129,6 +93,7 @@ namespace TicTacToe.Client
                 }
             }
 
+            // print all moves on game board
             for (int i = 0; i < moves.Count(); i++)
             {
                 int row = Convert.ToInt32(moves[i].row);
@@ -139,6 +104,27 @@ namespace TicTacToe.Client
                 buttons1[row, col].IsEnabled = false;
             }
 
+        }
+
+        private void initGrid()
+        {
+            for (int i = 0; i < boardSize; i++)
+            {
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+            for (int i = 0; i < boardSize; i++)
+            {
+                grid.RowDefinitions.Add(new RowDefinition());
+            }
+
+            for (int row = 0; row < boardSize; row++)
+            {
+                for (int col = 0; col < boardSize; col++)
+                {
+
+                    grid.Children.Add(buttons1[row, col]);
+                }
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

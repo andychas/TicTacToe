@@ -194,6 +194,7 @@ namespace TicTacToe.Client
         private void backBtn_Click(object sender, EventArgs e)
         {
             GameBoardPanel.Visible = false;
+            loadGameInfoPanel();
         }
 
         private void newGameBtn_Click(object sender, EventArgs e)
@@ -251,7 +252,7 @@ namespace TicTacToe.Client
                 gameId = Convert.ToInt32(recordGame.Text);
                 GameMove[] moves = c.GetGameMoves(gameId);
 
-                gameboard = new GameBoardWPF(gameId, size, gameOption, player1, player2, moves, confirmation);
+                gameboard = new GameBoardWPF(gameId, moves, confirmation);
                 elementHost1.Child = gameboard;
 
             }
@@ -272,8 +273,6 @@ namespace TicTacToe.Client
                 }
 
                 c.AddAdvisor(player1, advisors.ToArray(), gameId);
-                //GameBoardPanel.Visible = true;
-                //GameInfoPanel.Visible = true;
                 c.GameInfo(size, gameOption);
             }
             GameBoardPanel.Visible = true;
@@ -286,9 +285,10 @@ namespace TicTacToe.Client
             if ((!startDateText.Text.Equals("")) && (!endDateText.Text.Equals("")) && (!cityText.Text.Equals("")))
             {
                 string city = cityText.Text.ToString();
+                string imageUrl = imageText.Text.ToString();
                 DateTime startDate = DateTime.Parse(startDateText.Text.ToString());
                 DateTime endDate = DateTime.Parse(endDateText.Text.ToString());
-                int championshipId = c.AddChampionship(startDate, endDate, city);
+                int championshipId = c.AddChampionship(startDate, endDate, city, imageUrl);
                 c.AddPlayerToChamp(player1, championshipId);
             }
             loadGameInfoPanel();
@@ -296,6 +296,7 @@ namespace TicTacToe.Client
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            updateBtn.Enabled = true;
             row = this.dataGridView1.Rows[e.RowIndex];
             startDateText.Text = row.Cells["Start_Date"].Value.ToString();
             endDateText.Text = row.Cells["End_Date"].Value.ToString();
@@ -311,7 +312,6 @@ namespace TicTacToe.Client
             {
                 imageText.Text = "";
             }
-            
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
@@ -323,6 +323,7 @@ namespace TicTacToe.Client
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
+            updateBtn.Enabled = false;
             int id = Int32.Parse(row.Cells["Id"].Value.ToString());
             string city = cityText.Text.ToString();
             string imageUrl = imageText.Text.ToString();

@@ -123,6 +123,10 @@ public class Service : IService
         return x.ToArray();
     }
 
+    /**
+     * add advisor to Advisors table
+     * add playerToAdvisor to PlayerToAdvisor table
+     */
     public void AddAdvisor(Player player, Advisor[] advisors, int gameId)
     {
         foreach (Advisor a in advisors)
@@ -142,6 +146,9 @@ public class Service : IService
         }
     }
 
+    /**
+     * return all championships
+     */
     public Championship[] GetChampionships()
     {
         var x =
@@ -151,6 +158,20 @@ public class Service : IService
         return x.ToArray();
     }
 
+    /**
+     * return all championships
+     */
+    public Championship[] GetAllChampionships()
+    {
+        var x =
+            from c in db.Championships
+            select c;
+        return x.ToArray();
+    }
+
+    /**
+     * return all championships he has played
+     */
     public Championship[] GetChampionshipsByPlayerId(Player player)
     {
         var x =
@@ -161,23 +182,19 @@ public class Service : IService
         return x.ToArray();
     }
 
-    public int AddChampionship(DateTime start, DateTime end, string city)
+    /**
+     * add championship to Championships table
+     */
+    public int AddChampionship(DateTime start, DateTime end, string city, string imageUrl)
     {
         Championship champ = new Championship();
         champ.Start_date = start;
         champ.End_date = end;
         champ.City = city;
+        champ.Picture = imageUrl;
         db.Championships.InsertOnSubmit(champ);
         db.SubmitChanges();
         return champ.Id;
-    }
-
-    public Championship[] GetAllChampionships()
-    {
-        var x =
-            from c in db.Championships
-            select c;
-        return x.ToArray();
     }
 
     public string[] GetAllCities()
@@ -271,6 +288,16 @@ public class Service : IService
         return x.ToArray();
     }
 
+    public int GetSizeGame(int gameId)
+    {
+        var x =
+            (from g in db.Games
+            where g.Id == gameId
+            select g.Board_Size).SingleOrDefault();
+        return Convert.ToInt32(x);
+
+    }
+
     /**
      * return all games for this player
      */
@@ -316,6 +343,9 @@ public class Service : IService
         db.SubmitChanges();
     }
 
+    /*
+     * add move game to moves table
+     */
     public void AddMove(int gameId, string sign, int row, int col)
     {
         GameMove move = new GameMove();
@@ -327,6 +357,9 @@ public class Service : IService
         db.SubmitChanges();
     }
 
+    /*
+     * return all game id with recordings
+     */
     public int[] GetRecordGameId()
     {
         var x =
@@ -335,6 +368,9 @@ public class Service : IService
         return x;
     }
 
+    /*
+     * return all moves for selected game
+     */
     public GameMove[] GetGameMoves(int gameId)
     {
         var x =
@@ -612,6 +648,9 @@ public class Service : IService
             
      
     }
+
+
+
 
 
 

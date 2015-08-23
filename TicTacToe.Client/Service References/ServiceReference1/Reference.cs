@@ -775,6 +775,12 @@ namespace TicTacToe.Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllGamePlayer", ReplyAction="http://tempuri.org/IService/GetAllGamePlayerResponse")]
         System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player[]> GetAllGamePlayerAsync(string gameId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSizeGame", ReplyAction="http://tempuri.org/IService/GetSizeGameResponse")]
+        int GetSizeGame(int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSizeGame", ReplyAction="http://tempuri.org/IService/GetSizeGameResponse")]
+        System.Threading.Tasks.Task<int> GetSizeGameAsync(int gameId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGames", ReplyAction="http://tempuri.org/IService/GetGamesResponse")]
         TicTacToe.Client.ServiceReference1.Game[] GetGames();
         
@@ -842,10 +848,10 @@ namespace TicTacToe.Client.ServiceReference1 {
         System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.CustomAdvisorToPlayer[]> GetAdvisorToPlayerAsync(int gameId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddChampionship", ReplyAction="http://tempuri.org/IService/AddChampionshipResponse")]
-        int AddChampionship(System.DateTime start, System.DateTime end, string city);
+        int AddChampionship(System.DateTime start, System.DateTime end, string city, string imageUrl);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddChampionship", ReplyAction="http://tempuri.org/IService/AddChampionshipResponse")]
-        System.Threading.Tasks.Task<int> AddChampionshipAsync(System.DateTime start, System.DateTime end, string city);
+        System.Threading.Tasks.Task<int> AddChampionshipAsync(System.DateTime start, System.DateTime end, string city, string imageUrl);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateChampionship", ReplyAction="http://tempuri.org/IService/UpdateChampionshipResponse")]
         void UpdateChampionship(int id, System.DateTime start, System.DateTime end, string city, string imageUrl);
@@ -1047,6 +1053,14 @@ namespace TicTacToe.Client.ServiceReference1 {
             return base.Channel.GetAllGamePlayerAsync(gameId);
         }
         
+        public int GetSizeGame(int gameId) {
+            return base.Channel.GetSizeGame(gameId);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetSizeGameAsync(int gameId) {
+            return base.Channel.GetSizeGameAsync(gameId);
+        }
+        
         public TicTacToe.Client.ServiceReference1.Game[] GetGames() {
             return base.Channel.GetGames();
         }
@@ -1135,12 +1149,12 @@ namespace TicTacToe.Client.ServiceReference1 {
             return base.Channel.GetAdvisorToPlayerAsync(gameId);
         }
         
-        public int AddChampionship(System.DateTime start, System.DateTime end, string city) {
-            return base.Channel.AddChampionship(start, end, city);
+        public int AddChampionship(System.DateTime start, System.DateTime end, string city, string imageUrl) {
+            return base.Channel.AddChampionship(start, end, city, imageUrl);
         }
         
-        public System.Threading.Tasks.Task<int> AddChampionshipAsync(System.DateTime start, System.DateTime end, string city) {
-            return base.Channel.AddChampionshipAsync(start, end, city);
+        public System.Threading.Tasks.Task<int> AddChampionshipAsync(System.DateTime start, System.DateTime end, string city, string imageUrl) {
+            return base.Channel.AddChampionshipAsync(start, end, city, imageUrl);
         }
         
         public void UpdateChampionship(int id, System.DateTime start, System.DateTime end, string city, string imageUrl) {

@@ -50,6 +50,9 @@ public interface IService
     Player[] GetAllGamePlayer(string gameId);
 
     [OperationContract]
+    int GetSizeGame(int gameId);
+
+    [OperationContract]
     Game[] GetGames();
 
     [OperationContract]
@@ -83,7 +86,7 @@ public interface IService
     CustomAdvisorToPlayer[] GetAdvisorToPlayer(int gameId);
 
     [OperationContract]
-    int AddChampionship(DateTime start, DateTime end, string city);
+    int AddChampionship(DateTime start, DateTime end, string city, string imageUrl);
 
     [OperationContract]
     void UpdateChampionship(int id, DateTime start, DateTime end, string city, string imageUrl);
