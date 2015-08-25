@@ -266,7 +266,6 @@ namespace TicTacToe.Client
                 }
                 else                          // vs player
                 {
-                    c.AskPlayerConfirmation(size, player1, player2, true);
                     gameboard = new GameBoardWPF(gameId, size, gameOption, player1, player2, confirmation);
                     elementHost1.Child = gameboard;
 
@@ -494,25 +493,6 @@ namespace TicTacToe.Client
             throw new NotImplementedException();
         }
 
-        public void ConfirmPlayer(int gameSize, Player p1, Player p2, bool confirmationRequired)
-        {
-            DialogResult dialogResult = MessageBox.Show(p2.First_Name + ": " + p1.First_Name + " wants to play against you ", "Confirmation", MessageBoxButtons.YesNo);
-            player2 = p1;
-            if (dialogResult == DialogResult.Yes)
-            {
-
-                gameboard = new GameBoardWPF(gameId, size, gameOption, p2, p1, confirmation);
-                elementHost1.Child = gameboard;
-
-                c.playerConfirmed(p1,p2);
-                GameBoardPanel.Visible = true;
-                GameInfoPanel.Visible = true;
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
-            }
-        }
 
         public void StartGame(bool isYourTurn, char sign)
         {
@@ -527,12 +507,62 @@ namespace TicTacToe.Client
                 gameboard.busyIndicator.IsBusy = true;
             }
 
-            if (isYourTurn)
+
+        }
+
+        public void MakeYourTurn(int row, int col)
+        {
+            char s;
+            if (gameboard.sign == 'X')
+                s = 'O';
+            else
+                s = 'X';
+            gameboard.busyIndicator.IsBusy = false;        
+            gameboard.buttons1[row, col].Content = s;
+            gameboard.buttons1[row, col].FontSize = 20;
+            gameboard.buttons1[row, col].IsEnabled = false;
+
+            
+            
+        }
+
+        public void ConfirmPlayer(int gameSize, Player p1, Player p2, bool confirmationRequired, int gameId)
+        {
+            DialogResult dialogResult = MessageBox.Show(p2.First_Name + ": " + p1.First_Name + " wants to play against you ", "Confirmation", MessageBoxButtons.YesNo);
+            player2 = p1;
+            if (dialogResult == DialogResult.Yes)
             {
 
+                gameboard = new GameBoardWPF(gameId, size, "player", p2, p1, confirmationRequired);
+
+                elementHost1.Child = gameboard;
+
+                c.playerConfirmed(p1, p2);
+                GameBoardPanel.Visible = true;
+                GameInfoPanel.Visible = true;
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
             }
         }
-        #endregion
 
+
+        public void GameWon(string sign)
+        {
+            MessageBox.Show("Player " + sign + " is a Winner");
+            GameBoardPanel.Visible = false;
+            loadGameInfoPanel();
+
+        }
+
+        public void GameTied()
+        {
+            MessageBox.Show("Game Is Tied");
+            GameBoardPanel.Visible = false;
+            loadGameInfoPanel();
+        }
+
+        #endregion 
     }
 }

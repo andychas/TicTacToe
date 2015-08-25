@@ -61,34 +61,34 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdvisorForGameForm.cs">
+    <Compile Include="DB Forms\AdvisorForGameForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdvisorForGameForm.Designer.cs">
+    <Compile Include="DB Forms\AdvisorForGameForm.Designer.cs">
       <DependentUpon>AdvisorForGameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AllChampionshipsForm.cs">
+    <Compile Include="DB Forms\AllChampionshipsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AllChampionshipsForm.Designer.cs">
+    <Compile Include="DB Forms\AllChampionshipsForm.Designer.cs">
       <DependentUpon>AllChampionshipsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AllGamesForm.cs">
+    <Compile Include="DB Forms\AllGamesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AllGamesForm.Designer.cs">
+    <Compile Include="DB Forms\AllGamesForm.Designer.cs">
       <DependentUpon>AllGamesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AllPlayers.cs">
+    <Compile Include="DB Forms\AllPlayers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AllPlayers.Designer.cs">
+    <Compile Include="DB Forms\AllPlayers.Designer.cs">
       <DependentUpon>AllPlayers.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChampForPlayerForm.cs">
+    <Compile Include="DB Forms\ChampForPlayerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChampForPlayerForm.Designer.cs">
+    <Compile Include="DB Forms\ChampForPlayerForm.Designer.cs">
       <DependentUpon>ChampForPlayerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="classes\Class1.cs">
@@ -103,34 +103,34 @@
       <DependentUpon>GameBoardWPF.xaml</DependentUpon>
     </Compile>
     <Compile Include="classes\GameButton.cs" />
-    <Compile Include="GameForPlayerForm.cs">
+    <Compile Include="DB Forms\GameForPlayerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GameForPlayerForm.Designer.cs">
+    <Compile Include="DB Forms\GameForPlayerForm.Designer.cs">
       <DependentUpon>GameForPlayerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NumOfChampForm.cs">
+    <Compile Include="DB Forms\NumOfChampForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NumOfChampForm.Designer.cs">
+    <Compile Include="DB Forms\NumOfChampForm.Designer.cs">
       <DependentUpon>NumOfChampForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NumOfGamesForm.cs">
+    <Compile Include="DB Forms\NumOfGamesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NumOfGamesForm.Designer.cs">
+    <Compile Include="DB Forms\NumOfGamesForm.Designer.cs">
       <DependentUpon>NumOfGamesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlayerForGameForm.cs">
+    <Compile Include="DB Forms\PlayerForGameForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PlayerForGameForm.Designer.cs">
+    <Compile Include="DB Forms\PlayerForGameForm.Designer.cs">
       <DependentUpon>PlayerForGameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlayersForChampForm.cs">
+    <Compile Include="DB Forms\PlayersForChampForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PlayersForChampForm.Designer.cs">
+    <Compile Include="DB Forms\PlayersForChampForm.Designer.cs">
       <DependentUpon>PlayersForChampForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -149,37 +149,37 @@
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdvisorForGameForm.resx">
+    <EmbeddedResource Include="DB Forms\AdvisorForGameForm.resx">
       <DependentUpon>AdvisorForGameForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AllChampionshipsForm.resx">
+    <EmbeddedResource Include="DB Forms\AllChampionshipsForm.resx">
       <DependentUpon>AllChampionshipsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AllGamesForm.resx">
+    <EmbeddedResource Include="DB Forms\AllGamesForm.resx">
       <DependentUpon>AllGamesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AllPlayers.resx">
+    <EmbeddedResource Include="DB Forms\AllPlayers.resx">
       <DependentUpon>AllPlayers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChampForPlayerForm.resx">
+    <EmbeddedResource Include="DB Forms\ChampForPlayerForm.resx">
       <DependentUpon>ChampForPlayerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="classes\Class1.resx">
       <DependentUpon>Class1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameForPlayerForm.resx">
+    <EmbeddedResource Include="DB Forms\GameForPlayerForm.resx">
       <DependentUpon>GameForPlayerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NumOfChampForm.resx">
+    <EmbeddedResource Include="DB Forms\NumOfChampForm.resx">
       <DependentUpon>NumOfChampForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NumOfGamesForm.resx">
+    <EmbeddedResource Include="DB Forms\NumOfGamesForm.resx">
       <DependentUpon>NumOfGamesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlayerForGameForm.resx">
+    <EmbeddedResource Include="DB Forms\PlayerForGameForm.resx">
       <DependentUpon>PlayerForGameForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlayersForChampForm.resx">
+    <EmbeddedResource Include="DB Forms\PlayersForChampForm.resx">
       <DependentUpon>PlayersForChampForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

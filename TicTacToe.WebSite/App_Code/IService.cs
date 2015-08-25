@@ -22,6 +22,9 @@ public interface IService
     [OperationContract]
     string NewTurn(int col, int row);
 
+    [OperationContract(IsOneWay= true)]
+    void SendGameMove(Player p1, Player p2, char sign, int col, int row, int gameId);
+
     [OperationContract]
     void GameInfo(int size, string option);
 
@@ -107,7 +110,7 @@ public interface IService
     void AddGameToPlayer(int gameId, Player player);
 
     [OperationContract(IsOneWay=true)]
-    void AskPlayerConfirmation(int gameSize,Player player1, Player player2, bool confirmationRequired);
+    void AskPlayerConfirmation(int gameSize,Player player1, Player player2, bool confirmationRequired,int gameId);
 
     [OperationContract(IsOneWay= true)]
     void playerConfirmed(Player player1, Player player2);

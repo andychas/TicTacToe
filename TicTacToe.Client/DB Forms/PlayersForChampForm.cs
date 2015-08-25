@@ -54,5 +54,28 @@ namespace TicTacToe.Client
             throw new NotImplementedException();
         }
 
+
+
+        public void MakeYourTurn(int row, int col)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void ConfirmPlayer(int gameSize, Player player1, Player player2, bool confirmationRequired, int gameId)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void GameWon(string sign)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GameTied()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

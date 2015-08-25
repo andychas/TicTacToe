@@ -12,31 +12,20 @@ using TicTacToe.Client.ServiceReference1;
 
 namespace TicTacToe.Client
 {
-    public partial class PlayerForGameForm : Form, IServiceCallback
+    public partial class AllChampionshipsForm : Form, IServiceCallback
     {
 
         private ServiceClient c;
 
-        public PlayerForGameForm()
+        public AllChampionshipsForm()
         {
             InitializeComponent();
             c = new ServiceClient(new InstanceContext(this));
-            Game[] games = c.GetGames();
-            foreach (Game g in games)
-            {
-                comboBox1.Items.Add(g.Id);
-            }
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string gameId = comboBox1.Text;
-            Player[] players = c.GetAllGamePlayer(gameId);
-            label1.Text = "All players played in the game  " + gameId;
-            bindingSource1.DataSource = players;
+            Championship[] championships = c.GetAllChampionships();
+            bindingSource1.DataSource = championships;
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
         }
 
         public void UpdateClientBoard(int col, int row)
@@ -54,5 +43,27 @@ namespace TicTacToe.Client
             throw new NotImplementedException();
         }
 
+
+        public void MakeYourTurn(int row, int col)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void ConfirmPlayer(int gameSize, Player player1, Player player2, bool confirmationRequired, int gameId)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void GameWon(string sign)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GameTied()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

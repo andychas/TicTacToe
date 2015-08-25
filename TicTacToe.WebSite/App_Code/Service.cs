@@ -348,6 +348,7 @@ public class Service : IService
      */
     public void AddMove(int gameId, string sign, int row, int col)
     {
+        boardGame[row, col] = sign;
         GameMove move = new GameMove();
         move.Game_Id = gameId;
         move.Sign = sign;
@@ -418,25 +419,30 @@ public class Service : IService
     {
         if (checkRow(sign, row, col))
         {
-            changeTurn();
+            if(computerOrplayer.Equals("computer"))
+                  changeTurn();
             return true;
         }
         if (checkCol(sign, row, col))
         {
-            changeTurn();
+            if (computerOrplayer.Equals("computer"))
+                 changeTurn();
             return true;
         }
         if (checkFirstDiagonal(sign, row, col))
         {
-            changeTurn();
+            if (computerOrplayer.Equals("computer"))
+                  changeTurn();
             return true;
         }
         if (checkSecondDiagonal(sign, row, col))
         {
-            changeTurn();
+            if (computerOrplayer.Equals("computer"))
+                 changeTurn();
             return true;
         }
-        changeTurn();
+        if (computerOrplayer.Equals("computer"))
+             changeTurn();
         return false;
     }
 
@@ -505,7 +511,7 @@ public class Service : IService
         {
             for (int j = 0; j < boardSize; j++)
             {
-                if (!boardGame[i, j].Equals(""))
+                if (boardGame[i, j].Equals(""))
                 {
                     return false;
                 }
@@ -584,36 +590,25 @@ public class Service : IService
         }
     }
 
-    public void AskPlayerConfirmation(int gameSize, Player player1, Player player2, bool confirmationRequired)
-    {
-        foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
-        {
-            if (kvp.Key == player2.First_Name + player2.Last_Name)
-            {
-                IserviceCallback channel = kvp.Value;
-                channel.ConfirmPlayer(gameSize, player1, player2, confirmationRequired);
-
-            }
-        }
-    }
 
     public void playerConfirmed(Player player1, Player player2)
     {
         bool isYourTurn = true;
-        char sign = 'X';
+        char signX = 'X';
+        char signO = 'O';
         foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
         {
             if (kvp.Key == player1.First_Name + player1.Last_Name)
             {
                 IserviceCallback channelp1 = kvp.Value;
-                channelp1.StartGame(isYourTurn,sign);
+                channelp1.StartGame(isYourTurn, signX);
                 isYourTurn = false;
-                sign = 'O';
             }
             else if (kvp.Key == player2.First_Name + player2.Last_Name)
             {
                 IserviceCallback channelp2 = kvp.Value;
-                channelp2.StartGame(isYourTurn,sign);
+                channelp2.StartGame(isYourTurn, signO);
+                isYourTurn = false;
 
             }
 
@@ -649,10 +644,74 @@ public class Service : IService
      
     }
 
+    public void SendGameMove(Player p1, Player p2, char sign, int col, int row, int gameId)
+    {
+        AddMove(gameId, sign.ToString(), row, col);
+        bool isWinner = IfWinner(sign.ToString(), row, col);
+        bool isTie = fullBoard();
+        if (isWinner)
+        {
+            foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
+            {
+
+                if (kvp.Key == p2.First_Name + p2.Last_Name)
+                {
+                    IserviceCallback channel = kvp.Value;
+                    channel.GameWon(sign.ToString());
+                }
+                else if (kvp.Key == p1.First_Name + p1.Last_Name)
+                {
+                    IserviceCallback channel = kvp.Value;
+                    channel.GameWon(sign.ToString());
+                }
+            }
+        }
+        else if (isTie)
+        {
+
+            foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
+            {
+
+                if (kvp.Key == p2.First_Name + p2.Last_Name)
+                {
+                    IserviceCallback channel = kvp.Value;
+                    channel.GameTied();
+                }
+                else if (kvp.Key == p1.First_Name + p1.Last_Name)
+                {
+                    IserviceCallback channel = kvp.Value;
+                    channel.GameTied();
+                }
+            }
+        }
+
+        else
+        {
+            foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
+            {
+
+                if (kvp.Key == p2.First_Name + p2.Last_Name)
+                {
+                    IserviceCallback channel = kvp.Value;
+                    channel.MakeYourTurn(row, col);
+
+                }
+            }
+
+        }
+    }
 
 
+    public void AskPlayerConfirmation(int gameSize, Player player1, Player player2, bool confirmationRequired, int gameId)
+    {
+        foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
+        {
+            if (kvp.Key == player2.First_Name + player2.Last_Name)
+            {
+                IserviceCallback channel = kvp.Value;
+                channel.ConfirmPlayer(gameSize, player1, player2, confirmationRequired,gameId);
 
-
-
-    
+            }
+        }
+    }
 }

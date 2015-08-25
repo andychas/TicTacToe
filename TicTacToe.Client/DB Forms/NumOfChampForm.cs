@@ -12,20 +12,27 @@ using TicTacToe.Client.ServiceReference1;
 
 namespace TicTacToe.Client
 {
-    public partial class AllChampionshipsForm : Form, IServiceCallback
+    public partial class NumOfChampForm : Form, IServiceCallback
     {
 
         private ServiceClient c;
 
-        public AllChampionshipsForm()
+        public NumOfChampForm()
         {
             InitializeComponent();
             c = new ServiceClient(new InstanceContext(this));
-            Championship[] championships = c.GetAllChampionships();
-            bindingSource1.DataSource = championships;
+            string[] cities = c.GetAllCities();
+            List<CustomChampionship> l = new List<CustomChampionship>();
+
+            for (int i = 0; i < cities.Length; i++)
+            {
+                CustomChampionship customChampionship = c.GetNumOfChampionships(cities[i]);
+                l.Add(customChampionship);
+
+            }
+            bindingSource1.DataSource = l;
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
         }
 
         public void UpdateClientBoard(int col, int row)
@@ -39,6 +46,29 @@ namespace TicTacToe.Client
         }
 
         public void StartGame(bool isYourTurn, char sign)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void MakeYourTurn(int row, int col)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void ConfirmPlayer(int gameSize, Player player1, Player player2, bool confirmationRequired, int gameId)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void GameWon(string sign)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GameTied()
         {
             throw new NotImplementedException();
         }

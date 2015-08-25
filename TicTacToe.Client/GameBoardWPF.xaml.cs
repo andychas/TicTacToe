@@ -29,8 +29,8 @@ namespace TicTacToe.Client
 
         private static string currenTurn;
 
-        private static Button[,] buttons1;
-        private static Button[,] buttons2;
+        public Button[,] buttons1;
+        public Button[,] buttons2;
         private string computerOrPlayer;
         private bool confirmationRequired;
         public char sign;
@@ -42,7 +42,7 @@ namespace TicTacToe.Client
         private int gameId;
         private string gameOption;
         private Player player1;
-        public Player player2;
+        private Player player2;
         private GameMove[] moves;
         private bool confirmation;
 
@@ -67,7 +67,7 @@ namespace TicTacToe.Client
             if (!computerOrPlayer.Equals("computer") && !confirmationRequired) // if vs player - we need the other player to confirm the duel
             {
                 busyIndicator.IsBusy = true;
-                c.AskPlayerConfirmation(size,player1, player2,true);
+                c.AskPlayerConfirmation(size,player1, player2,true,gameId);
 
             }
         }
@@ -130,13 +130,13 @@ namespace TicTacToe.Client
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             GameButton button = (GameButton)sender;
-            string sign;
+            string gsign;
             if(computerOrPlayer.Equals("computer")) // player1 vs computer
             {
                 // player move
-                sign = c.NewTurn(button.col, button.row);
-                moveGame(button, sign);
-                c.AddMove(gameId, sign, button.row, button.col);
+                gsign = c.NewTurn(button.col, button.row);
+                moveGame(button, gsign);
+                c.AddMove(gameId, gsign, button.row, button.col);
                 if (fullBoard())
                 {
                     MessageBox.Show(" no winner");
@@ -153,9 +153,9 @@ namespace TicTacToe.Client
                 int rndRow = 0;
                 getRandomButton(ref rndCol, ref rndRow);
                 button = (GameButton)buttons1[rndCol, rndRow];
-                sign = c.NewTurn(button.col, button.row);
-                moveGame(button, sign);
-                c.AddMove(gameId, sign, button.row, button.col);
+                gsign = c.NewTurn(button.col, button.row);
+                moveGame(button, gsign);
+                c.AddMove(gameId, gsign, button.row, button.col);
                 if (fullBoard())
                 {
                     MessageBox.Show(" no winner");
@@ -171,24 +171,14 @@ namespace TicTacToe.Client
             {
                 int row = button.row;
                 int col = button.col;
-                if(currenTurn.Equals("player1"))
-                {
-                    // player 1
-                    sign = c.NewTurn(button.col, button.row);
-                    moveGame(button, sign);
-                    buttons2[button.row, button.col].IsEnabled = false;
-                    buttons2[button.row, button.col].Content = sign;
-                    currenTurn = "player2";
-                }
-                else
-                {
-                    // player 2
-                    sign = c.NewTurn(button.col, button.row);
-                    moveGame(button, sign);
-                    buttons1[button.row, button.col].IsEnabled = false;
-                    buttons1[button.row, button.col].Content = sign;
-                    currenTurn = "player1";
-                }         
+
+                button.Content = sign;
+                button.FontSize = 20;
+                button.IsEnabled = false;
+
+                c.SendGameMove(player1, player2, sign, col, row,gameId);
+                
+                busyIndicator.IsBusy = true;
             }
         }
 
@@ -297,6 +287,29 @@ namespace TicTacToe.Client
 
 
         public void StartGame(bool isYourTurn, char sign)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void MakeYourTurn(int row, int col)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void ConfirmPlayer(int gameSize, Player player1, Player player2, bool confirmationRequired, int gameId)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void GameWon(string sign)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GameTied()
         {
             throw new NotImplementedException();
         }
