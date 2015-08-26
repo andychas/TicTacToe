@@ -703,12 +703,6 @@ namespace TicTacToe.Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/RegisterClient", ReplyAction="http://tempuri.org/IService/RegisterClientResponse")]
         System.Threading.Tasks.Task<bool> RegisterClientAsync(TicTacToe.Client.ServiceReference1.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetData")]
-        void GetData(string x, string y);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GetData")]
-        System.Threading.Tasks.Task GetDataAsync(string x, string y);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddPlayer", ReplyAction="http://tempuri.org/IService/AddPlayerResponse")]
         TicTacToe.Client.ServiceReference1.Player AddPlayer(string firstName, string lastName);
         
@@ -793,11 +787,11 @@ namespace TicTacToe.Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGames", ReplyAction="http://tempuri.org/IService/GetGamesResponse")]
         System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Game[]> GetGamesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayerGames", ReplyAction="http://tempuri.org/IService/GetPlayerGamesResponse")]
-        TicTacToe.Client.ServiceReference1.Game[] GetPlayerGames(TicTacToe.Client.ServiceReference1.Player player);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayerGamesQuery", ReplyAction="http://tempuri.org/IService/GetPlayerGamesQueryResponse")]
+        TicTacToe.Client.ServiceReference1.Game[] GetPlayerGamesQuery(TicTacToe.Client.ServiceReference1.Player player, int delay);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayerGames", ReplyAction="http://tempuri.org/IService/GetPlayerGamesResponse")]
-        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Game[]> GetPlayerGamesAsync(TicTacToe.Client.ServiceReference1.Player player);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayerGamesQuery", ReplyAction="http://tempuri.org/IService/GetPlayerGamesQueryResponse")]
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Game[]> GetPlayerGamesQueryAsync(TicTacToe.Client.ServiceReference1.Player player, int delay);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddAdvisor", ReplyAction="http://tempuri.org/IService/AddAdvisorResponse")]
         void AddAdvisor(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors, int gameId);
@@ -816,6 +810,24 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllChampionships", ReplyAction="http://tempuri.org/IService/GetAllChampionshipsResponse")]
         System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetAllChampionshipsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllChampionshipsQuery", ReplyAction="http://tempuri.org/IService/GetAllChampionshipsQueryResponse")]
+        TicTacToe.Client.ServiceReference1.Championship[] GetAllChampionshipsQuery(int delay);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllChampionshipsQuery", ReplyAction="http://tempuri.org/IService/GetAllChampionshipsQueryResponse")]
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetAllChampionshipsQueryAsync(int delay);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGamesQuery", ReplyAction="http://tempuri.org/IService/GetGamesQueryResponse")]
+        TicTacToe.Client.ServiceReference1.Game[] GetGamesQuery(int delay);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetGamesQuery", ReplyAction="http://tempuri.org/IService/GetGamesQueryResponse")]
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Game[]> GetGamesQueryAsync(int delay);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayersQuery", ReplyAction="http://tempuri.org/IService/GetPlayersQueryResponse")]
+        TicTacToe.Client.ServiceReference1.Player[] GetPlayersQuery(int delay);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayersQuery", ReplyAction="http://tempuri.org/IService/GetPlayersQueryResponse")]
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player[]> GetPlayersQueryAsync(int delay);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetChampionshipsByPlayerId", ReplyAction="http://tempuri.org/IService/GetChampionshipsByPlayerIdResponse")]
         TicTacToe.Client.ServiceReference1.Championship[] GetChampionshipsByPlayerId(TicTacToe.Client.ServiceReference1.Player player);
@@ -912,6 +924,12 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/removeClient")]
         System.Threading.Tasks.Task removeClientAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DelayResponse", ReplyAction="http://tempuri.org/IService/DelayResponseResponse")]
+        void DelayResponse(int delay);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DelayResponse", ReplyAction="http://tempuri.org/IService/DelayResponseResponse")]
+        System.Threading.Tasks.Task DelayResponseAsync(int delay);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -970,14 +988,6 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> RegisterClientAsync(TicTacToe.Client.ServiceReference1.Player player) {
             return base.Channel.RegisterClientAsync(player);
-        }
-        
-        public void GetData(string x, string y) {
-            base.Channel.GetData(x, y);
-        }
-        
-        public System.Threading.Tasks.Task GetDataAsync(string x, string y) {
-            return base.Channel.GetDataAsync(x, y);
         }
         
         public TicTacToe.Client.ServiceReference1.Player AddPlayer(string firstName, string lastName) {
@@ -1092,12 +1102,12 @@ namespace TicTacToe.Client.ServiceReference1 {
             return base.Channel.GetGamesAsync();
         }
         
-        public TicTacToe.Client.ServiceReference1.Game[] GetPlayerGames(TicTacToe.Client.ServiceReference1.Player player) {
-            return base.Channel.GetPlayerGames(player);
+        public TicTacToe.Client.ServiceReference1.Game[] GetPlayerGamesQuery(TicTacToe.Client.ServiceReference1.Player player, int delay) {
+            return base.Channel.GetPlayerGamesQuery(player, delay);
         }
         
-        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Game[]> GetPlayerGamesAsync(TicTacToe.Client.ServiceReference1.Player player) {
-            return base.Channel.GetPlayerGamesAsync(player);
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Game[]> GetPlayerGamesQueryAsync(TicTacToe.Client.ServiceReference1.Player player, int delay) {
+            return base.Channel.GetPlayerGamesQueryAsync(player, delay);
         }
         
         public void AddAdvisor(TicTacToe.Client.ServiceReference1.Player player, TicTacToe.Client.ServiceReference1.Advisor[] advisors, int gameId) {
@@ -1122,6 +1132,30 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetAllChampionshipsAsync() {
             return base.Channel.GetAllChampionshipsAsync();
+        }
+        
+        public TicTacToe.Client.ServiceReference1.Championship[] GetAllChampionshipsQuery(int delay) {
+            return base.Channel.GetAllChampionshipsQuery(delay);
+        }
+        
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Championship[]> GetAllChampionshipsQueryAsync(int delay) {
+            return base.Channel.GetAllChampionshipsQueryAsync(delay);
+        }
+        
+        public TicTacToe.Client.ServiceReference1.Game[] GetGamesQuery(int delay) {
+            return base.Channel.GetGamesQuery(delay);
+        }
+        
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Game[]> GetGamesQueryAsync(int delay) {
+            return base.Channel.GetGamesQueryAsync(delay);
+        }
+        
+        public TicTacToe.Client.ServiceReference1.Player[] GetPlayersQuery(int delay) {
+            return base.Channel.GetPlayersQuery(delay);
+        }
+        
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player[]> GetPlayersQueryAsync(int delay) {
+            return base.Channel.GetPlayersQueryAsync(delay);
         }
         
         public TicTacToe.Client.ServiceReference1.Championship[] GetChampionshipsByPlayerId(TicTacToe.Client.ServiceReference1.Player player) {
@@ -1250,6 +1284,14 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task removeClientAsync() {
             return base.Channel.removeClientAsync();
+        }
+        
+        public void DelayResponse(int delay) {
+            base.Channel.DelayResponse(delay);
+        }
+        
+        public System.Threading.Tasks.Task DelayResponseAsync(int delay) {
+            return base.Channel.DelayResponseAsync(delay);
         }
     }
 }

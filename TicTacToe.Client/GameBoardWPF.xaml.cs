@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TicTacToe.Client.ServiceReference1;
 using System.ServiceModel;
+using System.Windows.Media.Animation;
 
 namespace TicTacToe.Client
 {
@@ -237,6 +238,7 @@ namespace TicTacToe.Client
                     buttons[row, col] = new GameButton(boardSize, row, col);
                     buttons[row, col].VerticalAlignment = VerticalAlignment.Center;
                     buttons[row, col].Click += Button_Click;
+                    
                 }
             }
             return buttons;

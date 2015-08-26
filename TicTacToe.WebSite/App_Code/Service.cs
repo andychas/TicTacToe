@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
 public class Service : IService
@@ -12,19 +14,11 @@ public class Service : IService
     private static Dictionary<string, IserviceCallback> clients =
                 new Dictionary<string, IserviceCallback>();
     private static object locker = new object();
-
     private DataClassesDataContext db = new DataClassesDataContext();
     private static bool turn = true;
     private static string[,] boardGame;
     private static int boardSize;
     private static string computerOrplayer;
-
-    public void GetData(string firstName, string lastName)
-    {
- //       string res = firstName + " " + lastName + " add to database";
- //       ICallBack channel = OperationContext.Current.GetCallbackChannel<ICallBack>();
- //       channel.Result(res);
-    }
 
     #region database
 
@@ -225,6 +219,7 @@ public class Service : IService
 
     public CustomAdvisorToPlayer[] GetAdvisorToPlayer(int gameId)
     {
+        
         var x =
             (from g in db.PlayerToAdvisors
             join a in db.Advisors on g.Advisor equals a.Id
@@ -298,18 +293,7 @@ public class Service : IService
 
     }
 
-    /**
-     * return all games for this player
-     */
-    public Game[] GetPlayerGames(Player player)
-    {
-        var x =
-            from g in db.Games
-            where g.Player1.Equals(player.First_Name + " " + player.Last_Name) ||
-            g.Player2.Equals(player.First_Name + " " + player.Last_Name)
-            select g;
-        return x.ToArray();
-    }
+
 
     /**
      * Add game to database and return gameId
@@ -379,6 +363,33 @@ public class Service : IService
             where g.Game_Id == gameId
             select g;
         return x.ToArray();
+    }
+
+    public void UpdatePlayerChampionships(Player player)
+    {
+        bool flag = false;
+        foreach (Championship c in db.Championships)
+        {
+            foreach (PlayerToChampionship ctp in db.PlayerToChampionships)
+            {
+                if (c.Id == ctp.Championship_Id)
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag)
+            {
+                PlayerToChampionship ptc = new PlayerToChampionship();
+                ptc.Championship_Id = c.Id;
+                ptc.Player_Id = player.Id;
+                db.PlayerToChampionships.InsertOnSubmit(ptc);
+                db.SubmitChanges();
+            }
+
+        }
+
+
     }
 
     #endregion
@@ -590,7 +601,6 @@ public class Service : IService
         }
     }
 
-
     public void playerConfirmed(Player player1, Player player2)
     {
         bool isYourTurn = true;
@@ -613,35 +623,6 @@ public class Service : IService
             }
 
         }
-    }
-
-
-
-    public void UpdatePlayerChampionships(Player player)
-    {
-        bool flag = false;
-        foreach (Championship c in db.Championships)
-        {
-            foreach (PlayerToChampionship ctp in db.PlayerToChampionships)
-            {
-                if (c.Id == ctp.Championship_Id)
-                {
-                    flag = true;
-                    break;                    
-                }                     
-            }
-            if (!flag)
-            {
-                PlayerToChampionship ptc = new PlayerToChampionship();
-                ptc.Championship_Id = c.Id;
-                ptc.Player_Id = player.Id;
-                db.PlayerToChampionships.InsertOnSubmit(ptc);
-                db.SubmitChanges();
-            }
-
-        }
-            
-     
     }
 
     public void SendGameMove(Player p1, Player p2, char sign, int col, int row, int gameId)
@@ -701,7 +682,6 @@ public class Service : IService
         }
     }
 
-
     public void AskPlayerConfirmation(int gameSize, Player player1, Player player2, bool confirmationRequired, int gameId)
     {
         foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
@@ -713,5 +693,57 @@ public class Service : IService
 
             }
         }
+    }
+
+
+
+    public void DelayResponse(int delay)
+    {
+        Thread.Sleep(delay);
+        return;
+    }
+
+
+    public Championship[] GetAllChampionshipsQuery(int delay)
+    {
+        Thread.Sleep(delay);
+        var x =
+            from c in db.Championships
+            select c;
+        return x.ToArray();
+
+    }
+
+    public Game[] GetGamesQuery(int delay)
+    {
+        Thread.Sleep(delay);
+        var x =
+            from g in db.Games
+            select g;
+        return x.ToArray();
+    }
+
+
+    public Player[] GetPlayersQuery(int delay)
+    {
+        Thread.Sleep(delay);
+        var x =
+    from p in db.Players
+    select p;
+        return x.ToArray();
+    }
+
+    /**
+ * return all games for this player
+ */
+    public Game[] GetPlayerGamesQuery(Player player, int delay)
+    {
+        Thread.Sleep(delay);
+        var x =
+            from g in db.Games
+            where g.Player1.Equals(player.First_Name + " " + player.Last_Name) ||
+            g.Player2.Equals(player.First_Name + " " + player.Last_Name)
+            select g;
+        return x.ToArray();
     }
 }

@@ -16,9 +16,11 @@ namespace TicTacToe.Client
     {
 
         private ServiceClient c;
+        private int delay;
 
-        public PlayersForChampForm()
+        public PlayersForChampForm(int delay)
         {
+            this.delay = delay;
             InitializeComponent();
             c = new ServiceClient(new InstanceContext(this));
             Championship[] champiomships = c.GetAllChampionships();

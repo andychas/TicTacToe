@@ -16,16 +16,23 @@ namespace TicTacToe.Client
     {
 
         private ServiceClient c;
+        private int delay;
 
-        public AllChampionshipsForm()
+        public AllChampionshipsForm(int delay)
         {
+            this.delay = delay;
             InitializeComponent();
             c = new ServiceClient(new InstanceContext(this));
-            Championship[] championships = c.GetAllChampionships();
+            getChampionships();
+            
+        }
+
+        private async  void getChampionships()
+        {
+            Championship[] championships = await c.GetAllChampionshipsQueryAsync(delay);
             bindingSource1.DataSource = championships;
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
         }
 
         public void UpdateClientBoard(int col, int row)

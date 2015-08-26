@@ -14,7 +14,9 @@ using System.Windows.Forms.Integration;
 namespace TicTacToe.Client
 {
     public partial class TicTacToeForm : Form, IServiceCallback
+
     {
+        const int DB_DELAY = 3000;
         #region Private Fields
         private ServiceClient c;
         private DataGridViewRow row;
@@ -35,7 +37,7 @@ namespace TicTacToe.Client
         private int gameId;
         private int size = 4;
         private int numOfAdvisors;
- 
+        private int delay = 0;
         #endregion
 
         #region Constructor
@@ -116,63 +118,63 @@ namespace TicTacToe.Client
 
         #region Menu
 
-        private void allPlayersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void  allPlayersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AllPlayers allPlayersForm = new AllPlayers();
+            AllPlayers allPlayersForm = new AllPlayers(delay);
             allPlayersForm.Show();
         }
 
         private void allGamesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AllGamesForm games = new AllGamesForm();
+            AllGamesForm games = new AllGamesForm(delay);
             games.Show();
         }
 
         private void allChampionshipsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AllChampionshipsForm championshipsForm = new AllChampionshipsForm();
+            AllChampionshipsForm championshipsForm = new AllChampionshipsForm(delay);
             championshipsForm.Show();
         }
 
         private void allPlayerGamesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GameForPlayerForm form = new GameForPlayerForm();
+            GameForPlayerForm form = new GameForPlayerForm(delay);
             form.Show();
         }
 
         private void allPlayerChampionshipsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChampForPlayerForm form = new ChampForPlayerForm();
+            ChampForPlayerForm form = new ChampForPlayerForm(delay);
             form.Show();
         }
 
         private void allPlayersInGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PlayerForGameForm form = new PlayerForGameForm();
+            PlayerForGameForm form = new PlayerForGameForm(delay);
             form.Show();
         }
 
         private void allPlayersInToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PlayersForChampForm form = new PlayersForChampForm();
+            PlayersForChampForm form = new PlayersForChampForm(delay);
             form.Show();
         }
 
         private void numberOfChampionshipsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NumOfChampForm form = new NumOfChampForm();
+            NumOfChampForm form = new NumOfChampForm(delay);
             form.Show();
         }
 
         private void numberOfGamesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NumOfGamesForm form = new NumOfGamesForm();
+            NumOfGamesForm form = new NumOfGamesForm(delay);
             form.Show();
         }
 
         private void allAdvisorsInGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AdvisorForGameForm form = new AdvisorForGameForm();
+            AdvisorForGameForm form = new AdvisorForGameForm(delay);
             form.Show();
         }
 
@@ -185,6 +187,16 @@ namespace TicTacToe.Client
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void yesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            delay = DB_DELAY;
+        }
+
+        private void noToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            delay = 0;
         }
 
         #endregion
@@ -564,5 +576,7 @@ namespace TicTacToe.Client
         }
 
         #endregion 
+
+
     }
 }

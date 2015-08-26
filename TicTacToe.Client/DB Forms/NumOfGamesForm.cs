@@ -16,12 +16,15 @@ namespace TicTacToe.Client
     {
 
         private ServiceClient c;
+        private int delay;
 
-        public NumOfGamesForm()
+        public NumOfGamesForm(int delay)
         {
+            this.delay = delay;
             InitializeComponent();
             c = new ServiceClient(new InstanceContext(this));
 
+            
             Player[] players = c.GetPlayers();
             List<CustomPlayer> p = new List<CustomPlayer>();
 
@@ -35,7 +38,6 @@ namespace TicTacToe.Client
             bindingSource1.DataSource = p;
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
         }
 
         public void UpdateClientBoard(int col, int row)

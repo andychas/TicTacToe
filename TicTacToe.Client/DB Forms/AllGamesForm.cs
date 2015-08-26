@@ -16,12 +16,21 @@ namespace TicTacToe.Client
     {
 
         private ServiceClient c;
+        private int delay;
 
-        public AllGamesForm()
+
+        public AllGamesForm(int delay)
         {
+            this.delay = delay;
             InitializeComponent();
             c = new ServiceClient(new InstanceContext(this));
-            Game[] games = c.GetGames();
+            getGamesData();
+            
+        }
+
+        private async void getGamesData()
+        {
+            Game[] games = await c.GetGamesQueryAsync(delay);
             bindingSource1.DataSource = games;
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

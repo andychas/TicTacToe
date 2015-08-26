@@ -23,4 +23,16 @@
         </Grid>
     </xctk:BusyIndicator>
     
+    <UserControl.Resources>
+        <Storyboard x:Key="ButtonStoryBoard">
+            <ColorAnimation Storyboard.TargetName="innerCircleBrush" 
+                                Storyboard.TargetProperty="Color"
+                                            From="Gray" 
+                                            To="DarkGreen" AutoReverse="True"
+                                           BeginTime="0:0:0" 
+                                           Duration="0:0:.25" RepeatBehavior="2x"
+                                            ></ColorAnimation>
+        </Storyboard>
+    </UserControl.Resources>
+    
 </UserControl>

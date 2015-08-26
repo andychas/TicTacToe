@@ -106,6 +106,9 @@
             this.numberOfChampionshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.numberOfGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allAdvisorsInGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.delayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerBtn = new System.Windows.Forms.Button();
             this.PlayBtn = new System.Windows.Forms.Button();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -763,7 +766,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.dBToolStripMenuItem});
+            this.dBToolStripMenuItem,
+            this.delayToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(677, 24);
@@ -856,6 +860,29 @@
             this.allAdvisorsInGameToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.allAdvisorsInGameToolStripMenuItem.Text = "All advisors in game";
             this.allAdvisorsInGameToolStripMenuItem.Click += new System.EventHandler(this.allAdvisorsInGameToolStripMenuItem_Click);
+            // 
+            // delayToolStripMenuItem
+            // 
+            this.delayToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.yesToolStripMenuItem,
+            this.noToolStripMenuItem});
+            this.delayToolStripMenuItem.Name = "delayToolStripMenuItem";
+            this.delayToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.delayToolStripMenuItem.Text = "DB Delay";
+            // 
+            // yesToolStripMenuItem
+            // 
+            this.yesToolStripMenuItem.Name = "yesToolStripMenuItem";
+            this.yesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.yesToolStripMenuItem.Text = "Yes";
+            this.yesToolStripMenuItem.Click += new System.EventHandler(this.yesToolStripMenuItem_Click);
+            // 
+            // noToolStripMenuItem
+            // 
+            this.noToolStripMenuItem.Name = "noToolStripMenuItem";
+            this.noToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.noToolStripMenuItem.Text = "No";
+            this.noToolStripMenuItem.Click += new System.EventHandler(this.noToolStripMenuItem_Click);
             // 
             // registerBtn
             // 
@@ -1024,6 +1051,9 @@
         private System.Windows.Forms.Button backBtn;
         private System.Windows.Forms.Button newGameBtn;
         private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private System.Windows.Forms.ToolStripMenuItem delayToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem yesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem noToolStripMenuItem;
 
 
 

@@ -17,9 +17,11 @@ namespace TicTacToe.Client
 
         private ServiceClient c;
         private Player player;
+        private int delay;
 
-        public ChampForPlayerForm()
+        public ChampForPlayerForm(int delay)
         {
+            this.delay = delay;
             InitializeComponent();
             c = new ServiceClient(new InstanceContext(this));
 

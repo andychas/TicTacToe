@@ -17,9 +17,12 @@ namespace TicTacToe.Client
 
         private ServiceClient c;
         private Player player;
+        private int delay;
 
-        public GameForPlayerForm()
+        public GameForPlayerForm(int delay)
         {
+            // TODO: Complete member initialization
+            this.delay = delay;
             InitializeComponent();
             c = new ServiceClient(new InstanceContext(this));
             Player[] players = c.GetPlayers();
@@ -27,16 +30,16 @@ namespace TicTacToe.Client
             {
                 comboBox1.Items.Add(p.Id + " " + p.First_Name + " " + p.Last_Name);
             }
-
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string[] playerInfo = comboBox1.Text.Split(' ');
 
             player = c.GetPlayer(playerInfo[1], playerInfo[2]);
             label1.Text = "All games for " + player.First_Name + " " + player.Last_Name;
-            Game[] games = c.GetPlayerGames(player);
+            
+            Game[] games = await c.GetPlayerGamesQueryAsync(player,delay);
             bindingSource1.DataSource = games;
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

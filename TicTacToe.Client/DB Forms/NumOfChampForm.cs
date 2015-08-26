@@ -16,9 +16,11 @@ namespace TicTacToe.Client
     {
 
         private ServiceClient c;
+        private int delay;
 
-        public NumOfChampForm()
+        public NumOfChampForm(int delay)
         {
+            this.delay = delay;
             InitializeComponent();
             c = new ServiceClient(new InstanceContext(this));
             string[] cities = c.GetAllCities();

@@ -13,9 +13,6 @@ public interface IService
     [OperationContract]
     bool RegisterClient(Player  player);
 
-    [OperationContract(IsOneWay = true)]
-    void GetData(string x, string y);
-
     [OperationContract]  
     Player AddPlayer(string firstName, string lastName);
 
@@ -59,7 +56,7 @@ public interface IService
     Game[] GetGames();
 
     [OperationContract]
-    Game[] GetPlayerGames(Player player);
+    Game[] GetPlayerGamesQuery(Player player,int delay);
 
     [OperationContract]
     void AddAdvisor(Player player, Advisor[] advisors, int gameId);
@@ -69,6 +66,15 @@ public interface IService
 
     [OperationContract]
     Championship[] GetAllChampionships();
+
+    [OperationContract]
+    Championship[] GetAllChampionshipsQuery(int delay);
+
+    [OperationContract]
+    Game[] GetGamesQuery(int delay);
+
+    [OperationContract]
+    Player[] GetPlayersQuery(int delay);
 
     [OperationContract]
     Championship[] GetChampionshipsByPlayerId(Player player);
@@ -117,5 +123,9 @@ public interface IService
 
     [OperationContract(IsOneWay = true)]
     void removeClient();
+
+    [OperationContract]
+    void DelayResponse(int delay);
+
 
 }

@@ -16,9 +16,11 @@ namespace TicTacToe.Client
     {
 
         private ServiceClient c;
+        private int delay;
 
-        public PlayerForGameForm()
+        public PlayerForGameForm(int delay)
         {
+            this.delay = delay;
             InitializeComponent();
             c = new ServiceClient(new InstanceContext(this));
             Game[] games = c.GetGames();
@@ -26,7 +28,6 @@ namespace TicTacToe.Client
             {
                 comboBox1.Items.Add(g.Id);
             }
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

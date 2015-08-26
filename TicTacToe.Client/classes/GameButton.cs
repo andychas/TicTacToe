@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 namespace TicTacToe.Client
 {
-    class GameButton : Button
+    class GameButton : System.Windows.Controls.Button
     {
         const int MAXBOARDSIZE = 5;
         const int MINBOARDSIZE = 4;
@@ -27,7 +27,7 @@ namespace TicTacToe.Client
             this.Height = boardSize == MINBOARDSIZE ? MIN_BOARD_BUTTON_SIZE : MAX_BOARD_BUTTON_SIZE;
             this.Width = boardSize == MINBOARDSIZE ? MIN_BOARD_BUTTON_SIZE : MAX_BOARD_BUTTON_SIZE;
             this.SetValue(Grid.RowProperty, row);
-            this.SetValue(Grid.ColumnProperty, col);
+            this.SetValue(Grid.ColumnProperty, col);            
         }
 
     }

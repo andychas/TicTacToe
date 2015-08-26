@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TicTacToe.Client.ServiceReference1;
+using System.Threading;
 
 namespace TicTacToe.Client
 {
@@ -16,16 +17,27 @@ namespace TicTacToe.Client
     {
 
         private ServiceClient c;
+        private int delay;
 
-        public AllPlayers()
+        public AllPlayers(int delay)
         {
+            this.delay = delay;
             InitializeComponent();
             c = new ServiceClient(new InstanceContext(this));
-            Player[] Players = c.GetPlayers();
+            getAllPlayersData();
+            
+            
+            
+        }
+
+        private async void getAllPlayersData()
+        {
+            Player[] Players = await c.GetPlayersQueryAsync(delay);
             bindingSource1.DataSource = Players;
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
 
         public void UpdateClientBoard(int col, int row)
         {

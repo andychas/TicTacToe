@@ -16,9 +16,13 @@ namespace TicTacToe.Client
     {
 
         private ServiceClient c;
+        private int delay;
 
-        public AdvisorForGameForm()
-        {
+
+
+        public AdvisorForGameForm(int delay)
+        {            
+            this.delay = delay;
             InitializeComponent();
             c = new ServiceClient(new InstanceContext(this));
             Game[] games = c.GetGames();
@@ -28,10 +32,10 @@ namespace TicTacToe.Client
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private async void  comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int gameId = Convert.ToInt32(comboBox1.Text);
-            CustomAdvisorToPlayer[] customPlayer = c.GetAdvisorToPlayer(gameId);
+            CustomAdvisorToPlayer[] customPlayer = await c.GetAdvisorToPlayerAsync(gameId);
             bindingSource1.DataSource = customPlayer;
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
