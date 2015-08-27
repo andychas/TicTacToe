@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.RegisterPanel = new System.Windows.Forms.Panel();
-            this.GameInfoPanel = new System.Windows.Forms.Panel();
             this.GameBoardPanel = new System.Windows.Forms.Panel();
             this.backBtn = new System.Windows.Forms.Button();
             this.newGameBtn = new System.Windows.Forms.Button();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.GameInfoPanel = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.recordGame = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -52,6 +52,7 @@
             this.addBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.playersComboBox = new System.Windows.Forms.ComboBox();
             this.computerButton = new System.Windows.Forms.RadioButton();
             this.playerButton = new System.Windows.Forms.RadioButton();
@@ -115,10 +116,9 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.championshipTableAdapter = new TicTacToe.Client.DatabaseDataSetTableAdapters.ChampionshipTableAdapter();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.label14 = new System.Windows.Forms.Label();
             this.RegisterPanel.SuspendLayout();
-            this.GameInfoPanel.SuspendLayout();
             this.GameBoardPanel.SuspendLayout();
+            this.GameInfoPanel.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -156,26 +156,12 @@
             this.RegisterPanel.Size = new System.Drawing.Size(677, 496);
             this.RegisterPanel.TabIndex = 18;
             // 
-            // GameInfoPanel
-            // 
-            this.GameInfoPanel.Controls.Add(this.groupBox6);
-            this.GameInfoPanel.Controls.Add(this.groupBox5);
-            this.GameInfoPanel.Controls.Add(this.groupBox2);
-            this.GameInfoPanel.Controls.Add(this.lvlGroupBox);
-            this.GameInfoPanel.Controls.Add(this.StartGameBtn);
-            this.GameInfoPanel.Controls.Add(this.groupBox3);
-            this.GameInfoPanel.Controls.Add(this.playerName);
-            this.GameInfoPanel.Location = new System.Drawing.Point(3, 3);
-            this.GameInfoPanel.Name = "GameInfoPanel";
-            this.GameInfoPanel.Size = new System.Drawing.Size(677, 496);
-            this.GameInfoPanel.TabIndex = 4;
-            // 
             // GameBoardPanel
             // 
             this.GameBoardPanel.Controls.Add(this.backBtn);
             this.GameBoardPanel.Controls.Add(this.newGameBtn);
             this.GameBoardPanel.Controls.Add(this.elementHost1);
-            this.GameBoardPanel.Location = new System.Drawing.Point(0, 3);
+            this.GameBoardPanel.Location = new System.Drawing.Point(3, 3);
             this.GameBoardPanel.Name = "GameBoardPanel";
             this.GameBoardPanel.Size = new System.Drawing.Size(674, 496);
             this.GameBoardPanel.TabIndex = 41;
@@ -208,6 +194,20 @@
             this.elementHost1.Text = "elementHost1";
             this.elementHost1.Child = null;
             // 
+            // GameInfoPanel
+            // 
+            this.GameInfoPanel.Controls.Add(this.groupBox6);
+            this.GameInfoPanel.Controls.Add(this.groupBox5);
+            this.GameInfoPanel.Controls.Add(this.groupBox2);
+            this.GameInfoPanel.Controls.Add(this.lvlGroupBox);
+            this.GameInfoPanel.Controls.Add(this.StartGameBtn);
+            this.GameInfoPanel.Controls.Add(this.groupBox3);
+            this.GameInfoPanel.Controls.Add(this.playerName);
+            this.GameInfoPanel.Location = new System.Drawing.Point(3, 3);
+            this.GameInfoPanel.Name = "GameInfoPanel";
+            this.GameInfoPanel.Size = new System.Drawing.Size(677, 496);
+            this.GameInfoPanel.TabIndex = 4;
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.recordGame);
@@ -225,6 +225,7 @@
             this.recordGame.Name = "recordGame";
             this.recordGame.Size = new System.Drawing.Size(121, 21);
             this.recordGame.TabIndex = 0;
+            this.recordGame.DropDown += new System.EventHandler(this.recordGame_DropDown);
             // 
             // groupBox5
             // 
@@ -372,6 +373,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Game Type";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(134, 69);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(37, 13);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Online";
+            // 
             // playersComboBox
             // 
             this.playersComboBox.FormattingEnabled = true;
@@ -470,6 +480,7 @@
             this.ChampComboBox.Name = "ChampComboBox";
             this.ChampComboBox.Size = new System.Drawing.Size(121, 21);
             this.ChampComboBox.TabIndex = 0;
+            this.ChampComboBox.DropDown += new System.EventHandler(this.ChampComboBox_DropDown);
             this.ChampComboBox.SelectedIndexChanged += new System.EventHandler(this.ChampComboBox_SelectedIndexChanged);
             // 
             // playerName
@@ -749,7 +760,7 @@
             // abuotToolStripMenuItem
             // 
             this.abuotToolStripMenuItem.Name = "abuotToolStripMenuItem";
-            this.abuotToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.abuotToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.abuotToolStripMenuItem.Text = "About Box";
             this.abuotToolStripMenuItem.Click += new System.EventHandler(this.abuotToolStripMenuItem_Click);
             // 
@@ -876,14 +887,14 @@
             // yesToolStripMenuItem
             // 
             this.yesToolStripMenuItem.Name = "yesToolStripMenuItem";
-            this.yesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.yesToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.yesToolStripMenuItem.Text = "Delay On";
             this.yesToolStripMenuItem.Click += new System.EventHandler(this.yesToolStripMenuItem_Click);
             // 
             // noToolStripMenuItem
             // 
             this.noToolStripMenuItem.Name = "noToolStripMenuItem";
-            this.noToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.noToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.noToolStripMenuItem.Text = "Delay Off";
             this.noToolStripMenuItem.Click += new System.EventHandler(this.noToolStripMenuItem_Click);
             // 
@@ -919,15 +930,6 @@
             // 
             this.championshipTableAdapter.ClearBeforeFill = true;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(134, 69);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(37, 13);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "Online";
-            // 
             // TicTacToeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -944,9 +946,9 @@
             this.Load += new System.EventHandler(this.TicTacToeForm_Load);
             this.RegisterPanel.ResumeLayout(false);
             this.RegisterPanel.PerformLayout();
+            this.GameBoardPanel.ResumeLayout(false);
             this.GameInfoPanel.ResumeLayout(false);
             this.GameInfoPanel.PerformLayout();
-            this.GameBoardPanel.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();

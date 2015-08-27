@@ -20,6 +20,7 @@ namespace TicTacToe.Client
         #region Private Fields
         private ServiceClient c;
         private DataGridViewRow row;
+        private List<DataGridViewRow> rows = new List<DataGridViewRow>();
         private List<GroupBox> AdvisorPanels = new List<GroupBox>();
         private List<TextBox> advisorsTextBoxes = new List<TextBox>();
         private List<Advisor> advisors = new List<Advisor>();
@@ -92,8 +93,7 @@ namespace TicTacToe.Client
                 isRegistered = c.RegisterClient(player1);
                 loadGameInfoPanel();
                 if (isRegistered)
-                {
-                    initGameInfoPanel(); 
+                { 
                     RegisterPanel.Visible = true;
                     GameInfoPanel.Visible = true;
                     playersComboBox.Enabled = false;
@@ -273,6 +273,26 @@ namespace TicTacToe.Client
             }
         }
 
+        private void ChampComboBox_DropDown(object sender, EventArgs e)
+        {
+            ChampComboBox.Items.Clear();
+            Championship[] championships = c.GetChampionships();
+            foreach (Championship champ in championships)
+            {
+                ChampComboBox.Items.Add(champ.Id + " " + champ.City);
+            }
+        }
+
+        private void recordGame_DropDown(object sender, EventArgs e)
+        {
+            recordGame.Items.Clear();
+            int[] games = c.GetRecordGameId();
+            foreach (int id in games)
+            {
+                recordGame.Items.Add(id);
+            }
+        }
+
         private void StartGameBtn_Click(object sender, EventArgs e)
         {
             if(!recordGame.Text.Equals("")) // select recordGame id
@@ -286,6 +306,7 @@ namespace TicTacToe.Client
             else
             {
                 gameId = c.AddGame(champId, player1, player2, size);
+                c.AddPlayerToChamp(player1, champId);
                 if (gameOption == "computer") // vs computer
                 {
                     gameboard = new GameBoardWPF(gameId, size, gameOption, player1, player2, confirmation);
@@ -321,6 +342,7 @@ namespace TicTacToe.Client
         {
             updateBtn.Enabled = true;
             row = this.dataGridView1.Rows[e.RowIndex];
+            rows.Add(this.dataGridView1.Rows[e.RowIndex]);
             startDateText.Text = row.Cells["Start_Date"].Value.ToString();
             endDateText.Text = row.Cells["End_Date"].Value.ToString();
             cityText.Text = row.Cells["City"].Value.ToString();
@@ -342,6 +364,7 @@ namespace TicTacToe.Client
             int id = Int32.Parse(row.Cells["Id"].Value.ToString());
             c.RemovePlayerToChampionship(player1, id);
             loadGameInfoPanel();
+
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
@@ -397,7 +420,6 @@ namespace TicTacToe.Client
                 }
                 player = c.GetPlayer(playerFirstName.Text, playerLastName.Text);
                 player1 = c.AddPlayer(playerFirstName.Text, playerLastName.Text);
-                initGameInfoPanel();
                 loadGameInfoPanel();
                 RegisterPanel.Visible = true;
                 GameInfoPanel.Visible = true;
@@ -451,22 +473,6 @@ namespace TicTacToe.Client
             }
         }
 
-        private void initGameInfoPanel()
-        {
-            Championship[] championships = c.GetChampionships();
-            foreach (Championship champ in championships)
-            {
-                ChampComboBox.Items.Add(champ.Id + " " + champ.City);
-            }
-
-            int[] games = c.GetRecordGameId();
-            foreach (int id in games)
-            {
-                recordGame.Items.Add(id);
-            }
-            
-        }
-
         private List<TextBox> addAllTextBoxes()
         {
             List<TextBox> t = new List<TextBox>();
@@ -494,10 +500,10 @@ namespace TicTacToe.Client
 
         private void loadGameInfoPanel()
         {
-            initGameInfoPanel();
             bindingSource1.DataSource = c.GetChampionshipsByPlayerId(player1);
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.MultiSelect = true;
         }
 
         #endregion
@@ -580,6 +586,10 @@ namespace TicTacToe.Client
         }
 
         #endregion 
+
+        
+
+        
 
     }
 }

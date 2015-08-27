@@ -250,16 +250,21 @@ public class Service : IService
     public void AddPlayerToChamp(Player player, int champId)
     {
         var x =
-            (from p in db.Players
-             where p.First_Name.Equals(player.First_Name) && p.Last_Name.Equals(player.Last_Name)
-             select p.Id).SingleOrDefault();
+            (from p in db.PlayerToChampionships
+            where p.Player_Id == player.Id && p.Championship_Id == champId
+            select p).SingleOrDefault();
 
-        PlayerToChampionship playerToChamp = new PlayerToChampionship();
-        int id = Convert.ToInt32(x);
-        playerToChamp.Player_Id = id;
-        playerToChamp.Championship_Id = champId;
-        db.PlayerToChampionships.InsertOnSubmit(playerToChamp);
-        db.SubmitChanges();
+        if(x == null)
+        {
+            PlayerToChampionship playerToChamp = new PlayerToChampionship();
+            int id = Convert.ToInt32(x);
+            playerToChamp.Player_Id = player.Id;
+            playerToChamp.Championship_Id = champId;
+            db.PlayerToChampionships.InsertOnSubmit(playerToChamp);
+            db.SubmitChanges();
+        }
+
+        
     }
 
     public void RemovePlayerToChampionship(Player player, int champId)
