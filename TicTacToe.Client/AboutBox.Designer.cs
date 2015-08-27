@@ -81,7 +81,7 @@
             this.labelProductName.Name = "labelProductName";
             this.labelProductName.Size = new System.Drawing.Size(271, 17);
             this.labelProductName.TabIndex = 19;
-            this.labelProductName.Text = "Product Name ";
+            this.labelProductName.Text = "Tic Tac Toe Game ";
             this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBoxDescription
@@ -96,7 +96,7 @@
             this.textBoxDescription.Size = new System.Drawing.Size(271, 126);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = "Description ";
+            this.textBoxDescription.Text = "Created By:\r\nDvir Sofer\r\nAndrey Chasovski\r\n\r\n";
             // 
             // okButton
             // 

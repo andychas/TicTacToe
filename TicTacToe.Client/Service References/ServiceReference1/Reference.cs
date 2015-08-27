@@ -769,6 +769,12 @@ namespace TicTacToe.Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayers", ReplyAction="http://tempuri.org/IService/GetPlayersResponse")]
         System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player[]> GetPlayersAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetOnlinePlayers", ReplyAction="http://tempuri.org/IService/GetOnlinePlayersResponse")]
+        TicTacToe.Client.ServiceReference1.Player[] GetOnlinePlayers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetOnlinePlayers", ReplyAction="http://tempuri.org/IService/GetOnlinePlayersResponse")]
+        System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player[]> GetOnlinePlayersAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllGamePlayer", ReplyAction="http://tempuri.org/IService/GetAllGamePlayerResponse")]
         TicTacToe.Client.ServiceReference1.Player[] GetAllGamePlayer(string gameId);
         
@@ -1076,6 +1082,14 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player[]> GetPlayersAsync() {
             return base.Channel.GetPlayersAsync();
+        }
+        
+        public TicTacToe.Client.ServiceReference1.Player[] GetOnlinePlayers() {
+            return base.Channel.GetOnlinePlayers();
+        }
+        
+        public System.Threading.Tasks.Task<TicTacToe.Client.ServiceReference1.Player[]> GetOnlinePlayersAsync() {
+            return base.Channel.GetOnlinePlayersAsync();
         }
         
         public TicTacToe.Client.ServiceReference1.Player[] GetAllGamePlayer(string gameId) {

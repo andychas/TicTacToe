@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
 public class Service : IService
 {
-    private static Dictionary<string, IserviceCallback> clients =
-                new Dictionary<string, IserviceCallback>();
+    private static Dictionary<Player, IserviceCallback> clients =
+                new Dictionary<Player, IserviceCallback>();
     private static object locker = new object();
     private DataClassesDataContext db = new DataClassesDataContext();
     private static bool turn = true;
@@ -391,6 +391,48 @@ public class Service : IService
 
 
     }
+    public Championship[] GetAllChampionshipsQuery(int delay)
+    {
+        Thread.Sleep(delay);
+        var x =
+            from c in db.Championships
+            select c;
+        return x.ToArray();
+
+    }
+
+    public Game[] GetGamesQuery(int delay)
+    {
+        Thread.Sleep(delay);
+        var x =
+            from g in db.Games
+            select g;
+        return x.ToArray();
+    }
+
+
+    public Player[] GetPlayersQuery(int delay)
+    {
+        Thread.Sleep(delay);
+        var x =
+    from p in db.Players
+    select p;
+        return x.ToArray();
+    }
+
+    /**
+ * return all games for this player
+ */
+    public Game[] GetPlayerGamesQuery(Player player, int delay)
+    {
+        Thread.Sleep(delay);
+        var x =
+            from g in db.Games
+            where g.Player1.Equals(player.First_Name + " " + player.Last_Name) ||
+            g.Player2.Equals(player.First_Name + " " + player.Last_Name)
+            select g;
+        return x.ToArray();
+    }
 
     #endregion
 
@@ -570,12 +612,12 @@ public class Service : IService
                 lock (locker)
                 {
                     //remove the old client
-                    if (clients.Keys.Contains(player.First_Name + player.Last_Name))
+					foreach (KeyValuePair<Player, IserviceCallback> kvp in clients)
                     {
-                        return false;
-                    }
-                      //  clients.Remove(player.First_Name + player.Last_Name);
-                    clients.Add(player.First_Name + player.Last_Name, callback);
+                        if(kvp.Key.Id.Equals(player.Id))                       
+		                    return false;
+                    }                  
+                    clients.Add(player, callback);
                     return true;
                 }
             }
@@ -606,15 +648,15 @@ public class Service : IService
         bool isYourTurn = true;
         char signX = 'X';
         char signO = 'O';
-        foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
+        foreach (KeyValuePair<Player, IserviceCallback> kvp in clients)
         {
-            if (kvp.Key == player1.First_Name + player1.Last_Name)
+            if (kvp.Key.Id.Equals(player1.Id))
             {
                 IserviceCallback channelp1 = kvp.Value;
                 channelp1.StartGame(isYourTurn, signX);
                 isYourTurn = false;
             }
-            else if (kvp.Key == player2.First_Name + player2.Last_Name)
+            else if (kvp.Key.Id.Equals(player2.Id))
             {
                 IserviceCallback channelp2 = kvp.Value;
                 channelp2.StartGame(isYourTurn, signO);
@@ -632,15 +674,15 @@ public class Service : IService
         bool isTie = fullBoard();
         if (isWinner)
         {
-            foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
+            foreach (KeyValuePair<Player, IserviceCallback> kvp in clients)
             {
 
-                if (kvp.Key == p2.First_Name + p2.Last_Name)
+                if (kvp.Key.Id.Equals(p2.Id))
                 {
                     IserviceCallback channel = kvp.Value;
                     channel.GameWon(sign.ToString());
                 }
-                else if (kvp.Key == p1.First_Name + p1.Last_Name)
+                else if (kvp.Key.Id.Equals(p1.Id))
                 {
                     IserviceCallback channel = kvp.Value;
                     channel.GameWon(sign.ToString());
@@ -650,15 +692,15 @@ public class Service : IService
         else if (isTie)
         {
 
-            foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
+            foreach (KeyValuePair<Player, IserviceCallback> kvp in clients)
             {
 
-                if (kvp.Key == p2.First_Name + p2.Last_Name)
+                if (kvp.Key.Id.Equals(p2.Id))
                 {
                     IserviceCallback channel = kvp.Value;
                     channel.GameTied();
                 }
-                else if (kvp.Key == p1.First_Name + p1.Last_Name)
+                else if (kvp.Key.Id.Equals(p1.Id))
                 {
                     IserviceCallback channel = kvp.Value;
                     channel.GameTied();
@@ -668,10 +710,10 @@ public class Service : IService
 
         else
         {
-            foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
+            foreach (KeyValuePair<Player, IserviceCallback> kvp in clients)
             {
 
-                if (kvp.Key == p2.First_Name + p2.Last_Name)
+                if (kvp.Key.Id.Equals(p2.Id))
                 {
                     IserviceCallback channel = kvp.Value;
                     channel.MakeYourTurn(row, col);
@@ -684,9 +726,9 @@ public class Service : IService
 
     public void AskPlayerConfirmation(int gameSize, Player player1, Player player2, bool confirmationRequired, int gameId)
     {
-        foreach (KeyValuePair<string, IserviceCallback> kvp in clients)
+        foreach (KeyValuePair<Player, IserviceCallback> kvp in clients)
         {
-            if (kvp.Key == player2.First_Name + player2.Last_Name)
+            if (kvp.Key.Id.Equals(player2.Id))
             {
                 IserviceCallback channel = kvp.Value;
                 channel.ConfirmPlayer(gameSize, player1, player2, confirmationRequired,gameId);
@@ -695,55 +737,22 @@ public class Service : IService
         }
     }
 
-
-
     public void DelayResponse(int delay)
     {
         Thread.Sleep(delay);
         return;
     }
 
-
-    public Championship[] GetAllChampionshipsQuery(int delay)
+    public Player[] GetOnlinePlayers()
     {
-        Thread.Sleep(delay);
-        var x =
-            from c in db.Championships
-            select c;
-        return x.ToArray();
+        List<Player> onlinePlayers = new List<Player>();
+        IserviceCallback callback = OperationContext.Current.GetCallbackChannel<IserviceCallback>();
 
-    }
+        foreach (KeyValuePair<Player, IserviceCallback> kvp in clients)
+        {
+            onlinePlayers.Add(kvp.Key);
+        }
 
-    public Game[] GetGamesQuery(int delay)
-    {
-        Thread.Sleep(delay);
-        var x =
-            from g in db.Games
-            select g;
-        return x.ToArray();
-    }
-
-
-    public Player[] GetPlayersQuery(int delay)
-    {
-        Thread.Sleep(delay);
-        var x =
-    from p in db.Players
-    select p;
-        return x.ToArray();
-    }
-
-    /**
- * return all games for this player
- */
-    public Game[] GetPlayerGamesQuery(Player player, int delay)
-    {
-        Thread.Sleep(delay);
-        var x =
-            from g in db.Games
-            where g.Player1.Equals(player.First_Name + " " + player.Last_Name) ||
-            g.Player2.Equals(player.First_Name + " " + player.Last_Name)
-            select g;
-        return x.ToArray();
+        return onlinePlayers.ToArray();
     }
 }

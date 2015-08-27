@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.RegisterPanel = new System.Windows.Forms.Panel();
+            this.GameInfoPanel = new System.Windows.Forms.Panel();
             this.GameBoardPanel = new System.Windows.Forms.Panel();
             this.backBtn = new System.Windows.Forms.Button();
             this.newGameBtn = new System.Windows.Forms.Button();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.GameInfoPanel = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.recordGame = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -115,9 +115,10 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.championshipTableAdapter = new TicTacToe.Client.DatabaseDataSetTableAdapters.ChampionshipTableAdapter();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.label14 = new System.Windows.Forms.Label();
             this.RegisterPanel.SuspendLayout();
-            this.GameBoardPanel.SuspendLayout();
             this.GameInfoPanel.SuspendLayout();
+            this.GameBoardPanel.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -155,12 +156,26 @@
             this.RegisterPanel.Size = new System.Drawing.Size(677, 496);
             this.RegisterPanel.TabIndex = 18;
             // 
+            // GameInfoPanel
+            // 
+            this.GameInfoPanel.Controls.Add(this.groupBox6);
+            this.GameInfoPanel.Controls.Add(this.groupBox5);
+            this.GameInfoPanel.Controls.Add(this.groupBox2);
+            this.GameInfoPanel.Controls.Add(this.lvlGroupBox);
+            this.GameInfoPanel.Controls.Add(this.StartGameBtn);
+            this.GameInfoPanel.Controls.Add(this.groupBox3);
+            this.GameInfoPanel.Controls.Add(this.playerName);
+            this.GameInfoPanel.Location = new System.Drawing.Point(3, 3);
+            this.GameInfoPanel.Name = "GameInfoPanel";
+            this.GameInfoPanel.Size = new System.Drawing.Size(677, 496);
+            this.GameInfoPanel.TabIndex = 4;
+            // 
             // GameBoardPanel
             // 
             this.GameBoardPanel.Controls.Add(this.backBtn);
             this.GameBoardPanel.Controls.Add(this.newGameBtn);
             this.GameBoardPanel.Controls.Add(this.elementHost1);
-            this.GameBoardPanel.Location = new System.Drawing.Point(3, 3);
+            this.GameBoardPanel.Location = new System.Drawing.Point(0, 3);
             this.GameBoardPanel.Name = "GameBoardPanel";
             this.GameBoardPanel.Size = new System.Drawing.Size(674, 496);
             this.GameBoardPanel.TabIndex = 41;
@@ -192,20 +207,6 @@
             this.elementHost1.TabIndex = 2;
             this.elementHost1.Text = "elementHost1";
             this.elementHost1.Child = null;
-            // 
-            // GameInfoPanel
-            // 
-            this.GameInfoPanel.Controls.Add(this.groupBox6);
-            this.GameInfoPanel.Controls.Add(this.groupBox5);
-            this.GameInfoPanel.Controls.Add(this.groupBox2);
-            this.GameInfoPanel.Controls.Add(this.lvlGroupBox);
-            this.GameInfoPanel.Controls.Add(this.StartGameBtn);
-            this.GameInfoPanel.Controls.Add(this.groupBox3);
-            this.GameInfoPanel.Controls.Add(this.playerName);
-            this.GameInfoPanel.Location = new System.Drawing.Point(3, 3);
-            this.GameInfoPanel.Name = "GameInfoPanel";
-            this.GameInfoPanel.Size = new System.Drawing.Size(677, 496);
-            this.GameInfoPanel.TabIndex = 4;
             // 
             // groupBox6
             // 
@@ -360,6 +361,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.playersComboBox);
             this.groupBox2.Controls.Add(this.computerButton);
             this.groupBox2.Controls.Add(this.playerButton);
@@ -377,6 +379,7 @@
             this.playersComboBox.Name = "playersComboBox";
             this.playersComboBox.Size = new System.Drawing.Size(121, 21);
             this.playersComboBox.TabIndex = 6;
+            this.playersComboBox.DropDown += new System.EventHandler(this.playersComboBox_DropDown);
             this.playersComboBox.SelectedIndexChanged += new System.EventHandler(this.playersComboBox_SelectedIndexChanged);
             // 
             // computerButton
@@ -746,8 +749,8 @@
             // abuotToolStripMenuItem
             // 
             this.abuotToolStripMenuItem.Name = "abuotToolStripMenuItem";
-            this.abuotToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.abuotToolStripMenuItem.Text = "Abuot Box";
+            this.abuotToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.abuotToolStripMenuItem.Text = "About Box";
             this.abuotToolStripMenuItem.Click += new System.EventHandler(this.abuotToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
@@ -867,21 +870,21 @@
             this.yesToolStripMenuItem,
             this.noToolStripMenuItem});
             this.delayToolStripMenuItem.Name = "delayToolStripMenuItem";
-            this.delayToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.delayToolStripMenuItem.Text = "DB Delay";
+            this.delayToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.delayToolStripMenuItem.Text = "DB Delay Off";
             // 
             // yesToolStripMenuItem
             // 
             this.yesToolStripMenuItem.Name = "yesToolStripMenuItem";
             this.yesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.yesToolStripMenuItem.Text = "Yes";
+            this.yesToolStripMenuItem.Text = "Delay On";
             this.yesToolStripMenuItem.Click += new System.EventHandler(this.yesToolStripMenuItem_Click);
             // 
             // noToolStripMenuItem
             // 
             this.noToolStripMenuItem.Name = "noToolStripMenuItem";
             this.noToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.noToolStripMenuItem.Text = "No";
+            this.noToolStripMenuItem.Text = "Delay Off";
             this.noToolStripMenuItem.Click += new System.EventHandler(this.noToolStripMenuItem_Click);
             // 
             // registerBtn
@@ -916,6 +919,15 @@
             // 
             this.championshipTableAdapter.ClearBeforeFill = true;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(134, 69);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(37, 13);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Online";
+            // 
             // TicTacToeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -932,9 +944,9 @@
             this.Load += new System.EventHandler(this.TicTacToeForm_Load);
             this.RegisterPanel.ResumeLayout(false);
             this.RegisterPanel.PerformLayout();
-            this.GameBoardPanel.ResumeLayout(false);
             this.GameInfoPanel.ResumeLayout(false);
             this.GameInfoPanel.PerformLayout();
+            this.GameBoardPanel.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -1054,6 +1066,7 @@
         private System.Windows.Forms.ToolStripMenuItem delayToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noToolStripMenuItem;
+        private System.Windows.Forms.Label label14;
 
 
 

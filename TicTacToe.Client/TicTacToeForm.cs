@@ -186,17 +186,20 @@ namespace TicTacToe.Client
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            c.removeClient();
             Application.Exit();
         }
 
         private void yesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             delay = DB_DELAY;
+            delayToolStripMenuItem.Text = "DB Delay On";
         }
 
         private void noToolStripMenuItem_Click(object sender, EventArgs e)
         {
             delay = 0;
+            delayToolStripMenuItem.Text = "DB Delay Off";
         }
 
         #endregion
@@ -257,6 +260,19 @@ namespace TicTacToe.Client
             champId = Convert.ToInt32(championship.Substring(0, championship.IndexOf(' ')));
         }
 
+        private void playersComboBox_DropDown(object sender, EventArgs e)
+        {
+            playersComboBox.Items.Clear();
+            Player[] players = c.GetOnlinePlayers();
+            foreach (Player player in players)
+            {
+                if ((!player.First_Name.Equals(player1.First_Name)) || (!player.Last_Name.Equals(player1.Last_Name)))
+                {
+                    playersComboBox.Items.Add(player.First_Name + " " + player.Last_Name);
+                }
+            }
+        }
+
         private void StartGameBtn_Click(object sender, EventArgs e)
         {
             if(!recordGame.Text.Equals("")) // select recordGame id
@@ -266,7 +282,6 @@ namespace TicTacToe.Client
 
                 gameboard = new GameBoardWPF(gameId, moves, confirmation);
                 elementHost1.Child = gameboard;
-
             }
             else
             {
@@ -280,15 +295,12 @@ namespace TicTacToe.Client
                 {
                     gameboard = new GameBoardWPF(gameId, size, gameOption, player1, player2, confirmation);
                     elementHost1.Child = gameboard;
-
                 }
-
                 c.AddAdvisor(player1, advisors.ToArray(), gameId);
                 c.GameInfo(size, gameOption);
             }
             GameBoardPanel.Visible = true;
-            GameInfoPanel.Visible = true;
-            
+            GameInfoPanel.Visible = true;    
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -441,15 +453,6 @@ namespace TicTacToe.Client
 
         private void initGameInfoPanel()
         {
-            Player[] players = c.GetPlayers();
-            foreach (Player player in players)
-            {
-                if ((!player.First_Name.Equals(player1.First_Name)) || (!player.Last_Name.Equals(player1.Last_Name)))
-                {
-                    playersComboBox.Items.Add(player.First_Name + " " + player.Last_Name);
-                }
-            }
-
             Championship[] championships = c.GetChampionships();
             foreach (Championship champ in championships)
             {
@@ -491,6 +494,7 @@ namespace TicTacToe.Client
 
         private void loadGameInfoPanel()
         {
+            initGameInfoPanel();
             bindingSource1.DataSource = c.GetChampionshipsByPlayerId(player1);
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -576,7 +580,6 @@ namespace TicTacToe.Client
         }
 
         #endregion 
-
 
     }
 }

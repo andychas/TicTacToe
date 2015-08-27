@@ -47,6 +47,9 @@ public interface IService
     Player[] GetPlayers();
 
     [OperationContract]
+    Player[] GetOnlinePlayers();
+
+    [OperationContract]
     Player[] GetAllGamePlayer(string gameId);
 
     [OperationContract]
