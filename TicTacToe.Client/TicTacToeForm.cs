@@ -390,22 +390,40 @@ namespace TicTacToe.Client
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            int id = Int32.Parse(row.Cells["Id"].Value.ToString());
-            c.RemovePlayerToChampionship(player1, id);
-            loadGameInfoPanel();
+            try
+            {
+                int id = Int32.Parse(row.Cells["Id"].Value.ToString());
+                c.RemovePlayerToChampionship(player1, id);
+                loadGameInfoPanel();
+            }
+            catch
+            {
+                return;
+            }
+            
 
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            updateBtn.Enabled = false;
-            int id = Int32.Parse(row.Cells["Id"].Value.ToString());
-            string city = cityText.Text.ToString();
-            string imageUrl = imageText.Text.ToString();
-            DateTime startDate = DateTime.Parse(startDateText.Text.ToString());
-            DateTime endDate = DateTime.Parse(endDateText.Text.ToString());
-            c.UpdateChampionship(id, startDate, endDate, city, imageUrl);
-            loadGameInfoPanel();
+            try
+            {
+                updateBtn.Enabled = false;
+                int id = Int32.Parse(row.Cells["Id"].Value.ToString());
+                string city = cityText.Text.ToString();
+                string imageUrl = imageText.Text.ToString();
+                DateTime startDate = DateTime.Parse(startDateText.Text.ToString());
+                DateTime endDate = DateTime.Parse(endDateText.Text.ToString());
+                c.UpdateChampionship(id, startDate, endDate, city, imageUrl);
+                loadGameInfoPanel();
+            }
+
+            catch
+            {
+                updateBtn.Enabled = true;
+                return;
+            }
+            
         }
 
         #endregion
