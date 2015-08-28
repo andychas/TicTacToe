@@ -18,6 +18,8 @@ namespace TicTacToe.Client
             this.Text = String.Format("About {0}", AssemblyTitle);
             this.labelProductName.Text = AssemblyProduct;
             this.textBoxDescription.Text = AssemblyDescription;
+            labelProductName.Text = "Tic Tac Toe Game";
+            textBoxDescription.Text = "Created By Dvir Sofer & Andrey Chasovski";
         }
 
         #region Assembly Attribute Accessors
@@ -99,5 +101,10 @@ namespace TicTacToe.Client
             }
         }
         #endregion
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

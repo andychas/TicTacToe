@@ -190,6 +190,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="TicTacToeForm.resx">
       <DependentUpon>TicTacToeForm.cs</DependentUpon>
@@ -281,6 +282,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dependencies\Xceed.Wpf.Toolkit.dll" />
+    <None Include="Resources\tictactoe.png" />
+    <None Include="Resources\logo.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

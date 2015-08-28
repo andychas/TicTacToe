@@ -56,6 +56,7 @@ namespace TicTacToe.Client
             // TODO: This line of code loads data into the 'databaseDataSet.Championship' table. You can move, or remove it, as needed.
             //this.championshipTableAdapter.Fill(this.databaseDataSet.Championship);
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.BackColor = System.Drawing.Color.Aquamarine;
             RegisterPanel.Visible = false;
             GameBoardPanel.Visible = false;
             GameInfoPanel.Visible = false;
@@ -63,6 +64,34 @@ namespace TicTacToe.Client
             AdvisorPanels.Add(AdvisorGroup1);
             AdvisorPanels.Add(AdvisorGroup2);
             AdvisorPanels.Add(AdvisorGroup3);
+
+            groupBox5.Text = "";
+
+            PictureBox p1 = new PictureBox();
+            p1.Width = 600;
+            p1.Height = 200;
+            p1.SizeMode = PictureBoxSizeMode.StretchImage;
+            p1.Image = Properties.Resources.logo;
+            p1.Location = new Point(30,280);
+
+            PictureBox p2 = new PictureBox();
+            p2.Width = 170;
+            p2.Height = 170;
+            p2.SizeMode = PictureBoxSizeMode.StretchImage;
+            p2.Image = Properties.Resources.tictactoe;
+            p2.Location = new Point(500, 60);
+
+            PictureBox p3 = new PictureBox();
+            p3.Width = 170;
+            p3.Height = 170;
+            p3.SizeMode = PictureBoxSizeMode.StretchImage;
+            p3.Image = Properties.Resources.tictactoe;
+            p3.Location = new Point(25, 60);
+
+            this.Controls.Add(p1);
+            this.Controls.Add(p2);
+            this.Controls.Add(p3);
+
             for (int i = 0; i < AdvisorPanels.Count; i++)
             {
                 AdvisorPanels.ElementAt(i).Visible = false;
