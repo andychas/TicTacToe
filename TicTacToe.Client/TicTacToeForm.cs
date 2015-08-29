@@ -17,6 +17,9 @@ namespace TicTacToe.Client
 
     {
         const int DB_DELAY = 3000;
+        const int BIG_BOARD_SIZE = 5;
+        const int SMALL_BOARD_SIZE = 4;
+
         #region Private Fields
         private ServiceClient c;
         private DataGridViewRow row;
@@ -53,8 +56,6 @@ namespace TicTacToe.Client
         #region MainForm
         private void TicTacToeForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'databaseDataSet.Championship' table. You can move, or remove it, as needed.
-            //this.championshipTableAdapter.Fill(this.databaseDataSet.Championship);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = System.Drawing.Color.Aquamarine;
             RegisterPanel.Visible = false;
@@ -64,8 +65,6 @@ namespace TicTacToe.Client
             AdvisorPanels.Add(AdvisorGroup1);
             AdvisorPanels.Add(AdvisorGroup2);
             AdvisorPanels.Add(AdvisorGroup3);
-
-            groupBox5.Text = "";
 
             PictureBox p1 = new PictureBox();
             p1.Width = 600;
@@ -97,9 +96,7 @@ namespace TicTacToe.Client
                 AdvisorPanels.ElementAt(i).Visible = false;
             }
             advisorsTextBoxes = addAllTextBoxes();
-           
 
-            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -248,19 +245,19 @@ namespace TicTacToe.Client
             elementHost1.Child = gameboard;
             c.AddAdvisor(player1, advisors.ToArray(), gameId);
             c.GameInfo(size, gameOption);
-            
+     
         }
         #endregion
 
         #region GameInfoPanel
         private void smallBoardButton_CheckedChanged(object sender, EventArgs e)
         {
-            size = 4;
+            size = SMALL_BOARD_SIZE;
         }
 
         private void bigBoardButton_CheckedChanged(object sender, EventArgs e)
         {
-            size = 5;
+            size = BIG_BOARD_SIZE;
         }
 
         private void computerButton_CheckedChanged(object sender, EventArgs e)
@@ -380,7 +377,6 @@ namespace TicTacToe.Client
                 imageText.Text = row.Cells["Picture"].Value.ToString();
                 pictureBox1.ImageLocation = imageText.Text;
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-
             }
             catch
             {
@@ -400,8 +396,6 @@ namespace TicTacToe.Client
             {
                 return;
             }
-            
-
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
@@ -417,13 +411,11 @@ namespace TicTacToe.Client
                 c.UpdateChampionship(id, startDate, endDate, city, imageUrl);
                 loadGameInfoPanel();
             }
-
             catch
             {
                 updateBtn.Enabled = true;
                 return;
-            }
-            
+            } 
         }
 
         #endregion
@@ -511,6 +503,10 @@ namespace TicTacToe.Client
         #endregion
 
         #region Help Methods
+
+        /**
+         * add to combo box all players from database
+         */
         private void GetPlayers()
         {
             Player[] players = c.GetPlayers();
@@ -520,6 +516,9 @@ namespace TicTacToe.Client
             }
         }
 
+        /**
+         * add to list all text box
+         */
         private List<TextBox> addAllTextBoxes()
         {
             List<TextBox> t = new List<TextBox>();
@@ -532,6 +531,11 @@ namespace TicTacToe.Client
             return t;
         }
 
+        /**
+         * receive name 
+         * return true - if name is valid
+         * return false - if name is not valid
+         */
         public bool ValidName(string name)
         {
             if (name.Length < 1)
@@ -545,6 +549,9 @@ namespace TicTacToe.Client
             return true;
         }
 
+        /**
+         * load all championships in datagrid
+         */
         private void loadGameInfoPanel()
         {
             bindingSource1.DataSource = c.GetChampionshipsByPlayerId(player1);
@@ -562,7 +569,6 @@ namespace TicTacToe.Client
             throw new NotImplementedException();
         }
 
-
         public void StartGame(bool isYourTurn, char sign)
         {
             gameboard.sign = sign;
@@ -575,8 +581,6 @@ namespace TicTacToe.Client
             {
                 gameboard.busyIndicator.IsBusy = true;
             }
-
-
         }
 
         public void MakeYourTurn(int row, int col)
@@ -589,10 +593,7 @@ namespace TicTacToe.Client
             gameboard.busyIndicator.IsBusy = false;        
             gameboard.buttons1[row, col].Content = s;
             gameboard.buttons1[row, col].FontSize = 20;
-            gameboard.buttons1[row, col].IsEnabled = false;
-
-            
-            
+            gameboard.buttons1[row, col].IsEnabled = false;    
         }
 
         public void ConfirmPlayer(int gameSize, Player p1, Player p2, bool confirmationRequired, int gameId)
@@ -601,9 +602,7 @@ namespace TicTacToe.Client
             player2 = p1;
             if (dialogResult == DialogResult.Yes)
             {
-
                 gameboard = new GameBoardWPF(gameId, size, "player", p2, p1, confirmationRequired);
-
                 elementHost1.Child = gameboard;
 
                 c.playerConfirmed(p1, p2);
@@ -616,13 +615,11 @@ namespace TicTacToe.Client
             }
         }
 
-
         public void GameWon(string sign)
         {
             MessageBox.Show("Player " + sign + " is a Winner");
             GameBoardPanel.Visible = false;
             loadGameInfoPanel();
-
         }
 
         public void GameTied()
@@ -633,10 +630,6 @@ namespace TicTacToe.Client
         }
 
         #endregion 
-
-        
-
-        
 
     }
 }

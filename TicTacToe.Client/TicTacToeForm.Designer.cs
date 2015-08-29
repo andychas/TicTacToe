@@ -141,7 +141,6 @@
             // 
             // RegisterPanel
             // 
-            this.RegisterPanel.Controls.Add(this.GameBoardPanel);
             this.RegisterPanel.Controls.Add(this.GameInfoPanel);
             this.RegisterPanel.Controls.Add(this.AdvisorGroup3);
             this.RegisterPanel.Controls.Add(this.AdvisorGroup2);
@@ -161,7 +160,7 @@
             this.GameBoardPanel.Controls.Add(this.backBtn);
             this.GameBoardPanel.Controls.Add(this.newGameBtn);
             this.GameBoardPanel.Controls.Add(this.elementHost1);
-            this.GameBoardPanel.Location = new System.Drawing.Point(0, 3);
+            this.GameBoardPanel.Location = new System.Drawing.Point(0, 0);
             this.GameBoardPanel.Name = "GameBoardPanel";
             this.GameBoardPanel.Size = new System.Drawing.Size(674, 496);
             this.GameBoardPanel.TabIndex = 41;
@@ -196,6 +195,7 @@
             // 
             // GameInfoPanel
             // 
+            this.GameInfoPanel.Controls.Add(this.GameBoardPanel);
             this.GameInfoPanel.Controls.Add(this.groupBox6);
             this.GameInfoPanel.Controls.Add(this.groupBox5);
             this.GameInfoPanel.Controls.Add(this.groupBox2);
@@ -203,7 +203,7 @@
             this.GameInfoPanel.Controls.Add(this.StartGameBtn);
             this.GameInfoPanel.Controls.Add(this.groupBox3);
             this.GameInfoPanel.Controls.Add(this.playerName);
-            this.GameInfoPanel.Location = new System.Drawing.Point(3, 3);
+            this.GameInfoPanel.Location = new System.Drawing.Point(0, 3);
             this.GameInfoPanel.Name = "GameInfoPanel";
             this.GameInfoPanel.Size = new System.Drawing.Size(677, 496);
             this.GameInfoPanel.TabIndex = 4;
