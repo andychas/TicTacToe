@@ -760,4 +760,18 @@ public class Service : IService
 
         return onlinePlayers.ToArray();
     }
+
+
+    public void CancelGame(Player player)
+    {
+        foreach (KeyValuePair<Player, IserviceCallback> kvp in clients)
+        {
+            if (kvp.Key.Id.Equals(player.Id))
+            {
+                IserviceCallback channel = kvp.Value;
+                channel.GameCanceled();
+
+            }
+        }
+    }
 }

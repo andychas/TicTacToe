@@ -522,6 +522,13 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="CancelGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="player" nillable="true" type="q39:Player" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="UpdateClientBoard">
     <xs:complexType>
       <xs:sequence>
@@ -534,8 +541,8 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="gameSize" type="xs:int" />
-        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="player1" nillable="true" type="q39:Player" />
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="player2" nillable="true" type="q40:Player" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="player1" nillable="true" type="q40:Player" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="player2" nillable="true" type="q41:Player" />
         <xs:element minOccurs="0" name="confirmationRequired" type="xs:boolean" />
         <xs:element minOccurs="0" name="gameId" type="xs:int" />
       </xs:sequence>
@@ -545,7 +552,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="isYourTurn" type="xs:boolean" />
-        <xs:element xmlns:q41="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="sign" type="q41:char" />
+        <xs:element xmlns:q42="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="sign" type="q42:char" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -565,6 +572,11 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="GameTied">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GameCanceled">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

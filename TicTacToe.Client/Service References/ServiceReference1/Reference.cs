@@ -936,6 +936,12 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DelayResponse", ReplyAction="http://tempuri.org/IService/DelayResponseResponse")]
         System.Threading.Tasks.Task DelayResponseAsync(int delay);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/CancelGame")]
+        void CancelGame(TicTacToe.Client.ServiceReference1.Player player);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/CancelGame")]
+        System.Threading.Tasks.Task CancelGameAsync(TicTacToe.Client.ServiceReference1.Player player);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -958,6 +964,9 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GameTied")]
         void GameTied();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/GameCanceled")]
+        void GameCanceled();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1306,6 +1315,14 @@ namespace TicTacToe.Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task DelayResponseAsync(int delay) {
             return base.Channel.DelayResponseAsync(delay);
+        }
+        
+        public void CancelGame(TicTacToe.Client.ServiceReference1.Player player) {
+            base.Channel.CancelGame(player);
+        }
+        
+        public System.Threading.Tasks.Task CancelGameAsync(TicTacToe.Client.ServiceReference1.Player player) {
+            return base.Channel.CancelGameAsync(player);
         }
     }
 }

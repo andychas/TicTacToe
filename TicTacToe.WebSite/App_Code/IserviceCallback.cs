@@ -28,4 +28,7 @@ public interface IserviceCallback
 
     [OperationContract(IsOneWay = true)]
     void GameTied();
+
+    [OperationContract(IsOneWay = true)]
+    void GameCanceled();
 }

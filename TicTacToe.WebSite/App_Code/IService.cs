@@ -130,5 +130,6 @@ public interface IService
     [OperationContract]
     void DelayResponse(int delay);
 
-
+    [OperationContract(IsOneWay = true)]
+    void CancelGame(Player player);
 }

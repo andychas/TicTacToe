@@ -72,5 +72,11 @@ namespace TicTacToe.Client
         {
             throw new NotImplementedException();
         }
+
+
+        public void GameCanceled()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

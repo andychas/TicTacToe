@@ -30,15 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.RegisterPanel = new System.Windows.Forms.Panel();
-            this.GameBoardPanel = new System.Windows.Forms.Panel();
-            this.backBtn = new System.Windows.Forms.Button();
-            this.newGameBtn = new System.Windows.Forms.Button();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.GameInfoPanel = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.recordGame = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.imageText = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.cityText = new System.Windows.Forms.TextBox();
@@ -51,6 +46,7 @@
             this.deleteBtn = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Delete = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
             this.playersComboBox = new System.Windows.Forms.ComboBox();
@@ -87,6 +83,10 @@
             this.advisor1LastName = new System.Windows.Forms.TextBox();
             this.advisor1FirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.GameBoardPanel = new System.Windows.Forms.Panel();
+            this.backBtn = new System.Windows.Forms.Button();
+            this.newGameBtn = new System.Windows.Forms.Button();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.championshipBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.databaseDataSet = new TicTacToe.Client.DatabaseDataSet();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -115,13 +115,12 @@
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.championshipTableAdapter = new TicTacToe.Client.DatabaseDataSetTableAdapters.ChampionshipTableAdapter();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.RegisterPanel.SuspendLayout();
-            this.GameBoardPanel.SuspendLayout();
             this.GameInfoPanel.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.lvlGroupBox.SuspendLayout();
@@ -130,18 +129,19 @@
             this.AdvisorGroup2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.AdvisorGroup1.SuspendLayout();
+            this.GameBoardPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.championshipBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // RegisterPanel
             // 
-            this.RegisterPanel.Controls.Add(this.GameInfoPanel);
             this.RegisterPanel.Controls.Add(this.AdvisorGroup3);
             this.RegisterPanel.Controls.Add(this.AdvisorGroup2);
             this.RegisterPanel.Controls.Add(this.groupBox4);
@@ -155,44 +155,6 @@
             this.RegisterPanel.Size = new System.Drawing.Size(677, 496);
             this.RegisterPanel.TabIndex = 18;
             // 
-            // GameBoardPanel
-            // 
-            this.GameBoardPanel.Controls.Add(this.backBtn);
-            this.GameBoardPanel.Controls.Add(this.newGameBtn);
-            this.GameBoardPanel.Controls.Add(this.elementHost1);
-            this.GameBoardPanel.Location = new System.Drawing.Point(0, 0);
-            this.GameBoardPanel.Name = "GameBoardPanel";
-            this.GameBoardPanel.Size = new System.Drawing.Size(674, 496);
-            this.GameBoardPanel.TabIndex = 41;
-            // 
-            // backBtn
-            // 
-            this.backBtn.Location = new System.Drawing.Point(527, 64);
-            this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(119, 40);
-            this.backBtn.TabIndex = 4;
-            this.backBtn.Text = "Back";
-            this.backBtn.UseVisualStyleBackColor = true;
-            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
-            // 
-            // newGameBtn
-            // 
-            this.newGameBtn.Location = new System.Drawing.Point(527, 6);
-            this.newGameBtn.Name = "newGameBtn";
-            this.newGameBtn.Size = new System.Drawing.Size(119, 42);
-            this.newGameBtn.TabIndex = 3;
-            this.newGameBtn.Text = "New Game";
-            this.newGameBtn.UseVisualStyleBackColor = true;
-            // 
-            // elementHost1
-            // 
-            this.elementHost1.Location = new System.Drawing.Point(0, 3);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(500, 487);
-            this.elementHost1.TabIndex = 2;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = null;
-            // 
             // GameInfoPanel
             // 
             this.GameInfoPanel.Controls.Add(this.GameBoardPanel);
@@ -203,7 +165,7 @@
             this.GameInfoPanel.Controls.Add(this.StartGameBtn);
             this.GameInfoPanel.Controls.Add(this.groupBox3);
             this.GameInfoPanel.Controls.Add(this.playerName);
-            this.GameInfoPanel.Location = new System.Drawing.Point(0, 3);
+            this.GameInfoPanel.Location = new System.Drawing.Point(3, 27);
             this.GameInfoPanel.Name = "GameInfoPanel";
             this.GameInfoPanel.Size = new System.Drawing.Size(677, 496);
             this.GameInfoPanel.TabIndex = 4;
@@ -247,15 +209,6 @@
             this.groupBox5.Size = new System.Drawing.Size(446, 276);
             this.groupBox5.TabIndex = 38;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "groupBox5";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(160, 237);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 36);
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
             // 
             // imageText
             // 
@@ -354,11 +307,19 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Delete});
             this.dataGridView1.Location = new System.Drawing.Point(0, 45);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(437, 173);
             this.dataGridView1.TabIndex = 12;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Name = "Delete";
+            this.Delete.TrueValue = "yes";
             // 
             // groupBox2
             // 
@@ -718,6 +679,44 @@
             this.label1.Text = "Register";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // GameBoardPanel
+            // 
+            this.GameBoardPanel.Controls.Add(this.backBtn);
+            this.GameBoardPanel.Controls.Add(this.newGameBtn);
+            this.GameBoardPanel.Controls.Add(this.elementHost1);
+            this.GameBoardPanel.Location = new System.Drawing.Point(3, 3);
+            this.GameBoardPanel.Name = "GameBoardPanel";
+            this.GameBoardPanel.Size = new System.Drawing.Size(674, 496);
+            this.GameBoardPanel.TabIndex = 41;
+            // 
+            // backBtn
+            // 
+            this.backBtn.Location = new System.Drawing.Point(527, 64);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(119, 40);
+            this.backBtn.TabIndex = 4;
+            this.backBtn.Text = "Back";
+            this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
+            // 
+            // newGameBtn
+            // 
+            this.newGameBtn.Location = new System.Drawing.Point(527, 6);
+            this.newGameBtn.Name = "newGameBtn";
+            this.newGameBtn.Size = new System.Drawing.Size(119, 42);
+            this.newGameBtn.TabIndex = 3;
+            this.newGameBtn.Text = "New Game";
+            this.newGameBtn.UseVisualStyleBackColor = true;
+            // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(0, 3);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(500, 487);
+            this.elementHost1.TabIndex = 2;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = null;
+            // 
             // championshipBindingSource
             // 
             this.championshipBindingSource.DataMember = "Championship";
@@ -930,11 +929,21 @@
             // 
             this.championshipTableAdapter.ClearBeforeFill = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(160, 237);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 36);
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // TicTacToeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 528);
+            this.Controls.Add(this.GameInfoPanel);
             this.Controls.Add(this.RegisterPanel);
             this.Controls.Add(this.PlayBtn);
             this.Controls.Add(this.registerBtn);
@@ -943,16 +952,15 @@
             this.Name = "TicTacToeForm";
             this.Text = "TicTacToeForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TicTacToeForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TicTacToeForm_FormClosed);
             this.Load += new System.EventHandler(this.TicTacToeForm_Load);
             this.RegisterPanel.ResumeLayout(false);
             this.RegisterPanel.PerformLayout();
-            this.GameBoardPanel.ResumeLayout(false);
             this.GameInfoPanel.ResumeLayout(false);
             this.GameInfoPanel.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -967,6 +975,7 @@
             this.groupBox4.PerformLayout();
             this.AdvisorGroup1.ResumeLayout(false);
             this.AdvisorGroup1.PerformLayout();
+            this.GameBoardPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.championshipBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -974,6 +983,7 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1069,6 +1079,7 @@
         private System.Windows.Forms.ToolStripMenuItem yesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noToolStripMenuItem;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Delete;
 
 
 

@@ -6,6 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="450">
+    
     <xctk:BusyIndicator
         x:Name="busyIndicator"
         IsBusy="False">
@@ -14,7 +15,6 @@
                 <StackPanel Margin="4">
                     <TextBlock Name="textBlock" Text="Waiting For Player" FontWeight="Bold" HorizontalAlignment="Center"/>
                     <Grid>                       
-                        <Button Name="btnCancel" Content="Cancel" Height="50" Width="100" HorizontalAlignment="Center" Margin="15 15 15 15"/>
                     </Grid>
                 </StackPanel>
             </DataTemplate>
@@ -33,6 +33,8 @@
                                            Duration="0:0:.25" RepeatBehavior="2x"
                                             ></ColorAnimation>
         </Storyboard>
+
     </UserControl.Resources>
+    
     
 </UserControl>

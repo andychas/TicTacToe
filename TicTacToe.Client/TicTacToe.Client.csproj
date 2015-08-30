@@ -91,9 +91,6 @@
     <Compile Include="DB Forms\ChampForPlayerForm.Designer.cs">
       <DependentUpon>ChampForPlayerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="classes\Class1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="DatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -140,6 +137,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ShowCityImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowCityImageForm.Designer.cs">
+      <DependentUpon>ShowCityImageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TicTacToeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,9 +166,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DB Forms\ChampForPlayerForm.resx">
       <DependentUpon>ChampForPlayerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="classes\Class1.resx">
-      <DependentUpon>Class1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DB Forms\GameForPlayerForm.resx">
       <DependentUpon>GameForPlayerForm.cs</DependentUpon>
@@ -192,6 +192,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ShowCityImageForm.resx">
+      <DependentUpon>ShowCityImageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TicTacToeForm.resx">
       <DependentUpon>TicTacToeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -282,6 +285,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dependencies\Xceed.Wpf.Toolkit.dll" />
+    <None Include="Resources\o.png" />
+    <None Include="Resources\x.png" />
     <None Include="Resources\tictactoe.png" />
     <None Include="Resources\logo.gif" />
   </ItemGroup>

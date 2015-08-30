@@ -109,6 +109,11 @@ namespace TicTacToe.Client
             c.removeClient();
         }
 
+        private void TicTacToeForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            c.removeClient();
+        }
+
         private void PlayBtn_Click(object sender, EventArgs e)
         {
             bool isRegistered;
@@ -234,6 +239,10 @@ namespace TicTacToe.Client
 
         private void backBtn_Click(object sender, EventArgs e)
         {
+            if (gameOption != "computer")
+            {
+                c.CancelGame(player2);
+            }
             GameBoardPanel.Visible = false;
             loadGameInfoPanel();
         }
@@ -340,14 +349,21 @@ namespace TicTacToe.Client
                 }
                 else                          // vs player
                 {
-                    gameboard = new GameBoardWPF(gameId, size, gameOption, player1, player2, confirmation);
+                    gameboard = new GameBoardWPF(gameId, size, gameOption, player1, player2, confirmation,c);
                     elementHost1.Child = gameboard;
                 }
                 c.AddAdvisor(player1, advisors.ToArray(), gameId);
                 c.GameInfo(size, gameOption);
+                
             }
             GameBoardPanel.Visible = true;
             GameInfoPanel.Visible = true;    
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            ShowCityImageForm f = new ShowCityImageForm(((PictureBox)sender).Image);
+             f.Show();
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -386,16 +402,17 @@ namespace TicTacToe.Client
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            try
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                int id = Int32.Parse(row.Cells["Id"].Value.ToString());
-                c.RemovePlayerToChampionship(player1, id);
-                loadGameInfoPanel();
+                object cell = row.Cells["Delete"].Value;
+                if ((string)cell == "yes")
+                {
+                    int id = Int32.Parse(row.Cells["Id"].Value.ToString());
+                    c.RemovePlayerToChampionship(player1, id);
+                }
             }
-            catch
-            {
-                return;
-            }
+            loadGameInfoPanel();
+
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
@@ -457,8 +474,10 @@ namespace TicTacToe.Client
                         advisors.Add(a);
                     }
                 }
-                player = c.GetPlayer(playerFirstName.Text, playerLastName.Text);
                 player1 = c.AddPlayer(playerFirstName.Text, playerLastName.Text);
+          
+                c.RegisterClient(player1);
+
                 loadGameInfoPanel();
                 RegisterPanel.Visible = true;
                 GameInfoPanel.Visible = true;
@@ -592,12 +611,13 @@ namespace TicTacToe.Client
                 s = 'X';
             gameboard.busyIndicator.IsBusy = false;        
             gameboard.buttons1[row, col].Content = s;
-            gameboard.buttons1[row, col].FontSize = 20;
+            gameboard.buttons1[row, col].FontSize = 50;
             gameboard.buttons1[row, col].IsEnabled = false;    
         }
 
         public void ConfirmPlayer(int gameSize, Player p1, Player p2, bool confirmationRequired, int gameId)
         {
+            gameOption = "player";
             DialogResult dialogResult = MessageBox.Show(p2.First_Name + ": " + p1.First_Name + " wants to play against you ", "Confirmation", MessageBoxButtons.YesNo);
             player2 = p1;
             if (dialogResult == DialogResult.Yes)
@@ -629,7 +649,18 @@ namespace TicTacToe.Client
             loadGameInfoPanel();
         }
 
+        public void GameCanceled()
+        {
+            GameBoardPanel.Visible = false;
+            loadGameInfoPanel();
+        }
+
         #endregion 
+
+
+
+    
+
 
     }
 }

@@ -54,7 +54,6 @@ C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Clie
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\bin\Debug\Xceed.Wpf.Toolkit.dll
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client_Content.g.cs
-C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.classes.Class1.resources
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.TicTacToeForm.resources
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.AllPlayers.resources
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.AllGamesForm.resources
@@ -78,3 +77,4 @@ C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Clie
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.PlayerForGameForm.resources
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.PlayersForChampForm.resources
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.TicTacToeForm.resources
+C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.ShowCityImageForm.resources

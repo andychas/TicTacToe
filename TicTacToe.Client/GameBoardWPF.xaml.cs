@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using TicTacToe.Client.ServiceReference1;
 using System.ServiceModel;
 using System.Windows.Media.Animation;
+using System.Reflection;
 
 namespace TicTacToe.Client
 {
@@ -35,17 +36,18 @@ namespace TicTacToe.Client
         private string computerOrPlayer;
         private bool confirmationRequired;
         public char sign;
-       
+        private Image O_image;
+        private Image X_image;
         private int boardSize;
         
         private static bool isWinner = false;
-        //private int size;
         private int gameId;
         private string gameOption;
         private Player player1;
         private Player player2;
         private GameMove[] moves;
         private bool confirmation;
+        private int size;
 
         public GameBoardWPF(int gameId, int size, string gameOption, Player player1, Player player2, bool confirmationRequired)
         {
@@ -101,10 +103,37 @@ namespace TicTacToe.Client
                 int col = Convert.ToInt32(moves[i].col);
                 string s = moves[i].Sign;
                 buttons1[row, col].Content = s;
-                buttons1[row, col].FontSize = 20;
+                buttons1[row, col].FontSize = 50;
                 buttons1[row, col].IsEnabled = false;
             }
 
+        }
+
+        public GameBoardWPF(int gameId, int size, string gameOption, Player player1, Player player2, bool confirmation, ServiceClient c)
+        {
+            this.c = c; 
+            this.boardSize = size;
+            this.gameId = gameId;
+            this.gameOption = gameOption;
+            this.player1 = player1;
+            this.player2 = player2;
+            this.confirmationRequired = confirmation;
+            InitializeComponent();
+            computerOrPlayer = gameOption;
+            currenTurn = "player1";
+
+            buttons1 = CreateButtons();
+            buttons2 = CreateButtons();
+
+            initGrid();
+
+            if (!computerOrPlayer.Equals("computer") && !confirmationRequired) // if vs player - we need the other player to confirm the duel
+            {
+                busyIndicator.IsBusy = true;
+                c.AskPlayerConfirmation(size, player1, player2, true, gameId);
+
+            }
+            
         }
 
         private void initGrid()
@@ -174,7 +203,6 @@ namespace TicTacToe.Client
                 int col = button.col;
 
                 button.Content = sign;
-                button.FontSize = 20;
                 button.IsEnabled = false;
 
                 c.SendGameMove(player1, player2, sign, col, row,gameId);
@@ -186,8 +214,8 @@ namespace TicTacToe.Client
         private void moveGame(GameButton button, string sign)
         {
             button.Content = sign;
-            button.FontSize = 20;
             button.IsEnabled = false;
+
             isWinner = c.IfWinner(sign, button.row, button.col);
             if (isWinner)
             {
@@ -312,6 +340,12 @@ namespace TicTacToe.Client
         }
 
         public void GameTied()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void GameCanceled()
         {
             throw new NotImplementedException();
         }
