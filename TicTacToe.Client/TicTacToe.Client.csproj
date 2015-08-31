@@ -285,7 +285,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dependencies\Xceed.Wpf.Toolkit.dll" />
-    <Content Include="howtorun.txt" />
     <None Include="Resources\tictactoe.png" />
     <None Include="Resources\logo.gif" />
   </ItemGroup>

@@ -1,7 +1,0 @@
-1. Run TicTacToe.sln
-
-2. Under Service References -> Right click on ServiceReference1 & Update Service Reference ( To Run IIS )
-
-3. Run TicTacToe.Client Application
-
-* Run Multiple Client Applications for Multiplayer Game
