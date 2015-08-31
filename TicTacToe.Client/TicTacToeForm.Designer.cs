@@ -30,10 +30,39 @@
         {
             this.components = new System.ComponentModel.Container();
             this.RegisterPanel = new System.Windows.Forms.Panel();
+            this.AdvisorGroup3 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.advisor3FirstName = new System.Windows.Forms.TextBox();
+            this.advisor3LastName = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.AdvisorGroup2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.advisor2FirstName = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.advisor2LastName = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.playerFirstName = new System.Windows.Forms.TextBox();
+            this.playerLastName = new System.Windows.Forms.TextBox();
+            this.SubmitBtn = new System.Windows.Forms.Button();
+            this.AdvisorComboBox = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.AdvisorGroup1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.advisor1LastName = new System.Windows.Forms.TextBox();
+            this.advisor1FirstName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.GameInfoPanel = new System.Windows.Forms.Panel();
+            this.GameBoardPanel = new System.Windows.Forms.Panel();
+            this.backBtn = new System.Windows.Forms.Button();
+            this.newGameBtn = new System.Windows.Forms.Button();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.recordGame = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.imageText = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.cityText = new System.Windows.Forms.TextBox();
@@ -59,34 +88,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ChampComboBox = new System.Windows.Forms.ComboBox();
             this.playerName = new System.Windows.Forms.Label();
-            this.AdvisorGroup3 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.advisor3FirstName = new System.Windows.Forms.TextBox();
-            this.advisor3LastName = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.AdvisorGroup2 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.advisor2FirstName = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.advisor2LastName = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.playerFirstName = new System.Windows.Forms.TextBox();
-            this.playerLastName = new System.Windows.Forms.TextBox();
-            this.SubmitBtn = new System.Windows.Forms.Button();
-            this.AdvisorComboBox = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.AdvisorGroup1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.advisor1LastName = new System.Windows.Forms.TextBox();
-            this.advisor1FirstName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.GameBoardPanel = new System.Windows.Forms.Panel();
-            this.backBtn = new System.Windows.Forms.Button();
-            this.newGameBtn = new System.Windows.Forms.Button();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.championshipBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.databaseDataSet = new TicTacToe.Client.DatabaseDataSet();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -115,28 +116,28 @@
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.championshipTableAdapter = new TicTacToe.Client.DatabaseDataSetTableAdapters.ChampionshipTableAdapter();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.nameLabel = new System.Windows.Forms.Label();
             this.RegisterPanel.SuspendLayout();
-            this.GameInfoPanel.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.lvlGroupBox.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.AdvisorGroup3.SuspendLayout();
             this.AdvisorGroup2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.AdvisorGroup1.SuspendLayout();
+            this.GameInfoPanel.SuspendLayout();
             this.GameBoardPanel.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.lvlGroupBox.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.championshipBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,303 +155,6 @@
             this.RegisterPanel.Name = "RegisterPanel";
             this.RegisterPanel.Size = new System.Drawing.Size(677, 496);
             this.RegisterPanel.TabIndex = 18;
-            // 
-            // GameInfoPanel
-            // 
-            this.GameInfoPanel.Controls.Add(this.GameBoardPanel);
-            this.GameInfoPanel.Controls.Add(this.groupBox6);
-            this.GameInfoPanel.Controls.Add(this.groupBox5);
-            this.GameInfoPanel.Controls.Add(this.groupBox2);
-            this.GameInfoPanel.Controls.Add(this.lvlGroupBox);
-            this.GameInfoPanel.Controls.Add(this.StartGameBtn);
-            this.GameInfoPanel.Controls.Add(this.groupBox3);
-            this.GameInfoPanel.Controls.Add(this.playerName);
-            this.GameInfoPanel.Location = new System.Drawing.Point(3, 27);
-            this.GameInfoPanel.Name = "GameInfoPanel";
-            this.GameInfoPanel.Size = new System.Drawing.Size(677, 496);
-            this.GameInfoPanel.TabIndex = 4;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.recordGame);
-            this.groupBox6.Location = new System.Drawing.Point(9, 241);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(200, 54);
-            this.groupBox6.TabIndex = 41;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Recorded Games";
-            // 
-            // recordGame
-            // 
-            this.recordGame.FormattingEnabled = true;
-            this.recordGame.Location = new System.Drawing.Point(9, 27);
-            this.recordGame.Name = "recordGame";
-            this.recordGame.Size = new System.Drawing.Size(121, 21);
-            this.recordGame.TabIndex = 0;
-            this.recordGame.DropDown += new System.EventHandler(this.recordGame_DropDown);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.pictureBox1);
-            this.groupBox5.Controls.Add(this.imageText);
-            this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.cityText);
-            this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Controls.Add(this.endDateText);
-            this.groupBox5.Controls.Add(this.label11);
-            this.groupBox5.Controls.Add(this.startDateText);
-            this.groupBox5.Controls.Add(this.label10);
-            this.groupBox5.Controls.Add(this.updateBtn);
-            this.groupBox5.Controls.Add(this.deleteBtn);
-            this.groupBox5.Controls.Add(this.addBtn);
-            this.groupBox5.Controls.Add(this.dataGridView1);
-            this.groupBox5.Location = new System.Drawing.Point(219, 19);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(446, 276);
-            this.groupBox5.TabIndex = 38;
-            this.groupBox5.TabStop = false;
-            // 
-            // imageText
-            // 
-            this.imageText.Location = new System.Drawing.Point(27, 248);
-            this.imageText.Name = "imageText";
-            this.imageText.Size = new System.Drawing.Size(100, 20);
-            this.imageText.TabIndex = 23;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(0, 251);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(20, 13);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "Url";
-            // 
-            // cityText
-            // 
-            this.cityText.Location = new System.Drawing.Point(340, 222);
-            this.cityText.Name = "cityText";
-            this.cityText.Size = new System.Drawing.Size(97, 20);
-            this.cityText.TabIndex = 21;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(311, 225);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(24, 13);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "City";
-            // 
-            // endDateText
-            // 
-            this.endDateText.Location = new System.Drawing.Point(215, 221);
-            this.endDateText.Name = "endDateText";
-            this.endDateText.Size = new System.Drawing.Size(90, 20);
-            this.endDateText.TabIndex = 19;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(157, 224);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(52, 13);
-            this.label11.TabIndex = 18;
-            this.label11.Text = "End Date";
-            // 
-            // startDateText
-            // 
-            this.startDateText.Location = new System.Drawing.Point(61, 221);
-            this.startDateText.Name = "startDateText";
-            this.startDateText.Size = new System.Drawing.Size(87, 20);
-            this.startDateText.TabIndex = 17;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(0, 225);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 13);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Start Date";
-            // 
-            // updateBtn
-            // 
-            this.updateBtn.Location = new System.Drawing.Point(270, 19);
-            this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(75, 23);
-            this.updateBtn.TabIndex = 15;
-            this.updateBtn.Text = "Update";
-            this.updateBtn.UseVisualStyleBackColor = true;
-            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.Location = new System.Drawing.Point(142, 19);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(75, 23);
-            this.deleteBtn.TabIndex = 14;
-            this.deleteBtn.Text = "Delete";
-            this.deleteBtn.UseVisualStyleBackColor = true;
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
-            // 
-            // addBtn
-            // 
-            this.addBtn.Location = new System.Drawing.Point(15, 19);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(75, 23);
-            this.addBtn.TabIndex = 13;
-            this.addBtn.Text = "Add";
-            this.addBtn.UseVisualStyleBackColor = true;
-            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Delete});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 45);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(437, 173);
-            this.dataGridView1.TabIndex = 12;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Name = "Delete";
-            this.Delete.TrueValue = "yes";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.playersComboBox);
-            this.groupBox2.Controls.Add(this.computerButton);
-            this.groupBox2.Controls.Add(this.playerButton);
-            this.groupBox2.Location = new System.Drawing.Point(12, 73);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
-            this.groupBox2.TabIndex = 15;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Game Type";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(134, 69);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(37, 13);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "Online";
-            // 
-            // playersComboBox
-            // 
-            this.playersComboBox.FormattingEnabled = true;
-            this.playersComboBox.Location = new System.Drawing.Point(7, 66);
-            this.playersComboBox.Name = "playersComboBox";
-            this.playersComboBox.Size = new System.Drawing.Size(121, 21);
-            this.playersComboBox.TabIndex = 6;
-            this.playersComboBox.DropDown += new System.EventHandler(this.playersComboBox_DropDown);
-            this.playersComboBox.SelectedIndexChanged += new System.EventHandler(this.playersComboBox_SelectedIndexChanged);
-            // 
-            // computerButton
-            // 
-            this.computerButton.AutoSize = true;
-            this.computerButton.Checked = true;
-            this.computerButton.Location = new System.Drawing.Point(6, 19);
-            this.computerButton.Name = "computerButton";
-            this.computerButton.Size = new System.Drawing.Size(103, 17);
-            this.computerButton.TabIndex = 5;
-            this.computerButton.TabStop = true;
-            this.computerButton.Text = "versus computer";
-            this.computerButton.UseVisualStyleBackColor = true;
-            this.computerButton.CheckedChanged += new System.EventHandler(this.computerButton_CheckedChanged);
-            // 
-            // playerButton
-            // 
-            this.playerButton.AutoSize = true;
-            this.playerButton.Location = new System.Drawing.Point(6, 42);
-            this.playerButton.Name = "playerButton";
-            this.playerButton.Size = new System.Drawing.Size(87, 17);
-            this.playerButton.TabIndex = 4;
-            this.playerButton.TabStop = true;
-            this.playerButton.Text = "versus player";
-            this.playerButton.UseVisualStyleBackColor = true;
-            this.playerButton.CheckedChanged += new System.EventHandler(this.playerButton_CheckedChanged);
-            // 
-            // lvlGroupBox
-            // 
-            this.lvlGroupBox.Controls.Add(this.smallBoardButton);
-            this.lvlGroupBox.Controls.Add(this.bigBoardButton);
-            this.lvlGroupBox.Location = new System.Drawing.Point(12, 19);
-            this.lvlGroupBox.Name = "lvlGroupBox";
-            this.lvlGroupBox.Size = new System.Drawing.Size(200, 48);
-            this.lvlGroupBox.TabIndex = 14;
-            this.lvlGroupBox.TabStop = false;
-            this.lvlGroupBox.Text = "Game level";
-            // 
-            // smallBoardButton
-            // 
-            this.smallBoardButton.AutoSize = true;
-            this.smallBoardButton.Checked = true;
-            this.smallBoardButton.Location = new System.Drawing.Point(9, 19);
-            this.smallBoardButton.Name = "smallBoardButton";
-            this.smallBoardButton.Size = new System.Drawing.Size(48, 17);
-            this.smallBoardButton.TabIndex = 1;
-            this.smallBoardButton.TabStop = true;
-            this.smallBoardButton.Text = "4 x 4";
-            this.smallBoardButton.UseVisualStyleBackColor = true;
-            this.smallBoardButton.CheckedChanged += new System.EventHandler(this.smallBoardButton_CheckedChanged);
-            // 
-            // bigBoardButton
-            // 
-            this.bigBoardButton.AutoSize = true;
-            this.bigBoardButton.Location = new System.Drawing.Point(80, 19);
-            this.bigBoardButton.Name = "bigBoardButton";
-            this.bigBoardButton.Size = new System.Drawing.Size(48, 17);
-            this.bigBoardButton.TabIndex = 2;
-            this.bigBoardButton.TabStop = true;
-            this.bigBoardButton.Text = "5 x 5";
-            this.bigBoardButton.UseVisualStyleBackColor = true;
-            this.bigBoardButton.CheckedChanged += new System.EventHandler(this.bigBoardButton_CheckedChanged);
-            // 
-            // StartGameBtn
-            // 
-            this.StartGameBtn.Location = new System.Drawing.Point(222, 389);
-            this.StartGameBtn.Name = "StartGameBtn";
-            this.StartGameBtn.Size = new System.Drawing.Size(124, 27);
-            this.StartGameBtn.TabIndex = 13;
-            this.StartGameBtn.Text = "Start Game";
-            this.StartGameBtn.UseVisualStyleBackColor = true;
-            this.StartGameBtn.Click += new System.EventHandler(this.StartGameBtn_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.ChampComboBox);
-            this.groupBox3.Location = new System.Drawing.Point(12, 179);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 49);
-            this.groupBox3.TabIndex = 17;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Championships";
-            // 
-            // ChampComboBox
-            // 
-            this.ChampComboBox.FormattingEnabled = true;
-            this.ChampComboBox.Location = new System.Drawing.Point(9, 19);
-            this.ChampComboBox.Name = "ChampComboBox";
-            this.ChampComboBox.Size = new System.Drawing.Size(121, 21);
-            this.ChampComboBox.TabIndex = 0;
-            this.ChampComboBox.DropDown += new System.EventHandler(this.ChampComboBox_DropDown);
-            this.ChampComboBox.SelectedIndexChanged += new System.EventHandler(this.ChampComboBox_SelectedIndexChanged);
-            // 
-            // playerName
-            // 
-            this.playerName.AutoSize = true;
-            this.playerName.Location = new System.Drawing.Point(33, 3);
-            this.playerName.Name = "playerName";
-            this.playerName.Size = new System.Drawing.Size(0, 13);
-            this.playerName.TabIndex = 16;
             // 
             // AdvisorGroup3
             // 
@@ -679,6 +383,21 @@
             this.label1.Text = "Register";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // GameInfoPanel
+            // 
+            this.GameInfoPanel.Controls.Add(this.GameBoardPanel);
+            this.GameInfoPanel.Controls.Add(this.groupBox6);
+            this.GameInfoPanel.Controls.Add(this.groupBox5);
+            this.GameInfoPanel.Controls.Add(this.groupBox2);
+            this.GameInfoPanel.Controls.Add(this.lvlGroupBox);
+            this.GameInfoPanel.Controls.Add(this.StartGameBtn);
+            this.GameInfoPanel.Controls.Add(this.groupBox3);
+            this.GameInfoPanel.Controls.Add(this.playerName);
+            this.GameInfoPanel.Location = new System.Drawing.Point(3, 27);
+            this.GameInfoPanel.Name = "GameInfoPanel";
+            this.GameInfoPanel.Size = new System.Drawing.Size(677, 496);
+            this.GameInfoPanel.TabIndex = 4;
+            // 
             // GameBoardPanel
             // 
             this.GameBoardPanel.Controls.Add(this.backBtn);
@@ -716,6 +435,298 @@
             this.elementHost1.TabIndex = 2;
             this.elementHost1.Text = "elementHost1";
             this.elementHost1.Child = null;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.recordGame);
+            this.groupBox6.Location = new System.Drawing.Point(9, 241);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(200, 54);
+            this.groupBox6.TabIndex = 41;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Recorded Games";
+            // 
+            // recordGame
+            // 
+            this.recordGame.FormattingEnabled = true;
+            this.recordGame.Location = new System.Drawing.Point(9, 27);
+            this.recordGame.Name = "recordGame";
+            this.recordGame.Size = new System.Drawing.Size(121, 21);
+            this.recordGame.TabIndex = 0;
+            this.recordGame.DropDown += new System.EventHandler(this.recordGame_DropDown);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.nameLabel);
+            this.groupBox5.Controls.Add(this.pictureBox1);
+            this.groupBox5.Controls.Add(this.imageText);
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.cityText);
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Controls.Add(this.endDateText);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Controls.Add(this.startDateText);
+            this.groupBox5.Controls.Add(this.label10);
+            this.groupBox5.Controls.Add(this.updateBtn);
+            this.groupBox5.Controls.Add(this.deleteBtn);
+            this.groupBox5.Controls.Add(this.addBtn);
+            this.groupBox5.Controls.Add(this.dataGridView1);
+            this.groupBox5.Location = new System.Drawing.Point(219, 19);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(446, 276);
+            this.groupBox5.TabIndex = 38;
+            this.groupBox5.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(160, 237);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 36);
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // imageText
+            // 
+            this.imageText.Location = new System.Drawing.Point(27, 248);
+            this.imageText.Name = "imageText";
+            this.imageText.Size = new System.Drawing.Size(100, 20);
+            this.imageText.TabIndex = 23;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(0, 251);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(20, 13);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Url";
+            // 
+            // cityText
+            // 
+            this.cityText.Location = new System.Drawing.Point(340, 222);
+            this.cityText.Name = "cityText";
+            this.cityText.Size = new System.Drawing.Size(97, 20);
+            this.cityText.TabIndex = 21;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(311, 225);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(24, 13);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "City";
+            // 
+            // endDateText
+            // 
+            this.endDateText.Location = new System.Drawing.Point(215, 221);
+            this.endDateText.Name = "endDateText";
+            this.endDateText.Size = new System.Drawing.Size(90, 20);
+            this.endDateText.TabIndex = 19;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(157, 224);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(52, 13);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "End Date";
+            // 
+            // startDateText
+            // 
+            this.startDateText.Location = new System.Drawing.Point(61, 221);
+            this.startDateText.Name = "startDateText";
+            this.startDateText.Size = new System.Drawing.Size(87, 20);
+            this.startDateText.TabIndex = 17;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(0, 225);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(55, 13);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Start Date";
+            // 
+            // updateBtn
+            // 
+            this.updateBtn.Location = new System.Drawing.Point(270, 19);
+            this.updateBtn.Name = "updateBtn";
+            this.updateBtn.Size = new System.Drawing.Size(75, 23);
+            this.updateBtn.TabIndex = 15;
+            this.updateBtn.Text = "Update";
+            this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Location = new System.Drawing.Point(142, 19);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(75, 23);
+            this.deleteBtn.TabIndex = 14;
+            this.deleteBtn.Text = "Delete";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // addBtn
+            // 
+            this.addBtn.Location = new System.Drawing.Point(15, 19);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(75, 23);
+            this.addBtn.TabIndex = 13;
+            this.addBtn.Text = "Add";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Delete});
+            this.dataGridView1.Location = new System.Drawing.Point(0, 45);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(437, 173);
+            this.dataGridView1.TabIndex = 12;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Name = "Delete";
+            this.Delete.TrueValue = "yes";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.playersComboBox);
+            this.groupBox2.Controls.Add(this.computerButton);
+            this.groupBox2.Controls.Add(this.playerButton);
+            this.groupBox2.Location = new System.Drawing.Point(12, 73);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 100);
+            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Game Type";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(134, 69);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(37, 13);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Online";
+            // 
+            // playersComboBox
+            // 
+            this.playersComboBox.FormattingEnabled = true;
+            this.playersComboBox.Location = new System.Drawing.Point(7, 66);
+            this.playersComboBox.Name = "playersComboBox";
+            this.playersComboBox.Size = new System.Drawing.Size(121, 21);
+            this.playersComboBox.TabIndex = 6;
+            this.playersComboBox.DropDown += new System.EventHandler(this.playersComboBox_DropDown);
+            this.playersComboBox.SelectedIndexChanged += new System.EventHandler(this.playersComboBox_SelectedIndexChanged);
+            // 
+            // computerButton
+            // 
+            this.computerButton.AutoSize = true;
+            this.computerButton.Checked = true;
+            this.computerButton.Location = new System.Drawing.Point(6, 19);
+            this.computerButton.Name = "computerButton";
+            this.computerButton.Size = new System.Drawing.Size(103, 17);
+            this.computerButton.TabIndex = 5;
+            this.computerButton.TabStop = true;
+            this.computerButton.Text = "versus computer";
+            this.computerButton.UseVisualStyleBackColor = true;
+            this.computerButton.CheckedChanged += new System.EventHandler(this.computerButton_CheckedChanged);
+            // 
+            // playerButton
+            // 
+            this.playerButton.AutoSize = true;
+            this.playerButton.Location = new System.Drawing.Point(6, 42);
+            this.playerButton.Name = "playerButton";
+            this.playerButton.Size = new System.Drawing.Size(87, 17);
+            this.playerButton.TabIndex = 4;
+            this.playerButton.TabStop = true;
+            this.playerButton.Text = "versus player";
+            this.playerButton.UseVisualStyleBackColor = true;
+            this.playerButton.CheckedChanged += new System.EventHandler(this.playerButton_CheckedChanged);
+            // 
+            // lvlGroupBox
+            // 
+            this.lvlGroupBox.Controls.Add(this.smallBoardButton);
+            this.lvlGroupBox.Controls.Add(this.bigBoardButton);
+            this.lvlGroupBox.Location = new System.Drawing.Point(12, 19);
+            this.lvlGroupBox.Name = "lvlGroupBox";
+            this.lvlGroupBox.Size = new System.Drawing.Size(200, 48);
+            this.lvlGroupBox.TabIndex = 14;
+            this.lvlGroupBox.TabStop = false;
+            this.lvlGroupBox.Text = "Game level";
+            // 
+            // smallBoardButton
+            // 
+            this.smallBoardButton.AutoSize = true;
+            this.smallBoardButton.Checked = true;
+            this.smallBoardButton.Location = new System.Drawing.Point(9, 19);
+            this.smallBoardButton.Name = "smallBoardButton";
+            this.smallBoardButton.Size = new System.Drawing.Size(48, 17);
+            this.smallBoardButton.TabIndex = 1;
+            this.smallBoardButton.TabStop = true;
+            this.smallBoardButton.Text = "4 x 4";
+            this.smallBoardButton.UseVisualStyleBackColor = true;
+            this.smallBoardButton.CheckedChanged += new System.EventHandler(this.smallBoardButton_CheckedChanged);
+            // 
+            // bigBoardButton
+            // 
+            this.bigBoardButton.AutoSize = true;
+            this.bigBoardButton.Location = new System.Drawing.Point(80, 19);
+            this.bigBoardButton.Name = "bigBoardButton";
+            this.bigBoardButton.Size = new System.Drawing.Size(48, 17);
+            this.bigBoardButton.TabIndex = 2;
+            this.bigBoardButton.TabStop = true;
+            this.bigBoardButton.Text = "5 x 5";
+            this.bigBoardButton.UseVisualStyleBackColor = true;
+            this.bigBoardButton.CheckedChanged += new System.EventHandler(this.bigBoardButton_CheckedChanged);
+            // 
+            // StartGameBtn
+            // 
+            this.StartGameBtn.Location = new System.Drawing.Point(289, 389);
+            this.StartGameBtn.Name = "StartGameBtn";
+            this.StartGameBtn.Size = new System.Drawing.Size(124, 27);
+            this.StartGameBtn.TabIndex = 13;
+            this.StartGameBtn.Text = "Start Game";
+            this.StartGameBtn.UseVisualStyleBackColor = true;
+            this.StartGameBtn.Click += new System.EventHandler(this.StartGameBtn_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.ChampComboBox);
+            this.groupBox3.Location = new System.Drawing.Point(12, 179);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 49);
+            this.groupBox3.TabIndex = 17;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Championships";
+            // 
+            // ChampComboBox
+            // 
+            this.ChampComboBox.FormattingEnabled = true;
+            this.ChampComboBox.Location = new System.Drawing.Point(9, 19);
+            this.ChampComboBox.Name = "ChampComboBox";
+            this.ChampComboBox.Size = new System.Drawing.Size(121, 21);
+            this.ChampComboBox.TabIndex = 0;
+            this.ChampComboBox.DropDown += new System.EventHandler(this.ChampComboBox_DropDown);
+            this.ChampComboBox.SelectedIndexChanged += new System.EventHandler(this.ChampComboBox_SelectedIndexChanged);
+            // 
+            // playerName
+            // 
+            this.playerName.AutoSize = true;
+            this.playerName.Location = new System.Drawing.Point(33, 3);
+            this.playerName.Name = "playerName";
+            this.playerName.Size = new System.Drawing.Size(0, 13);
+            this.playerName.TabIndex = 16;
             // 
             // championshipBindingSource
             // 
@@ -929,14 +940,14 @@
             // 
             this.championshipTableAdapter.ClearBeforeFill = true;
             // 
-            // pictureBox1
+            // nameLabel
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(160, 237);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 36);
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Location = new System.Drawing.Point(157, 0);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(41, 13);
+            this.nameLabel.TabIndex = 25;
+            this.nameLabel.Text = "label16";
             // 
             // TicTacToeForm
             // 
@@ -956,17 +967,6 @@
             this.Load += new System.EventHandler(this.TicTacToeForm_Load);
             this.RegisterPanel.ResumeLayout(false);
             this.RegisterPanel.PerformLayout();
-            this.GameInfoPanel.ResumeLayout(false);
-            this.GameInfoPanel.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.lvlGroupBox.ResumeLayout(false);
-            this.lvlGroupBox.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
             this.AdvisorGroup3.ResumeLayout(false);
             this.AdvisorGroup3.PerformLayout();
             this.AdvisorGroup2.ResumeLayout(false);
@@ -975,7 +975,19 @@
             this.groupBox4.PerformLayout();
             this.AdvisorGroup1.ResumeLayout(false);
             this.AdvisorGroup1.PerformLayout();
+            this.GameInfoPanel.ResumeLayout(false);
+            this.GameInfoPanel.PerformLayout();
             this.GameBoardPanel.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.lvlGroupBox.ResumeLayout(false);
+            this.lvlGroupBox.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.championshipBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -983,7 +995,6 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1080,6 +1091,7 @@
         private System.Windows.Forms.ToolStripMenuItem noToolStripMenuItem;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Delete;
+        private System.Windows.Forms.Label nameLabel;
 
 
 

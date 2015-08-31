@@ -14,11 +14,14 @@ using System.Windows.Forms.Integration;
 namespace TicTacToe.Client
 {
     public partial class TicTacToeForm : Form, IServiceCallback
-
     {
+        #region Constants
+
         const int DB_DELAY = 3000;
         const int BIG_BOARD_SIZE = 5;
         const int SMALL_BOARD_SIZE = 4;
+
+        #endregion
 
         #region Private Fields
         private ServiceClient c;
@@ -50,6 +53,9 @@ namespace TicTacToe.Client
             InitializeComponent();
             c = new ServiceClient(new InstanceContext(this));
             PlayBtn.Enabled = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
         }
         #endregion
 
@@ -573,10 +579,17 @@ namespace TicTacToe.Client
          */
         private void loadGameInfoPanel()
         {
-            bindingSource1.DataSource = c.GetChampionshipsByPlayerId(player1);
-            dataGridView1.DataSource = bindingSource1;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.MultiSelect = true;
+            if (bindingSource1.DataSource == null)
+            {
+
+                nameLabel.Text = "  Hello " + player1.First_Name + " " + player1.Last_Name;
+                nameLabel.Font = new Font("Georgia", 11, FontStyle.Bold);
+                nameLabel.ForeColor = Color.Red;
+                bindingSource1.DataSource = c.GetChampionshipsByPlayerId(player1);
+                dataGridView1.DataSource = bindingSource1;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView1.MultiSelect = true;
+            }
         }
 
         #endregion

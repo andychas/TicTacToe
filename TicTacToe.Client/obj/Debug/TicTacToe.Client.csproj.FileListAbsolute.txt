@@ -70,7 +70,6 @@ C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Clie
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.AllGamesForm.resources
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.AllPlayers.resources
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.ChampForPlayerForm.resources
-C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.classes.Class1.resources
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.GameForPlayerForm.resources
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.NumOfChampForm.resources
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.NumOfGamesForm.resources
@@ -78,3 +77,4 @@ C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Clie
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.PlayersForChampForm.resources
 C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.TicTacToeForm.resources
 C:\Users\Admin\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.ShowCityImageForm.resources
+C:\Users\Andrey\Source\Repos\TicTacToe\TicTacToe.Client\obj\Debug\TicTacToe.Client.ShowCityImageForm.resources
